@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StockBeheerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="StockBeheerModelStoreContainer">
+          <EntitySet Name="Component" EntityType="StockBeheerModel.Store.Component" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Leverancier" EntityType="StockBeheerModel.Store.Leverancier" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Component_Leverancier" Association="StockBeheerModel.Store.FK_Component_Leverancier">
+            <End Role="Leverancier" EntitySet="Leverancier" />
+            <End Role="Component" EntitySet="Component" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Naam" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MinimumStock" Type="int" Nullable="false" />
+          <Property Name="Hoeveelheid" Type="int" Nullable="false" />
+          <Property Name="Stocknr" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Prijs" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="LeverancierId" Type="int" Nullable="false" />
+          <Property Name="Opmerkingen" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Leverancier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Naam" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+          <Property Name="Site" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Component_Leverancier">
+          <End Role="Leverancier" Type="StockBeheerModel.Store.Leverancier" Multiplicity="1" />
+          <End Role="Component" Type="StockBeheerModel.Store.Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leverancier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Component">
+              <PropertyRef Name="LeverancierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StockBeheerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="StockBeheerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Component" EntityType="StockBeheerModel.Component" />
+          <EntitySet Name="Leverancier" EntityType="StockBeheerModel.Leverancier" />
+          <AssociationSet Name="FK_Component_Leverancier" Association="StockBeheerModel.FK_Component_Leverancier">
+            <End Role="Leverancier" EntitySet="Leverancier" />
+            <End Role="Component" EntitySet="Component" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Naam" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MinimumStock" Nullable="false" />
+          <Property Type="Int32" Name="Hoeveelheid" Nullable="false" />
+          <Property Type="String" Name="Stocknr" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Prijs" Nullable="false" Precision="10" Scale="4" />
+          <Property Type="Int32" Name="LeverancierId" Nullable="false" />
+          <Property Type="String" Name="Opmerkingen" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Leverancier" Relationship="StockBeheerModel.FK_Component_Leverancier" FromRole="Component" ToRole="Leverancier" />
+        </EntityType>
+        <EntityType Name="Leverancier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Naam" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Adres" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Site" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Component" Relationship="StockBeheerModel.FK_Component_Leverancier" FromRole="Leverancier" ToRole="Component" />
+        </EntityType>
+        <Association Name="FK_Component_Leverancier">
+          <End Type="StockBeheerModel.Leverancier" Role="Leverancier" Multiplicity="1" />
+          <End Type="StockBeheerModel.Component" Role="Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leverancier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Component">
+              <PropertyRef Name="LeverancierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StockBeheerModelStoreContainer" CdmEntityContainer="StockBeheerEntities">
+          <EntitySetMapping Name="Component">
+            <EntityTypeMapping TypeName="StockBeheerModel.Component">
+              <MappingFragment StoreEntitySet="Component">
+                <ScalarProperty Name="Opmerkingen" ColumnName="Opmerkingen" />
+                <ScalarProperty Name="LeverancierId" ColumnName="LeverancierId" />
+                <ScalarProperty Name="Prijs" ColumnName="Prijs" />
+                <ScalarProperty Name="Stocknr" ColumnName="Stocknr" />
+                <ScalarProperty Name="Hoeveelheid" ColumnName="Hoeveelheid" />
+                <ScalarProperty Name="MinimumStock" ColumnName="MinimumStock" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leverancier">
+            <EntityTypeMapping TypeName="StockBeheerModel.Leverancier">
+              <MappingFragment StoreEntitySet="Leverancier">
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Stock">
+        <EntityTypeShape EntityType="StockBeheerModel.Component" Width="1.5" PointX="3" PointY="1" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="StockBeheerModel.Leverancier" Width="1.5" PointX="0.75" PointY="1.375" Height="1.9802864583333335" />
+        <AssociationConnector Association="StockBeheerModel.FK_Component_Leverancier" >
+          <ConnectorPoint PointX="2.25" PointY="2.3651432291666667" />
+          <ConnectorPoint PointX="3" PointY="2.3651432291666667" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
