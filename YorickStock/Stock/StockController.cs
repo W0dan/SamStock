@@ -1,11 +1,19 @@
 ﻿using System.Windows.Forms;
 using YorickStock.Database;
 using YorickStock.GetStockOverzicht;
+using YorickStock.Stock.ComponentToevoegen;
 
 namespace YorickStock.Stock
 {
     public class StockController
     {
+        private readonly SamStockForm _view;
+
+        public StockController(SamStockForm view)
+        {
+            _view = view;
+        }
+
         public GetStockOverzichtHandler CreateGetStockOverzichtHandler()
         {
             var context = new StockBeheerEntities();
@@ -39,6 +47,17 @@ namespace YorickStock.Stock
 
                 stockOverviewListView.Items.Add(listViewItem);
             }
+        }
+
+        public void ShowAddComponents()
+        {
+            var addComponentsForm = new StockItemToevoegenForm(this);
+            addComponentsForm.ShowDialog(_view);
+        }
+
+        public void AddComponent()
+        {
+
         }
     }
 }

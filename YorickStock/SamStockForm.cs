@@ -11,7 +11,7 @@ namespace YorickStock
         {
             InitializeComponent();
 
-            _controller = new StockController();
+            _controller = new StockController(this);
         }
 
         protected override void OnLoad(System.EventArgs e)
@@ -53,7 +53,7 @@ namespace YorickStock
 
         private void StockItemToevoegenButton_Click(object sender, System.EventArgs e)
         {
-
+            _controller.ShowAddComponents();
         }
     }
 }

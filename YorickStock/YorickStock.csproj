@@ -65,6 +65,18 @@
     <Compile Include="SamStockForm.Designer.cs">
       <DependentUpon>SamStockForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenControl.Designer.cs">
+      <DependentUpon>ComponentToevoegenControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\ComponentToevoegen\StockItemToevoegenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\ComponentToevoegen\StockItemToevoegenForm.Designer.cs">
+      <DependentUpon>StockItemToevoegenForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtHandler.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtQuery.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtQueryExecutor.cs" />
@@ -86,6 +98,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Stock\ComponentToevoegen\ComponentToevoegenControl.resx">
+      <DependentUpon>ComponentToevoegenControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\ComponentToevoegen\StockItemToevoegenForm.resx">
+      <DependentUpon>StockItemToevoegenForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <EntityDeploy Include="Database\Stock.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

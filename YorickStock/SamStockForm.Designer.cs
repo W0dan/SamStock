@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.StockGroupBox = new System.Windows.Forms.GroupBox();
+            this.StockVerhogenButton = new System.Windows.Forms.Button();
+            this.StockItemToevoegenButton = new System.Windows.Forms.Button();
             this.StockOverviewListView = new System.Windows.Forms.ListView();
             this.StockButton = new System.Windows.Forms.Button();
             this.PedalenButton = new System.Windows.Forms.Button();
@@ -39,8 +41,6 @@
             this.HerstellingenButton = new System.Windows.Forms.Button();
             this.PedalenGroupBox = new System.Windows.Forms.GroupBox();
             this.BestellingenGroupBox = new System.Windows.Forms.GroupBox();
-            this.StockItemToevoegenButton = new System.Windows.Forms.Button();
-            this.StockVerhogenButton = new System.Windows.Forms.Button();
             this.StockGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,25 @@
             this.StockGroupBox.TabIndex = 2;
             this.StockGroupBox.TabStop = false;
             this.StockGroupBox.Text = "Stock";
+            // 
+            // StockVerhogenButton
+            // 
+            this.StockVerhogenButton.Location = new System.Drawing.Point(89, 20);
+            this.StockVerhogenButton.Name = "StockVerhogenButton";
+            this.StockVerhogenButton.Size = new System.Drawing.Size(75, 23);
+            this.StockVerhogenButton.TabIndex = 4;
+            this.StockVerhogenButton.Text = "Add Stock";
+            this.StockVerhogenButton.UseVisualStyleBackColor = true;
+            // 
+            // StockItemToevoegenButton
+            // 
+            this.StockItemToevoegenButton.Location = new System.Drawing.Point(7, 20);
+            this.StockItemToevoegenButton.Name = "StockItemToevoegenButton";
+            this.StockItemToevoegenButton.Size = new System.Drawing.Size(75, 23);
+            this.StockItemToevoegenButton.TabIndex = 3;
+            this.StockItemToevoegenButton.Text = "Add Item";
+            this.StockItemToevoegenButton.UseVisualStyleBackColor = true;
+            this.StockItemToevoegenButton.Click += new System.EventHandler(this.StockItemToevoegenButton_Click);
             // 
             // StockOverviewListView
             // 
@@ -163,25 +182,6 @@
             this.BestellingenGroupBox.Text = "Bestellingen";
             this.BestellingenGroupBox.Visible = false;
             // 
-            // StockItemToevoegenButton
-            // 
-            this.StockItemToevoegenButton.Location = new System.Drawing.Point(7, 20);
-            this.StockItemToevoegenButton.Name = "StockItemToevoegenButton";
-            this.StockItemToevoegenButton.Size = new System.Drawing.Size(75, 23);
-            this.StockItemToevoegenButton.TabIndex = 3;
-            this.StockItemToevoegenButton.Text = "Add Item";
-            this.StockItemToevoegenButton.UseVisualStyleBackColor = true;
-            this.StockItemToevoegenButton.Click += new System.EventHandler(this.StockItemToevoegenButton_Click);
-            // 
-            // StockVerhogenButton
-            // 
-            this.StockVerhogenButton.Location = new System.Drawing.Point(89, 20);
-            this.StockVerhogenButton.Name = "StockVerhogenButton";
-            this.StockVerhogenButton.Size = new System.Drawing.Size(75, 23);
-            this.StockVerhogenButton.TabIndex = 4;
-            this.StockVerhogenButton.Text = "Add Stock";
-            this.StockVerhogenButton.UseVisualStyleBackColor = true;
-            // 
             // SamStockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,6 +198,7 @@
             this.Controls.Add(this.PedalenGroupBox);
             this.Controls.Add(this.BestellingenGroupBox);
             this.Name = "SamStockForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SamStockForm";
             this.StockGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
