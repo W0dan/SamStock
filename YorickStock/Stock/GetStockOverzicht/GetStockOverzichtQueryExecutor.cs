@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using YorickStock.Database;
+using SamStock.Database;
 
-namespace YorickStock.GetStockOverzicht
+namespace SamStock.Stock.GetStockOverzicht
 {
     public class GetStockOverzichtQueryExecutor : IGetStockOverzichtQueryExecutor
     {

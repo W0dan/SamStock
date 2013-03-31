@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
-using YorickStock.Stock;
+using SamStock.Stock;
 
-namespace YorickStock
+namespace SamStock
 {
     public partial class SamStockForm : Form
     {

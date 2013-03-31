@@ -1,0 +1,91 @@
+﻿@model SamStock.Web.Models.StockViewModel
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="../../Content/styles/Stock.css" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    <h2>
+        Stock</h2>
+    <table>
+        <tr>
+            <th id="StocknrHeader">
+                Stocknr
+            </th>
+            <th id="NaamHeader">
+                Naam
+            </th>
+            <th id="PrijsHeader">
+                Prijs
+            </th>
+            <th id="HoeveelheidHeader">
+                Hoeveelheid
+            </th>
+            <th id="MinimumStockHeader">
+                Minimum stock
+            </th>
+            <th id="LeverancierHeader">
+                Leverancier
+            </th>
+            <th id="OpmerkingenHeader">
+                Opmerkingen
+            </th>
+            <th id="Toevoegenheader">
+            </th>
+        </tr>
+        @foreach (var item in Model.List)
+        {
+            <tr>
+                <td>@item.Stocknr
+                </td>
+                <td>@item.Naam
+                </td>
+                <td>@item.Prijs
+                </td>
+                <td>@item.Hoeveelheid
+                </td>
+                <td>@item.MinimumStock
+                </td>
+                <td>@item.LeverancierNaam
+                </td>
+                <td>@item.Opmerkingen
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                <input type="text" id="newStocknr" />
+            </td>
+            <td>
+                <input type="text" id="newNaam" />
+            </td>
+            <td>
+                <input type="text" id="newPrijs" />
+            </td>
+            <td>
+                <input type="text" id="newHoeveelheid" />
+            </td>
+            <td>
+                <input type="text" id="newMinimumStock" />
+            </td>
+            <td>@Html.DropDownList("leveranciers", Model.Leveranciers.Select(x => new SelectListItem { Text = x.Naam, Value = x.Id.ToString("0") }))
+            </td>
+            <td>
+                <input type="text" id="newOpmerkingen" />
+            </td>
+            <td>
+                <button id="toevoegenButton">
+                    Toevoegen</button>
+            </td>
+        </tr>
+    </table>
+}

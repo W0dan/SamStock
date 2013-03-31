@@ -1,0 +1,64 @@
+﻿table
+{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+tr:nth-child(odd) {
+    background-color: #eeeeee;
+}
+
+th
+{
+    background-color: black;
+    color: white;
+    width: 175px;
+    padding: 2px;
+}
+
+td
+{
+    border: 1px solid #dddddd;
+    padding: 2px 10px;
+}
+
+#StocknrHeader
+{
+    width: 75px;
+}
+
+#NaamHeader
+{
+    width: 200px;
+}
+
+#PrijsHeader
+{
+    width: 75px;
+}
+
+#HoeveelheidHeader
+{
+    width: 100px;
+}
+
+#MinimumStockHeader
+{
+    width: 125px;
+}
+
+#Toevoegenheader {
+    width: 100px;
+}
+
+td input[type=text] {
+    width: 100%;
+}
+
+td select {
+    width: 100%;
+}
+
+#toevoegenButton {
+    width: 100%;
+}

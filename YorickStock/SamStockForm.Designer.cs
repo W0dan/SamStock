@@ -1,4 +1,4 @@
-﻿namespace YorickStock
+﻿namespace SamStock
 {
     partial class SamStockForm
     {

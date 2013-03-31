@@ -1,9 +1,9 @@
 ﻿using System.Windows.Forms;
-using YorickStock.Database;
-using YorickStock.GetStockOverzicht;
-using YorickStock.Stock.ComponentToevoegen;
+using SamStock.Database;
+using SamStock.Stock.ComponentToevoegen;
+using SamStock.Stock.GetStockOverzicht;
 
-namespace YorickStock.Stock
+namespace SamStock.Stock
 {
     public class StockController
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace YorickStock.GetStockOverzicht
+namespace SamStock.Stock.GetStockOverzicht
 {
     public class GetStockOverzichtResponse
     {

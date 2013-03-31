@@ -1,6 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
-using YorickStock.GetStockOverzicht;
+using SamStock.Stock.GetStockOverzicht;
 
 namespace Tests.Concerning_Stock.Given_a_GetStockOverzichtHandler
 {

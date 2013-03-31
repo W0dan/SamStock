@@ -1,4 +1,4 @@
-﻿namespace YorickStock.Stock.ComponentToevoegen
+﻿namespace SamStock.Stock.ComponentToevoegen
 {
     partial class ComponentToevoegenControl
     {

@@ -19,11 +19,11 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("StockBeheerModel", "FK_Component_Leverancier", "Leverancier", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(YorickStock.Database.Leverancier), "Component", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(YorickStock.Database.Component), true)]
+[assembly: EdmRelationshipAttribute("StockBeheerModel", "FK_Component_Leverancier", "Leverancier", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SamStock.Database.Leverancier), "Component", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SamStock.Database.Component), true)]
 
 #endregion
 
-namespace YorickStock.Database
+namespace SamStock.Database
 {
     #region Contexts
     

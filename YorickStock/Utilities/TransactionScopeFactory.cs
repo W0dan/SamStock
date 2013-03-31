@@ -1,6 +1,6 @@
 ﻿using System.Transactions;
 
-namespace YorickStock.Utilities
+namespace SamStock.Utilities
 {
     public static class TransactionScopeFactory
     {

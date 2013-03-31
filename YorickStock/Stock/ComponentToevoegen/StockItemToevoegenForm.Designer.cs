@@ -1,4 +1,4 @@
-﻿namespace YorickStock.Stock.ComponentToevoegen
+﻿namespace SamStock.Stock.ComponentToevoegen
 {
     partial class StockItemToevoegenForm
     {
@@ -30,7 +30,7 @@
         {
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveAndCloseButton = new System.Windows.Forms.Button();
-            this.componentToevoegenControl1 = new YorickStock.Stock.ComponentToevoegen.ComponentToevoegenControl();
+            this.componentToevoegenControl1 = new ComponentToevoegenControl();
             this.AddComponentbutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 

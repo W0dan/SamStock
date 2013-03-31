@@ -1,4 +1,4 @@
-﻿namespace YorickStock.GetStockOverzicht
+﻿namespace SamStock.Stock.GetStockOverzicht
 {
     public class GetStockOverzichtHandler
     {

@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using YorickStock.Database;
-using YorickStock.GetStockOverzicht;
+using SamStock.Database;
+using SamStock.Stock.GetStockOverzicht;
+using SamStock.Database;
 
 namespace Tests.Concerning_Stock.Given_a_GetStockOverzichtQueryExecutor
 {

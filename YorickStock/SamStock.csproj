@@ -8,10 +8,11 @@
     <ProjectGuid>{201C3FEC-FD13-491A-86CA-866D6CC0A370}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YorickStock</RootNamespace>
-    <AssemblyName>YorickStock</AssemblyName>
+    <RootNamespace>SamStock</RootNamespace>
+    <AssemblyName>SamStock</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -77,6 +78,11 @@
     <Compile Include="Stock\ComponentToevoegen\StockItemToevoegenForm.Designer.cs">
       <DependentUpon>StockItemToevoegenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataHandler.cs" />
+    <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataQueryExecutor.cs" />
+    <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataRequest.cs" />
+    <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataResponse.cs" />
+    <Compile Include="Stock\GetStockOverzichtRefdata\IGetStockRefdataQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtHandler.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtQuery.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtQueryExecutor.cs" />
@@ -97,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Stock\ComponentToevoegen\ComponentToevoegenControl.resx">
       <DependentUpon>ComponentToevoegenControl.cs</DependentUpon>
@@ -104,7 +111,9 @@
     <EmbeddedResource Include="Stock\ComponentToevoegen\StockItemToevoegenForm.resx">
       <DependentUpon>StockItemToevoegenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Database\Stock.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Stock.Designer.cs</LastGenOutput>

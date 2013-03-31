@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace YorickStock.Stock.ComponentToevoegen
+namespace SamStock.Stock.ComponentToevoegen
 {
     public partial class StockItemToevoegenForm : Form
     {

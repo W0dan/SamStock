@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Transactions;
-using YorickStock.Database;
-using YorickStock.Utilities;
+using SamStock.Database;
+using SamStock.Utilities;
 
 namespace Tests
 {
