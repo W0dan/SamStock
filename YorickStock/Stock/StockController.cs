@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 using SamStock.Database;
-using SamStock.Stock.ComponentToevoegen;
 using SamStock.Stock.GetStockOverzicht;
 
 namespace SamStock.Stock
@@ -32,7 +31,7 @@ namespace SamStock.Stock
             stockOverviewListView.Columns.Add("Opmerkingen", 200);
            
 
-            var stockOverzicht = CreateGetStockOverzichtHandler().Handle(new GetStockOverzichtQuery());
+            var stockOverzicht = CreateGetStockOverzichtHandler().Handle(new GetStockOverzichtRequest());
 
             foreach (var item in stockOverzicht.List)
             {
@@ -51,8 +50,6 @@ namespace SamStock.Stock
 
         public void ShowAddComponents()
         {
-            var addComponentsForm = new StockItemToevoegenForm(this);
-            addComponentsForm.ShowDialog(_view);
         }
 
         public void AddComponent()

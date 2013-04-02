@@ -1,7 +1,9 @@
-﻿namespace SamStock.Stock.GetStockOverzicht
+﻿using SamStock.Utilities;
+
+namespace SamStock.Stock.GetStockOverzicht
 {
-    public interface IGetStockOverzichtQueryExecutor
+    public interface IGetStockOverzichtQueryExecutor:IQuery
     {
-        GetStockOverzichtResponse Execute(GetStockOverzichtQuery query);
+        GetStockOverzichtResponse Execute(GetStockOverzichtRequest request);
     }
 }

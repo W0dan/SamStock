@@ -8,17 +8,17 @@ namespace Tests.Concerning_Stock.Given_a_GetStockOverzichtHandler
     {
         private GetStockOverzichtHandler _sut;
         private Mock<IGetStockOverzichtQueryExecutor> _queryExecutorMock;
-        private GetStockOverzichtQuery _query;
+        private GetStockOverzichtRequest _request;
         private GetStockOverzichtResponse _result;
         private GetStockOverzichtResponse _expectedResponse;
 
         public override void Arrange()
         {
-            _query = new GetStockOverzichtQuery();
+            _request = new GetStockOverzichtRequest();
             _queryExecutorMock = new Mock<IGetStockOverzichtQueryExecutor>();
             _expectedResponse = new GetStockOverzichtResponse();
             _queryExecutorMock
-                .Setup(x => x.Execute(It.IsAny<GetStockOverzichtQuery>()))
+                .Setup(x => x.Execute(It.IsAny<GetStockOverzichtRequest>()))
                 .Returns(_expectedResponse);
 
             _sut = new GetStockOverzichtHandler(_queryExecutorMock.Object);
@@ -26,13 +26,13 @@ namespace Tests.Concerning_Stock.Given_a_GetStockOverzichtHandler
 
         public override void Act()
         {
-            _result = _sut.Handle(_query);
+            _result = _sut.Handle(_request);
         }
 
         [Test]
         public void It_should_Execute_the_GetStockOverzichtQuery()
         {
-            _queryExecutorMock.Verify(x => x.Execute(_query));
+            _queryExecutorMock.Verify(x => x.Execute(_request));
         }
 
         [Test]

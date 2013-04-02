@@ -62,30 +62,34 @@
             </tr>
         }
         <tr>
-            <td>
-                <input type="text" id="newStocknr" />
-            </td>
-            <td>
-                <input type="text" id="newNaam" />
-            </td>
-            <td>
-                <input type="text" id="newPrijs" />
-            </td>
-            <td>
-                <input type="text" id="newHoeveelheid" />
-            </td>
-            <td>
-                <input type="text" id="newMinimumStock" />
-            </td>
-            <td>@Html.DropDownList("leveranciers", Model.Leveranciers.Select(x => new SelectListItem { Text = x.Naam, Value = x.Id.ToString("0") }))
-            </td>
-            <td>
-                <input type="text" id="newOpmerkingen" />
-            </td>
-            <td>
-                <button id="toevoegenButton">
-                    Toevoegen</button>
-            </td>
+            @using (Html.BeginForm("ComponentToevoegen", "Stock"))
+            {
+                <td>
+                    @Html.TextBoxFor(x => x.NewItem.Stocknr)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.NewItem.Naam)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.NewItem.Prijs)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.NewItem.Hoeveelheid)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.NewItem.MinimumStock)
+                </td>
+                <td>
+                    @Html.DropDownListFor(x => x.NewItem.LeverancierId, Model.Leveranciers.Select(x => new SelectListItem {Text = x.Naam, Value = x.Id.ToString("0")}))
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.NewItem.Opmerkingen)
+                </td>
+                <td>
+                    <button id="toevoegenButton">
+                        Toevoegen</button>
+                </td>
+            }
         </tr>
     </table>
 }

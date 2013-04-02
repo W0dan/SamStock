@@ -1,6 +1,6 @@
 ﻿namespace SamStock.Stock.GetStockOverzichtRefdata
 {
-    public class GetStockRefdataHandler
+    public class GetStockRefdataHandler : IGetStockRefdataHandler
     {
         private readonly IGetStockRefdataQueryExecutor _getStockRefdataQueryExecutor;
 

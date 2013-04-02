@@ -9,12 +9,12 @@ namespace Tests.Concerning_Stock.Given_a_GetStockOverzichtQueryExecutor
     public class When_Execute_is_called : DatabaseTest
     {
         private GetStockOverzichtQueryExecutor _sut;
-        private GetStockOverzichtQuery _query;
+        private GetStockOverzichtRequest _request;
         private GetStockOverzichtResponse _result;
 
         public override void Arrange()
         {
-            _query = new GetStockOverzichtQuery();
+            _request = new GetStockOverzichtRequest();
 
             var leverancier = new Leverancier
                 {
@@ -72,7 +72,7 @@ namespace Tests.Concerning_Stock.Given_a_GetStockOverzichtQueryExecutor
 
         public override void Act()
         {
-            _result = _sut.Execute(_query);
+            _result = _sut.Execute(_request);
         }
 
         [Test]

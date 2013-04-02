@@ -1,6 +1,6 @@
 ﻿namespace SamStock.Stock.GetStockOverzicht
 {
-    public class GetStockOverzichtHandler
+    public class GetStockOverzichtHandler : IGetStockOverzichtHandler
     {
         private readonly IGetStockOverzichtQueryExecutor _getStockOverzichtQueryExecutor;
 
@@ -9,9 +9,9 @@
             _getStockOverzichtQueryExecutor = getStockOverzichtQueryExecutor;
         }
 
-        public GetStockOverzichtResponse Handle(GetStockOverzichtQuery query)
+        public GetStockOverzichtResponse Handle(GetStockOverzichtRequest request)
         {
-            return _getStockOverzichtQueryExecutor.Execute(query);
+            return _getStockOverzichtQueryExecutor.Execute(request);
         }
     }
 }

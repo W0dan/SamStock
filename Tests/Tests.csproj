@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
+    <Compile Include="Concerning_Stock\Given_a_ComponentToevoegenHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Stock\Given_a_ComponentToevoegenQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\Given_a_GetStockOverzichtHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\Given_a_GetStockOverzichtQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\Given_a_GetStockRefdataHandler\When_Handle_is_called.cs" />

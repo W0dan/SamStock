@@ -20,9 +20,9 @@ namespace SamStock.Stock.GetStockOverzicht
 
         public decimal Prijs { get; set; }
 
-        public decimal Hoeveelheid { get; set; }
+        public int Hoeveelheid { get; set; }
 
-        public decimal MinimumStock { get; set; }
+        public int MinimumStock { get; set; }
 
         public string Opmerkingen { get; set; }
 

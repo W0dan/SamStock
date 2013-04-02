@@ -12,7 +12,7 @@ namespace SamStock.Stock.GetStockOverzicht
             _context = context;
         }
 
-        public GetStockOverzichtResponse Execute(GetStockOverzichtQuery query)
+        public GetStockOverzichtResponse Execute(GetStockOverzichtRequest request)
         {
             var result = _context.Component
                 .Select(x => new GetStockOverzichtItem

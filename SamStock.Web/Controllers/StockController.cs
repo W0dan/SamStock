@@ -1,35 +1,54 @@
 ﻿using System.Web.Mvc;
 using SamStock.Database;
+using SamStock.Stock.ComponentToevoegen;
 using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
+using SamStock.Utilities;
 using SamStock.Web.Models;
 
 namespace SamStock.Web.Controllers
 {
     public class StockController : Controller
     {
-        private readonly GetStockOverzichtHandler _getStockOverzichtHandler;
-        private readonly GetStockRefdataHandler _getStockRefdataHandler;
+        private readonly IDispatcher _dispatcher;
+        private readonly ComponentToevoegenHandler _componentToevoegenHandler;
 
-        public StockController()
+        public StockController(IDispatcher dispatcher)
         {
+            _dispatcher = dispatcher;
             var context = new StockBeheerEntities();
-            var getStockOverzichtQueryExecutor = new GetStockOverzichtQueryExecutor(context);
-            _getStockOverzichtHandler = new GetStockOverzichtHandler(getStockOverzichtQueryExecutor);
 
-            var getStockRefdataQueryExecutor = new GetStockRefdataQueryExecutor(context);
-            _getStockRefdataHandler = new GetStockRefdataHandler(getStockRefdataQueryExecutor);
+            var componentToevoegenCommandExecutor = new ComponentToevoegenCommandExecutor(context);
+            _componentToevoegenHandler = new ComponentToevoegenHandler(componentToevoegenCommandExecutor);
         }
 
         [HttpGet]
         public ViewResult Index()
         {
-            var stockOverzicht = _getStockOverzichtHandler.Handle(new GetStockOverzichtQuery());
-            var refdata = _getStockRefdataHandler.Handle(new GetStockRefdataRequest());
+            var stockOverzicht = _dispatcher.DispatchQuery<GetStockOverzichtRequest, GetStockOverzichtResponse>(new GetStockOverzichtRequest());
+            var refdata = _dispatcher.DispatchQuery<GetStockRefdataRequest, GetStockRefdataResponse>(new GetStockRefdataRequest());
 
             var model = new StockViewModel(stockOverzicht.List, refdata);
 
             return View(model);
+        }
+
+        [HttpPost]
+        public RedirectToRouteResult ComponentToevoegen(StockViewModel model)
+        {
+            var newItem = model.NewItem;
+
+            var command = new ComponentToevoegenCommand(newItem.Naam, 
+                newItem.MinimumStock, 
+                newItem.Hoeveelheid,
+                newItem.Stocknr, 
+                newItem.Prijs, 
+                newItem.LeverancierId,
+                newItem.Opmerkingen);
+
+            _dispatcher.DispatchCommand(command);
+
+            return RedirectToAction("Index");
         }
     }
 }

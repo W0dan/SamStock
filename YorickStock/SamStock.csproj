@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\SamStock.Web\bin\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
@@ -66,31 +69,32 @@
     <Compile Include="SamStockForm.Designer.cs">
       <DependentUpon>SamStockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenControl.Designer.cs">
-      <DependentUpon>ComponentToevoegenControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Stock\ComponentToevoegen\StockItemToevoegenForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Stock\ComponentToevoegen\StockItemToevoegenForm.Designer.cs">
-      <DependentUpon>StockItemToevoegenForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenCommand.cs" />
+    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenCommandExecutor.cs" />
+    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenHandler.cs" />
+    <Compile Include="Stock\ComponentToevoegen\IComponentToevoegenCommandExecutor.cs" />
+    <Compile Include="Stock\ComponentToevoegen\IComponentToevoegenHandler.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataHandler.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataRequest.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataResponse.cs" />
+    <Compile Include="Stock\GetStockOverzichtRefdata\IGetStockRefdataHandler.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\IGetStockRefdataQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtHandler.cs" />
-    <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtQuery.cs" />
+    <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtRequest.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtResponse.cs" />
+    <Compile Include="Stock\GetStockOverzicht\IGetStockOverzichtHandler.cs" />
     <Compile Include="Stock\GetStockOverzicht\IGetStockOverzichtQueryExecutor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stock\StockController.cs" />
+    <Compile Include="Utilities\Dispatcher.cs" />
+    <Compile Include="Utilities\ICommandExecutor.cs" />
+    <Compile Include="Utilities\ICommandHandler.cs" />
+    <Compile Include="Utilities\IDispatcher.cs" />
+    <Compile Include="Utilities\IQuery.cs" />
+    <Compile Include="Utilities\IQueryHandler.cs" />
     <Compile Include="Utilities\TransactionScopeFactory.cs" />
     <EmbeddedResource Include="SamStockForm.resx">
       <DependentUpon>SamStockForm.cs</DependentUpon>
@@ -105,12 +109,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Stock\ComponentToevoegen\ComponentToevoegenControl.resx">
-      <DependentUpon>ComponentToevoegenControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Stock\ComponentToevoegen\StockItemToevoegenForm.resx">
-      <DependentUpon>StockItemToevoegenForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

@@ -1,6 +1,6 @@
 ﻿namespace SamStock.Stock.GetStockOverzicht
 {
-    public class GetStockOverzichtQuery
+    public class GetStockOverzichtRequest
     {
     }
 }

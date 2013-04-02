@@ -1,6 +1,8 @@
-﻿namespace SamStock.Stock.GetStockOverzichtRefdata
+﻿using SamStock.Utilities;
+
+namespace SamStock.Stock.GetStockOverzichtRefdata
 {
-    public interface IGetStockRefdataQueryExecutor
+    public interface IGetStockRefdataQueryExecutor : IQuery
     {
         GetStockRefdataResponse Execute(GetStockRefdataRequest request);
     }
