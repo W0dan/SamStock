@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{201C3FEC-FD13-491A-86CA-866D6CC0A370}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SamStock</RootNamespace>
     <AssemblyName>SamStock</AssemblyName>
@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Windsor">
       <HintPath>..\SamStock.Web\bin\Castle.Windsor.dll</HintPath>
@@ -58,17 +61,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\IContext.cs" />
     <Compile Include="Database\Stock.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Stock.edmx</DependentUpon>
     </Compile>
-    <Compile Include="SamStockForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SamStockForm.Designer.cs">
-      <DependentUpon>SamStockForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Database\StockBeheerEntities.cs" />
     <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenCommand.cs" />
     <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenCommandExecutor.cs" />
     <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenHandler.cs" />
@@ -86,9 +85,7 @@
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtResponse.cs" />
     <Compile Include="Stock\GetStockOverzicht\IGetStockOverzichtHandler.cs" />
     <Compile Include="Stock\GetStockOverzicht\IGetStockOverzichtQueryExecutor.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stock\StockController.cs" />
     <Compile Include="Utilities\Dispatcher.cs" />
     <Compile Include="Utilities\ICommandExecutor.cs" />
     <Compile Include="Utilities\ICommandHandler.cs" />
@@ -96,9 +93,6 @@
     <Compile Include="Utilities\IQuery.cs" />
     <Compile Include="Utilities\IQueryHandler.cs" />
     <Compile Include="Utilities\TransactionScopeFactory.cs" />
-    <EmbeddedResource Include="SamStockForm.resx">
-      <DependentUpon>SamStockForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

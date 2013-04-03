@@ -2,9 +2,8 @@
 using NUnit.Framework;
 using SamStock.Database;
 using SamStock.Stock.GetStockOverzicht;
-using SamStock.Database;
 
-namespace Tests.Concerning_Stock.Given_a_GetStockOverzichtQueryExecutor
+namespace Tests.Concerning_Stock.GetStockOverzicht.Given_a_GetStockOverzichtQueryExecutor
 {
     public class When_Execute_is_called : DatabaseTest
     {

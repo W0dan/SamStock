@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using SamStock.Stock.GetStockOverzichtRefdata;
 
-namespace Tests.Concerning_Stock.Given_a_GetStockRefdataHandler
+namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataHandler
 {
     public class When_Handle_is_called : BaseTest
     {

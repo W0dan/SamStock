@@ -4,9 +4,9 @@ namespace SamStock.Stock.ComponentToevoegen
 {
     public class ComponentToevoegenCommandExecutor : IComponentToevoegenCommandExecutor
     {
-        private readonly StockBeheerEntities _context;
+        private readonly IContext _context;
 
-        public ComponentToevoegenCommandExecutor(StockBeheerEntities context)
+        public ComponentToevoegenCommandExecutor(IContext context)
         {
             _context = context;
         }

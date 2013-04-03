@@ -1,5 +1,6 @@
 ﻿using System;
 using Castle.Windsor;
+using SamStock.Database;
 
 namespace SamStock.Utilities
 {
@@ -36,7 +37,7 @@ namespace SamStock.Utilities
             if (handler == null)
                 throw new ArgumentException(string.Format("No handler found for handling {0}", typeof(TCommand).Name));
 
-            var context = _windsorContainer.Resolve<Database.StockBeheerEntities>();
+            var context = _windsorContainer.Resolve<IContext>();
             try
             {
                 using (var tran = TransactionScopeFactory.CreateTransactionScope())

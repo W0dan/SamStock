@@ -5,9 +5,9 @@ namespace SamStock.Stock.GetStockOverzichtRefdata
 {
     public class GetStockRefdataQueryExecutor : IGetStockRefdataQueryExecutor
     {
-        private readonly StockBeheerEntities _context;
+        private readonly IContext _context;
 
-        public GetStockRefdataQueryExecutor(StockBeheerEntities context)
+        public GetStockRefdataQueryExecutor(IContext context)
         {
             _context = context;
         }

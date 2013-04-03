@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using SamStock.Stock.ComponentToevoegen;
 
-namespace Tests.Concerning_Stock.Given_a_ComponentToevoegenHandler
+namespace Tests.Concerning_Stock.ComponentToevoegen.Given_a_ComponentToevoegenHandler
 {
     public class When_Handle_is_called : BaseTest
     {

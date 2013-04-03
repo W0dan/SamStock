@@ -3,7 +3,7 @@ using SamStock.Database;
 using SamStock.Stock.GetStockOverzichtRefdata;
 using System.Linq;
 
-namespace Tests.Concerning_Stock.Given_a_GetStockRefdataQueryExecutor
+namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataQueryExecutor
 {
     public class When_Execute_is_called : DatabaseTest
     {

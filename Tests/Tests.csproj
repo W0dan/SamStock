@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Windsor, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>
@@ -41,6 +42,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,12 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
-    <Compile Include="Concerning_Stock\Given_a_ComponentToevoegenHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\Given_a_ComponentToevoegenQueryExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Stock\Given_a_GetStockOverzichtHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\Given_a_GetStockOverzichtQueryExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Stock\Given_a_GetStockRefdataHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\Given_a_GetStockRefdataQueryExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenQueryExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Stock\StockControllerBaseTest.cs" />
+    <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_StockController\When_ComponentToevoegen_is_called.cs" />
+    <Compile Include="Concerning_Stock\GetStockOverzicht\Given_a_GetStockOverzichtHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Stock\GetStockOverzicht\Given_a_GetStockOverzichtQueryExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="DatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +67,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SamStock.Web\SamStock.Web.csproj">
+      <Project>{6F16F8A8-3529-47FE-9DF6-E9A23F86D5E3}</Project>
+      <Name>SamStock.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YorickStock\SamStock.csproj">
       <Project>{201C3FEC-FD13-491A-86CA-866D6CC0A370}</Project>
       <Name>SamStock</Name>

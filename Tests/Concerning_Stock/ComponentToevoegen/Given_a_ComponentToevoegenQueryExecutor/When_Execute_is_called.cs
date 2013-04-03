@@ -3,7 +3,7 @@ using NUnit.Framework;
 using SamStock.Database;
 using SamStock.Stock.ComponentToevoegen;
 
-namespace Tests.Concerning_Stock.Given_a_ComponentToevoegenQueryExecutor
+namespace Tests.Concerning_Stock.ComponentToevoegen.Given_a_ComponentToevoegenQueryExecutor
 {
     public class When_Execute_is_called : DatabaseTest
     {

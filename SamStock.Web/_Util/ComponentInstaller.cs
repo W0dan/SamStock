@@ -2,7 +2,9 @@
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using SamStock.Database;
 using SamStock.Utilities;
+using Component = Castle.MicroKernel.Registration.Component;
 
 namespace SamStock.Web._Util
 {
@@ -11,8 +13,8 @@ namespace SamStock.Web._Util
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                Component.For<Database.StockBeheerEntities>()
-                        .UsingFactoryMethod(fm => new Database.StockBeheerEntities())
+                Component.For<IContext>()
+                        .UsingFactoryMethod(fm => new StockBeheerEntities())
                         .LifestylePerWebRequest(),
                 Classes.FromThisAssembly()
                        .BasedOn<IController>()
