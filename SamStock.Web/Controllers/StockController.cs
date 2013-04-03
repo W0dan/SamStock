@@ -11,15 +11,10 @@ namespace SamStock.Web.Controllers
     public class StockController : Controller
     {
         private readonly IDispatcher _dispatcher;
-        private readonly ComponentToevoegenHandler _componentToevoegenHandler;
 
         public StockController(IDispatcher dispatcher)
         {
             _dispatcher = dispatcher;
-            var context = new StockBeheerEntities();
-
-            var componentToevoegenCommandExecutor = new ComponentToevoegenCommandExecutor(context);
-            _componentToevoegenHandler = new ComponentToevoegenHandler(componentToevoegenCommandExecutor);
         }
 
         [HttpGet]

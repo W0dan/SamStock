@@ -20,7 +20,7 @@ namespace SamStock.Web.Models
                 List.Add(new StockViewModelItem(item));
             }
 
-            foreach (var leverancier in refdata.List)
+            foreach (var leverancier in refdata.Leveranciers)
             {
                 Leveranciers.Add(new StockViewModelLeverancier(leverancier));
             }

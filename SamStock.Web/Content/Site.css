@@ -73,3 +73,19 @@ textarea
 {
     display: none;
 }
+
+/* custom */
+
+button {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 3px 10px;
+}
+
+div.header {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}

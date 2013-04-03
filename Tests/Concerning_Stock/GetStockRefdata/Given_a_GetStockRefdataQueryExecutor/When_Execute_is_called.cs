@@ -42,14 +42,14 @@ namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataQueryExe
         {
             foreach (var leverancier in _leveranciers)
             {
-                Assert.IsTrue(_result.List.Any(x => x.Naam == leverancier));
+                Assert.IsTrue(_result.Leveranciers.Any(x => x.Naam == leverancier));
             }
         }
 
         [Test]
         public void It_should_return_valid_ids()
         {
-            foreach (var item in _result.List)
+            foreach (var item in _result.Leveranciers)
             {
                 Assert.IsTrue(item.Id > 0);
             }

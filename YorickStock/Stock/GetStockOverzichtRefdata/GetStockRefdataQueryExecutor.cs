@@ -17,7 +17,7 @@ namespace SamStock.Stock.GetStockOverzichtRefdata
             var leveranciers = _context.Leverancier
                 .Select(x => new LeverancierRefdata { Id = x.Id, Naam = x.Naam });
 
-            return new GetStockRefdataResponse { List = leveranciers };
+            return new GetStockRefdataResponse { Leveranciers = leveranciers };
         }
     }
 }

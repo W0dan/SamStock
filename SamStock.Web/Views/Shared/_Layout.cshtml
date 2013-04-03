@@ -7,13 +7,15 @@
     @RenderSection("head", false)
 </head>
 <body>
-    <div>
-        <h1>SamStock</h1>
+    <div class="header">
+        <div>
+            <h1>
+                SamStock</h1>
+        </div>
+        <div>
+            @RenderSection("navigation")
+        </div>
     </div>
-    <div>
-        @RenderSection("navigation")
-    </div>
-    <hr/>
     <div>
         @RenderSection("body")
     </div>
