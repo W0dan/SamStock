@@ -20,12 +20,24 @@ namespace SamStock.Web.Controllers
         [HttpGet]
         public ViewResult Index()
         {
-            var stockOverzicht = _dispatcher.DispatchQuery<GetStockOverzichtRequest, GetStockOverzichtResponse>(new GetStockOverzichtRequest());
-            var refdata = _dispatcher.DispatchQuery<GetStockRefdataRequest, GetStockRefdataResponse>(new GetStockRefdataRequest());
+            var stockOverzicht = _dispatcher.DispatchRequest<GetStockOverzichtRequest, GetStockOverzichtResponse>(new GetStockOverzichtRequest());
+            var refdata = GetRefdata();
 
             var model = new StockViewModel(stockOverzicht.List, refdata);
 
             return View(model);
+        }
+
+        private GetStockRefdataResponse GetRefdata()
+        {
+            var refdata =
+                _dispatcher.DispatchRequest<GetStockRefdataRequest, GetStockRefdataResponse>(new GetStockRefdataRequest());
+            return refdata;
+        }
+
+        public ActionResult Search(StockFilterViewModel stockFilterViewModel)
+        {
+            return null;
         }
 
         [HttpPost]
@@ -33,11 +45,11 @@ namespace SamStock.Web.Controllers
         {
             var newItem = model.NewItem;
 
-            var command = new ComponentToevoegenCommand(newItem.Naam, 
-                newItem.MinimumStock, 
+            var command = new ComponentToevoegenCommand(newItem.Naam,
+                newItem.MinimumStock,
                 newItem.Hoeveelheid,
-                newItem.Stocknr, 
-                newItem.Prijs, 
+                newItem.Stocknr,
+                newItem.Prijs,
                 newItem.LeverancierId,
                 newItem.Opmerkingen);
 

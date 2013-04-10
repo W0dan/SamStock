@@ -13,7 +13,7 @@ namespace SamStock.Utilities
             _windsorContainer = windsorContainer;
         }
 
-        public TResponse DispatchQuery<TRequest, TResponse>(TRequest request)
+        public TResponse DispatchRequest<TRequest, TResponse>(TRequest request)
         {
             var handler = _windsorContainer.Resolve<IQueryHandler<TRequest, TResponse>>();
 

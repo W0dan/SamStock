@@ -62,3 +62,7 @@ td select {
 #toevoegenButton {
     width: 100%;
 }
+
+#stockfilterfields {
+    margin-bottom: 1em;
+}

@@ -2,7 +2,7 @@
 {
     public interface IDispatcher
     {
-        TResponse DispatchQuery<TRequest, TResponse>(TRequest request);
+        TResponse DispatchRequest<TRequest, TResponse>(TRequest request);
         void DispatchCommand<TCommand>(TCommand command);
     }
 }
