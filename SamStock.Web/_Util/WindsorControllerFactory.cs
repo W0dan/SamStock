@@ -2,6 +2,7 @@
 using System.Web.Routing;
 using System.Web.SessionState;
 using Castle.MicroKernel;
+using System;
 
 namespace SamStock.Web._Util
 {
@@ -16,7 +17,14 @@ namespace SamStock.Web._Util
 
         public IController CreateController(RequestContext requestContext, string controllerName)
         {
-            return _kernel.Resolve<IController>(controllerName + "Controller");
+            try
+            {
+                return _kernel.Resolve<IController>(controllerName + "Controller");
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public SessionStateBehavior GetControllerSessionBehavior(RequestContext requestContext, string controllerName)

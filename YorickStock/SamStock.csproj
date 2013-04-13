@@ -38,8 +38,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Windsor">
-      <HintPath>..\SamStock.Web\bin\Castle.Windsor.dll</HintPath>
+      <HintPath>..\packages\Castle.Windsor.3.2.0\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
@@ -73,6 +76,12 @@
     <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenHandler.cs" />
     <Compile Include="Stock\ComponentToevoegen\IComponentToevoegenCommandExecutor.cs" />
     <Compile Include="Stock\ComponentToevoegen\IComponentToevoegenHandler.cs" />
+    <Compile Include="Stock\FilterStock\FilterStockHandler.cs" />
+    <Compile Include="Stock\FilterStock\FilterStockQueryExecutor.cs" />
+    <Compile Include="Stock\FilterStock\FilterStockRequest.cs" />
+    <Compile Include="Stock\FilterStock\FilterStockResponse.cs" />
+    <Compile Include="Stock\FilterStock\IFilterStockHandler.cs" />
+    <Compile Include="Stock\FilterStock\IFilterStockQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataHandler.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataRequest.cs" />
@@ -111,6 +120,7 @@
       <LastGenOutput>Stock.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SamStock.Database.StockBeheerEntities.datasource" />
     <None Include="Properties\DataSources\YorickStock.Database.StockBeheerEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

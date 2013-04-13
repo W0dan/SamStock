@@ -5,6 +5,7 @@ using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
 using SamStock.Utilities;
 using SamStock.Web.Models;
+using SamStock.Stock.FilterStock;
 
 namespace SamStock.Web.Controllers
 {
@@ -37,6 +38,8 @@ namespace SamStock.Web.Controllers
 
         public ActionResult Search(StockFilterViewModel stockFilterViewModel)
         {
+            var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter,stockFilterViewModel.LeverancierFilter);
+            var filteredstock = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(request);
             return null;
         }
 
