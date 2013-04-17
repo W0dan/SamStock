@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using SamStock.Database;
-using SamStock.Stock.GetStockOverzicht;
 
 namespace SamStock.Stock.FilterStock {
-    class FilterStockQueryExecutor : IFilterStockQueryExecutor {
+    public class FilterStockQueryExecutor : IFilterStockQueryExecutor {
         private readonly IContext _context;
 
         public FilterStockQueryExecutor(IContext context) {
