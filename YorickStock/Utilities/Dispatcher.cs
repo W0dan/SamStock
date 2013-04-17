@@ -4,8 +4,7 @@ using SamStock.Database;
 
 namespace SamStock.Utilities
 {
-    public class Dispatcher : IDispatcher
-    {
+    public class Dispatcher : IDispatcher {
         readonly IWindsorContainer _windsorContainer;
 
         public Dispatcher(IWindsorContainer windsorContainer)

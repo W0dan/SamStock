@@ -14,18 +14,21 @@ namespace SamStock.Stock.FilterStock {
         }
 
         public FilterStockResponse Execute(FilterStockRequest request) {
-            var result = _context.Component
-                .Select(x => new FilterStockItem {
-                    Stocknr = x.Stocknr,
-                    Naam = x.Naam,
-                    Prijs = x.Prijs,
-                    Hoeveelheid = x.Hoeveelheid,
-                    MinimumStock = x.MinimumStock,
-                    Opmerkingen = x.Opmerkingen,
-                    LeverancierNaam = x.Leverancier.Naam
-                })
-                // .Where(request.LeverancierID ... )
-                .ToList();
+            IQueryable<Component> tmp = _context.Component;
+
+            if (request.LeverancierID > 0) {
+                tmp = tmp.Where(component => component.LeverancierId == request.LeverancierID);
+            }
+
+            var result = tmp.Select(x => new FilterStockItem {
+                Stocknr = x.Stocknr,
+                Naam = x.Naam,
+                Prijs = x.Prijs,
+                Hoeveelheid = x.Hoeveelheid,
+                MinimumStock = x.MinimumStock,
+                Opmerkingen = x.Opmerkingen,
+                LeverancierNaam = x.Leverancier.Naam
+            }).ToList();
 
             return new FilterStockResponse { List = result };
         }

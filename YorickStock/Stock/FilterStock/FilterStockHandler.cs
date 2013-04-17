@@ -14,7 +14,5 @@ namespace SamStock.Stock.FilterStock {
         public FilterStockResponse Handle(FilterStockRequest request) {
             return _filterStockQueryExecutor.Execute(request);
         }
-
-        internal IFilterStockQueryExecutor filterStockQueryExecutor { get; set; }
     }
 }
