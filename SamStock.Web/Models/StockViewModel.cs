@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SamStock.Stock.FilterStock;
 using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
 
@@ -10,19 +11,33 @@ namespace SamStock.Web.Models
         {
         }
 
-        public StockViewModel(IEnumerable<GetStockOverzichtItem> list, GetStockRefdataResponse refdata)
+        private StockViewModel(GetStockRefdataResponse refdata)
+        {
+            Leveranciers = new List<StockViewModelLeverancier>();
+
+            foreach (var leverancier in refdata.Leveranciers)
+            {
+                Leveranciers.Add(new StockViewModelLeverancier(leverancier));
+            }
+        }
+
+        public StockViewModel(IEnumerable<GetStockOverzichtItem> list, GetStockRefdataResponse refdata):this(refdata)
         {
             List = new List<StockViewModelItem>();
-            Leveranciers = new List<StockViewModelLeverancier>();
 
             foreach (var item in list)
             {
                 List.Add(new StockViewModelItem(item));
             }
+        }
 
-            foreach (var leverancier in refdata.Leveranciers)
+        public StockViewModel(IEnumerable<FilterStockItem> list, GetStockRefdataResponse refdata):this(refdata)
+        {
+            List = new List<StockViewModelItem>();
+
+            foreach (var item in list)
             {
-                Leveranciers.Add(new StockViewModelLeverancier(leverancier));
+                List.Add(new StockViewModelItem(item));
             }
         }
 
@@ -54,6 +69,17 @@ namespace SamStock.Web.Models
         }
 
         public StockViewModelItem(GetStockOverzichtItem item)
+        {
+            Stocknr = item.Stocknr;
+            Naam = item.Naam;
+            Prijs = item.Prijs;
+            Hoeveelheid = item.Hoeveelheid;
+            MinimumStock = item.MinimumStock;
+            Opmerkingen = item.Opmerkingen;
+            LeverancierNaam = item.LeverancierNaam;
+        }
+
+        public StockViewModelItem(FilterStockItem item)
         {
             Stocknr = item.Stocknr;
             Naam = item.Naam;

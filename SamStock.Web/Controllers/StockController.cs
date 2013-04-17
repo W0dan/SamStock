@@ -40,7 +40,10 @@ namespace SamStock.Web.Controllers
         {
             var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter,stockFilterViewModel.LeverancierFilter);
             var filteredstock = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(request);
-            return null;
+
+            var model = new StockViewModel(filteredstock.List, GetRefdata());
+
+            return View("Index", model);
         }
 
         [HttpPost]
