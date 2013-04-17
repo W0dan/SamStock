@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using SamStock.Beheer.Leveranciers.GetLeveranciers;
 using SamStock.Utilities;
 using SamStock.Web.Models;
