@@ -51,6 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
+    <Compile Include="Concerning_Leveranciers\BeheerControllerBaseTest.cs" />
+    <Compile Include="Concerning_Leveranciers\GetLeveranciers\Given_a_BeheerController\When_Leveranciers_is_called.cs" />
+    <Compile Include="Concerning_Leveranciers\GetLeveranciers\Given_a_GetLeveranciersHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockOverzicht\Given_a_StockController\When_Index_is_called.cs" />

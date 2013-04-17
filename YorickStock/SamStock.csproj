@@ -64,6 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersItem.cs" />
+    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersRequest.cs" />
+    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersResponse.cs" />
+    <Compile Include="Beheer\Leveranciers\GetLeveranciers\IGetLeveranciersHandler.cs" />
     <Compile Include="Database\IContext.cs" />
     <Compile Include="Database\Stock.Designer.cs">
       <AutoGen>True</AutoGen>
