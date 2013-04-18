@@ -1,12 +1,13 @@
 ﻿@model dynamic
 
-<button onclick="window.location='Dashboard'">Dashboard</button>
+<a class="button" href="@Url.Action("Index","Dashboard")">Dashboard</a>
 
-<button onclick="window.location='Stock'">Stock</button>
-<button>Pedalen</button>
-<button>Bestellingen</button>
-<button>Klant</button>
-<button>Onkosten</button>
-<button>Logboek</button>
-<button>Herstellingen</button>
-<button onclick="window.location='Beheer/Leveranciers'">Beheer</button>
+<a class="button" href="@Url.Action("Index","Stock")">Stock</a>
+<a class="button">Pedalen</a>
+<a class="button">Orders</a>
+<a class="button">Customers</a>
+<a class="button">Onkosten</a>
+<a class="button">Logbook</a>
+<a class="button">Repairs</a>
+<!-- a class="button" href="@Url.Action("Index","Admin")">Admin</a -->
+<a class="button" href="@Url.Action("Suppliers","Admin")">Suppliers</a>

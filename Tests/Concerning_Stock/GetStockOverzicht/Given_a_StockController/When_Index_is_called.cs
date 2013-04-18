@@ -82,7 +82,7 @@ namespace Tests.Concerning_Stock.GetStockOverzicht.Given_a_StockController
         [Test]
         public void It_should_put_the_refdata_into_the_viewmodel()
         {
-            _viewModel.Leveranciers.ShouldMatchAllItemsOf(_getStockRefdataResponse.Leveranciers.ToList(), (x, y) => x.Id == y.Id && x.Naam == y.Naam);
+            _viewModel.Leveranciers.ShouldMatchAllItemsOf(_getStockRefdataResponse.Leveranciers.ToList(), (x, y) => x.Id == y.Id && x.Naam == y.Name);
         }
 
         [Test]

@@ -1,4 +1,4 @@
-﻿@model TModel
+﻿@model SamStock.Web.Models.LeveranciersViewModel
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
@@ -13,7 +13,7 @@
 @section body
 {
     <h2>
-        Leveranciers</h2>
+        Suppliers</h2>
     <table>
         <tr>
             <th id="NaamHeader">
@@ -33,14 +33,14 @@
                 </td>
                 <td>@item.Adres
                 </td>
-                <td>@item.Site
+                <td>@item.Website
                 </td>
                 <td>
                 </td>
             </tr>
         }
         <tr>
-            @using (Html.BeginForm("LeverancierToevoegen", "Beheer"))
+            @using (Html.BeginForm("LeverancierToevoegen", "Admin"))
             {
                 <td>
                     @Html.TextBoxFor(x => x.NewItem.Naam)

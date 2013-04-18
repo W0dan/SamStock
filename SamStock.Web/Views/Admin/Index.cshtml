@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="../../Content/styles/Admin.css" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    <h2>Administration</h2>
+        
+    <div>
+        <div id="left-navigation">
+            <a class="button" href="@Url.Action("Suppliers")">Suppliers</a>
+        </div>
+        <div id="right-content">
+            todo: do something with this part of the screen ...
+        </div>
+    </div>
+}

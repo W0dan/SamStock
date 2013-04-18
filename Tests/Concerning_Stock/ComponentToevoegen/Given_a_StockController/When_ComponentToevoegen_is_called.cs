@@ -9,23 +9,21 @@ namespace Tests.Concerning_Stock.ComponentToevoegen.Given_a_StockController
 {
     public class When_ComponentToevoegen_is_called : StockControllerBaseTest
     {
-        private StockViewModel _model;
         private Mock<IComponentToevoegenHandler> _handler;
+        private StockViewModelNewItem _newItem;
 
         public override void Arrange()
         {
-            _model = new StockViewModel
+
+            _newItem = new StockViewModelNewItem
                 {
-                    NewItem = new StockViewModelNewItem
-                        {
-                            Stocknr = Guid.NewGuid().ToString(),
-                            Hoeveelheid = 1542,
-                            LeverancierId = 1242,
-                            MinimumStock = 25,
-                            Naam = Guid.NewGuid().ToString(),
-                            Opmerkingen = Guid.NewGuid().ToString(),
-                            Prijs = 15.36M
-                        }
+                    Stocknr = Guid.NewGuid().ToString(),
+                    Hoeveelheid = 1542,
+                    LeverancierId = 1242,
+                    MinimumStock = 25,
+                    Naam = Guid.NewGuid().ToString(),
+                    Opmerkingen = Guid.NewGuid().ToString(),
+                    Prijs = 15.36M
                 };
 
             _handler = new Mock<IComponentToevoegenHandler>();
@@ -36,7 +34,7 @@ namespace Tests.Concerning_Stock.ComponentToevoegen.Given_a_StockController
 
         public override void Act()
         {
-            Sut.ComponentToevoegen(_model);
+            Sut.ComponentToevoegen(_newItem);
         }
 
         [Test]
@@ -48,43 +46,43 @@ namespace Tests.Concerning_Stock.ComponentToevoegen.Given_a_StockController
         [Test]
         public void It_should_include_StockNr_in_the_call()
         {
-            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Stocknr == _model.NewItem.Stocknr)));
+            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Stocknr == _newItem.Stocknr)));
         }
 
         [Test]
         public void It_should_include_Naam_in_the_call()
         {
-            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Naam == _model.NewItem.Naam)));
+            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Naam == _newItem.Naam)));
         }
 
         [Test]
         public void It_should_include_Prijs_in_the_call()
         {
-            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Prijs == _model.NewItem.Prijs)));
+            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Prijs == _newItem.Prijs)));
         }
 
         [Test]
         public void It_should_include_Hoeveelheid_in_the_call()
         {
-            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Hoeveelheid == _model.NewItem.Hoeveelheid)));
+            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Hoeveelheid == _newItem.Hoeveelheid)));
         }
 
         [Test]
         public void It_should_include_MinimumStock_in_the_call()
         {
-            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.MinimumStock == _model.NewItem.MinimumStock)));
+            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.MinimumStock == _newItem.MinimumStock)));
         }
 
         [Test]
         public void It_should_include_LeverancierId_in_the_call()
         {
-            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.LeverancierId == _model.NewItem.LeverancierId)));
+            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.LeverancierId == _newItem.LeverancierId)));
         }
 
         [Test]
         public void It_should_include_Opmerkingen_in_the_call()
         {
-            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Opmerkingen == _model.NewItem.Opmerkingen)));
+            _handler.Verify(x => x.Handle(It.Is<ComponentToevoegenCommand>(y => y.Opmerkingen == _newItem.Opmerkingen)));
         }
     }
 }

@@ -1,14 +1,14 @@
 ﻿namespace SamStock.Stock.FilterStock {
     public class FilterStockRequest {
-        private readonly string _componentType;
+        private readonly string _stockNr;
         private readonly int _leverancierID;
 
-        public FilterStockRequest(string componentType, int leverancierID) {
-            _componentType = componentType;
+        public FilterStockRequest(string stockNr, int leverancierID) {
+            _stockNr = stockNr;
             _leverancierID = leverancierID;
         }
 
-        public string ComponentType { get { return _componentType; } }
+        public string StockNr { get { return _stockNr; } }
         public int LeverancierID { get { return _leverancierID; } }
     }
 }

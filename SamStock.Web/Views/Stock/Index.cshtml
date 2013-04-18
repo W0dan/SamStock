@@ -1,4 +1,5 @@
-﻿@model SamStock.Web.Models.StockViewModel
+﻿@using SamStock.Web._Util
+@model SamStock.Web.Models.StockViewModel
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
@@ -20,20 +21,20 @@
             <table>
                 <tr>
                     <th>
-                        Type component
+                        Stocknr
                     </th>
                     <td>@Html.TextBox("ComponentTypeFilter")
                     </td>
-                    <td>
+                    <td rowspan="2">
                         <button>
                             Go</button>
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        Leverancier
+                        Supplier
                     </th>
-                    <td colspan="2">@Html.DropDownList("LeverancierFilter", Model.Leveranciers.Select(x => new SelectListItem { Text = x.Naam, Value = x.Id.ToString("0") }))
+                    <td>@Html.DropDownList("LeverancierFilter", Model.Leveranciers.ToSelectList(true))
                     </td>
                 </tr>
             </table>
@@ -45,22 +46,22 @@
                 Stocknr
             </th>
             <th id="NaamHeader">
-                Naam
+                Name
             </th>
             <th id="PrijsHeader">
-                Prijs
+                Price
             </th>
             <th id="HoeveelheidHeader">
-                Hoeveelheid
+                Quantity
             </th>
             <th id="MinimumStockHeader">
                 Minimum stock
             </th>
             <th id="LeverancierHeader">
-                Leverancier
+                Supplier
             </th>
             <th id="OpmerkingenHeader">
-                Opmerkingen
+                Remarks
             </th>
             <th id="Toevoegenheader">
             </th>
@@ -90,29 +91,29 @@
             @using (Html.BeginForm("ComponentToevoegen", "Stock"))
             {
                 <td>
-                    @Html.TextBoxFor(x => x.NewItem.Stocknr)
+                    @Html.TextBox("Stocknr")
                 </td>
                 <td>
-                    @Html.TextBoxFor(x => x.NewItem.Naam)
+                    @Html.TextBox("Naam")
                 </td>
                 <td>
-                    @Html.TextBoxFor(x => x.NewItem.Prijs)
+                    @Html.TextBox("Prijs")
                 </td>
                 <td>
-                    @Html.TextBoxFor(x => x.NewItem.Hoeveelheid)
+                    @Html.TextBox("Hoeveelheid")
                 </td>
                 <td>
-                    @Html.TextBoxFor(x => x.NewItem.MinimumStock)
+                    @Html.TextBox("MinimumStock")
                 </td>
                 <td>
-                    @Html.DropDownListFor(x => x.NewItem.LeverancierId, Model.Leveranciers.Select(x => new SelectListItem { Text = x.Naam, Value = x.Id.ToString("0") }))
+                    @Html.DropDownList("LeverancierId", Model.Leveranciers.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString("0") }))
                 </td>
                 <td>
-                    @Html.TextBoxFor(x => x.NewItem.Opmerkingen)
+                    @Html.TextBox("Opmerkingen")
                 </td>
                 <td>
                     <button id="toevoegenButton">
-                        Toevoegen</button>
+                        Add</button>
                 </td>
             }
         </tr>

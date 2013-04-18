@@ -47,10 +47,8 @@ namespace SamStock.Web.Controllers
         }
 
         [HttpPost]
-        public RedirectToRouteResult ComponentToevoegen(StockViewModel model)
+        public RedirectToRouteResult ComponentToevoegen(StockViewModelNewItem newItem)
         {
-            var newItem = model.NewItem;
-
             var command = new ComponentToevoegenCommand(newItem.Naam,
                 newItem.MinimumStock,
                 newItem.Hoeveelheid,

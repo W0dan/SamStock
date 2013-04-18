@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System.Globalization;
+using System.Threading;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.Windsor;
@@ -32,6 +34,10 @@ namespace SamStock.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("nl-BE");
+
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);

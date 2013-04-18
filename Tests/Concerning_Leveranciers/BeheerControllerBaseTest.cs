@@ -8,7 +8,7 @@ namespace Tests.Concerning_Leveranciers
 {
     public abstract class BeheerControllerBaseTest : BaseTest
     {
-        protected BeheerController Sut;
+        protected AdminController Sut;
         protected Mock<IWindsorContainer> Container;
 
         protected BeheerControllerBaseTest()
@@ -19,7 +19,7 @@ namespace Tests.Concerning_Leveranciers
                 .Returns(new Mock<IContext>().Object);
 
             var dispatcher = new Dispatcher(Container.Object);
-            Sut = new BeheerController(dispatcher);
+            Sut = new AdminController(dispatcher);
         }
 
     }

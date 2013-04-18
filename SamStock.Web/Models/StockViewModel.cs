@@ -2,6 +2,7 @@
 using SamStock.Stock.FilterStock;
 using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
+using SamStock.Web._Interfaces;
 
 namespace SamStock.Web.Models
 {
@@ -21,7 +22,8 @@ namespace SamStock.Web.Models
             }
         }
 
-        public StockViewModel(IEnumerable<GetStockOverzichtItem> list, GetStockRefdataResponse refdata):this(refdata)
+        public StockViewModel(IEnumerable<GetStockOverzichtItem> list, GetStockRefdataResponse refdata)
+            : this(refdata)
         {
             List = new List<StockViewModelItem>();
 
@@ -31,7 +33,8 @@ namespace SamStock.Web.Models
             }
         }
 
-        public StockViewModel(IEnumerable<FilterStockItem> list, GetStockRefdataResponse refdata):this(refdata)
+        public StockViewModel(IEnumerable<FilterStockItem> list, GetStockRefdataResponse refdata)
+            : this(refdata)
         {
             List = new List<StockViewModelItem>();
 
@@ -45,18 +48,18 @@ namespace SamStock.Web.Models
 
         public List<StockViewModelLeverancier> Leveranciers { get; private set; }
 
-        public StockViewModelNewItem NewItem { get; set; }
+        //public StockViewModelNewItem NewItem { get; set; }
     }
 
-    public class StockViewModelLeverancier
+    public class StockViewModelLeverancier : IHasAName, IHasAnId
     {
         public StockViewModelLeverancier(LeverancierRefdata leverancier)
         {
             Id = leverancier.Id;
-            Naam = leverancier.Naam;
+            Name = leverancier.Naam;
         }
 
-        public string Naam { get; set; }
+        public string Name { get; set; }
 
         public int Id { get; set; }
     }
@@ -65,7 +68,7 @@ namespace SamStock.Web.Models
     {
         public StockViewModelItem()
         {
-            
+
         }
 
         public StockViewModelItem(GetStockOverzichtItem item)

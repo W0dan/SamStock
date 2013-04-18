@@ -10,13 +10,15 @@ namespace SamStock.Stock.FilterStock {
         }
 
         public FilterStockResponse Execute(FilterStockRequest request) {
-            IQueryable<Component> tmp = _context.Component;
+            IQueryable<Component> query = _context.Component;
 
-            if (request.LeverancierID > 0) {
-                tmp = tmp.Where(component => component.LeverancierId == request.LeverancierID);
-            }
+            if (request.LeverancierID > 0)
+                query = query.Where(component => component.LeverancierId == request.LeverancierID);
 
-            var result = tmp.Select(x => new FilterStockItem {
+            if (!string.IsNullOrEmpty(request.StockNr))
+                query = query.Where(component => component.Stocknr.StartsWith(request.StockNr));
+
+            var result = query.Select(x => new FilterStockItem {
                 Stocknr = x.Stocknr,
                 Naam = x.Naam,
                 Prijs = x.Prijs,

@@ -5,16 +5,21 @@ using SamStock.Web.Models;
 
 namespace SamStock.Web.Controllers
 {
-    public class BeheerController : Controller
+    public class AdminController : Controller
     {
         private readonly IDispatcher _dispatcher;
 
-        public BeheerController(IDispatcher dispatcher)
+        public AdminController(IDispatcher dispatcher)
         {
             _dispatcher = dispatcher;
         }
 
-        public ViewResult Leveranciers()
+        public ViewResult Index()
+        {
+            return View();
+        }
+
+        public ViewResult Suppliers()
         {
             var result = _dispatcher.DispatchRequest<GetLeveranciersRequest, GetLeveranciersResponse>(new GetLeveranciersRequest());
 

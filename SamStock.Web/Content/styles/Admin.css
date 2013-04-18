@@ -1,0 +1,10 @@
+﻿#left-navigation {
+    height: 100%;
+    width: 20em;
+    float: left;
+}
+
+#right-content {
+    height: 100%;
+    float: left;
+}

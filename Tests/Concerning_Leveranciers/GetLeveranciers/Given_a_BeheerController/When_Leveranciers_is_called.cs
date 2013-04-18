@@ -39,7 +39,7 @@ namespace Tests.Concerning_Leveranciers.GetLeveranciers.Given_a_BeheerController
 
         public override void Act()
         {
-            _result = Sut.Leveranciers();
+            _result = Sut.Suppliers();
             _viewModel = (LeveranciersViewModel)_result.Model;
         }
 
