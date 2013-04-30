@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using SamStock.Utilities;
 
 namespace SamStock.Beheer.Leveranciers.GetLeveranciers {
-    public interface IGetLeveranciersQueryExecutor {
+    //Opmerking: inherit from IQuery in order to let Castle Windsor know it has to register it
+    public interface IGetLeveranciersQueryExecutor : IQuery {
         GetLeveranciersResponse Execute(GetLeveranciersRequest request);
     }
 }

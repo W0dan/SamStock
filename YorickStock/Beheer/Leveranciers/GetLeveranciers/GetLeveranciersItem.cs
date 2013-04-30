@@ -2,7 +2,13 @@
 {
     public class GetLeveranciersItem
     {
-        GetLeveranciersItem(string naam, string adres, string website) {
+        //Opmerking: private constructor required if you use object initialization
+        public GetLeveranciersItem()
+        {
+        }
+
+        //Opmerking: public !! not private
+        public GetLeveranciersItem(string naam, string adres, string website) {
             Naam = naam;
             Adres = adres;
             Website = website;

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SamStock.Beheer.Leveranciers.GetLeveranciers {
+﻿namespace SamStock.Beheer.Leveranciers.GetLeveranciers {
     public class GetLeveranciersHandler : IGetLeveranciersHandler {
         private readonly IGetLeveranciersQueryExecutor _getLeveranciersQueryExecutor;
 
-        public GetLeveranciersHandler(IGetLeveranciersQueryExecutor GetLeveranciersQueryExecutor) {
-            _getLeveranciersQueryExecutor = GetLeveranciersQueryExecutor;
+        public GetLeveranciersHandler(IGetLeveranciersQueryExecutor getLeveranciersQueryExecutor) {
+            _getLeveranciersQueryExecutor = getLeveranciersQueryExecutor;
         }
 
         public GetLeveranciersResponse Handle(GetLeveranciersRequest request) {
