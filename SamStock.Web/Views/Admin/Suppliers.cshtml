@@ -25,6 +25,8 @@
             <th id="SiteHeader">
                 Site
             </th>
+            @* Opmerking: lege header toevoegen om een consistente layout te houden *@
+            <th></th>
         </tr>
         @foreach (var item in Model.List)
         {
@@ -53,7 +55,7 @@
                 </td>
                 <td>
                     <button id="toevoegenButton">
-                        Toevoegen</button>
+                        Add</button>
                 </td>
             }
         </tr>
