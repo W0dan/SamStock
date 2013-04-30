@@ -64,10 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersHandler.cs" />
     <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersItem.cs" />
+    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersQueryExecutor.cs" />
     <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersRequest.cs" />
     <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersResponse.cs" />
     <Compile Include="Beheer\Leveranciers\GetLeveranciers\IGetLeveranciersHandler.cs" />
+    <Compile Include="Beheer\Leveranciers\GetLeveranciers\IGetLeveranciersQueryExecutor.cs" />
     <Compile Include="Database\IContext.cs" />
     <Compile Include="Database\Stock.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -93,6 +96,7 @@
     <Compile Include="Stock\GetStockOverzichtRefdata\IGetStockRefdataHandler.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\IGetStockRefdataQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtHandler.cs" />
+    <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtItem.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtRequest.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzicht\GetStockOverzichtResponse.cs" />
