@@ -66,8 +66,11 @@
             <th id="Toevoegenheader">
             </th>
         </tr>
-        @foreach (var item in Model.List)
+        @using (Html.BeginForm("Update", "Stock"))
         {
+            for (var i = 0; i < Model.List.Count; i++)
+            {
+                var item = Model.List[i];
             <tr>
                 <td>@item.Stocknr
                 </td>
@@ -84,30 +87,32 @@
                 <td>@item.Opmerkingen
                 </td>
                 <td>
-                    <input type="number" value="0" name="@("stockchange_" + item.Stocknr)"/>
+                    @Html.HiddenFor(x => x.List[i].Stocknr)
+                    <input type="number" value="0" name="@("List[" + i.ToString("0") + "].Amount")"/>
+                </td>
+            </tr>
+            }
+            <tr>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <button id="updateButton">
+                        Update stock</button>
                 </td>
             </tr>
         }
-        <tr>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-                <button id="updateButton">
-                    Update stock</button>
-            </td>
-        </tr>
         <tr>
             @using (Html.BeginForm("ComponentToevoegen", "Stock"))
             {

@@ -78,6 +78,8 @@
     </Compile>
     <Compile Include="Models\LeveranciersViewModel.cs" />
     <Compile Include="Models\LeverancierViewModelNewItem.cs" />
+    <Compile Include="Models\StockChangesViewModel.cs" />
+    <Compile Include="Models\StockChange.cs" />
     <Compile Include="Models\StockFilterViewModel.cs" />
     <Compile Include="Models\StockViewModel.cs" />
     <Compile Include="Models\StockViewModelItem.cs" />

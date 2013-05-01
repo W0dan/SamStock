@@ -67,6 +67,9 @@
     <Compile Include="Concerning_Stock\GetStockOverzicht\Given_a_GetStockOverzichtQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataQueryExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Stock\UpdateStock\Given_an_UpdateStockCommandExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Stock\UpdateStock\Given_an_UpdateStockHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Stock\UpdateStock\Given_a_StockController\When_Update_is_called.cs" />
     <Compile Include="DatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Util\IListExtensions.cs" />

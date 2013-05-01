@@ -16,7 +16,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -108,6 +108,11 @@
     <Compile Include="Stock\GetStockOverzicht\IGetStockOverzichtHandler.cs" />
     <Compile Include="Stock\GetStockOverzicht\IGetStockOverzichtQueryExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stock\UpdateStock\IUpdateStockCommandExecutor.cs" />
+    <Compile Include="Stock\UpdateStock\IUpdateStockHandler.cs" />
+    <Compile Include="Stock\UpdateStock\UpdateStockCommand.cs" />
+    <Compile Include="Stock\UpdateStock\UpdateStockCommandExecutor.cs" />
+    <Compile Include="Stock\UpdateStock\UpdateStockHandler.cs" />
     <Compile Include="Utilities\Dispatcher.cs" />
     <Compile Include="Utilities\ICommandExecutor.cs" />
     <Compile Include="Utilities\ICommandHandler.cs" />

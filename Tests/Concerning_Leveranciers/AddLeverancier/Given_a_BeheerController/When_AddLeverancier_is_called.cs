@@ -63,7 +63,7 @@ namespace Tests.Concerning_Leveranciers.AddLeverancier.Given_a_BeheerController
         }
 
         [Test]
-        public void It_should_redirect_to_the_Index_action()
+        public void It_should_redirect_to_the_Suppliers_action()
         {
             var result = (RedirectToRouteResult)_result;
             Assert.AreEqual("Suppliers", result.RouteValues["action"]);

@@ -1,8 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using SamStock.Database;
 using SamStock.Stock.ComponentToevoegen;
 using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
+using SamStock.Stock.UpdateStock;
 using SamStock.Utilities;
 using SamStock.Web.Models;
 using SamStock.Stock.FilterStock;
@@ -59,6 +61,19 @@ namespace SamStock.Web.Controllers
 
             _dispatcher.DispatchCommand(command);
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Update(StockChangesViewModel stockChanges)
+        {
+            var command = new UpdateStockCommand();
+            command.List = new List<StockUpdate>();
+            foreach (var stockChange in stockChanges.List)
+            {
+                command.List.Add(new StockUpdate(stockChange.Stocknr, stockChange.Amount));
+            }
+            _dispatcher.DispatchCommand(command);
             return RedirectToAction("Index");
         }
     }
