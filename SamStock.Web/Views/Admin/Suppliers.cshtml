@@ -25,7 +25,6 @@
             <th id="SiteHeader">
                 Site
             </th>
-            @* Opmerking: lege header toevoegen om een consistente layout te houden *@
             <th></th>
         </tr>
         @foreach (var item in Model.List)
@@ -42,20 +41,19 @@
             </tr>
         }
         <tr>
-            @using (Html.BeginForm("LeverancierToevoegen", "Admin"))
+            @using (Html.BeginForm("AddLeverancier", "Admin"))
             {
                 <td>
-                    @Html.TextBoxFor(x => x.NewItem.Naam)
+                    @Html.TextBox("Name")
                 </td>
                 <td>
-                    @Html.TextBoxFor(x => x.NewItem.Adres)
+                    @Html.TextBox("Address")
                 </td>
                 <td>
-                    @Html.TextBoxFor(x => x.NewItem.Site)
+                    @Html.TextBox("Website")
                 </td>
                 <td>
-                    <button id="toevoegenButton">
-                        Add</button>
+                    <button id="toevoegenButton">Add</button>
                 </td>
             }
         </tr>

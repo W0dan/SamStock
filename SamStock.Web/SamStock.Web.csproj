@@ -77,8 +77,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LeveranciersViewModel.cs" />
+    <Compile Include="Models\LeverancierViewModelNewItem.cs" />
     <Compile Include="Models\StockFilterViewModel.cs" />
     <Compile Include="Models\StockViewModel.cs" />
+    <Compile Include="Models\StockViewModelItem.cs" />
+    <Compile Include="Models\StockViewModelLeverancier.cs" />
+    <Compile Include="Models\StockViewModelNewItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Interfaces\IHasAnId.cs" />
     <Compile Include="_Interfaces\IHasAName.cs" />

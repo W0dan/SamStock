@@ -84,9 +84,30 @@
                 <td>@item.Opmerkingen
                 </td>
                 <td>
+                    <input type="number" value="0" name="@("stockchange_" + item.Stocknr)"/>
                 </td>
             </tr>
         }
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                <button id="updateButton">
+                    Update stock</button>
+            </td>
+        </tr>
         <tr>
             @using (Html.BeginForm("ComponentToevoegen", "Stock"))
             {
@@ -113,7 +134,7 @@
                 </td>
                 <td>
                     <button id="toevoegenButton">
-                        Add</button>
+                        Add component</button>
                 </td>
             }
         </tr>

@@ -64,6 +64,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Beheer\Leveranciers\AddLeverancier\AddLeverancierCommand.cs" />
+    <Compile Include="Beheer\Leveranciers\AddLeverancier\AddLeverancierCommandExecutor.cs" />
+    <Compile Include="Beheer\Leveranciers\AddLeverancier\AddLeverancierHandler.cs" />
+    <Compile Include="Beheer\Leveranciers\AddLeverancier\IAddLeverancierCommandExecutor.cs" />
+    <Compile Include="Beheer\Leveranciers\AddLeverancier\IAddLeverancierHandler.cs" />
     <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersHandler.cs" />
     <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersItem.cs" />
     <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersQueryExecutor.cs" />

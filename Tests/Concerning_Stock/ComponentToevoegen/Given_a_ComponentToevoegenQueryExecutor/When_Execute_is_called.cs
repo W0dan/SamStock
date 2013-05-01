@@ -29,7 +29,8 @@ namespace Tests.Concerning_Stock.ComponentToevoegen.Given_a_ComponentToevoegenQu
         [Test]
         public void It_should_create_a_new_Component()
         {
-            var component = Context.Component.Single(x => x.Naam == "nieuwe component");
+            var component = Context.Component.ToList()
+                .Single(x => x.Naam == "nieuwe component");
 
             Assert.AreEqual(_command.Naam, component.Naam);
             Assert.AreEqual(_command.MinimumStock, component.MinimumStock);

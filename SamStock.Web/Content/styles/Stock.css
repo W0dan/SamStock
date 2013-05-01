@@ -59,7 +59,7 @@ td select {
     width: 100%;
 }
 
-#toevoegenButton {
+#toevoegenButton, #updateButton {
     width: 100%;
 }
 

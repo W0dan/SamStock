@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using SamStock.Beheer.Leveranciers.AddLeverancier;
 using SamStock.Beheer.Leveranciers.GetLeveranciers;
 using SamStock.Utilities;
 using SamStock.Web.Models;
@@ -28,9 +29,11 @@ namespace SamStock.Web.Controllers
             return View(viewmodel);
         }
 
-        public ActionResult LeverancierToevoegen()
+        [HttpPost]
+        public ActionResult AddLeverancier(LeverancierViewModelNewItem viewModel)
         {
-            return null;
+            _dispatcher.DispatchCommand(new AddLeverancierCommand(viewModel.Name, viewModel.Address, viewModel.Website));
+            return RedirectToAction("Suppliers");
         }
     }
 }
