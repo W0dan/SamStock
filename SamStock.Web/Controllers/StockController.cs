@@ -5,6 +5,7 @@ using SamStock.Stock.ComponentToevoegen;
 using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
 using SamStock.Stock.UpdateStock;
+using SamStock.Stock.FindMancos;
 using SamStock.Utilities;
 using SamStock.Web.Models;
 using SamStock.Stock.FilterStock;
@@ -36,6 +37,15 @@ namespace SamStock.Web.Controllers
             var refdata =
                 _dispatcher.DispatchRequest<GetStockRefdataRequest, GetStockRefdataResponse>(new GetStockRefdataRequest());
             return refdata;
+        }
+
+        public ActionResult FindMancos() {
+            var request = new FindMancosRequest();
+            var mancos = _dispatcher.DispatchRequest<FindMancosRequest, FindMancosResponse>(request);
+
+            var model = new StockViewModel(mancos.List, GetRefdata());
+
+            return View("Index", model);
         }
 
         public ActionResult Search(StockFilterViewModel stockFilterViewModel)

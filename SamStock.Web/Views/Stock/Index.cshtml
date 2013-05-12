@@ -40,6 +40,13 @@
             </table>
         }
     </div>
+     <div id="findmancosform">
+        @using (Html.BeginForm("FindMancos", "Stock"))
+        {
+            <button>Find Mancos</button>
+        }
+    </div>
+    <br />
     <table>
         <tr>
             <th id="StocknrHeader">
@@ -66,10 +73,8 @@
             <th id="Toevoegenheader">
             </th>
         </tr>
-        @using (Html.BeginForm("Update", "Stock"))
-        {
-            for (var i = 0; i < Model.List.Count; i++)
-            {
+        @using (Html.BeginForm("Update", "Stock")) {
+            for (var i = 0; i < Model.List.Count; i++) {
                 var item = Model.List[i];
             <tr>
                 <td>@item.Stocknr
@@ -114,8 +119,7 @@
             </tr>
         }
         <tr>
-            @using (Html.BeginForm("ComponentToevoegen", "Stock"))
-            {
+            @using (Html.BeginForm("ComponentToevoegen", "Stock")) {
                 <td>
                     @Html.TextBox("Stocknr")
                 </td>
