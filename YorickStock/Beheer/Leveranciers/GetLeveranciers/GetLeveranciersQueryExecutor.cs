@@ -17,12 +17,10 @@ namespace SamStock.Beheer.Leveranciers.GetLeveranciers
 
         public GetLeveranciersResponse Execute(GetLeveranciersRequest request)
         {
-            //Opmerking: als je leveranciers wil opzoeken, moet je niet querieën in de Componenten tabel ;-)
             var result = _context.Leverancier
                 .Select(x => new GetLeveranciersItem
                 {
                     Naam = x.Naam,
-                    //Opmerking: alle velden invullen
                     Adres = x.Adres,
                     Website = x.Site
                 })

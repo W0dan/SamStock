@@ -12,21 +12,22 @@ namespace SamStock.Stock.FindMancos {
             _context = context;
         }
 
-        public FindMancosResponse Execute(FindMancosRequest request) {
-            IQueryable<Component> query = _context.Component;
-            query.Where(component => component.Hoeveelheid < component.MinimumStock);
+        public FindMancosResponse Execute(FindMancosRequest request)
+        {
+            var query = _context.Component
+                        .Where(component => component.Hoeveelheid < component.MinimumStock)
+                        .Select(x => new FindMancosItem
+                            {
+                                Stocknr = x.Stocknr,
+                                Naam = x.Naam,
+                                Prijs = x.Prijs,
+                                Hoeveelheid = x.Hoeveelheid,
+                                MinimumStock = x.MinimumStock,
+                                Opmerkingen = x.Opmerkingen,
+                                LeverancierNaam = x.Leverancier.Naam
+                            });
 
-            var result = query.Select(x => new FindMancosItem {
-                Stocknr = x.Stocknr,
-                Naam = x.Naam,
-                Prijs = x.Prijs,
-                Hoeveelheid = x.Hoeveelheid,
-                MinimumStock = x.MinimumStock,
-                Opmerkingen = x.Opmerkingen,
-                LeverancierNaam = x.Leverancier.Naam
-            }).ToList();
-
-            return new FindMancosResponse { List = result };
+            return new FindMancosResponse { List = query.ToList() };
         }
     }
 }
