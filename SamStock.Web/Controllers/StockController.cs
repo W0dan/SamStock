@@ -79,7 +79,7 @@ namespace SamStock.Web.Controllers
             var command = new UpdateStockCommand { List = new List<StockUpdate>() };
             foreach (var stockChange in stockChanges.List)
             {
-                command.List.Add(new StockUpdate(stockChange.Stocknr, stockChange.Amount));
+                command.List.Add(new StockUpdate(stockChange.Stocknr, stockChange.Amount, stockChange.Prijs));
             }
             _dispatcher.DispatchCommand(command);
             return RedirectToAction("Index");

@@ -3,7 +3,7 @@ using SamStock.Database;
 
 namespace SamStock.Stock.UpdateStock
 {
-    public class UpdateStockCommandExecutor:IUpdateStockCommandExecutor
+    public class UpdateStockCommandExecutor : IUpdateStockCommandExecutor
     {
         private readonly IContext _context;
 
@@ -19,6 +19,10 @@ namespace SamStock.Stock.UpdateStock
                 if (su.Amount == 0) continue;
 
                 var comp = _context.Component.Single(u => u.Stocknr == su.Stocknr);
+
+                var avgPrice = (comp.Hoeveelheid * comp.Prijs + su.Amount * su.Price) / (comp.Hoeveelheid + su.Amount);
+                comp.Prijs = avgPrice;
+
                 comp.Hoeveelheid += su.Amount;
             }
         }
