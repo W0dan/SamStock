@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using SamStock.Database;
 using SamStock.Stock.ComponentToevoegen;
 using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
@@ -50,7 +49,7 @@ namespace SamStock.Web.Controllers
 
         public ActionResult Search(StockFilterViewModel stockFilterViewModel)
         {
-            var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter,stockFilterViewModel.LeverancierFilter);
+            var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter, stockFilterViewModel.LeverancierFilter);
             var filteredstock = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(request);
 
             var model = new StockViewModel(filteredstock.List, GetRefdata());
@@ -77,8 +76,7 @@ namespace SamStock.Web.Controllers
         [HttpPost]
         public ActionResult Update(StockChangesViewModel stockChanges)
         {
-            var command = new UpdateStockCommand();
-            command.List = new List<StockUpdate>();
+            var command = new UpdateStockCommand { List = new List<StockUpdate>() };
             foreach (var stockChange in stockChanges.List)
             {
                 command.List.Add(new StockUpdate(stockChange.Stocknr, stockChange.Amount));
