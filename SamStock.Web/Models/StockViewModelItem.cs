@@ -1,6 +1,5 @@
 ﻿using SamStock.Stock.FilterStock;
 using SamStock.Stock.GetStockOverzicht;
-using SamStock.Stock.FilterStock;
 
 namespace SamStock.Web.Models
 {

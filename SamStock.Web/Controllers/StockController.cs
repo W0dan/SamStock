@@ -7,7 +7,6 @@ using SamStock.Stock.UpdateStock;
 using SamStock.Stock.FilterStock;
 using SamStock.Utilities;
 using SamStock.Web.Models;
-using SamStock.Stock.FilterStock;
 
 namespace SamStock.Web.Controllers
 {
@@ -38,8 +37,8 @@ namespace SamStock.Web.Controllers
             return refdata;
         }
 
-        public ActionResult FindMancos() {
-            var request = new FilterStockRequest("",0,true);
+        public ActionResult FindMancos(StockFilterViewModel stockFilterViewModel) {
+            var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter, stockFilterViewModel.LeverancierFilter, true);
             var mancos = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(request);
 
             var model = new StockViewModel(mancos.List, GetRefdata());
