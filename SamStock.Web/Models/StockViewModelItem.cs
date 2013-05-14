@@ -1,6 +1,6 @@
 ﻿using SamStock.Stock.FilterStock;
 using SamStock.Stock.GetStockOverzicht;
-using SamStock.Stock.FindMancos;
+using SamStock.Stock.FilterStock;
 
 namespace SamStock.Web.Models
 {
@@ -24,16 +24,6 @@ namespace SamStock.Web.Models
 
         public StockViewModelItem(FilterStockItem item)
         {
-            Stocknr = item.Stocknr;
-            Naam = item.Naam;
-            Prijs = item.Prijs;
-            Hoeveelheid = item.Hoeveelheid;
-            MinimumStock = item.MinimumStock;
-            Opmerkingen = item.Opmerkingen;
-            LeverancierNaam = item.LeverancierNaam;
-        }
-
-        public StockViewModelItem(FindMancosItem item) {
             Stocknr = item.Stocknr;
             Naam = item.Naam;
             Prijs = item.Prijs;

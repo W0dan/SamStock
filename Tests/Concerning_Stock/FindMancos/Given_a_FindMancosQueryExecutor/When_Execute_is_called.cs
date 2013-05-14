@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SamStock.Stock.FindMancos;
+using SamStock.Stock.FilterStock;
 using SamStock.Database;
 using NUnit.Framework;
 
-namespace Tests.Concerning_Stock.FindMancos.Given_a_FindMancosQueryExecutor {
+namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor {
     public class When_Execute_is_called : DatabaseTest {
-        private FindMancosQueryExecutor _sut;
-        private FindMancosRequest _request;
-        private FindMancosResponse _result;
+        private FilterStockQueryExecutor _sut;
+        private FilterStockRequest _request;
+        private FilterStockResponse _result;
 
         public override void Arrange() {
-            _request = new FindMancosRequest();
+            _request = new FilterStockRequest();
 
             var leverancier = new Leverancier {
                 Naam = "Musikding",
@@ -67,7 +67,7 @@ namespace Tests.Concerning_Stock.FindMancos.Given_a_FindMancosQueryExecutor {
             Context.Component.AddObject(component4);
             Context.SaveChanges();
 
-            _sut = new FindMancosQueryExecutor(Context);
+            _sut = new FilterStockQueryExecutor(Context);
         }
 
         public override void Act() {

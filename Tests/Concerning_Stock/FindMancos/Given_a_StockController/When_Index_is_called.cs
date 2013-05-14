@@ -4,30 +4,30 @@ using System.Linq;
 using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
-using SamStock.Stock.FindMancos;
+using SamStock.Stock.FilterStock;
 using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
 using SamStock.Utilities;
 using SamStock.Web.Models;
 using Tests._Util;
 
-namespace Tests.Concerning_Stock.FindMancos.Given_a_StockController
+namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
 {
     public class When_Index_is_called : StockControllerBaseTest
     {
-        private Mock<IFindMancosHandler> _FindMancosHandler;
+        private Mock<IFilterStockHandler> _FilterStockHandler;
         private ViewResult _result;
         private StockViewModel _viewModel;
-        private FindMancosResponse _FindMancosResponse;
+        private FilterStockResponse _FilterStockResponse;
         private Mock<IGetStockRefdataHandler> _getRefdataHandler;
         private GetStockRefdataResponse _getStockRefdataResponse;
 
         public override void Arrange()
         {
-            _FindMancosResponse = new FindMancosResponse();
-            _FindMancosResponse.List = new List<FindMancosItem>
+            _FilterStockResponse = new FilterStockResponse();
+            _FilterStockResponse.List = new List<FilterStockItem>
                 {
-                    new FindMancosItem
+                    new FilterStockItem
                         {
                             Hoeveelheid = 5,
                             LeverancierNaam = Guid.NewGuid().ToString(),
@@ -37,7 +37,7 @@ namespace Tests.Concerning_Stock.FindMancos.Given_a_StockController
                             Prijs = 12.25M,
                             Stocknr = Guid.NewGuid().ToString()
                         },
-                    new FindMancosItem
+                    new FilterStockItem
                         {
                             Hoeveelheid = 2,
                             LeverancierNaam = Guid.NewGuid().ToString(),
@@ -60,13 +60,13 @@ namespace Tests.Concerning_Stock.FindMancos.Given_a_StockController
                 .Setup(x => x.Resolve<IQueryHandler<GetStockRefdataRequest, GetStockRefdataResponse>>())
                 .Returns(_getRefdataHandler.Object);
 
-            _FindMancosHandler = new Mock<IFindMancosHandler>();
-            _FindMancosHandler
-                .Setup(x => x.Handle(It.IsAny<FindMancosRequest>()))
-                .Returns(_FindMancosResponse);
+            _FilterStockHandler = new Mock<IFilterStockHandler>();
+            _FilterStockHandler
+                .Setup(x => x.Handle(It.IsAny<FilterStockRequest>()))
+                .Returns(_FilterStockResponse);
             Container
-                .Setup(x => x.Resolve<IQueryHandler<FindMancosRequest, FindMancosResponse>>())
-                .Returns(_FindMancosHandler.Object);
+                .Setup(x => x.Resolve<IQueryHandler<FilterStockRequest, FilterStockResponse>>())
+                .Returns(_FilterStockHandler.Object);
         }
 
         public override void Act()
@@ -78,7 +78,7 @@ namespace Tests.Concerning_Stock.FindMancos.Given_a_StockController
         [Test]
         public void It_should_put_the_data_into_the_viewmodel()
         {
-            _viewModel.List.ShouldMatchAllItemsOf(_FindMancosResponse.List.ToList(),
+            _viewModel.List.ShouldMatchAllItemsOf(_FilterStockResponse.List.ToList(),
                 (x, y) => x.Stocknr == y.Stocknr
                     && x.Hoeveelheid == y.Hoeveelheid
                     && x.LeverancierNaam == y.LeverancierNaam

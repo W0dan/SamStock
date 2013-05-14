@@ -94,12 +94,6 @@
     <Compile Include="Stock\FilterStock\FilterStockResponse.cs" />
     <Compile Include="Stock\FilterStock\IFilterStockHandler.cs" />
     <Compile Include="Stock\FilterStock\IFilterStockQueryExecutor.cs" />
-    <Compile Include="Stock\FindMancos\FindMancosHandler.cs" />
-    <Compile Include="Stock\FindMancos\FindMancosQueryExecutor.cs" />
-    <Compile Include="Stock\FindMancos\FindMancosRequest.cs" />
-    <Compile Include="Stock\FindMancos\FindMancosResponse.cs" />
-    <Compile Include="Stock\FindMancos\IFindMancosHandler.cs" />
-    <Compile Include="Stock\FindMancos\IFindMancosQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataHandler.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataQueryExecutor.cs" />
     <Compile Include="Stock\GetStockOverzichtRefdata\GetStockRefdataRequest.cs" />

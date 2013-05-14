@@ -2,7 +2,7 @@
 using SamStock.Stock.FilterStock;
 using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
-using SamStock.Stock.FindMancos;
+using SamStock.Stock.FilterStock;
 
 namespace SamStock.Web.Models
 {
@@ -40,15 +40,6 @@ namespace SamStock.Web.Models
 
             foreach (var item in list)
             {
-                List.Add(new StockViewModelItem(item));
-            }
-        }
-
-        public StockViewModel(IEnumerable<FindMancosItem> list, GetStockRefdataResponse refdata)
-            : this(refdata) {
-            List = new List<StockViewModelItem>();
-
-            foreach (var item in list) {
                 List.Add(new StockViewModelItem(item));
             }
         }
