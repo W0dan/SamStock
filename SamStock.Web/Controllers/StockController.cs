@@ -37,18 +37,9 @@ namespace SamStock.Web.Controllers
             return refdata;
         }
 
-        public ActionResult FindMancos(StockFilterViewModel stockFilterViewModel) {
-            var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter, stockFilterViewModel.LeverancierFilter, true);
-            var mancos = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(request);
-
-            var model = new StockViewModel(mancos.List, GetRefdata());
-
-            return View("Index", model);
-        }
-
         public ActionResult Search(StockFilterViewModel stockFilterViewModel)
         {
-            var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter, stockFilterViewModel.LeverancierFilter);
+            var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter, stockFilterViewModel.LeverancierFilter, stockFilterViewModel.MancoFilter);
             var filteredstock = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(request);
 
             var model = new StockViewModel(filteredstock.List, GetRefdata());

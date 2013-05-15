@@ -71,7 +71,7 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
 
         public override void Act()
         {
-            _result = (ViewResult)Sut.FindMancos(new StockFilterViewModel{
+            _result = (ViewResult)Sut.Search(new StockFilterViewModel{
                 ComponentTypeFilter = "",
                 LeverancierFilter = 0,
                 MancoFilter = true

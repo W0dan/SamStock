@@ -25,7 +25,7 @@
                     </th>
                     <td>@Html.TextBox("ComponentTypeFilter")
                     </td>
-                    <td rowspan="2">
+                    <td rowspan="3">
                         <button>
                             Go</button>
                     </td>
@@ -37,14 +37,14 @@
                     <td>@Html.DropDownList("LeverancierFilter", Model.Leveranciers.ToSelectList(true))
                     </td>
                 </tr>
+                <tr>
+                    <th>
+                        Manco only
+                    </th>
+                    <td>@Html.CheckBox("MancoFilter")
+                    </td>
+                </tr>
             </table>
-        }
-    </div>
-    <div id="findmancosform">
-        @using (Html.BeginForm("FindMancos", "Stock"))
-        {
-            <button>
-                Find Mancos</button>
         }
     </div>
     <br />
