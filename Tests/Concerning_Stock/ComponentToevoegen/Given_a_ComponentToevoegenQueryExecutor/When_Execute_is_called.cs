@@ -5,6 +5,7 @@ using SamStock.Stock.ComponentToevoegen;
 
 namespace Tests.Concerning_Stock.ComponentToevoegen.Given_a_ComponentToevoegenQueryExecutor
 {
+    [TestFixture]
     public class When_Execute_is_called : DatabaseTest
     {
         private ComponentToevoegenCommand _command;

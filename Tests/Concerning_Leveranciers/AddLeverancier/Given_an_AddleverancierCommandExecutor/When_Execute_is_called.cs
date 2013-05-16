@@ -4,6 +4,7 @@ using SamStock.Beheer.Leveranciers.AddLeverancier;
 
 namespace Tests.Concerning_Leveranciers.AddLeverancier.Given_an_AddleverancierCommandExecutor
 {
+    [TestFixture]
     public class When_Execute_is_called : DatabaseTest
     {
         private string _name;

@@ -4,7 +4,8 @@ using Moq;
 
 namespace Tests.Concerning_Leveranciers.GetLeveranciers.Given_a_GetLeveranciersHandler
 {
-    public class When_Handle_is_called:BaseTest
+    [TestFixture]
+    public class When_Handle_is_called : BaseTest
     {
         private IGetLeveranciersHandler _sut;
         private GetLeveranciersRequest _request;

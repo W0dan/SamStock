@@ -6,6 +6,7 @@ using SamStock.Stock.UpdateStock;
 
 namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
 {
+    [TestFixture]
     public class When_Execute_is_called : DatabaseTest
     {
         private UpdateStockCommandExecutor _sut;

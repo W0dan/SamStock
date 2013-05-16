@@ -7,6 +7,7 @@ using SamStock.Web.Models;
 
 namespace Tests.Concerning_Stock.ComponentToevoegen.Given_a_StockController
 {
+    [TestFixture]
     public class When_ComponentToevoegen_is_called : StockControllerBaseTest
     {
         private Mock<IComponentToevoegenHandler> _handler;

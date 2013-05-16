@@ -4,6 +4,7 @@ using SamStock.Stock.ComponentToevoegen;
 
 namespace Tests.Concerning_Stock.ComponentToevoegen.Given_a_ComponentToevoegenHandler
 {
+    [TestFixture]
     public class When_Handle_is_called : BaseTest
     {
         private ComponentToevoegenCommand _command;

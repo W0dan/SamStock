@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using ObviousCode.TestRunner;
-using Tests.Concerning_Stock.GetStockOverzicht.Given_a_GetStockOverzichtHandler;
+using Tests;
 
 namespace TestRunner
 {
@@ -12,38 +10,93 @@ namespace TestRunner
     {
         public static void Main(string[] args)
         {
-            var testAssembly = Assembly.GetAssembly(typeof (When_Handle_is_called));
+            var numberOfTests = 0;
+            var numberOfPassedTests = 0;
+            var numberOfFailedTests = 0;
+
+            var testAssembly = Assembly.GetAssembly(typeof(BaseTest));
 
             var q = from t in testAssembly.GetTypes()
                     where t.IsClass
                     select t;
             q.ToList();
 
+            var previousNamespaces = "";
+
             foreach (var type in q)
             {
-                RunTests<>();
+                object instance = null;
+                try
+                {
+                    instance = Activator.CreateInstance(type);
+                }
+                catch (Exception)
+                {
+                }
+                if (instance != null)
+                {
+                    if (type.Namespace != previousNamespaces)
+                    {
+                        previousNamespaces = type.Namespace;
+                        var namespaces = type.Namespace.Split('.');
+                        Console.WriteLine(namespaces.Last());
+                        if (namespaces.Last().EndsWith("Executor"))
+                        {
+                            Console.BackgroundColor = ConsoleColor.DarkRed;
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("  It is not possible to run databasetests test for now");
+                            Console.ResetColor();
+                            continue;
+                        }
+                    }
+
+                    var result = RunTests(instance);
+                    numberOfTests += result.NumberOfResults;
+                    numberOfPassedTests += result.NumberOfPasses;
+                    numberOfFailedTests += result.NumberOfFails;
+                }
             }
 
-            RunTests();
-        }
+            if (numberOfFailedTests > 0)
+                Console.ForegroundColor = ConsoleColor.Red;
+            else if (numberOfPassedTests > 0)
+                Console.ForegroundColor = ConsoleColor.Green;
 
-        private static void RunTests<T>()
-        {
-            TestResults results = Tester.RunTestsInClass<T>();
-
-            Console.WriteLine("Tests Run: {0}", results.NumberOfResults);
-            Console.WriteLine("Results {0}:PASSED {1}:FAILED", results.NumberOfPasses, results.NumberOfFails);
-            Console.WriteLine("Details:");
-
-            foreach (TestResult result in results)
-            {
-                Console.WriteLine("Test {0}: {1} {2}",
-                                  result.MethodName,
-                                  result.Result,
-                                  result.Result == TestResult.Outcome.Fail ? "\r\n" + result.Message : "");
-            }
+            Console.WriteLine("Tests Run: {0}", numberOfTests);
+            Console.WriteLine("Passed: {0}", numberOfPassedTests);
+            Console.WriteLine("Failed: {0}", numberOfFailedTests);
+            Console.ResetColor();
 
             Console.ReadLine();
+        }
+
+        private static TestResults RunTests(object testClass)
+        {
+            var results = Tester.RunTestsInClass(testClass);
+
+            if (results.NumberOfResults == 0)
+            {
+                //Console.WriteLine("class " + testClass.GetType().Name + " has no tests");
+                return results;
+            }
+
+            var type = testClass.GetType();
+            Console.WriteLine("  " + type.Name);
+
+            foreach (var result in results)
+            {
+                Console.WriteLine("    {0}: {1}",
+                                  result.MethodName.Split('.')[1],
+                                  result.Result);
+                if (result.Result == TestResult.Outcome.Fail)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("      " + result.Message);
+                    Console.ResetColor();
+                }
+            }
+
+            return results;
         }
     }
 }

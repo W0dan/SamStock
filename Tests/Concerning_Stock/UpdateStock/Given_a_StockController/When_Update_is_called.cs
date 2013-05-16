@@ -9,6 +9,7 @@ using SamStock.Web.Models;
 
 namespace Tests.Concerning_Stock.UpdateStock.Given_a_StockController
 {
+    [TestFixture]
     public class When_Update_is_called : StockControllerBaseTest
     {
         private StockChangesViewModel _viewModel;

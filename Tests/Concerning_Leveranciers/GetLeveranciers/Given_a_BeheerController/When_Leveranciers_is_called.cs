@@ -11,6 +11,7 @@ using Tests._Util;
 
 namespace Tests.Concerning_Leveranciers.GetLeveranciers.Given_a_BeheerController
 {
+    [TestFixture]
     public class When_Leveranciers_is_called : BeheerControllerBaseTest
     {
         private GetLeveranciersResponse _response;

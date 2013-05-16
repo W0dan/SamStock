@@ -6,6 +6,7 @@ using SamStock.Beheer.Leveranciers.AddLeverancier;
 
 namespace Tests.Concerning_Leveranciers.AddLeverancier.Given_an_AddLeverancierHandler
 {
+    [TestFixture]
     public class When_Handle_is_called : BaseTest
     {
         private AddLeverancierCommand _command;

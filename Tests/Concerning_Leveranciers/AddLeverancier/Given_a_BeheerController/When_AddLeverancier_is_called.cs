@@ -2,13 +2,12 @@
 using Moq;
 using NUnit.Framework;
 using SamStock.Beheer.Leveranciers.AddLeverancier;
-using SamStock.Stock.ComponentToevoegen;
 using SamStock.Utilities;
-using SamStock.Web.Controllers;
 using SamStock.Web.Models;
 
 namespace Tests.Concerning_Leveranciers.AddLeverancier.Given_a_BeheerController
 {
+    [TestFixture]
     public class When_AddLeverancier_is_called : BeheerControllerBaseTest
     {
         private Mock<IAddLeverancierHandler> _handler;

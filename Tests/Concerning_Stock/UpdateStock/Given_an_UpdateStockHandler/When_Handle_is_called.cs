@@ -4,7 +4,8 @@ using SamStock.Stock.UpdateStock;
 
 namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockHandler
 {
-    public class When_Handle_is_called:BaseTest
+    [TestFixture]
+    public class When_Handle_is_called : BaseTest
     {
         private UpdateStockHandler _sut;
         private UpdateStockCommand _command;

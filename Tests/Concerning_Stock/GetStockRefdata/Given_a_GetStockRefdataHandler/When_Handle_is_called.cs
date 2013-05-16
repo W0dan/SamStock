@@ -4,6 +4,7 @@ using SamStock.Stock.GetStockOverzichtRefdata;
 
 namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataHandler
 {
+    [TestFixture]
     public class When_Handle_is_called : BaseTest
     {
         private Mock<IGetStockRefdataQueryExecutor> _getStockRefdataQuery;

@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataQueryExecutor
 {
+    [TestFixture]
     public class When_Execute_is_called : DatabaseTest
     {
         private string[] _leveranciers;

@@ -13,6 +13,7 @@ using Tests._Util;
 
 namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
 {
+    [TestFixture]
     public class When_Index_is_called : StockControllerBaseTest
     {
         private Mock<IFilterStockHandler> _FilterStockHandler;

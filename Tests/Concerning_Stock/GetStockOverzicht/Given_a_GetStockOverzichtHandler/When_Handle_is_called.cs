@@ -4,6 +4,7 @@ using SamStock.Stock.GetStockOverzicht;
 
 namespace Tests.Concerning_Stock.GetStockOverzicht.Given_a_GetStockOverzichtHandler
 {
+    [TestFixture]
     public class When_Handle_is_called : BaseTest
     {
         private GetStockOverzichtHandler _sut;
