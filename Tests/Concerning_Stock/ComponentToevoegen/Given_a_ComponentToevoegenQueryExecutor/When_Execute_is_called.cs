@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NUnit.Framework;
 using SamStock.Database;
 using SamStock.Stock.ComponentToevoegen;

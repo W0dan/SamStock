@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using SamStock.Stock.FilterStock;
 using SamStock.Database;
 using NUnit.Framework;
 
-namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor
+namespace Tests.Concerning_Stock.FindMancos.Given_a_FindMancosQueryExecutor
 {
     [TestFixture]
     public class When_Execute_is_called : DatabaseTest

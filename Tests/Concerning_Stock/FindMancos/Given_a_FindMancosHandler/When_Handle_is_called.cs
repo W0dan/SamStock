@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SamStock.Stock.FilterStock;
+﻿using SamStock.Stock.FilterStock;
 using Moq;
 using NUnit.Framework;
 
-namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockHandler
+namespace Tests.Concerning_Stock.FindMancos.Given_a_FindMancosHandler
 {
     [TestFixture]
     public class When_Handle_is_called : BaseTest
@@ -30,7 +26,7 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockHandler
         }
 
         [Test]
-        public void It_should_call_Execute_on_the_ComponentToevoegenCommandExecutor()
+        public void It_should_call_Execute_on_the_FilterStockQueryExecutor()
         {
             _FilterStockQueryExecutor.Verify(x => x.Execute(_request));
         }

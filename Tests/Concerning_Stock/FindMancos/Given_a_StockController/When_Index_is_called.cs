@@ -5,13 +5,12 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 using SamStock.Stock.FilterStock;
-using SamStock.Stock.GetStockOverzicht;
 using SamStock.Stock.GetStockOverzichtRefdata;
 using SamStock.Utilities;
 using SamStock.Web.Models;
 using Tests._Util;
 
-namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
+namespace Tests.Concerning_Stock.FindMancos.Given_a_StockController
 {
     [TestFixture]
     public class When_Index_is_called : StockControllerBaseTest

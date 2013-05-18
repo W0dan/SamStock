@@ -13,7 +13,7 @@ namespace Tests
         }
 
         [TestFixtureTearDown]
-        protected virtual void CleanUp()
+        public virtual void CleanUp()
         {
             
         }
