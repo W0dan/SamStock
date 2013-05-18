@@ -12,8 +12,8 @@ namespace Tests.Concerning_Stock.GetStockOverzicht.Given_a_GetStockOverzichtQuer
         private GetStockOverzichtQueryExecutor _sut;
         private GetStockOverzichtRequest _request;
         private GetStockOverzichtResponse _result;
-        private string _expectedFoundStocknr1;
-        private string _expectedFoundStocknr2;
+        private string _R180E1;
+        private string _R180E2;
 
         public override void Arrange()
         {
@@ -34,11 +34,12 @@ namespace Tests.Concerning_Stock.GetStockOverzicht.Given_a_GetStockOverzichtQuer
             Context.Leverancier.AddObject(leverancier1);
             Context.SaveChanges();
 
-            _expectedFoundStocknr1 = Guid.NewGuid().ToString().Substring(0, 15);
+            _R180E1 = "R180E1";
+            _R180E2 = "R180E2";
             var component1 = new Component
             {
                 Naam = "Weerstand 180 Ohm klein",
-                Stocknr = _expectedFoundStocknr1,
+                Stocknr = _R180E1,
                 Prijs = 0.04M,
                 Hoeveelheid = 6,
                 MinimumStock = 4,
@@ -47,11 +48,10 @@ namespace Tests.Concerning_Stock.GetStockOverzicht.Given_a_GetStockOverzichtQuer
             };
             Context.Component.AddObject(component1);
 
-            _expectedFoundStocknr2 = Guid.NewGuid().ToString().Substring(0, 15);
             var component2 = new Component
             {
                 Naam = "Weerstand 180 Ohm groot",
-                Stocknr = _expectedFoundStocknr2,
+                Stocknr = _R180E2,
                 Prijs = 0.05M,
                 Hoeveelheid = 7,
                 MinimumStock = 8,
@@ -89,13 +89,13 @@ namespace Tests.Concerning_Stock.GetStockOverzicht.Given_a_GetStockOverzichtQuer
         [Test]
         public void It_should_return_an_item_with_Stocknr_R180E1()
         {
-            Assert.IsTrue(_result.List.Any(x => x.Stocknr == _expectedFoundStocknr1));
+            Assert.IsTrue(_result.List.Any(x => x.Stocknr == _R180E1));
         }
 
         [Test]
         public void It_should_return_an_item_with_Stocknr_R180E2()
         {
-            Assert.IsTrue(_result.List.Any(x => x.Stocknr == _expectedFoundStocknr2));
+            Assert.IsTrue(_result.List.Any(x => x.Stocknr == _R180E2));
         }
 
         [Test]
