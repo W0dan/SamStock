@@ -1,0 +1,16 @@
+﻿@model dynamic
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="../../Content/styles/Order.css" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    @Html.ActionLink("OrderDetails", "Details", new { id = 5 })
+}

@@ -42,7 +42,9 @@ namespace SamStock.Web.Controllers
             var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter, stockFilterViewModel.LeverancierFilter, stockFilterViewModel.MancoFilter);
             var filteredstock = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(request);
 
-            var model = new StockViewModel(filteredstock.List, GetRefdata());
+            var stockOverzicht = _dispatcher.DispatchRequest<GetStockOverzichtRequest, GetStockOverzichtResponse>(new GetStockOverzichtRequest());
+
+            var model = new StockViewModel(filteredstock.List, GetRefdata(), (new StockViewModel(stockOverzicht.List,GetRefdata()))._totalStockValue);
 
             return View("Index", model);
         }

@@ -62,9 +62,9 @@
     <Compile Include="Concerning_Leveranciers\GetLeveranciers\Given_a_GetLeveranciersHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenQueryExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Stock\FindMancos\Given_a_FindMancosHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\FindMancos\Given_a_FindMancosQueryExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Stock\FindMancos\Given_a_StockController\When_Index_is_called.cs" />
+    <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockQueryExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Stock\FilterStock\Given_a_StockController\When_Index_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockOverzicht\Given_a_StockController\When_Index_is_called.cs" />
     <Compile Include="Concerning_Stock\StockControllerBaseTest.cs" />
     <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_StockController\When_ComponentToevoegen_is_called.cs" />

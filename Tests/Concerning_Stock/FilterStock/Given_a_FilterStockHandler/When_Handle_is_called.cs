@@ -3,7 +3,7 @@ using SamStock.Stock.FilterStock;
 using Moq;
 using NUnit.Framework;
 
-namespace Tests.Concerning_Stock.FindMancos.Given_a_FindMancosHandler
+namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockHandler
 {
     [TestFixture]
     public class When_Handle_is_called : BaseTest

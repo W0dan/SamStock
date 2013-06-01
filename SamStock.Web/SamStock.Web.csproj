@@ -70,10 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\styles\Admin.css" />
-    <Content Include="Content\styles\Orders.css" />
+    <Content Include="Content\styles\Order.css" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
-    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -88,7 +88,7 @@
     <Compile Include="Models\StockViewModelLeverancier.cs" />
     <Compile Include="Models\StockViewModelNewItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Views\Orders\Index.cshtml" />
+    <None Include="Views\Order\Index.cshtml" />
     <Compile Include="_Interfaces\IHasAnId.cs" />
     <Compile Include="_Interfaces\IHasAName.cs" />
     <Compile Include="_Util\ComponentInstaller.cs" />

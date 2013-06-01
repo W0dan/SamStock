@@ -99,5 +99,14 @@ namespace Tests.Concerning_Stock.GetStockOverzicht.Given_a_StockController
                     && x.Prijs == y.Prijs
                 );
         }
+        [Test]
+        public void It_should_put_the_total_stock_value_into_the_viewmodel()
+        {
+            decimal totalValue = 0.00M;
+            for (int i = 0;i < _viewModel.List.Count;i++) {
+                totalValue += _getStockOverzichtResponse.List[i].Hoeveelheid * _getStockOverzichtResponse.List[i].Prijs;
+            }
+            Assert.AreEqual(_viewModel._totalStockValue,totalValue);
+        }
     }
 }

@@ -3,7 +3,7 @@ using SamStock.Stock.FilterStock;
 using SamStock.Database;
 using NUnit.Framework;
 
-namespace Tests.Concerning_Stock.FindMancos.Given_a_FindMancosQueryExecutor
+namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor
 {
     [TestFixture]
     public class When_Execute_is_called : DatabaseTest
