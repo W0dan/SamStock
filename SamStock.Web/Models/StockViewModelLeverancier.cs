@@ -1,4 +1,4 @@
-﻿using SamStock.Stock.GetStockOverzichtRefdata;
+﻿using SamStock.Stock.GetStockRefdata;
 using SamStock.Web._Interfaces;
 
 namespace SamStock.Web.Models

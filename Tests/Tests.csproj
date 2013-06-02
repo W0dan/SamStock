@@ -65,11 +65,8 @@
     <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\FilterStock\Given_a_StockController\When_Index_is_called.cs" />
-    <Compile Include="Concerning_Stock\GetStockOverzicht\Given_a_StockController\When_Index_is_called.cs" />
     <Compile Include="Concerning_Stock\StockControllerBaseTest.cs" />
     <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_StockController\When_ComponentToevoegen_is_called.cs" />
-    <Compile Include="Concerning_Stock\GetStockOverzicht\Given_a_GetStockOverzichtHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\GetStockOverzicht\Given_a_GetStockOverzichtQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\UpdateStock\Given_an_UpdateStockCommandExecutor\When_Execute_is_called.cs" />

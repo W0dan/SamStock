@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using SamStock.Database;
 
-namespace SamStock.Stock.GetStockOverzichtRefdata
+namespace SamStock.Stock.GetStockRefdata
 {
     public class GetStockRefdataQueryExecutor : IGetStockRefdataQueryExecutor
     {

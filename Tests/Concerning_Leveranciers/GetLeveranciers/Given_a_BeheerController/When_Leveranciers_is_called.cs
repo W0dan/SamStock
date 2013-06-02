@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 using SamStock.Beheer.Leveranciers.GetLeveranciers;
-using SamStock.Stock.GetStockOverzicht;
 using SamStock.Utilities;
 using SamStock.Web.Controllers;
 using SamStock.Web.Models;

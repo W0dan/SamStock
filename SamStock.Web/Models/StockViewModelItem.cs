@@ -1,24 +1,10 @@
 ﻿using SamStock.Stock.FilterStock;
-using SamStock.Stock.GetStockOverzicht;
-
 namespace SamStock.Web.Models
 {
     public class StockViewModelItem
     {
         public StockViewModelItem()
         {
-
-        }
-
-        public StockViewModelItem(GetStockOverzichtItem item)
-        {
-            Stocknr = item.Stocknr;
-            Naam = item.Naam;
-            Prijs = item.Prijs;
-            Hoeveelheid = item.Hoeveelheid;
-            MinimumStock = item.MinimumStock;
-            Opmerkingen = item.Opmerkingen;
-            LeverancierNaam = item.LeverancierNaam;
         }
 
         public StockViewModelItem(FilterStockItem item)

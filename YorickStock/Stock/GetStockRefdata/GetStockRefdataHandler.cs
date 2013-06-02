@@ -1,4 +1,4 @@
-﻿namespace SamStock.Stock.GetStockOverzichtRefdata
+﻿namespace SamStock.Stock.GetStockRefdata
 {
     public class GetStockRefdataHandler : IGetStockRefdataHandler
     {

@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using SamStock.Stock.FilterStock;
-using SamStock.Stock.GetStockOverzicht;
-using SamStock.Stock.GetStockOverzichtRefdata;
+using SamStock.Stock.GetStockRefdata;
 
 namespace SamStock.Web.Models
 {
     public class StockViewModel
     {
-        public readonly decimal _totalStockValue = 0.00M;
+        public readonly decimal _contentTotalValue = 0.00M;
 
         public StockViewModel()
         {
@@ -23,18 +22,6 @@ namespace SamStock.Web.Models
             }
         }
 
-        public StockViewModel(IEnumerable<GetStockOverzichtItem> list, GetStockRefdataResponse refdata)
-            : this(refdata)
-        {
-            List = new List<StockViewModelItem>();
-
-            foreach (var item in list)
-            {
-                List.Add(new StockViewModelItem(item));
-                _totalStockValue += item.Hoeveelheid*item.Prijs;
-            }
-        }
-
         public StockViewModel(IEnumerable<FilterStockItem> list, GetStockRefdataResponse refdata)
             : this(refdata)
         {
@@ -43,6 +30,7 @@ namespace SamStock.Web.Models
             foreach (var item in list)
             {
                 List.Add(new StockViewModelItem(item));
+                _contentTotalValue += item.Hoeveelheid * item.Prijs;
             }
         }
 
@@ -54,7 +42,7 @@ namespace SamStock.Web.Models
                 List.Add(new StockViewModelItem(item));
             }
 
-            _totalStockValue = totalStockValue;
+            _contentTotalValue = totalStockValue;
         }
 
         public List<StockViewModelItem> List { get; private set; }

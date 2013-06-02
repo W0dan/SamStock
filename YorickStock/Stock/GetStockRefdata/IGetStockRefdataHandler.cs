@@ -1,6 +1,6 @@
 ﻿using SamStock.Utilities;
 
-namespace SamStock.Stock.GetStockOverzichtRefdata
+namespace SamStock.Stock.GetStockRefdata
 {
     public interface IGetStockRefdataHandler : IQueryHandler<GetStockRefdataRequest, GetStockRefdataResponse>
     {

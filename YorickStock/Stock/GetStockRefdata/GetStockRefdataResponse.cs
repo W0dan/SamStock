@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SamStock.Stock.GetStockOverzichtRefdata
+namespace SamStock.Stock.GetStockRefdata
 {
     public class GetStockRefdataResponse
     {

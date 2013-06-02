@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using SamStock.Stock.ComponentToevoegen;
-using SamStock.Stock.GetStockOverzicht;
-using SamStock.Stock.GetStockOverzichtRefdata;
+using SamStock.Stock.GetStockRefdata;
 using SamStock.Stock.UpdateStock;
 using SamStock.Stock.FilterStock;
 using SamStock.Utilities;
@@ -22,7 +21,7 @@ namespace SamStock.Web.Controllers
         [HttpGet]
         public ViewResult Index()
         {
-            var stockOverzicht = _dispatcher.DispatchRequest<GetStockOverzichtRequest, GetStockOverzichtResponse>(new GetStockOverzichtRequest());
+            var stockOverzicht = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(new FilterStockRequest());
             var refdata = GetRefdata();
 
             var model = new StockViewModel(stockOverzicht.List, refdata);
@@ -42,9 +41,9 @@ namespace SamStock.Web.Controllers
             var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter, stockFilterViewModel.LeverancierFilter, stockFilterViewModel.MancoFilter);
             var filteredstock = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(request);
 
-            var stockOverzicht = _dispatcher.DispatchRequest<GetStockOverzichtRequest, GetStockOverzichtResponse>(new GetStockOverzichtRequest());
+            var stockOverzicht = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(new FilterStockRequest());
 
-            var model = new StockViewModel(filteredstock.List, GetRefdata(), (new StockViewModel(stockOverzicht.List,GetRefdata()))._totalStockValue);
+            var model = new StockViewModel(filteredstock.List, GetRefdata(), (new StockViewModel(stockOverzicht.List,GetRefdata()))._contentTotalValue);
 
             return View("Index", model);
         }
