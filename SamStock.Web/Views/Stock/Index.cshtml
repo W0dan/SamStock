@@ -36,7 +36,7 @@
                     </th>
                     <td>@Html.DropDownList("LeverancierFilter", Model.Leveranciers.ToSelectList(true))
                     </td>
-                    <td rowspan="2">€@Model._totalStockValue.ToString("0.00")</td>
+                    <td id="totalStockValue" rowspan="2">€@Model._contentTotalValue.ToString("0.00")</td>
                 </tr>
                 <tr>
                     <th>
