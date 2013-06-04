@@ -19,6 +19,7 @@ namespace SamStock.Stock.FilterStock {
             if (request.Manco == true)
                 query = query.Where(component => component.Hoeveelheid < component.MinimumStock);
 
+            query = query.OrderBy(c => c.Stocknr);
             var result = query.Select(x => new FilterStockItem {
                 Stocknr = x.Stocknr,
                 Naam = x.Naam,

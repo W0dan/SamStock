@@ -75,6 +75,36 @@
             <th id="Toevoegenheader">
             </th>
         </tr>
+        <tr>
+            @using (Html.BeginForm("ComponentToevoegen", "Stock"))
+            {
+                <td>
+                    @Html.TextBox("Stocknr")
+                </td>
+                <td>
+                    @Html.TextBox("Naam")
+                </td>
+                <td>
+                    @Html.TextBox("Prijs")
+                </td>
+                <td>
+                    @Html.TextBox("Hoeveelheid")
+                </td>
+                <td>
+                    @Html.TextBox("MinimumStock")
+                </td>
+                <td>
+                    @Html.DropDownList("LeverancierId", Model.Leveranciers.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString("0") }))
+                </td>
+                <td>
+                    @Html.TextBox("Opmerkingen")
+                </td>
+                <td>
+                    <button id="toevoegenButton">
+                        Add component</button>
+                </td>
+            }
+        </tr>
         @using (Html.BeginForm("Update", "Stock"))
         {
             for (var i = 0; i < Model.List.Count; i++)
@@ -123,35 +153,5 @@
                 </td>
             </tr>
         }
-        <tr>
-            @using (Html.BeginForm("ComponentToevoegen", "Stock"))
-            {
-                <td>
-                    @Html.TextBox("Stocknr")
-                </td>
-                <td>
-                    @Html.TextBox("Naam")
-                </td>
-                <td>
-                    @Html.TextBox("Prijs")
-                </td>
-                <td>
-                    @Html.TextBox("Hoeveelheid")
-                </td>
-                <td>
-                    @Html.TextBox("MinimumStock")
-                </td>
-                <td>
-                    @Html.DropDownList("LeverancierId", Model.Leveranciers.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString("0") }))
-                </td>
-                <td>
-                    @Html.TextBox("Opmerkingen")
-                </td>
-                <td>
-                    <button id="toevoegenButton">
-                        Add component</button>
-                </td>
-            }
-        </tr>
     </table>
 }
