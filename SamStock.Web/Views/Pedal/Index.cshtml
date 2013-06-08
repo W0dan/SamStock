@@ -1,0 +1,22 @@
+﻿@model dynamic
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="../../Content/styles/PedalIndex.css" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    @foreach(var item in Model.List)
+    {
+        <span class="pedalLink">@Html.ActionLink((String)item.Name, "Details", new { item.Id })</span>
+    }
+    <br />
+    <br />
+    <span id="create">@Html.ActionLink("Pedal", "Create")</span>
+}

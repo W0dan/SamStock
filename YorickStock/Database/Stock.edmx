@@ -8,9 +8,19 @@
         <EntityContainer Name="StockBeheerModelStoreContainer">
           <EntitySet Name="Component" EntityType="StockBeheerModel.Store.Component" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Leverancier" EntityType="StockBeheerModel.Store.Leverancier" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pedal" EntityType="StockBeheerModel.Store.Pedal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PedalComponent" EntityType="StockBeheerModel.Store.PedalComponent" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Component_Leverancier" Association="StockBeheerModel.Store.FK_Component_Leverancier">
             <End Role="Leverancier" EntitySet="Leverancier" />
             <End Role="Component" EntitySet="Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedalComponent_Component" Association="StockBeheerModel.Store.FK_PedalComponent_Component">
+            <End Role="Component" EntitySet="Component" />
+            <End Role="PedalComponent" EntitySet="PedalComponent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedalComponent_Pedal" Association="StockBeheerModel.Store.FK_PedalComponent_Pedal">
+            <End Role="Pedal" EntitySet="Pedal" />
+            <End Role="PedalComponent" EntitySet="PedalComponent" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Component">
@@ -35,6 +45,24 @@
           <Property Name="Adres" Type="nvarchar(max)" />
           <Property Name="Site" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Pedal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Price" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="Margin" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="PedalComponent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ComponentId" Type="int" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="PedalId" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Component_Leverancier">
           <End Role="Leverancier" Type="StockBeheerModel.Store.Leverancier" Multiplicity="1" />
           <End Role="Component" Type="StockBeheerModel.Store.Component" Multiplicity="*" />
@@ -44,6 +72,30 @@
             </Principal>
             <Dependent Role="Component">
               <PropertyRef Name="LeverancierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedalComponent_Component">
+          <End Role="Component" Type="StockBeheerModel.Store.Component" Multiplicity="1" />
+          <End Role="PedalComponent" Type="StockBeheerModel.Store.PedalComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PedalComponent">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedalComponent_Pedal">
+          <End Role="Pedal" Type="StockBeheerModel.Store.Pedal" Multiplicity="1" />
+          <End Role="PedalComponent" Type="StockBeheerModel.Store.PedalComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PedalComponent">
+              <PropertyRef Name="PedalId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -57,6 +109,16 @@
           <AssociationSet Name="FK_Component_Leverancier" Association="StockBeheerModel.FK_Component_Leverancier">
             <End Role="Leverancier" EntitySet="Leverancier" />
             <End Role="Component" EntitySet="Component" />
+          </AssociationSet>
+          <EntitySet Name="Pedal" EntityType="StockBeheerModel.Pedal" />
+          <EntitySet Name="PedalComponent" EntityType="StockBeheerModel.PedalComponent" />
+          <AssociationSet Name="FK_PedalComponent_Component" Association="StockBeheerModel.FK_PedalComponent_Component">
+            <End Role="Component" EntitySet="Component" />
+            <End Role="PedalComponent" EntitySet="PedalComponent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedalComponent_Pedal" Association="StockBeheerModel.FK_PedalComponent_Pedal">
+            <End Role="Pedal" EntitySet="Pedal" />
+            <End Role="PedalComponent" EntitySet="PedalComponent" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Component">
@@ -72,6 +134,7 @@
           <Property Type="Int32" Name="LeverancierId" Nullable="false" />
           <Property Type="String" Name="Opmerkingen" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Leverancier" Relationship="StockBeheerModel.FK_Component_Leverancier" FromRole="Component" ToRole="Leverancier" />
+          <NavigationProperty Name="PedalComponent_1" Relationship="StockBeheerModel.FK_PedalComponent_Component" FromRole="Component" ToRole="PedalComponent" />
         </EntityType>
         <EntityType Name="Leverancier">
           <Key>
@@ -92,6 +155,51 @@
             </Principal>
             <Dependent Role="Component">
               <PropertyRef Name="LeverancierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Pedal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="10" Scale="4" />
+          <NavigationProperty Name="PedalComponent" Relationship="StockBeheerModel.FK_PedalComponent_Pedal" FromRole="Pedal" ToRole="PedalComponent" />
+          <Property Type="Decimal" Name="Margin" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="PedalComponent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ComponentId" Nullable="false" />
+          <Property Type="Int32" Name="Number" Nullable="false" />
+          <Property Type="Int32" Name="PedalId" Nullable="false" />
+          <NavigationProperty Name="Component" Relationship="StockBeheerModel.FK_PedalComponent_Component" FromRole="PedalComponent" ToRole="Component" />
+          <NavigationProperty Name="Pedal" Relationship="StockBeheerModel.FK_PedalComponent_Pedal" FromRole="PedalComponent" ToRole="Pedal" />
+        </EntityType>
+        <Association Name="FK_PedalComponent_Component">
+          <End Type="StockBeheerModel.Component" Role="Component" Multiplicity="1" />
+          <End Type="StockBeheerModel.PedalComponent" Role="PedalComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PedalComponent">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedalComponent_Pedal">
+          <End Type="StockBeheerModel.Pedal" Role="Pedal" Multiplicity="1" />
+          <End Type="StockBeheerModel.PedalComponent" Role="PedalComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PedalComponent">
+              <PropertyRef Name="PedalId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -125,6 +233,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Pedal">
+            <EntityTypeMapping TypeName="StockBeheerModel.Pedal">
+              <MappingFragment StoreEntitySet="Pedal">
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedalComponent">
+            <EntityTypeMapping TypeName="StockBeheerModel.PedalComponent">
+              <MappingFragment StoreEntitySet="PedalComponent">
+                <ScalarProperty Name="PedalId" ColumnName="PedalId" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="ComponentId" ColumnName="ComponentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -146,11 +274,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Stock">
-        <EntityTypeShape EntityType="StockBeheerModel.Component" Width="1.5" PointX="3" PointY="1" Height="2.7494921874999996" />
-        <EntityTypeShape EntityType="StockBeheerModel.Leverancier" Width="1.5" PointX="0.75" PointY="1.375" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="StockBeheerModel.Component" Width="1.5" PointX="3.125" PointY="0.5" Height="2.5987555674711857" />
+        <EntityTypeShape EntityType="StockBeheerModel.Leverancier" Width="1.5" PointX="0.5" PointY="0.5" Height="1.7691861184438076" />
         <AssociationConnector Association="StockBeheerModel.FK_Component_Leverancier" >
-          <ConnectorPoint PointX="2.25" PointY="2.3651432291666667" />
-          <ConnectorPoint PointX="3" PointY="2.3651432291666667" />
+          <ConnectorPoint PointX="2" PointY="1.3845930592219038" />
+          <ConnectorPoint PointX="3.125" PointY="1.3845930592219038" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="StockBeheerModel.Pedal" Width="1.5" PointX="8.375" PointY="2.125" Height="1.7691861184438076" />
+        <EntityTypeShape EntityType="StockBeheerModel.PedalComponent" Width="1.5" PointX="6.125" PointY="1.75" Height="1.9351000082492829" />
+        <AssociationConnector Association="StockBeheerModel.FK_PedalComponent_Component" >
+          <ConnectorPoint PointX="4.625" PointY="2.4243777837355927" />
+          <ConnectorPoint PointX="6.125" PointY="2.4243777837355927" />
+        </AssociationConnector>
+        <AssociationConnector Association="StockBeheerModel.FK_PedalComponent_Pedal" >
+          <ConnectorPoint PointX="8.375" PointY="2.9050500041246412" />
+          <ConnectorPoint PointX="7.625" PointY="2.9050500041246412" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

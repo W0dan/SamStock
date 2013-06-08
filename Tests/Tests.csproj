@@ -60,6 +60,10 @@
     <Compile Include="Concerning_Leveranciers\BeheerControllerBaseTest.cs" />
     <Compile Include="Concerning_Leveranciers\GetLeveranciers\Given_a_BeheerController\When_Leveranciers_is_called.cs" />
     <Compile Include="Concerning_Leveranciers\GetLeveranciers\Given_a_GetLeveranciersHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalQueryExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Index_is_called.cs" />
+    <Compile Include="Concerning_Pedal\PedalControllerBaseTest.cs" />
     <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockHandler\When_Handle_is_called.cs" />

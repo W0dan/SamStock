@@ -20,6 +20,8 @@ using System.Xml.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("StockBeheerModel", "FK_Component_Leverancier", "Leverancier", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SamStock.Database.Leverancier), "Component", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SamStock.Database.Component), true)]
+[assembly: EdmRelationshipAttribute("StockBeheerModel", "FK_PedalComponent_Component", "Component", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SamStock.Database.Component), "PedalComponent", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SamStock.Database.PedalComponent), true)]
+[assembly: EdmRelationshipAttribute("StockBeheerModel", "FK_PedalComponent_Pedal", "Pedal", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SamStock.Database.Pedal), "PedalComponent", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SamStock.Database.PedalComponent), true)]
 
 #endregion
 
@@ -102,6 +104,38 @@ namespace SamStock.Database
             }
         }
         private ObjectSet<Leverancier> _Leverancier;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Pedal> Pedal
+        {
+            get
+            {
+                if ((_Pedal == null))
+                {
+                    _Pedal = base.CreateObjectSet<Pedal>("Pedal");
+                }
+                return _Pedal;
+            }
+        }
+        private ObjectSet<Pedal> _Pedal;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<PedalComponent> PedalComponent
+        {
+            get
+            {
+                if ((_PedalComponent == null))
+                {
+                    _PedalComponent = base.CreateObjectSet<PedalComponent>("PedalComponent");
+                }
+                return _PedalComponent;
+            }
+        }
+        private ObjectSet<PedalComponent> _PedalComponent;
 
         #endregion
 
@@ -121,6 +155,22 @@ namespace SamStock.Database
         public void AddToLeverancier(Leverancier leverancier)
         {
             base.AddObject("Leverancier", leverancier);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Pedal EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPedal(Pedal pedal)
+        {
+            base.AddObject("Pedal", pedal);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PedalComponent EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPedalComponent(PedalComponent pedalComponent)
+        {
+            base.AddObject("PedalComponent", pedalComponent);
         }
 
         #endregion
@@ -405,6 +455,28 @@ namespace SamStock.Database
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("StockBeheerModel", "FK_PedalComponent_Component", "PedalComponent")]
+        public EntityCollection<PedalComponent> PedalComponent_1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PedalComponent>("StockBeheerModel.FK_PedalComponent_Component", "PedalComponent");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PedalComponent>("StockBeheerModel.FK_PedalComponent_Component", "PedalComponent", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -559,6 +631,382 @@ namespace SamStock.Database
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Component>("StockBeheerModel.FK_Component_Leverancier", "Component", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="StockBeheerModel", Name="Pedal")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Pedal : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Pedal object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="price">Initial value of the Price property.</param>
+        /// <param name="margin">Initial value of the Margin property.</param>
+        public static Pedal CreatePedal(global::System.Int32 id, global::System.String name, global::System.Decimal price, global::System.Decimal margin)
+        {
+            Pedal pedal = new Pedal();
+            pedal.Id = id;
+            pedal.Name = name;
+            pedal.Price = price;
+            pedal.Margin = margin;
+            return pedal;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Price
+        {
+            get
+            {
+                return _Price;
+            }
+            set
+            {
+                OnPriceChanging(value);
+                ReportPropertyChanging("Price");
+                _Price = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Price");
+                OnPriceChanged();
+            }
+        }
+        private global::System.Decimal _Price;
+        partial void OnPriceChanging(global::System.Decimal value);
+        partial void OnPriceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Margin
+        {
+            get
+            {
+                return _Margin;
+            }
+            set
+            {
+                OnMarginChanging(value);
+                ReportPropertyChanging("Margin");
+                _Margin = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Margin");
+                OnMarginChanged();
+            }
+        }
+        private global::System.Decimal _Margin;
+        partial void OnMarginChanging(global::System.Decimal value);
+        partial void OnMarginChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("StockBeheerModel", "FK_PedalComponent_Pedal", "PedalComponent")]
+        public EntityCollection<PedalComponent> PedalComponent
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PedalComponent>("StockBeheerModel.FK_PedalComponent_Pedal", "PedalComponent");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PedalComponent>("StockBeheerModel.FK_PedalComponent_Pedal", "PedalComponent", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="StockBeheerModel", Name="PedalComponent")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PedalComponent : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new PedalComponent object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="componentId">Initial value of the ComponentId property.</param>
+        /// <param name="number">Initial value of the Number property.</param>
+        /// <param name="pedalId">Initial value of the PedalId property.</param>
+        public static PedalComponent CreatePedalComponent(global::System.Int32 id, global::System.Int32 componentId, global::System.Int32 number, global::System.Int32 pedalId)
+        {
+            PedalComponent pedalComponent = new PedalComponent();
+            pedalComponent.Id = id;
+            pedalComponent.ComponentId = componentId;
+            pedalComponent.Number = number;
+            pedalComponent.PedalId = pedalId;
+            return pedalComponent;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ComponentId
+        {
+            get
+            {
+                return _ComponentId;
+            }
+            set
+            {
+                OnComponentIdChanging(value);
+                ReportPropertyChanging("ComponentId");
+                _ComponentId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ComponentId");
+                OnComponentIdChanged();
+            }
+        }
+        private global::System.Int32 _ComponentId;
+        partial void OnComponentIdChanging(global::System.Int32 value);
+        partial void OnComponentIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Number
+        {
+            get
+            {
+                return _Number;
+            }
+            set
+            {
+                OnNumberChanging(value);
+                ReportPropertyChanging("Number");
+                _Number = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Number");
+                OnNumberChanged();
+            }
+        }
+        private global::System.Int32 _Number;
+        partial void OnNumberChanging(global::System.Int32 value);
+        partial void OnNumberChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PedalId
+        {
+            get
+            {
+                return _PedalId;
+            }
+            set
+            {
+                OnPedalIdChanging(value);
+                ReportPropertyChanging("PedalId");
+                _PedalId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PedalId");
+                OnPedalIdChanged();
+            }
+        }
+        private global::System.Int32 _PedalId;
+        partial void OnPedalIdChanging(global::System.Int32 value);
+        partial void OnPedalIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("StockBeheerModel", "FK_PedalComponent_Component", "Component")]
+        public Component Component
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Component>("StockBeheerModel.FK_PedalComponent_Component", "Component").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Component>("StockBeheerModel.FK_PedalComponent_Component", "Component").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Component> ComponentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Component>("StockBeheerModel.FK_PedalComponent_Component", "Component");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Component>("StockBeheerModel.FK_PedalComponent_Component", "Component", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("StockBeheerModel", "FK_PedalComponent_Pedal", "Pedal")]
+        public Pedal Pedal
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Pedal>("StockBeheerModel.FK_PedalComponent_Pedal", "Pedal").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Pedal>("StockBeheerModel.FK_PedalComponent_Pedal", "Pedal").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Pedal> PedalReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Pedal>("StockBeheerModel.FK_PedalComponent_Pedal", "Pedal");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Pedal>("StockBeheerModel.FK_PedalComponent_Pedal", "Pedal", value);
                 }
             }
         }

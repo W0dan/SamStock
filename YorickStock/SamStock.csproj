@@ -83,12 +83,22 @@
       <DependentUpon>Stock.edmx</DependentUpon>
     </Compile>
     <Compile Include="Database\StockBeheerEntities.cs" />
+    <Compile Include="Pedal\FilterPedal\FilterPedalHandler.cs" />
+    <Compile Include="Pedal\FilterPedal\FilterPedalQueryExecutor.cs" />
+    <Compile Include="Pedal\FilterPedal\FilterPedalRequest.cs" />
+    <Compile Include="Pedal\FilterPedal\FilterPedalResponse.cs" />
+    <Compile Include="Pedal\FilterPedal\FilterPedalResponseComponent.cs" />
+    <Compile Include="Pedal\FilterPedal\FilterPedalResponsePedal.cs" />
+    <Compile Include="Pedal\FilterPedal\IFilterPedalHandler.cs" />
+    <Compile Include="Pedal\FilterPedal\IFilterPedalQueryExecutor.cs" />
+    <Compile Include="Pedal\UpdatePedal\UpdatePedalCommand.cs" />
     <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenCommand.cs" />
     <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenCommandExecutor.cs" />
     <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenHandler.cs" />
     <Compile Include="Stock\ComponentToevoegen\IComponentToevoegenCommandExecutor.cs" />
     <Compile Include="Stock\ComponentToevoegen\IComponentToevoegenHandler.cs" />
     <Compile Include="Stock\FilterStock\FilterStockHandler.cs" />
+    <Compile Include="Stock\FilterStock\FilterStockItem.cs" />
     <Compile Include="Stock\FilterStock\FilterStockQueryExecutor.cs" />
     <Compile Include="Stock\FilterStock\FilterStockRequest.cs" />
     <Compile Include="Stock\FilterStock\FilterStockResponse.cs" />

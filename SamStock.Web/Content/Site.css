@@ -80,22 +80,20 @@ button {
     background-color: black;
     color: white;
     font-weight: bold;
-    border: 1px solid black;
-    cursor: pointer;
-    padding: 3px 10px;
 }
 
 a.button {
     background-color: black;
     color: white;
     font-weight: bold;
-    border: 1px solid black;
     cursor: pointer;
-    padding: 3px 10px;
     text-decoration: none;
+    padding: 1em;
 }
 
-div.header {
-    border-bottom: 1px solid black;
-    padding-bottom: 5px;
+table tbody tr th
+{
+    background-color: Black;
+    color: White;
+    padding: 1em;
 }

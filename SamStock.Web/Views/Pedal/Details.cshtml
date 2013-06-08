@@ -1,0 +1,95 @@
+﻿@model dynamic
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="../../Content/styles/PedalDetails.css" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    <h1>@Model.List[0].Name</h1>
+    <h3>@Html.ActionLink("Edit", "Details", new { Model.List[0].Id })</h3>
+    @{
+        decimal costs = 0;
+    }
+    @foreach(var item in Model.List[0].List) {
+        costs += item.Price * item.Count;
+    }        
+    <table class="priceInfo">
+        <tbody>
+            <tr class="info">
+                <th>Costs</th>
+                @{
+                    decimal price = Model.List[0].Price;
+                }
+                <td>€@costs.ToString("0.00")</td>
+                <td>@((costs*100/price).ToString("0.00"))%</td>
+            </tr>
+            <tr class="info">
+                <th>Margin</th>
+                @{
+                    decimal margin = Model.List[0].Margin;
+                    
+                }
+                <td>€@margin.ToString("0.00")</td>
+                <td>@((margin*100/price).ToString("0.00"))%</td>
+            </tr>
+            <tr class="info">
+                <th>Minimum Price</th>
+                @{
+                    decimal baseprice = Model.List[0].Margin + costs;
+                }
+                <td>€@baseprice.ToString("0.00")</td>
+                <td>@((baseprice*100/price).ToString("0.00"))%</td>
+            </tr>
+            <tr class="info">
+                @{
+                    decimal vat = (price - costs)*21/100;
+                }
+                <th>Profit</th>
+                @{
+                    decimal profit = Model.List[0].Price - costs - vat;
+                }
+                <td>€@((profit).ToString("0.00"))</td>
+                <td>@(((profit*100)/price).ToString("0.00"))%</td>
+            </tr>
+            <tr class="info">
+                <th>VAT</th>
+                <td>€@((vat).ToString("0.00"))</td>
+                <td>@((vat*100/price).ToString("0.00"))%</td>
+            </tr>
+            <tr class="info">
+                <th>Price</th>
+                <td>€@price.ToString("0.00")</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <table class="componentinfo">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Number</th>
+                <th>Price/Piece</th>
+                <th>Price/All</th>
+            </tr>
+            @foreach(var item in Model.List[0].List)
+            {
+                <tr class="component">
+                    <td class="stocknr">@item.Stocknr</td>
+                    <td class="comment">@item.Description</td>
+                    <td class="count">@item.Count</td>
+                    <td class="pricePerPiece">€@item.Price.ToString("0.00")</td>
+                    <td class="totalPrice">€@((item.Price * item.Count).ToString("0.00"))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

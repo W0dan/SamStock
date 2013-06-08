@@ -71,15 +71,22 @@
   <ItemGroup>
     <Content Include="Content\styles\Admin.css" />
     <Content Include="Content\styles\Order.css" />
+    <Content Include="Content\styles\PedalIndex.css" />
+    <Content Include="Content\styles\PedalDetails.css" />
+    <Content Include="Content\styles\PedalEdit.css" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PedalController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LeveranciersViewModel.cs" />
     <Compile Include="Models\LeverancierViewModelNewItem.cs" />
+    <Compile Include="Models\PedalViewModel.cs" />
+    <Compile Include="Models\PedalViewModelComponent.cs" />
+    <Compile Include="Models\PedalViewModelPedal.cs" />
     <Compile Include="Models\StockChangesViewModel.cs" />
     <Compile Include="Models\StockChange.cs" />
     <Compile Include="Models\StockFilterViewModel.cs" />
@@ -96,6 +103,9 @@
     <Compile Include="_Util\IListExtensions.cs" />
     <Compile Include="_Util\IoC.cs" />
     <Compile Include="_Util\WindsorControllerFactory.cs" />
+    <Content Include="Views\Pedal\Index.cshtml" />
+    <Content Include="Views\Pedal\Details.cshtml" />
+    <Content Include="Views\Pedal\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\styles\Stock.css" />

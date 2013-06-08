@@ -8,5 +8,7 @@ namespace SamStock.Database
 
         ObjectSet<Component> Component { get; }
         ObjectSet<Leverancier> Leverancier { get; }
+        ObjectSet<Pedal> Pedal { get; }
+        ObjectSet<PedalComponent> PedalComponent { get; }
     }
 }

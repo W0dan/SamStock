@@ -20,7 +20,7 @@
             <table>
                 <tr>
                     <th>
-                        Stocknr
+                        ID
                     </th>
                     <td>@Html.TextBox("ComponentTypeFilter")
                     </td>
@@ -34,7 +34,7 @@
                     <th>
                         Supplier
                     </th>
-                    <td>@Html.DropDownList("LeverancierFilter", Model.Leveranciers.ToSelectList(true))
+                    <td id="SupplierFilter">@Html.DropDownList("LeverancierFilter", Model.Leveranciers.ToSelectList(true))
                     </td>
                     <td id="totalStockValue" rowspan="2">€@Model._contentTotalValue.ToString("0.00")</td>
                 </tr>
@@ -52,10 +52,10 @@
     <table>
         <tr>
             <th id="StocknrHeader">
-                Stocknr
+                ID
             </th>
             <th id="NaamHeader">
-                Name
+                Description
             </th>
             <th id="PrijsHeader">
                 Price
@@ -64,7 +64,7 @@
                 Quantity
             </th>
             <th id="MinimumStockHeader">
-                Minimum stock
+                Minimum Stock
             </th>
             <th id="LeverancierHeader">
                 Supplier
@@ -115,11 +115,11 @@
                 </td>
                 <td>@item.Naam
                 </td>
-                <td>@item.Prijs.ToString("0.00")
+                <td class="price">@item.Prijs.ToString("0.00")
                 </td>
-                <td>@item.Hoeveelheid
+                <td class="quantity">@item.Hoeveelheid
                 </td>
-                <td>@item.MinimumStock
+                <td class="minimumStock">@item.MinimumStock
                 </td>
                 <td>@item.LeverancierNaam
                 </td>
