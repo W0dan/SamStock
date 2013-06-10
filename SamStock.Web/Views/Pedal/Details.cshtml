@@ -16,15 +16,14 @@
     <a class="button navigation" href="@Url.Action("Update", "Pedal", new { Model.List[0].Id })">Edit</a> <a class="button navigation" href="@Url.Action("Build", "Pedal", new { Model.List[0].Id })">Build</a>
     @{
         decimal costs = 0;
-        decimal price = Model.List[0].Price;
-        decimal margin = Model.List[0].Margin;
-        decimal baseprice = Model.List[0].Margin + costs;
-        decimal vat = (price - costs) * 21 / 100;
-        decimal profit = Model.List[0].Price - costs - vat;
-
         foreach (var item in Model.List[0].List) {
             costs += item.Price * item.Count;
         }
+        decimal price = Model.List[0].Price;
+        decimal margin = Model.List[0].Margin;
+        decimal baseprice = costs*(margin + 100)/100;
+        decimal vat = (price - costs) * 21 / 100;
+        decimal profit = price - costs - vat;
     }
     <br />
     <br />

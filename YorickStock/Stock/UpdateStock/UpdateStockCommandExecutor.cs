@@ -20,6 +20,12 @@ namespace SamStock.Stock.UpdateStock
 
                 var comp = _context.Component.Single(u => u.Stocknr == su.Stocknr);
 
+                if (comp.Hoeveelheid + su.Amount == 0)
+                {
+                    comp.Hoeveelheid = 0;
+                    continue;
+                }
+
                 var avgPrice = (comp.Hoeveelheid * comp.Prijs + su.Amount * su.Price) / (comp.Hoeveelheid + su.Amount);
                 comp.Prijs = avgPrice;
 
