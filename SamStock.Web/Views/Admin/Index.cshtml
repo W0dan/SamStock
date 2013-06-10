@@ -11,14 +11,13 @@
 }
 @section body
 {
-    <h2>Administration</h2>
-        
-    <div>
-        <div id="left-navigation">
-            <a class="button" href="@Url.Action("Suppliers")">Suppliers</a>
+    <h1>Configuration</h1>
+    @using (Html.BeginForm("Config", "Admin"))
+    {
+        <div>
+            @Html.Label("VAT")
+            <input name="vat" type="text" title="A valid percentage" pattern="[0-9]+[,[0-9]+]{0,1}" />
+            <button>Update</button>
         </div>
-        <div id="right-content">
-            todo: do something with this part of the screen ...
-        </div>
-    </div>
+    }
 }

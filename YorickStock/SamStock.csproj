@@ -64,18 +64,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Beheer\Leveranciers\AddLeverancier\AddLeverancierCommand.cs" />
-    <Compile Include="Beheer\Leveranciers\AddLeverancier\AddLeverancierCommandExecutor.cs" />
-    <Compile Include="Beheer\Leveranciers\AddLeverancier\AddLeverancierHandler.cs" />
-    <Compile Include="Beheer\Leveranciers\AddLeverancier\IAddLeverancierCommandExecutor.cs" />
-    <Compile Include="Beheer\Leveranciers\AddLeverancier\IAddLeverancierHandler.cs" />
-    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersHandler.cs" />
-    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersItem.cs" />
-    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersQueryExecutor.cs" />
-    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersRequest.cs" />
-    <Compile Include="Beheer\Leveranciers\GetLeveranciers\GetLeveranciersResponse.cs" />
-    <Compile Include="Beheer\Leveranciers\GetLeveranciers\IGetLeveranciersHandler.cs" />
-    <Compile Include="Beheer\Leveranciers\GetLeveranciers\IGetLeveranciersQueryExecutor.cs" />
+    <Compile Include="Pedal\AddPedal\AddPedalCommand.cs" />
+    <Compile Include="Pedal\AddPedal\AddPedalHandler.cs" />
+    <Compile Include="Pedal\AddPedal\AddPedalCommandExecutor.cs" />
+    <Compile Include="Pedal\AddPedal\IAddPedalHandler.cs" />
+    <Compile Include="Pedal\AddPedal\IAddPedalCommandExecutor.cs" />
+    <Compile Include="Pedal\UpdatePedalComponents\IUpdatePedalComponentsCommandExecutor.cs" />
+    <Compile Include="Pedal\UpdatePedalComponents\IUpdatePedalComponentsHandler.cs" />
+    <Compile Include="Pedal\UpdatePedalComponents\UpdatePedalComponentsCommand.cs" />
+    <Compile Include="Pedal\UpdatePedalComponents\UpdatePedalComponentsCommandExecutor.cs" />
+    <Compile Include="Pedal\UpdatePedalComponents\UpdatePedalComponentsHandler.cs" />
+    <Compile Include="Pedal\UpdatePedal\IUpdatePedalCommandExecutor.cs" />
+    <Compile Include="Pedal\UpdatePedal\IUpdatePedalHandler.cs" />
+    <Compile Include="Pedal\UpdatePedal\UpdatePedalHandler.cs" />
+    <Compile Include="Pedal\UpdatePedal\UpdatePedalCommandExecutor.cs" />
+    <Compile Include="Supplier\AddSupplier\AddSupplierCommand.cs" />
+    <Compile Include="Supplier\AddSupplier\AddSupplierCommandExecutor.cs" />
+    <Compile Include="Supplier\AddSupplier\AddSupplierHandler.cs" />
+    <Compile Include="Supplier\AddSupplier\IAddSupplierCommandExecutor.cs" />
+    <Compile Include="Supplier\AddSupplier\IAddSupplierHandler.cs" />
+    <Compile Include="Supplier\GetSuppliers\GetSuppliersHandler.cs" />
+    <Compile Include="Supplier\GetSuppliers\GetSuppliersItem.cs" />
+    <Compile Include="Supplier\GetSuppliers\GetSuppliersQueryExecutor.cs" />
+    <Compile Include="Supplier\GetSuppliers\GetSuppliersRequest.cs" />
+    <Compile Include="Supplier\GetSuppliers\GetSuppliersResponse.cs" />
+    <Compile Include="Supplier\GetSuppliers\IGetSuppliersHandler.cs" />
+    <Compile Include="Supplier\GetSuppliers\IGetSuppliersQueryExecutor.cs" />
     <Compile Include="Database\IContext.cs" />
     <Compile Include="Database\Stock.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -153,7 +167,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Beheer\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

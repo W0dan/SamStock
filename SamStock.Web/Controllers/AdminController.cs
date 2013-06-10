@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
-using SamStock.Beheer.Leveranciers.AddLeverancier;
-using SamStock.Beheer.Leveranciers.GetLeveranciers;
+using SamStock.Supplier.AddSupplier;
+using SamStock.Supplier.GetSuppliers;
 using SamStock.Utilities;
 using SamStock.Web.Models;
 
@@ -22,17 +22,23 @@ namespace SamStock.Web.Controllers
 
         public ViewResult Suppliers()
         {
-            var result = _dispatcher.DispatchRequest<GetLeveranciersRequest, GetLeveranciersResponse>(new GetLeveranciersRequest());
+            var result = _dispatcher.DispatchRequest<GetSuppliersRequest, GetSuppliersResponse>(new GetSuppliersRequest());
 
-            var viewmodel = new LeveranciersViewModel(result);
+            var viewmodel = new SuppliersViewModel(result);
 
             return View(viewmodel);
         }
 
-        [HttpPost]
-        public ActionResult AddLeverancier(LeverancierViewModelNewItem viewModel)
+        [HttpGet]
+        public ActionResult Config(int VAT)
         {
-            _dispatcher.DispatchCommand(new AddLeverancierCommand(viewModel.Name, viewModel.Address, viewModel.Website));
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult AddLeverancier(SupplierViewModelNewItem viewModel)
+        {
+            _dispatcher.DispatchCommand(new AddSupplierCommand(viewModel.Name, viewModel.Address, viewModel.Website));
             return RedirectToAction("Suppliers");
         }
     }

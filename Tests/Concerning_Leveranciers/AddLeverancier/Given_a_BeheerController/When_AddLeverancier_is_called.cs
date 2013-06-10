@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
-using SamStock.Beheer.Leveranciers.AddLeverancier;
+using SamStock.Supplier.AddSupplier;
 using SamStock.Utilities;
 using SamStock.Web.Models;
 
@@ -10,25 +10,25 @@ namespace Tests.Concerning_Leveranciers.AddLeverancier.Given_a_BeheerController
     [TestFixture]
     public class When_AddLeverancier_is_called : BeheerControllerBaseTest
     {
-        private Mock<IAddLeverancierHandler> _handler;
+        private Mock<IAddSupplierHandler> _handler;
         private string _address;
         private string _website;
-        private LeverancierViewModelNewItem _viewModel;
+        private SupplierViewModelNewItem _viewModel;
         private ActionResult _result;
 
 
         public override void Arrange()
         {
-            _viewModel = new LeverancierViewModelNewItem();
+            _viewModel = new SupplierViewModelNewItem();
 
             _address = "nieuw leverancieradres";
             _website = "nieuwe leverancierWebsite";
 
             _viewModel.Name = "nieuwe leverancier";
 
-            _handler = new Mock<IAddLeverancierHandler>();
+            _handler = new Mock<IAddSupplierHandler>();
             Container
-                .Setup(x => x.Resolve<ICommandHandler<AddLeverancierCommand>>())
+                .Setup(x => x.Resolve<ICommandHandler<AddSupplierCommand>>())
                 .Returns(_handler.Object);
         }
 
@@ -40,25 +40,25 @@ namespace Tests.Concerning_Leveranciers.AddLeverancier.Given_a_BeheerController
         [Test]
         public void It_should_call_Handle_on_the_AddLeverancierHandler()
         {
-            _handler.Verify(h => h.Handle(It.IsAny<AddLeverancierCommand>()));
+            _handler.Verify(h => h.Handle(It.IsAny<AddSupplierCommand>()));
         }
 
         [Test]
         public void It_should_call_it_with_the_correct_Name()
         {
-            _handler.Verify(h => h.Handle(It.Is<AddLeverancierCommand>(c => c.Name == _viewModel.Name)));
+            _handler.Verify(h => h.Handle(It.Is<AddSupplierCommand>(c => c.Name == _viewModel.Name)));
         }
 
         [Test]
         public void It_should_call_it_with_the_correct_Address()
         {
-            _handler.Verify(h => h.Handle(It.Is<AddLeverancierCommand>(c => c.Address == _viewModel.Address)));
+            _handler.Verify(h => h.Handle(It.Is<AddSupplierCommand>(c => c.Address == _viewModel.Address)));
         }
 
         [Test]
         public void It_should_call_it_with_the_correct_Website()
         {
-            _handler.Verify(h => h.Handle(It.Is<AddLeverancierCommand>(c => c.Website == _viewModel.Website)));
+            _handler.Verify(h => h.Handle(It.Is<AddSupplierCommand>(c => c.Website == _viewModel.Website)));
         }
 
         [Test]

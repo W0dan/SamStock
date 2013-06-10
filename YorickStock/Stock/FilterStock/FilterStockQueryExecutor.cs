@@ -27,7 +27,8 @@ namespace SamStock.Stock.FilterStock {
                 Hoeveelheid = x.Hoeveelheid,
                 MinimumStock = x.MinimumStock,
                 Opmerkingen = x.Opmerkingen,
-                LeverancierNaam = x.Leverancier.Naam
+                LeverancierNaam = x.Leverancier.Naam,
+                Id = x.Id
             }).ToList();
 
             return new FilterStockResponse { List = result };

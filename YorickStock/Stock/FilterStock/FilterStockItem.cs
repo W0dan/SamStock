@@ -18,5 +18,7 @@ namespace SamStock.Stock.FilterStock {
         public string Opmerkingen { get; set; }
 
         public string LeverancierNaam { get; set; }
+
+        public int Id { get; set; }
     }
 }

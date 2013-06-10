@@ -1,0 +1,51 @@
+﻿@model dynamic
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="../../Content/styles/PedalUpdateComponents.css" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    <h1>Edit Components</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Number</th>
+                <th></th>
+            </tr>
+            <tr>
+                @using (Html.BeginForm("UpdateComponents", "Pedal"))
+                {
+                    @Html.Hidden("id",(int)Model.Id)
+                    <td>
+                        <input name="stocknr" type="text" title="A letter followed by at least 1 more character, no spaces" pattern="[[a-z|A-Z]+.+]*" />
+                    </td>
+                    <td></td>
+                    <td>
+                        <input name="quantity" type="text" title="A valid quantity" pattern="[\-]{0,1}[0-9]+" />
+                    </td>
+                    <td>
+                        <button>Add</button>
+                    </td>
+                }
+            </tr>
+            @foreach (var item in Model.List) {
+                <tr>
+                    <td class="description">@item.Stocknr</td>
+                    <td class="description">@item.Description</td>
+                    <td class="detail">@item.Count</td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a class="button navigation" href="@Url.Action("Details","Pedal",new {Model.Id})">Back</a>

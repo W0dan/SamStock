@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using SamStock.Beheer.Leveranciers.AddLeverancier;
+using SamStock.Supplier.AddSupplier;
 
 namespace Tests.Concerning_Leveranciers.AddLeverancier.Given_an_AddleverancierCommandExecutor
 {
@@ -10,8 +10,8 @@ namespace Tests.Concerning_Leveranciers.AddLeverancier.Given_an_AddleverancierCo
         private string _name;
         private string _address;
         private string _website;
-        private AddLeverancierCommandExecutor _sut;
-        private AddLeverancierCommand _command;
+        private AddSupplierCommandExecutor _sut;
+        private AddSupplierCommand _command;
 
 
         public override void Arrange()
@@ -19,8 +19,8 @@ namespace Tests.Concerning_Leveranciers.AddLeverancier.Given_an_AddleverancierCo
             _name = "jos";
             _address = "straat";
             _website = "bla.be";
-            _command = new AddLeverancierCommand(_name, _address, _website);
-            _sut = new AddLeverancierCommandExecutor(Context);
+            _command = new AddSupplierCommand(_name, _address, _website);
+            _sut = new AddSupplierCommandExecutor(Context);
         }
 
         public override void Act()

@@ -76,24 +76,65 @@ textarea
 
 /* custom */
 
-button {
-    background-color: black;
-    color: white;
-    font-weight: bold;
-}
-
-a.button {
-    background-color: black;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 1em;
-}
-
-table tbody tr th
+.button, th
 {
     background-color: Black;
     color: White;
-    padding: 1em;
+    padding: 0.1em 0.5em 0.1em 0.5em;
+}
+
+td
+{
+    padding: 0em 0.4em 0 0.4em;
+}
+
+a.button
+{
+    text-decoration: none;
+}
+
+td
+{
+    border: 1px solid #dddddd;
+}
+
+th 
+{
+    border: 1px solid #cccccc;
+}
+
+tr:nth-child(odd) 
+{
+    background-color: #eeeeee;
+}
+
+table
+{
+    border-collapse: collapse;
+    border: 1px solid #cccccc;
+}
+
+.navigation
+{
+    font-size: larger;
+    border: 2px outset gray;
+    color: Yellow;
+    font-weight: bolder;
+    padding: 0.2em 0.6em 0.2em 0.6em;
+}
+
+.listProperty
+{
+    text-align: right;
+    font-family: Monospace;
+}
+
+.description
+{
+    text-align: left;
+}
+
+.detail
+{
+    text-align: center;
 }

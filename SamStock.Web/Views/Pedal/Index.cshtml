@@ -12,11 +12,15 @@
 }
 @section body
 {
-    @foreach(var item in Model.List)
-    {
-        <span class="pedalLink">@Html.ActionLink((String)item.Name, "Details", new { item.Id })</span>
-    }
+    <h1>Pedals</h1>
+    <div id="pedalList">
+        @foreach(var item in Model.List)
+        {
+            <div class="pedal">
+                <a href="@Url.Action("Details", "Pedal", new {item.Id})">@item.Name</a>
+            </div>
+        }
+    </div>
     <br />
-    <br />
-    <span id="create">@Html.ActionLink("Pedal", "Create")</span>
+    <a class="button navigation" href="@Url.Action("Create", "Pedal")">Create</a>
 }

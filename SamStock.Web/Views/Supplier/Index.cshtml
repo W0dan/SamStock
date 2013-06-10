@@ -1,0 +1,61 @@
+﻿@model SamStock.Web.Models.SuppliersViewModel
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="../../Content/styles/Stock.css" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    <h2>
+        Suppliers</h2>
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Site
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.List)
+        {
+            <tr>
+                <td>@item.Naam
+                </td>
+                <td>@item.Adres
+                </td>
+                <td>@item.Website
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+        <tr>
+            @using (Html.BeginForm("AddLeverancier", "Admin"))
+            {
+                <td>
+                    @Html.TextBox("Name")
+                </td>
+                <td>
+                    @Html.TextBox("Address")
+                </td>
+                <td>
+                    @Html.TextBox("Website")
+                </td>
+                <td>
+                    <button>Add</button>
+                </td>
+            }
+        </tr>
+    </table>
+}

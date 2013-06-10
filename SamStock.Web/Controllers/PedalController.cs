@@ -7,6 +7,10 @@ using SamStock.Utilities;
 using SamStock.Web.Models;
 using SamStock.Pedal.UpdatePedal;
 using SamStock.Pedal.FilterPedal;
+using SamStock.Stock.UpdateStock;
+using SamStock.Pedal.AddPedal;
+using SamStock.Pedal.UpdatePedalComponents;
+using SamStock.Stock.FilterStock;
 
 namespace SamStock.Web.Controllers
 {
@@ -37,22 +41,66 @@ namespace SamStock.Web.Controllers
         }
 
         [HttpGet]
-        public ViewResult Edit(int id)
+        public ViewResult Update(int id)
         {
-            return View();   
+            var pedal = _dispatcher.DispatchRequest<FilterPedalRequest,FilterPedalResponse>(new FilterPedalRequest(id));
+            PedalUpdateViewModel view = new PedalUpdateViewModel(pedal.List[0].Id,pedal.List[0].Name,pedal.List[0].Price,pedal.List[0].Margin);
+            return View(view);   
         }
 
         [HttpPost]
-        public ActionResult Update(String name, int id, decimal price, decimal margin, String componentStocknr, int componentCount)
+        public RedirectToRouteResult Update(int id, String name, decimal price, decimal margin)
         {
-            // _dispatcher.DispatchCommand<UpdatePedalCommand>(new UpdatePedalCommand(id,name,price,margin,componentStocknr,componentCount));
-            return RedirectToAction("Edit",id);
+            _dispatcher.DispatchCommand<UpdatePedalCommand>(new UpdatePedalCommand(id, name, price, margin));
+            return RedirectToAction("Update",new {id});
+        }
+
+        [HttpGet]
+        public ViewResult UpdateComponents(int id)
+        {
+            var pedal = _dispatcher.DispatchRequest<FilterPedalRequest,FilterPedalResponse>(new FilterPedalRequest(id));
+            // var stock = _dispatcher.DispatchRequest<FilterStockRequest,FilterStockResponse>(new FilterStockRequest()).List;
+            PedalUpdateComponentsViewModel view = new PedalUpdateComponentsViewModel(id,pedal.List[0].List/*,stock*/);
+            return View(view);
+        }
+
+        [HttpPost]
+        public RedirectToRouteResult UpdateComponents(int id, String stocknr, int quantity)
+        {
+            var stockitem = _dispatcher.DispatchRequest<FilterStockRequest,FilterStockResponse>(new FilterStockRequest(stocknr,0,false));
+            if (stockitem.List.Count == 1)
+            {
+                _dispatcher.DispatchCommand<UpdatePedalComponentsCommand>(new UpdatePedalComponentsCommand(id, stockitem.List[0].Id, quantity));
+            } 
+            return RedirectToAction("UpdateComponents",new {id});
+        }
+
+        [HttpGet]
+        public RedirectToRouteResult Build(int id)
+        {
+            var pedal = _dispatcher.DispatchRequest<FilterPedalRequest,FilterPedalResponse>(new FilterPedalRequest(id));
+            List<StockUpdate> list = new List<StockUpdate>();
+            foreach (FilterPedalResponseComponent comp in pedal.List[0].List)
+            {
+                list.Add(new StockUpdate(comp.Stocknr,comp.Count*-1,comp.Price));
+            }
+            UpdateStockCommand cmd = new UpdateStockCommand();
+            cmd.List = list;
+            _dispatcher.DispatchCommand<UpdateStockCommand>(cmd);
+            return RedirectToAction("Details",new { id });
         }
 
         [HttpGet]
         public ViewResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public RedirectToRouteResult Create(String name, decimal price, decimal margin)
+        {
+            _dispatcher.DispatchCommand<AddPedalCommand>(new AddPedalCommand(name, price, margin));
+            return RedirectToAction("Index");
         }
     }
 }

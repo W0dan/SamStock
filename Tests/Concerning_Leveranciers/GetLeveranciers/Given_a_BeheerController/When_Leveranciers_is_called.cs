@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
-using SamStock.Beheer.Leveranciers.GetLeveranciers;
+using SamStock.Supplier.GetSuppliers;
 using SamStock.Utilities;
 using SamStock.Web.Controllers;
 using SamStock.Web.Models;
@@ -13,34 +13,34 @@ namespace Tests.Concerning_Leveranciers.GetLeveranciers.Given_a_BeheerController
     [TestFixture]
     public class When_Leveranciers_is_called : BeheerControllerBaseTest
     {
-        private GetLeveranciersResponse _response;
+        private GetSuppliersResponse _response;
         private ViewResult _result;
-        private LeveranciersViewModel _viewModel;
-        private Mock<IGetLeveranciersHandler> _getLeveranciersHandler;
+        private SuppliersViewModel _viewModel;
+        private Mock<IGetSuppliersHandler> _getLeveranciersHandler;
 
         public override void Arrange()
         {
-            _response = new GetLeveranciersResponse();
+            _response = new GetSuppliersResponse();
 
-            _response.List = new List<GetLeveranciersItem>();
+            _response.List = new List<GetSuppliersItem>();
 
-            _response.List.Add(new GetLeveranciersItem("dummy naam", "dummy adres", "dummy website"));
-            _response.List.Add(new GetLeveranciersItem("dummy naam1", "dummy adres1", "dummy website2"));
+            _response.List.Add(new GetSuppliersItem("dummy naam", "dummy adres", "dummy website"));
+            _response.List.Add(new GetSuppliersItem("dummy naam1", "dummy adres1", "dummy website2"));
 
-            _getLeveranciersHandler = new Mock<IGetLeveranciersHandler>();
+            _getLeveranciersHandler = new Mock<IGetSuppliersHandler>();
             _getLeveranciersHandler
-                .Setup(x => x.Handle(It.IsAny<GetLeveranciersRequest>()))
+                .Setup(x => x.Handle(It.IsAny<GetSuppliersRequest>()))
                 .Returns(_response);
 
             Container
-                .Setup(x => x.Resolve<IQueryHandler<GetLeveranciersRequest, GetLeveranciersResponse>>())
+                .Setup(x => x.Resolve<IQueryHandler<GetSuppliersRequest, GetSuppliersResponse>>())
                 .Returns(_getLeveranciersHandler.Object);
         }
 
         public override void Act()
         {
             _result = Sut.Suppliers();
-            _viewModel = (LeveranciersViewModel)_result.Model;
+            _viewModel = (SuppliersViewModel)_result.Model;
         }
 
         [Test]

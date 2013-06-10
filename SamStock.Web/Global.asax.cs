@@ -26,7 +26,7 @@ namespace SamStock.Web
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Admin", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }

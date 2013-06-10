@@ -13,8 +13,8 @@
 }
 @section body
 {
-    <h2>Stock</h2>
-    <div id="stockfilterfields">
+    <h1>Stock</h1>
+    <div>
         @using (Html.BeginForm("Search", "Stock"))
         {
             <table>
@@ -22,11 +22,11 @@
                     <th>
                         ID
                     </th>
-                    <td>@Html.TextBox("ComponentTypeFilter")
+                    <td>
+                        <input name="ComponentTypeFilter" type="text" title="A letter followed by at least 1 more character, no spaces" pattern="[[a-z|A-Z]+.+]*" />
                     </td>
                     <td rowspan="3">
-                        <button>
-                            Go</button>
+                        <button>Go</button>
                     </td>
                     <th>Total Stock Value</th>
                 </tr>
@@ -34,13 +34,13 @@
                     <th>
                         Supplier
                     </th>
-                    <td id="SupplierFilter">@Html.DropDownList("LeverancierFilter", Model.Leveranciers.ToSelectList(true))
+                    <td>@Html.DropDownList("LeverancierFilter", Model.Leveranciers.ToSelectList(true))
                     </td>
-                    <td id="totalStockValue" rowspan="2">€@Model._contentTotalValue.ToString("0.00")</td>
+                    <td rowspan="2">€@Model._contentTotalValue.ToString("0.00")</td>
                 </tr>
                 <tr>
                     <th>
-                        Manco only
+                        Shortage
                     </th>
                     <td>@Html.CheckBox("MancoFilter")
                     </td>
@@ -51,28 +51,28 @@
     <br />
     <table>
         <tr>
-            <th id="StocknrHeader">
+            <th>
                 ID
             </th>
-            <th id="NaamHeader">
+            <th>
                 Description
             </th>
-            <th id="PrijsHeader">
+            <th>
                 Price
             </th>
-            <th id="HoeveelheidHeader">
+            <th>
                 Quantity
             </th>
-            <th id="MinimumStockHeader">
+            <th>
                 Minimum Stock
             </th>
-            <th id="LeverancierHeader">
+            <th>
                 Supplier
             </th>
-            <th id="OpmerkingenHeader">
+            <th>
                 Remarks
             </th>
-            <th id="Toevoegenheader">
+            <th>
             </th>
         </tr>
         <tr>
@@ -100,8 +100,7 @@
                     @Html.TextBox("Opmerkingen")
                 </td>
                 <td>
-                    <button id="toevoegenButton">
-                        Add component</button>
+                    <button>Add Component</button>
                 </td>
             }
         </tr>
@@ -115,17 +114,17 @@
                 </td>
                 <td>@item.Naam
                 </td>
-                <td class="price">@item.Prijs.ToString("0.00")
+                <td>@item.Prijs.ToString("0.00")
                 </td>
-                <td class="quantity">@item.Hoeveelheid
+                <td>@item.Hoeveelheid
                 </td>
-                <td class="minimumStock">@item.MinimumStock
+                <td>@item.MinimumStock
                 </td>
                 <td>@item.LeverancierNaam
                 </td>
                 <td>@item.Opmerkingen
                 </td>
-                <td class="update-stock">
+                <td>
                     @Html.HiddenFor(x => x.List[i].Stocknr)
                     @Html.TextBoxFor(x => x.List[i].Prijs)
                     <input type="number" value="0" name="@("List[" + i.ToString("0") + "].Amount")"/>
@@ -148,8 +147,7 @@
                 <td>
                 </td>
                 <td>
-                    <button id="updateButton">
-                        Update stock</button>
+                    <button>Update stock</button>
                 </td>
             </tr>
         }

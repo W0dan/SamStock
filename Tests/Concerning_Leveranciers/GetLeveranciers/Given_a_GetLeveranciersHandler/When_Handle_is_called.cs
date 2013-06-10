@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using SamStock.Beheer.Leveranciers.GetLeveranciers;
+using SamStock.Supplier.GetSuppliers;
 using Moq;
 
 namespace Tests.Concerning_Leveranciers.GetLeveranciers.Given_a_GetLeveranciersHandler
@@ -7,22 +7,22 @@ namespace Tests.Concerning_Leveranciers.GetLeveranciers.Given_a_GetLeveranciersH
     [TestFixture]
     public class When_Handle_is_called : BaseTest
     {
-        private IGetLeveranciersHandler _sut;
-        private GetLeveranciersRequest _request;
-        private GetLeveranciersResponse _result;
-        private Mock<IGetLeveranciersQueryExecutor> _queryExecutorMock;
-        private GetLeveranciersResponse _expectedResponse;
+        private IGetSuppliersHandler _sut;
+        private GetSuppliersRequest _request;
+        private GetSuppliersResponse _result;
+        private Mock<IGetSuppliersQueryExecutor> _queryExecutorMock;
+        private GetSuppliersResponse _expectedResponse;
 
         public override void Arrange()
         {
-            _request=new GetLeveranciersRequest();
-            _queryExecutorMock = new Mock<IGetLeveranciersQueryExecutor>();
-            _expectedResponse = new GetLeveranciersResponse();
+            _request=new GetSuppliersRequest();
+            _queryExecutorMock = new Mock<IGetSuppliersQueryExecutor>();
+            _expectedResponse = new GetSuppliersResponse();
             _queryExecutorMock
-                .Setup(x => x.Execute(It.IsAny<GetLeveranciersRequest>()))
+                .Setup(x => x.Execute(It.IsAny<GetSuppliersRequest>()))
                 .Returns(_expectedResponse);
 
-            _sut = new GetLeveranciersHandler(_queryExecutorMock.Object);
+            _sut = new GetSuppliersHandler(_queryExecutorMock.Object);
         }
 
         public override void Act()

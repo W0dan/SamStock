@@ -1,0 +1,29 @@
+﻿@model dynamic
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="../../Content/styles/PedalCreate.css" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    <h1>Create</h1>
+    @using (Html.BeginForm("Create", "Pedal"))
+    {
+        @Html.Label("Name")
+        <input name="name" type="text" title="At least 1 character" pattern=".+" />
+        <br />
+        @Html.Label("Price")
+        <input name="price" type="text" title="A valid price" pattern="[0-9]+[,[0-9]+]{0,1}" />
+        <br />
+        @Html.Label("Margin")
+        <input name="margin" type="text" title="A valid price" pattern="[0-9]+[,[0-9]+]{0,1}" />
+        <br />
+        <button>Create</button>
+    }       
+}

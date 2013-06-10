@@ -7,6 +7,8 @@ namespace SamStock.Web.Models
     public class StockViewModel
     {
         public readonly decimal _contentTotalValue = 0.00M;
+        public List<StockViewModelItem> List { get; private set; }
+        public List<StockViewModelLeverancier> Leveranciers { get; private set; }
 
         public StockViewModel()
         {
@@ -44,9 +46,5 @@ namespace SamStock.Web.Models
 
             _contentTotalValue = totalStockValue;
         }
-
-        public List<StockViewModelItem> List { get; private set; }
-
-        public List<StockViewModelLeverancier> Leveranciers { get; private set; }
     }
 }

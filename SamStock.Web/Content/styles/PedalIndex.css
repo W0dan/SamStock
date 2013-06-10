@@ -1,29 +1,22 @@
-﻿.pedalLink 
+﻿#pedalList
 {
+    overflow: auto;
+}
+
+.pedal
+{
+    float: left;
     background-color: Black;
-    margin: 2p;
-    text-align: center;
-    border-radius: 1em;
+    margin: 0.5em;
+    border-radius: 0.3em;
 }
 
-.pedalLink a 
+.pedal a
 {
-    color: White;
-    margin: 1em;
     text-decoration: none;
-}
-
-#create 
-{
-    background-color: Blue;
-    margin: 2px;
-    text-align: center;
-    border-radius: 1em;
-}
-
-#create a
-{
     color: White;
-    margin: 1em;
-    text-decoration: none;
+    font-size: larger;
+    font-weight: bolder;
+    display: block;
+    padding: 0.5em;
 }
