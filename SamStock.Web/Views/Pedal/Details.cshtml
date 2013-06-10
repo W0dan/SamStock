@@ -4,7 +4,7 @@
 }
 @section head
 {
-    <link href="../../Content/styles/PedalDetails.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/styles/PedalDetails.css")" rel="stylesheet" type="text/css" />
 }
 @section navigation
 {
@@ -37,8 +37,8 @@
             </tr>
             <tr class="info">
                 <th>Margin</th>
-                <td class="listProperty">€@margin.ToString("0.00")</td>
-                <td class="listProperty">@((margin * 100 / price).ToString("0.00"))%</td>
+                <td class="listProperty">€@((margin/100*costs).ToString("0.00"))</td>
+                <td class="listProperty">@(((margin/100*costs) * 100 / price).ToString("0.00"))%</td>
             </tr>
             <tr class="info">
                 <th>Minimum Price</th>

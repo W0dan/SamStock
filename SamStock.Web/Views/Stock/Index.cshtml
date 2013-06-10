@@ -23,7 +23,7 @@
                         ID
                     </th>
                     <td>
-                        <input name="ComponentTypeFilter" type="text" title="A letter followed by at least 1 more character, no spaces" pattern="[[a-z|A-Z]+.+]*" />
+                        <input name="ComponentTypeFilter" type="text" title="A letter followed by at least 1 more character, no spaces" pattern="[[a-z|A-Z]+]*" />
                     </td>
                     <td rowspan="3">
                         <button>Go</button>
@@ -110,19 +110,19 @@
             {
                 var item = Model.List[i];
             <tr>
-                <td>@item.Stocknr
+                <td class="description">@item.Stocknr
                 </td>
-                <td>@item.Naam
+                <td class="description">@item.Naam
                 </td>
-                <td>@item.Prijs.ToString("0.00")
+                <td class="detail">@item.Prijs.ToString("0.00")
                 </td>
-                <td>@item.Hoeveelheid
+                <td class="detail">@item.Hoeveelheid
                 </td>
-                <td>@item.MinimumStock
+                <td class="detail">@item.MinimumStock
                 </td>
-                <td>@item.LeverancierNaam
+                <td class="description">@item.LeverancierNaam
                 </td>
-                <td>@item.Opmerkingen
+                <td class="description">@item.Opmerkingen
                 </td>
                 <td>
                     @Html.HiddenFor(x => x.List[i].Stocknr)

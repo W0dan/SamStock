@@ -15,7 +15,7 @@ namespace SamStock.Stock.FilterStock {
             if (request.LeverancierID > 0)
                 query = query.Where(component => component.LeverancierId == request.LeverancierID);
             if (!string.IsNullOrEmpty(request.StockNr))
-                query = query.Where(component => component.Stocknr.StartsWith(request.StockNr));
+                query = query.Where(component => component.Stocknr.ToLower().StartsWith(request.StockNr.ToLower()));
             if (request.Manco == true)
                 query = query.Where(component => component.Hoeveelheid < component.MinimumStock);
 

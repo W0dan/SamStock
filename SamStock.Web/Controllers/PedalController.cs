@@ -68,10 +68,10 @@ namespace SamStock.Web.Controllers
         public RedirectToRouteResult UpdateComponents(int id, String stocknr, int quantity)
         {
             var stockitem = _dispatcher.DispatchRequest<FilterStockRequest,FilterStockResponse>(new FilterStockRequest(stocknr,0,false));
-            if (stockitem.List.Count == 1)
+            if (stockitem.List.Count > 0)
             {
                 _dispatcher.DispatchCommand<UpdatePedalComponentsCommand>(new UpdatePedalComponentsCommand(id, stockitem.List[0].Id, quantity));
-            } 
+            }
             return RedirectToAction("UpdateComponents",new {id});
         }
 
