@@ -1,0 +1,20 @@
+﻿@using SamStock.Web._Util
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="@Url.Content("~/Content/styles/Stock/SearchByStocknr.css")" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    <h1>Search Component</h1>
+    @using (Html.BeginForm("SearchByStocknr","Stock")) {
+        @Html.TextBox("Stocknr")
+        <button>Go</button>
+    }
+}

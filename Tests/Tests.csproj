@@ -54,12 +54,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
-    <Compile Include="Concerning_Leveranciers\AddLeverancier\Given_an_AddleverancierCommandExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Leveranciers\AddLeverancier\Given_an_AddLeverancierHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Leveranciers\AddLeverancier\Given_a_BeheerController\When_AddLeverancier_is_called.cs" />
-    <Compile Include="Concerning_Leveranciers\BeheerControllerBaseTest.cs" />
-    <Compile Include="Concerning_Leveranciers\GetLeveranciers\Given_a_BeheerController\When_Leveranciers_is_called.cs" />
-    <Compile Include="Concerning_Leveranciers\GetLeveranciers\Given_a_GetLeveranciersHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Build_is_called.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Details_is_called.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_UpdateComponents_is_called.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_UpdateComponents_is_called_with_arguments.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Update_is_Called.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Update_is_called_with_arguments.cs" />
+    <Compile Include="Concerning_Suppliers\AddSupplier\Given_an_AddSupplierCommandExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Suppliers\AddSupplier\Given_an_AddSupplierHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Suppliers\AddSupplier\Given_a_SupplierController\When_AddSupplier_is_called.cs" />
+    <Compile Include="Concerning_Suppliers\SupplierControllerBaseTest.cs" />
+    <Compile Include="Concerning_Suppliers\GetSuppliers\Given_a_SupplierController\When_Suppliers_is_called.cs" />
+    <Compile Include="Concerning_Suppliers\GetSuppliers\Given_a_GetSuppliersHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Pedal\AddPedal\Given_an_AddPedalCommandExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Pedal\AddPedal\Given_an_AddPedalHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Pedal\AddPedal\Given_a_PedalController\When_Create_is_called.cs" />
@@ -73,13 +79,13 @@
     <Compile Include="Concerning_Pedal\UpdatePedal\Given_an_UpdatePedalCommandExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Pedal\UpdatePedal\Given_an_UpdatePedalHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Pedal\UpdatePedal\Given_a_PedalController\When_Update_is_called.cs" />
-    <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_ComponentToevoegenQueryExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Stock\AddComponent\Given_an_AddComponentHandler\When_Handle_is_called.cs" />
+    <Compile Include="Concerning_Stock\AddComponent\Given_an_AddComponentQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\FilterStock\Given_a_StockController\When_Index_is_called.cs" />
     <Compile Include="Concerning_Stock\StockControllerBaseTest.cs" />
-    <Compile Include="Concerning_Stock\ComponentToevoegen\Given_a_StockController\When_ComponentToevoegen_is_called.cs" />
+    <Compile Include="Concerning_Stock\AddComponent\Given_a_StockController\When_AddComponent_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\UpdateStock\Given_an_UpdateStockCommandExecutor\When_Execute_is_called.cs" />

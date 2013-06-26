@@ -1,10 +1,10 @@
-﻿@model SamStock.Web.Models.SuppliersViewModel
+﻿@model SamStock.Web.Models.Supplier.SuppliersViewModel
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
 @section head
 {
-    <link href="../../Content/styles/Stock.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/styles/Supplier/Index.css")" rel="stylesheet" type="text/css" />
 }
 @section navigation
 {
@@ -23,16 +23,16 @@
                 Address
             </th>
             <th>
-                Site
+                Website
             </th>
             <th></th>
         </tr>
         @foreach (var item in Model.List)
         {
             <tr>
-                <td>@item.Naam
+                <td>@item.Name
                 </td>
-                <td>@item.Adres
+                <td>@item.Address
                 </td>
                 <td>@item.Website
                 </td>
@@ -41,7 +41,7 @@
             </tr>
         }
         <tr>
-            @using (Html.BeginForm("AddLeverancier", "Admin"))
+            @using (Html.BeginForm("AddSupplier", "Supplier"))
             {
                 <td>
                     @Html.TextBox("Name")

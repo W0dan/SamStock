@@ -64,6 +64,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\GetAdminData\GetAdminDataHandler.cs" />
+    <Compile Include="Admin\GetAdminData\GetAdminDataQueryExecutor.cs" />
+    <Compile Include="Admin\GetAdminData\GetAdminDataRequest.cs" />
+    <Compile Include="Admin\GetAdminData\GetAdminDataResponse.cs" />
+    <Compile Include="Admin\GetAdminData\IGetAdminDataHandler.cs" />
+    <Compile Include="Admin\GetAdminData\IGetAdminDataQueryExecutor.cs" />
+    <Compile Include="Admin\SetAdminData\ISetAdminDataCommandExecutor.cs" />
+    <Compile Include="Admin\SetAdminData\ISetAdminDataHandler.cs" />
+    <Compile Include="Admin\SetAdminData\SetAdminDataCommand.cs" />
+    <Compile Include="Admin\SetAdminData\SetAdminDataCommandExecutor.cs" />
+    <Compile Include="Admin\SetAdminData\SetAdminDataHandler.cs" />
     <Compile Include="Pedal\AddPedal\AddPedalCommand.cs" />
     <Compile Include="Pedal\AddPedal\AddPedalHandler.cs" />
     <Compile Include="Pedal\AddPedal\AddPedalCommandExecutor.cs" />
@@ -78,6 +89,11 @@
     <Compile Include="Pedal\UpdatePedal\IUpdatePedalHandler.cs" />
     <Compile Include="Pedal\UpdatePedal\UpdatePedalHandler.cs" />
     <Compile Include="Pedal\UpdatePedal\UpdatePedalCommandExecutor.cs" />
+    <Compile Include="Stock\ModifyStock\IModifyStockCommandExecutor.cs" />
+    <Compile Include="Stock\ModifyStock\IModifyStockHandler.cs" />
+    <Compile Include="Stock\ModifyStock\ModifyStockCommand.cs" />
+    <Compile Include="Stock\ModifyStock\ModifyStockCommandExecutor.cs" />
+    <Compile Include="Stock\ModifyStock\ModifyStockHandler.cs" />
     <Compile Include="Supplier\AddSupplier\AddSupplierCommand.cs" />
     <Compile Include="Supplier\AddSupplier\AddSupplierCommandExecutor.cs" />
     <Compile Include="Supplier\AddSupplier\AddSupplierHandler.cs" />
@@ -106,11 +122,11 @@
     <Compile Include="Pedal\FilterPedal\IFilterPedalHandler.cs" />
     <Compile Include="Pedal\FilterPedal\IFilterPedalQueryExecutor.cs" />
     <Compile Include="Pedal\UpdatePedal\UpdatePedalCommand.cs" />
-    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenCommand.cs" />
-    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenCommandExecutor.cs" />
-    <Compile Include="Stock\ComponentToevoegen\ComponentToevoegenHandler.cs" />
-    <Compile Include="Stock\ComponentToevoegen\IComponentToevoegenCommandExecutor.cs" />
-    <Compile Include="Stock\ComponentToevoegen\IComponentToevoegenHandler.cs" />
+    <Compile Include="Stock\AddComponent\AddComponentCommand.cs" />
+    <Compile Include="Stock\AddComponent\AddComponentCommandExecutor.cs" />
+    <Compile Include="Stock\AddComponent\AddComponentHandler.cs" />
+    <Compile Include="Stock\AddComponent\IAddComponentCommandExecutor.cs" />
+    <Compile Include="Stock\AddComponent\IAddComponentHandler.cs" />
     <Compile Include="Stock\FilterStock\FilterStockHandler.cs" />
     <Compile Include="Stock\FilterStock\FilterStockItem.cs" />
     <Compile Include="Stock\FilterStock\FilterStockQueryExecutor.cs" />

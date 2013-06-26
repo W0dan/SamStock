@@ -6,44 +6,45 @@
     <edmx:StorageModels>
     <Schema Namespace="StockBeheerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="StockBeheerModelStoreContainer">
+          <EntitySet Name="AdminData" EntityType="StockBeheerModel.Store.AdminData" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Component" EntityType="StockBeheerModel.Store.Component" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Leverancier" EntityType="StockBeheerModel.Store.Leverancier" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Pedal" EntityType="StockBeheerModel.Store.Pedal" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PedalComponent" EntityType="StockBeheerModel.Store.PedalComponent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Supplier" EntityType="StockBeheerModel.Store.Supplier" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Component_Leverancier" Association="StockBeheerModel.Store.FK_Component_Leverancier">
-            <End Role="Leverancier" EntitySet="Leverancier" />
+            <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Component" EntitySet="Component" />
           </AssociationSet>
           <AssociationSet Name="FK_PedalComponent_Component" Association="StockBeheerModel.Store.FK_PedalComponent_Component">
             <End Role="Component" EntitySet="Component" />
             <End Role="PedalComponent" EntitySet="PedalComponent" />
           </AssociationSet>
-          <AssociationSet Name="FK_PedalComponent_Pedal" Association="StockBeheerModel.Store.FK_PedalComponent_Pedal">
+          <AssociationSet Name="FK_PedalComponent_Pedaal" Association="StockBeheerModel.Store.FK_PedalComponent_Pedaal">
             <End Role="Pedal" EntitySet="Pedal" />
             <End Role="PedalComponent" EntitySet="PedalComponent" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AdminData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Value" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
         <EntityType Name="Component">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Naam" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="MinimumStock" Type="int" Nullable="false" />
-          <Property Name="Hoeveelheid" Type="int" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
           <Property Name="Stocknr" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Prijs" Type="numeric" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="LeverancierId" Type="int" Nullable="false" />
-          <Property Name="Opmerkingen" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="Leverancier">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Naam" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Adres" Type="nvarchar(max)" />
-          <Property Name="Site" Type="nvarchar(max)" />
+          <Property Name="Price" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="ItemCode" Type="nchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="Pedal">
           <Key>
@@ -52,7 +53,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Price" Type="numeric" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="Margin" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="Margin" Type="numeric" Precision="10" Scale="4" />
         </EntityType>
         <EntityType Name="PedalComponent">
           <Key>
@@ -63,15 +64,24 @@
           <Property Name="Number" Type="int" Nullable="false" />
           <Property Name="PedalId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar(max)" />
+        </EntityType>
         <Association Name="FK_Component_Leverancier">
-          <End Role="Leverancier" Type="StockBeheerModel.Store.Leverancier" Multiplicity="1" />
+          <End Role="Supplier" Type="StockBeheerModel.Store.Supplier" Multiplicity="1" />
           <End Role="Component" Type="StockBeheerModel.Store.Component" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Leverancier">
+            <Principal Role="Supplier">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Component">
-              <PropertyRef Name="LeverancierId" />
+              <PropertyRef Name="SupplierId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -87,7 +97,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PedalComponent_Pedal">
+        <Association Name="FK_PedalComponent_Pedaal">
           <End Role="Pedal" Type="StockBeheerModel.Store.Pedal" Multiplicity="1" />
           <End Role="PedalComponent" Type="StockBeheerModel.Store.PedalComponent" Multiplicity="*" />
           <ReferentialConstraint>
@@ -105,11 +115,6 @@
       <Schema Namespace="StockBeheerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="StockBeheerEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Component" EntityType="StockBeheerModel.Component" />
-          <EntitySet Name="Leverancier" EntityType="StockBeheerModel.Leverancier" />
-          <AssociationSet Name="FK_Component_Leverancier" Association="StockBeheerModel.FK_Component_Leverancier">
-            <End Role="Leverancier" EntitySet="Leverancier" />
-            <End Role="Component" EntitySet="Component" />
-          </AssociationSet>
           <EntitySet Name="Pedal" EntityType="StockBeheerModel.Pedal" />
           <EntitySet Name="PedalComponent" EntityType="StockBeheerModel.PedalComponent" />
           <AssociationSet Name="FK_PedalComponent_Component" Association="StockBeheerModel.FK_PedalComponent_Component">
@@ -120,44 +125,29 @@
             <End Role="Pedal" EntitySet="Pedal" />
             <End Role="PedalComponent" EntitySet="PedalComponent" />
           </AssociationSet>
+          <EntitySet Name="Supplier" EntityType="StockBeheerModel.Supplier" />
+          <AssociationSet Name="FK_Component_Leverancier1" Association="StockBeheerModel.FK_Component_Leverancier1">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Component" EntitySet="Component" />
+          </AssociationSet>
+          <EntitySet Name="AdminData" EntityType="StockBeheerModel.AdminData" />
         </EntityContainer>
         <EntityType Name="Component">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Naam" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="MinimumStock" Nullable="false" />
-          <Property Type="Int32" Name="Hoeveelheid" Nullable="false" />
           <Property Type="String" Name="Stocknr" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Prijs" Nullable="false" Precision="10" Scale="4" />
-          <Property Type="Int32" Name="LeverancierId" Nullable="false" />
-          <Property Type="String" Name="Opmerkingen" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Leverancier" Relationship="StockBeheerModel.FK_Component_Leverancier" FromRole="Component" ToRole="Leverancier" />
-          <NavigationProperty Name="PedalComponent_1" Relationship="StockBeheerModel.FK_PedalComponent_Component" FromRole="Component" ToRole="PedalComponent" />
+          <NavigationProperty Name="PedalComponent" Relationship="StockBeheerModel.FK_PedalComponent_Component" FromRole="Component" ToRole="PedalComponent" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Stock" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="10" Scale="4" />
+          <Property Type="Int32" Name="SupplierId" Nullable="false" />
+          <Property Type="String" Name="Remarks" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ItemCode" />
+          <NavigationProperty Name="Supplier" Relationship="StockBeheerModel.FK_Component_Leverancier1" FromRole="Component" ToRole="Supplier" />
         </EntityType>
-        <EntityType Name="Leverancier">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Naam" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Adres" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Site" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Component" Relationship="StockBeheerModel.FK_Component_Leverancier" FromRole="Leverancier" ToRole="Component" />
-        </EntityType>
-        <Association Name="FK_Component_Leverancier">
-          <End Type="StockBeheerModel.Leverancier" Role="Leverancier" Multiplicity="1" />
-          <End Type="StockBeheerModel.Component" Role="Component" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Leverancier">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Component">
-              <PropertyRef Name="LeverancierId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Pedal">
           <Key>
             <PropertyRef Name="Id" />
@@ -166,7 +156,7 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="Price" Nullable="false" Precision="10" Scale="4" />
           <NavigationProperty Name="PedalComponent" Relationship="StockBeheerModel.FK_PedalComponent_Pedal" FromRole="Pedal" ToRole="PedalComponent" />
-          <Property Type="Decimal" Name="Margin" Nullable="false" Precision="10" Scale="4" />
+          <Property Type="Decimal" Name="Margin" Nullable="true" Precision="10" Scale="4" />
         </EntityType>
         <EntityType Name="PedalComponent">
           <Key>
@@ -203,6 +193,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Website" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Component" Relationship="StockBeheerModel.FK_Component_Leverancier1" FromRole="Supplier" ToRole="Component" />
+        </EntityType>
+        <Association Name="FK_Component_Leverancier1">
+          <End Type="StockBeheerModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="StockBeheerModel.Component" Role="Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Component">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AdminData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Value" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -212,23 +232,14 @@
           <EntitySetMapping Name="Component">
             <EntityTypeMapping TypeName="StockBeheerModel.Component">
               <MappingFragment StoreEntitySet="Component">
-                <ScalarProperty Name="Opmerkingen" ColumnName="Opmerkingen" />
-                <ScalarProperty Name="LeverancierId" ColumnName="LeverancierId" />
-                <ScalarProperty Name="Prijs" ColumnName="Prijs" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Stocknr" ColumnName="Stocknr" />
-                <ScalarProperty Name="Hoeveelheid" ColumnName="Hoeveelheid" />
                 <ScalarProperty Name="MinimumStock" ColumnName="MinimumStock" />
-                <ScalarProperty Name="Naam" ColumnName="Naam" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Leverancier">
-            <EntityTypeMapping TypeName="StockBeheerModel.Leverancier">
-              <MappingFragment StoreEntitySet="Leverancier">
-                <ScalarProperty Name="Site" ColumnName="Site" />
-                <ScalarProperty Name="Adres" ColumnName="Adres" />
-                <ScalarProperty Name="Naam" ColumnName="Naam" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -249,6 +260,25 @@
                 <ScalarProperty Name="PedalId" ColumnName="PedalId" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="ComponentId" ColumnName="ComponentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="StockBeheerModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminData">
+            <EntityTypeMapping TypeName="StockBeheerModel.AdminData">
+              <MappingFragment StoreEntitySet="AdminData">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -274,22 +304,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Stock">
-        <EntityTypeShape EntityType="StockBeheerModel.Component" Width="1.5" PointX="3.125" PointY="0.5" Height="2.5987555674711857" />
-        <EntityTypeShape EntityType="StockBeheerModel.Leverancier" Width="1.5" PointX="0.5" PointY="0.5" Height="1.7691861184438076" />
-        <AssociationConnector Association="StockBeheerModel.FK_Component_Leverancier" >
-          <ConnectorPoint PointX="2" PointY="1.3845930592219038" />
-          <ConnectorPoint PointX="3.125" PointY="1.3845930592219038" />
-        </AssociationConnector>
+        <EntityTypeShape EntityType="StockBeheerModel.Component" Width="1.5" PointX="3.125" PointY="0.5" Height="2.7646694572766619" />
         <EntityTypeShape EntityType="StockBeheerModel.Pedal" Width="1.5" PointX="8.375" PointY="2.125" Height="1.7691861184438076" />
         <EntityTypeShape EntityType="StockBeheerModel.PedalComponent" Width="1.5" PointX="6.125" PointY="1.75" Height="1.9351000082492829" />
         <AssociationConnector Association="StockBeheerModel.FK_PedalComponent_Component" >
-          <ConnectorPoint PointX="4.625" PointY="2.4243777837355927" />
-          <ConnectorPoint PointX="6.125" PointY="2.4243777837355927" />
+          <ConnectorPoint PointX="4.625" PointY="2.5073347286383312" />
+          <ConnectorPoint PointX="6.125" PointY="2.5073347286383312" />
         </AssociationConnector>
         <AssociationConnector Association="StockBeheerModel.FK_PedalComponent_Pedal" >
           <ConnectorPoint PointX="8.375" PointY="2.9050500041246412" />
           <ConnectorPoint PointX="7.625" PointY="2.9050500041246412" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="StockBeheerModel.Supplier" Width="1.5" PointX="0.625" PointY="0.875" Height="1.7691861184438071" />
+        <AssociationConnector Association="StockBeheerModel.FK_Component_Leverancier1" >
+          <ConnectorPoint PointX="2.125" PointY="1.7595930592219036" />
+          <ConnectorPoint PointX="3.125" PointY="1.7595930592219036" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="StockBeheerModel.AdminData" Width="1.5" PointX="0.75" PointY="3.25" Height="1.4373583388328548" />
       </Diagram>
     </Diagrams>
   </Designer>

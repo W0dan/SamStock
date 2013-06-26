@@ -2,8 +2,8 @@
 
 namespace SamStock.Stock.UpdateStock
 {
-    public interface IUpdateStockCommandExecutor:ICommandExecutor
-    {
-        void Execute(UpdateStockCommand command);
-    }
+	public interface IUpdateStockCommandExecutor : ICommandExecutor
+	{
+		void Execute(UpdateStockCommand command);
+	}
 }

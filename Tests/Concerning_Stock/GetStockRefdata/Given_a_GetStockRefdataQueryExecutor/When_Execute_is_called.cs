@@ -8,18 +8,18 @@ namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataQueryExe
     [TestFixture]
     public class When_Execute_is_called : DatabaseTest
     {
-        private string[] _leveranciers;
+        private string[] _suppliers;
         private GetStockRefdataRequest _request;
         private GetStockRefdataQueryExecutor _sut;
         private GetStockRefdataResponse _result;
 
         public override void Arrange()
         {
-            _leveranciers = new[] { "my leverancier1", "my leverancier2", "my leverancier3", "my leverancier4" };
+            _suppliers = new[] { "my leverancier1", "my leverancier2", "my leverancier3", "my leverancier4" };
 
-            foreach (var leverancier in _leveranciers)
+            foreach (var leverancier in _suppliers)
             {
-                AddLeverancier(leverancier);
+                AddSupplier(leverancier);
             }
 
             _request = new GetStockRefdataRequest();
@@ -27,10 +27,10 @@ namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataQueryExe
             _sut = new GetStockRefdataQueryExecutor(Context);
         }
 
-        private void AddLeverancier(string leverancierNaam)
+        private void AddSupplier(string leverancierNaam)
         {
-            var leverancier = new Leverancier { Naam = leverancierNaam };
-            Context.Leverancier.AddObject(leverancier);
+            var leverancier = new Supplier { Name = leverancierNaam };
+            Context.Supplier.AddObject(leverancier);
         }
 
         public override void Act()
@@ -39,18 +39,18 @@ namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataQueryExe
         }
 
         [Test]
-        public void It_should_retrieve_the_leveranciers()
+        public void It_should_retrieve_the_Suppliers()
         {
-            foreach (var leverancier in _leveranciers)
+            foreach (var leverancier in _suppliers)
             {
-                Assert.IsTrue(_result.Leveranciers.Any(x => x.Naam == leverancier));
+                Assert.IsTrue(_result.Suppliers.Any(x => x.Name == leverancier));
             }
         }
 
         [Test]
         public void It_should_return_valid_ids()
         {
-            foreach (var item in _result.Leveranciers)
+            foreach (var item in _result.Suppliers)
             {
                 Assert.IsTrue(item.Id > 0);
             }

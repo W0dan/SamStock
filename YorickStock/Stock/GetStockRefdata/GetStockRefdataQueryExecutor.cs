@@ -14,10 +14,10 @@ namespace SamStock.Stock.GetStockRefdata
 
         public GetStockRefdataResponse Execute(GetStockRefdataRequest request)
         {
-            var leveranciers = _context.Leverancier
-                .Select(x => new LeverancierRefdata { Id = x.Id, Naam = x.Naam });
+            var leveranciers = _context.Supplier
+                .Select(x => new SupplierRefdata { Id = x.Id, Name = x.Name });
 
-            return new GetStockRefdataResponse { Leveranciers = leveranciers };
+            return new GetStockRefdataResponse { Suppliers = leveranciers };
         }
     }
 }

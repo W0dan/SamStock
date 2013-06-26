@@ -14,34 +14,34 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
 
         public override void Arrange()
         {
-            var leverancier = new Leverancier
+            var leverancier = new Supplier
                 {
-                    Naam = "testlev",
+                    Name = "testlev",
                 };
-            Context.Leverancier.AddObject(leverancier);
+            Context.Supplier.AddObject(leverancier);
 
             Context.Component.AddObject(new Component
                 {
                     Stocknr = "a15",
-                    Naam = "weerstand",
-                    Leverancier = leverancier,
-                    Hoeveelheid = 10
+                    Name = "weerstand",
+                    Supplier = leverancier,
+                    Stock = 10
                 });
             Context.Component.AddObject(new Component
                 {
                     Stocknr = "b15",
-                    Naam = "condensator",
-                    Leverancier = leverancier,
-                    Hoeveelheid = 10,
-                    Prijs = 1
+                    Name = "condensator",
+                    Supplier = leverancier,
+                    Stock = 10,
+                    Price = 1
                 });
             Context.Component.AddObject(new Component
                 {
                     Stocknr = "c15",
-                    Naam = "led",
-                    Leverancier = leverancier,
-                    Hoeveelheid = 10,
-                    Prijs = 1
+                    Name = "led",
+                    Supplier = leverancier,
+                    Stock = 10,
+                    Price = 1
                 });
 
             _command = new UpdateStockCommand();
@@ -61,7 +61,7 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
         {
             var component_a15 = Context.Component.Single(x => x.Stocknr == "a15");
 
-            Assert.AreEqual(10, component_a15.Hoeveelheid);
+            Assert.AreEqual(10, component_a15.Stock);
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
         {
             var component_b15 = Context.Component.Single(x => x.Stocknr == "b15");
 
-            Assert.AreEqual(20, component_b15.Hoeveelheid);
+            Assert.AreEqual(20, component_b15.Stock);
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
         {
             var component_b15 = Context.Component.Single(x => x.Stocknr == "b15");
 
-            Assert.AreEqual(2, component_b15.Prijs);
+            Assert.AreEqual(2, component_b15.Price);
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
         {
             var component_c15 = Context.Component.Single(x => x.Stocknr == "c15");
 
-            Assert.AreEqual(7, component_c15.Hoeveelheid);
+            Assert.AreEqual(7, component_c15.Stock);
         }
     }
 }

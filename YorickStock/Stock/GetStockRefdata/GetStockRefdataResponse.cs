@@ -4,12 +4,12 @@ namespace SamStock.Stock.GetStockRefdata
 {
     public class GetStockRefdataResponse
     {
-        public IEnumerable<LeverancierRefdata> Leveranciers { get; set; }
+        public IEnumerable<SupplierRefdata> Suppliers { get; set; }
     }
 
-    public class LeverancierRefdata
+    public class SupplierRefdata
     {
         public int Id { get; set; }
-        public string Naam { get; set; }
+        public string Name { get; set; }
     }
 }

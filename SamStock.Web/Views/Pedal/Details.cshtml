@@ -1,10 +1,10 @@
-﻿@model dynamic
+﻿@model SamStock.Web.Models.Pedal.PedalViewModel
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
 @section head
 {
-    <link href="@Url.Content("~/Content/styles/PedalDetails.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/styles/Pedal/Details.css")" rel="stylesheet" type="text/css" />
 }
 @section navigation
 {
@@ -17,12 +17,12 @@
     @{
         decimal costs = 0;
         foreach (var item in Model.List[0].List) {
-            costs += item.Price * item.Count;
+            costs += item.Price * item.Quantity;
         }
         decimal price = Model.List[0].Price;
         decimal margin = Model.List[0].Margin;
         decimal baseprice = costs*(margin + 100)/100;
-        decimal vat = (price - costs) * 21 / 100;
+        decimal vat = (price - costs) * Model.VAT / 100;
         decimal profit = price - costs - vat;
     }
     <br />
@@ -70,17 +70,24 @@
             <tr>
                 <th>ID</th>
                 <th>Description</th>
-                <th>Number</th>
+                <th>Amount</th>
                 <th>Unit Price</th>
                 <th>Extended Price</th>
+                <th>Stock</th>
             </tr>
             @foreach (var item in Model.List[0].List) {
                 <tr>
                     <td class="description">@item.Stocknr</td>
                     <td class="description">@item.Description</td>
-                    <td class="detail">@item.Count</td>
+                    @if (item.Stock >= item.Quantity) {
+                        <td class="detail">@item.Quantity</td>
+                    } else
+                    {
+                        <td class="detail stockDeficiency">@item.Quantity</td>
+                    }
                     <td class="detail">€@item.Price.ToString("0.00")</td>
-                    <td class="detail">€@((item.Price * item.Count).ToString("0.00"))</td>
+                    <td class="detail">€@((item.Price * item.Quantity).ToString("0.00"))</td>
+                    <td class="detail">@(item.Stock)</td>
                 </tr>
             }
         </tbody>

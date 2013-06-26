@@ -6,79 +6,112 @@ using NUnit.Framework;
 using SamStock.Pedal.FilterPedal;
 using SamStock.Database;
 
-namespace Tests.Concerning_Pedal.FilterPedal.Given_a_FilterPedalQueryExecutor {
-    [TestFixture]
-    public class When_Execute_is_called : DatabaseTest {
-        private IFilterPedalQueryExecutor _sut;
-        private FilterPedalRequest _request;
-        private FilterPedalResponse _response;
+namespace Tests.Concerning_Pedal.FilterPedal.Given_a_FilterPedalQueryExecutor
+{
+	[TestFixture]
+	public class When_Execute_is_called : DatabaseTest
+	{
+		private IFilterPedalQueryExecutor _sut;
+		private FilterPedalRequest _request;
+		private FilterPedalResponse _response;
+		private Component comp1;
+		private Pedal p1;
+		private PedalComponent pc1;
+		private Supplier s1;
 
-        public override void Arrange() {
-            _request = new FilterPedalRequest(5);
-            _sut = new FilterPedalQueryExecutor(Context);
+		public override void Arrange()
+		{
+			_sut = new FilterPedalQueryExecutor(Context);
 
-            Context.Leverancier.AddObject(new Leverancier {
-                Naam = "Jos",
-                Id = 1,
-                Adres = "somewhere"
-            });
-            Context.SaveChanges();
+			s1 = new Supplier
+			{
+				Name = "Jos",
+				Id = 1,
+				Address = "somewhere"
+			};
+			Context.Supplier.AddObject(s1);
 
-            Context.Component.AddObject(new Component {
-                Stocknr = "ABC1",
-                Prijs = 5.0M,
-                LeverancierId = 1, // fk_comp_lev violation?
-                Hoeveelheid = 20,
-                MinimumStock = 15,
-                Naam = "something",
-                Id = 1,
-                Opmerkingen = "blabla"
-            });
-            Context.SaveChanges();
+			comp1 = new Component
+			{
+				Stocknr = "ABC1",
+				Price = 5.0M,
+				SupplierId = s1.Id,
+				Stock = 20,
+				MinimumStock = 15,
+				Name = "something",
+				Id = 1,
+				Remarks = "blabla"
+			};
+			Context.Component.AddObject(comp1);
+			Context.Component.AddObject(new Component
+			{
+				Stocknr = "xyz",
+				Price = 20.0M,
+				SupplierId = comp1.SupplierId,
+				Stock = 10,
+				MinimumStock = 15,
+				Name = "something else",
+				Id = comp1.Id + 1,
+				Remarks = "blabla"
+			});
 
-            Context.Pedal.AddObject(new Pedal {
-                Name = "Blaster",
-                Id = 1,
-                Price = 5.0M,
-                Margin = 2.0M
-            });
-            Context.Pedal.AddObject(new Pedal {
-                Name = "Fuzzer",
-                Id = 2,
-                Price = 10.0M,
-                Margin = 7.0M
-            });
-            Context.SaveChanges();
+			p1 = new Pedal
+			{
+				Name = "Blaster",
+				Id = 1,
+				Price = 5.0M,
+				Margin = 2.0M
+			};
+			Context.Pedal.AddObject(p1);
+			Context.Pedal.AddObject(new Pedal
+			{
+				Name = "Fuzzer",
+				Id = p1.Id + 1,
+				Price = 10.0M,
+				Margin = 7.0M
+			});
 
-            Context.PedalComponent.AddObject(new PedalComponent {
-                Id = 1,
-                PedalId = 1,
-                ComponentId = 1,
-                Number = 3
-            });
-            Context.SaveChanges();
-        }
+			pc1 = new PedalComponent
+			{
+				Id = 1,
+				PedalId = p1.Id,
+				ComponentId = comp1.Id,
+				Number = 3
+			};
+			Context.PedalComponent.AddObject(pc1);
 
-        public override void Act() {
-            _response = _sut.Execute(_request);
-        }
+			Context.SaveChanges();
 
-        [Test]
-        public void It_should_return_1_item()
-        {
-            Assert.AreEqual(_response.List.Count,1);
-        }
+			_request = new FilterPedalRequest(p1.Id);
+		}
 
-        [Test]
-        public void It_should_contain_a_Pedal_called_Blaster()
-        {
-            Assert.IsTrue(_response.List.Any(x => x.Name == "Blaster"));
-        }
+		public override void Act()
+		{
+			_response = _sut.Execute(_request);
+		}
 
-        [Test]
-        public void It_should_contain_a_Component_called_ABC1()
-        {
-            Assert.IsTrue(_response.List.Any(x => x.List.Any(y => y.Stocknr == "ABC1")));
-        }
-    }
+		[Test]
+		public void It_should_return_1_pedal()
+		{
+			Assert.AreEqual(_response.List.Count, 1);
+		}
+
+		[Test]
+		public void It_should_contain_the_correct_pedal_and_its_data()
+		{
+			Assert.IsTrue(_response.List.All(x => x.Name == p1.Name && x.Price == p1.Price && x.Margin == p1.Margin && x.Id == p1.Id));
+		}
+
+		[Test]
+		public void It_should_return_1_component()
+		{
+			Assert.AreEqual(1,_response.List[0].List.Count);
+		}
+
+		[Test]
+		public void It_should_contain_the_pedals_component()
+		{
+			Assert.IsTrue(_response.List[0].List.All(x => x.Description == comp1.Name && x.Price == comp1.Price && x.Quantity == pc1.Number && x.Stocknr == comp1.Stocknr));
+		}
+	}
 }

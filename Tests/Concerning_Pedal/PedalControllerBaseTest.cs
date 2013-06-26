@@ -8,21 +8,22 @@ using Castle.Windsor;
 using SamStock.Database;
 using SamStock.Utilities;
 
-namespace Tests.Concerning_Pedal {
-    public abstract class PedalControllerBaseTest : BaseTest
-    {
-        protected PedalController Sut;
-        protected Mock<IWindsorContainer> Container;
+namespace Tests.Concerning_Pedal
+{
+	public abstract class PedalControllerBaseTest : BaseTest
+	{
+		protected PedalController Sut;
+		protected Mock<IWindsorContainer> Container;
 
-        protected PedalControllerBaseTest()
-        {
-            Container = new Mock<IWindsorContainer>();
-            Container
-                .Setup(x => x.Resolve<IContext>())
-                .Returns(new Mock<IContext>().Object);
+		protected PedalControllerBaseTest()
+		{
+			Container = new Mock<IWindsorContainer>();
+			Container
+				.Setup(x => x.Resolve<IContext>())
+				.Returns(new Mock<IContext>().Object);
 
-            var dispatcher = new Dispatcher(Container.Object);
-            Sut = new PedalController(dispatcher);
-        }
-    }
+			var dispatcher = new Dispatcher(Container.Object);
+			Sut = new PedalController(dispatcher);
+		}
+	}
 }

@@ -1,0 +1,16 @@
+﻿fieldset p label
+{
+    width: 25em;
+    float: left;
+}
+
+fieldset p input
+{
+    width: 4em;
+    float: left;
+}
+
+fieldset p
+{
+    clear: both;
+}

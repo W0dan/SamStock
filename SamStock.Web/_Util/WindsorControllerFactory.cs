@@ -23,6 +23,7 @@ namespace SamStock.Web._Util
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }

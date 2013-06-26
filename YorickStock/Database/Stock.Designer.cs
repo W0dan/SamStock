@@ -19,9 +19,9 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("StockBeheerModel", "FK_Component_Leverancier", "Leverancier", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SamStock.Database.Leverancier), "Component", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SamStock.Database.Component), true)]
 [assembly: EdmRelationshipAttribute("StockBeheerModel", "FK_PedalComponent_Component", "Component", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SamStock.Database.Component), "PedalComponent", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SamStock.Database.PedalComponent), true)]
 [assembly: EdmRelationshipAttribute("StockBeheerModel", "FK_PedalComponent_Pedal", "Pedal", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SamStock.Database.Pedal), "PedalComponent", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SamStock.Database.PedalComponent), true)]
+[assembly: EdmRelationshipAttribute("StockBeheerModel", "FK_Component_Leverancier1", "Supplier", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SamStock.Database.Supplier), "Component", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SamStock.Database.Component), true)]
 
 #endregion
 
@@ -92,22 +92,6 @@ namespace SamStock.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Leverancier> Leverancier
-        {
-            get
-            {
-                if ((_Leverancier == null))
-                {
-                    _Leverancier = base.CreateObjectSet<Leverancier>("Leverancier");
-                }
-                return _Leverancier;
-            }
-        }
-        private ObjectSet<Leverancier> _Leverancier;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Pedal> Pedal
         {
             get
@@ -136,6 +120,38 @@ namespace SamStock.Database
             }
         }
         private ObjectSet<PedalComponent> _PedalComponent;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Supplier> Supplier
+        {
+            get
+            {
+                if ((_Supplier == null))
+                {
+                    _Supplier = base.CreateObjectSet<Supplier>("Supplier");
+                }
+                return _Supplier;
+            }
+        }
+        private ObjectSet<Supplier> _Supplier;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<AdminData> AdminData
+        {
+            get
+            {
+                if ((_AdminData == null))
+                {
+                    _AdminData = base.CreateObjectSet<AdminData>("AdminData");
+                }
+                return _AdminData;
+            }
+        }
+        private ObjectSet<AdminData> _AdminData;
 
         #endregion
 
@@ -147,14 +163,6 @@ namespace SamStock.Database
         public void AddToComponent(Component component)
         {
             base.AddObject("Component", component);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Leverancier EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToLeverancier(Leverancier leverancier)
-        {
-            base.AddObject("Leverancier", leverancier);
         }
     
         /// <summary>
@@ -172,6 +180,22 @@ namespace SamStock.Database
         {
             base.AddObject("PedalComponent", pedalComponent);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Supplier EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSupplier(Supplier supplier)
+        {
+            base.AddObject("Supplier", supplier);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the AdminData EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAdminData(AdminData adminData)
+        {
+            base.AddObject("AdminData", adminData);
+        }
 
         #endregion
 
@@ -180,6 +204,115 @@ namespace SamStock.Database
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="StockBeheerModel", Name="AdminData")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class AdminData : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new AdminData object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="value">Initial value of the Value property.</param>
+        public static AdminData CreateAdminData(global::System.Int32 id, global::System.String name, global::System.Decimal value)
+        {
+            AdminData adminData = new AdminData();
+            adminData.Id = id;
+            adminData.Name = name;
+            adminData.Value = value;
+            return adminData;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private global::System.Decimal _Value;
+        partial void OnValueChanging(global::System.Decimal value);
+        partial void OnValueChanged();
+
+        #endregion
+
+    
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -195,22 +328,22 @@ namespace SamStock.Database
         /// Create a new Component object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="naam">Initial value of the Naam property.</param>
         /// <param name="minimumStock">Initial value of the MinimumStock property.</param>
-        /// <param name="hoeveelheid">Initial value of the Hoeveelheid property.</param>
         /// <param name="stocknr">Initial value of the Stocknr property.</param>
-        /// <param name="prijs">Initial value of the Prijs property.</param>
-        /// <param name="leverancierId">Initial value of the LeverancierId property.</param>
-        public static Component CreateComponent(global::System.Int32 id, global::System.String naam, global::System.Int32 minimumStock, global::System.Int32 hoeveelheid, global::System.String stocknr, global::System.Decimal prijs, global::System.Int32 leverancierId)
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="stock">Initial value of the Stock property.</param>
+        /// <param name="price">Initial value of the Price property.</param>
+        /// <param name="supplierId">Initial value of the SupplierId property.</param>
+        public static Component CreateComponent(global::System.Int32 id, global::System.Int32 minimumStock, global::System.String stocknr, global::System.String name, global::System.Int32 stock, global::System.Decimal price, global::System.Int32 supplierId)
         {
             Component component = new Component();
             component.Id = id;
-            component.Naam = naam;
             component.MinimumStock = minimumStock;
-            component.Hoeveelheid = hoeveelheid;
             component.Stocknr = stocknr;
-            component.Prijs = prijs;
-            component.LeverancierId = leverancierId;
+            component.Name = name;
+            component.Stock = stock;
+            component.Price = price;
+            component.SupplierId = supplierId;
             return component;
         }
 
@@ -250,30 +383,6 @@ namespace SamStock.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Naam
-        {
-            get
-            {
-                return _Naam;
-            }
-            set
-            {
-                OnNaamChanging(value);
-                ReportPropertyChanging("Naam");
-                _Naam = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Naam");
-                OnNaamChanged();
-            }
-        }
-        private global::System.String _Naam;
-        partial void OnNaamChanging(global::System.String value);
-        partial void OnNaamChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.Int32 MinimumStock
         {
             get
@@ -292,30 +401,6 @@ namespace SamStock.Database
         private global::System.Int32 _MinimumStock;
         partial void OnMinimumStockChanging(global::System.Int32 value);
         partial void OnMinimumStockChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Hoeveelheid
-        {
-            get
-            {
-                return _Hoeveelheid;
-            }
-            set
-            {
-                OnHoeveelheidChanging(value);
-                ReportPropertyChanging("Hoeveelheid");
-                _Hoeveelheid = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Hoeveelheid");
-                OnHoeveelheidChanged();
-            }
-        }
-        private global::System.Int32 _Hoeveelheid;
-        partial void OnHoeveelheidChanging(global::System.Int32 value);
-        partial void OnHoeveelheidChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -346,72 +431,144 @@ namespace SamStock.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Decimal Prijs
+        public global::System.String Name
         {
             get
             {
-                return _Prijs;
+                return _Name;
             }
             set
             {
-                OnPrijsChanging(value);
-                ReportPropertyChanging("Prijs");
-                _Prijs = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Prijs");
-                OnPrijsChanged();
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
             }
         }
-        private global::System.Decimal _Prijs;
-        partial void OnPrijsChanging(global::System.Decimal value);
-        partial void OnPrijsChanged();
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 LeverancierId
+        public global::System.Int32 Stock
         {
             get
             {
-                return _LeverancierId;
+                return _Stock;
             }
             set
             {
-                OnLeverancierIdChanging(value);
-                ReportPropertyChanging("LeverancierId");
-                _LeverancierId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("LeverancierId");
-                OnLeverancierIdChanged();
+                OnStockChanging(value);
+                ReportPropertyChanging("Stock");
+                _Stock = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Stock");
+                OnStockChanged();
             }
         }
-        private global::System.Int32 _LeverancierId;
-        partial void OnLeverancierIdChanging(global::System.Int32 value);
-        partial void OnLeverancierIdChanged();
+        private global::System.Int32 _Stock;
+        partial void OnStockChanging(global::System.Int32 value);
+        partial void OnStockChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Price
+        {
+            get
+            {
+                return _Price;
+            }
+            set
+            {
+                OnPriceChanging(value);
+                ReportPropertyChanging("Price");
+                _Price = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Price");
+                OnPriceChanged();
+            }
+        }
+        private global::System.Decimal _Price;
+        partial void OnPriceChanging(global::System.Decimal value);
+        partial void OnPriceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SupplierId
+        {
+            get
+            {
+                return _SupplierId;
+            }
+            set
+            {
+                OnSupplierIdChanging(value);
+                ReportPropertyChanging("SupplierId");
+                _SupplierId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SupplierId");
+                OnSupplierIdChanged();
+            }
+        }
+        private global::System.Int32 _SupplierId;
+        partial void OnSupplierIdChanging(global::System.Int32 value);
+        partial void OnSupplierIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Opmerkingen
+        public global::System.String Remarks
         {
             get
             {
-                return _Opmerkingen;
+                return _Remarks;
             }
             set
             {
-                OnOpmerkingenChanging(value);
-                ReportPropertyChanging("Opmerkingen");
-                _Opmerkingen = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Opmerkingen");
-                OnOpmerkingenChanged();
+                OnRemarksChanging(value);
+                ReportPropertyChanging("Remarks");
+                _Remarks = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Remarks");
+                OnRemarksChanged();
             }
         }
-        private global::System.String _Opmerkingen;
-        partial void OnOpmerkingenChanging(global::System.String value);
-        partial void OnOpmerkingenChanged();
+        private global::System.String _Remarks;
+        partial void OnRemarksChanging(global::System.String value);
+        partial void OnRemarksChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ItemCode
+        {
+            get
+            {
+                return _ItemCode;
+            }
+            set
+            {
+                OnItemCodeChanging(value);
+                ReportPropertyChanging("ItemCode");
+                _ItemCode = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ItemCode");
+                OnItemCodeChanged();
+            }
+        }
+        private global::System.String _ItemCode;
+        partial void OnItemCodeChanging(global::System.String value);
+        partial void OnItemCodeChanged();
 
         #endregion
 
@@ -424,46 +581,8 @@ namespace SamStock.Database
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("StockBeheerModel", "FK_Component_Leverancier", "Leverancier")]
-        public Leverancier Leverancier
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Leverancier>("StockBeheerModel.FK_Component_Leverancier", "Leverancier").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Leverancier>("StockBeheerModel.FK_Component_Leverancier", "Leverancier").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Leverancier> LeverancierReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Leverancier>("StockBeheerModel.FK_Component_Leverancier", "Leverancier");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Leverancier>("StockBeheerModel.FK_Component_Leverancier", "Leverancier", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("StockBeheerModel", "FK_PedalComponent_Component", "PedalComponent")]
-        public EntityCollection<PedalComponent> PedalComponent_1
+        public EntityCollection<PedalComponent> PedalComponent
         {
             get
             {
@@ -477,141 +596,6 @@ namespace SamStock.Database
                 }
             }
         }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="StockBeheerModel", Name="Leverancier")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Leverancier : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Leverancier object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="naam">Initial value of the Naam property.</param>
-        public static Leverancier CreateLeverancier(global::System.Int32 id, global::System.String naam)
-        {
-            Leverancier leverancier = new Leverancier();
-            leverancier.Id = id;
-            leverancier.Naam = naam;
-            return leverancier;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Naam
-        {
-            get
-            {
-                return _Naam;
-            }
-            set
-            {
-                OnNaamChanging(value);
-                ReportPropertyChanging("Naam");
-                _Naam = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Naam");
-                OnNaamChanged();
-            }
-        }
-        private global::System.String _Naam;
-        partial void OnNaamChanging(global::System.String value);
-        partial void OnNaamChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Adres
-        {
-            get
-            {
-                return _Adres;
-            }
-            set
-            {
-                OnAdresChanging(value);
-                ReportPropertyChanging("Adres");
-                _Adres = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Adres");
-                OnAdresChanged();
-            }
-        }
-        private global::System.String _Adres;
-        partial void OnAdresChanging(global::System.String value);
-        partial void OnAdresChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Site
-        {
-            get
-            {
-                return _Site;
-            }
-            set
-            {
-                OnSiteChanging(value);
-                ReportPropertyChanging("Site");
-                _Site = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Site");
-                OnSiteChanged();
-            }
-        }
-        private global::System.String _Site;
-        partial void OnSiteChanging(global::System.String value);
-        partial void OnSiteChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -619,18 +603,34 @@ namespace SamStock.Database
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("StockBeheerModel", "FK_Component_Leverancier", "Component")]
-        public EntityCollection<Component> Component
+        [EdmRelationshipNavigationPropertyAttribute("StockBeheerModel", "FK_Component_Leverancier1", "Supplier")]
+        public Supplier Supplier
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Component>("StockBeheerModel.FK_Component_Leverancier", "Component");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Supplier>("StockBeheerModel.FK_Component_Leverancier1", "Supplier").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Supplier>("StockBeheerModel.FK_Component_Leverancier1", "Supplier").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Supplier> SupplierReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Supplier>("StockBeheerModel.FK_Component_Leverancier1", "Supplier");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Component>("StockBeheerModel.FK_Component_Leverancier", "Component", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Supplier>("StockBeheerModel.FK_Component_Leverancier1", "Supplier", value);
                 }
             }
         }
@@ -655,14 +655,12 @@ namespace SamStock.Database
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="price">Initial value of the Price property.</param>
-        /// <param name="margin">Initial value of the Margin property.</param>
-        public static Pedal CreatePedal(global::System.Int32 id, global::System.String name, global::System.Decimal price, global::System.Decimal margin)
+        public static Pedal CreatePedal(global::System.Int32 id, global::System.String name, global::System.Decimal price)
         {
             Pedal pedal = new Pedal();
             pedal.Id = id;
             pedal.Name = name;
             pedal.Price = price;
-            pedal.Margin = margin;
             return pedal;
         }
 
@@ -748,9 +746,9 @@ namespace SamStock.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Decimal Margin
+        public Nullable<global::System.Decimal> Margin
         {
             get
             {
@@ -765,8 +763,8 @@ namespace SamStock.Database
                 OnMarginChanged();
             }
         }
-        private global::System.Decimal _Margin;
-        partial void OnMarginChanging(global::System.Decimal value);
+        private Nullable<global::System.Decimal> _Margin;
+        partial void OnMarginChanging(Nullable<global::System.Decimal> value);
         partial void OnMarginChanged();
 
         #endregion
@@ -1007,6 +1005,163 @@ namespace SamStock.Database
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Pedal>("StockBeheerModel.FK_PedalComponent_Pedal", "Pedal", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="StockBeheerModel", Name="Supplier")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Supplier : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Supplier object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Supplier CreateSupplier(global::System.Int32 id, global::System.String name)
+        {
+            Supplier supplier = new Supplier();
+            supplier.Id = id;
+            supplier.Name = name;
+            return supplier;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                OnAddressChanging(value);
+                ReportPropertyChanging("Address");
+                _Address = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Address");
+                OnAddressChanged();
+            }
+        }
+        private global::System.String _Address;
+        partial void OnAddressChanging(global::System.String value);
+        partial void OnAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Website
+        {
+            get
+            {
+                return _Website;
+            }
+            set
+            {
+                OnWebsiteChanging(value);
+                ReportPropertyChanging("Website");
+                _Website = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Website");
+                OnWebsiteChanged();
+            }
+        }
+        private global::System.String _Website;
+        partial void OnWebsiteChanging(global::System.String value);
+        partial void OnWebsiteChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("StockBeheerModel", "FK_Component_Leverancier1", "Component")]
+        public EntityCollection<Component> Component
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Component>("StockBeheerModel.FK_Component_Leverancier1", "Component");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Component>("StockBeheerModel.FK_Component_Leverancier1", "Component", value);
                 }
             }
         }

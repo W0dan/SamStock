@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SamStock.Pedal.UpdatePedalComponents {
-    public class UpdatePedalComponentsHandler: IUpdatePedalComponentsHandler {
-        private IUpdatePedalComponentsCommandExecutor _cmdexecutor;
+namespace SamStock.Pedal.UpdatePedalComponents
+{
+	public class UpdatePedalComponentsHandler : IUpdatePedalComponentsHandler
+	{
+		private IUpdatePedalComponentsCommandExecutor _cmdexecutor;
 
-        public UpdatePedalComponentsHandler(IUpdatePedalComponentsCommandExecutor cmdexecutor)
-        {
-            _cmdexecutor = cmdexecutor;
-        }
+		public UpdatePedalComponentsHandler(IUpdatePedalComponentsCommandExecutor cmdexecutor)
+		{
+			_cmdexecutor = cmdexecutor;
+		}
 
-        public void Handle(UpdatePedalComponentsCommand cmd)
-        {
-            _cmdexecutor.Execute(cmd);
-        }
-    }
+		public void Handle(UpdatePedalComponentsCommand cmd)
+		{
+			_cmdexecutor.Execute(cmd);
+		}
+	}
 }

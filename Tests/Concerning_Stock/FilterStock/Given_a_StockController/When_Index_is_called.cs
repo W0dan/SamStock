@@ -7,7 +7,7 @@ using NUnit.Framework;
 using SamStock.Stock.FilterStock;
 using SamStock.Stock.GetStockRefdata;
 using SamStock.Utilities;
-using SamStock.Web.Models;
+using SamStock.Web.Models.Stock;
 using Tests._Util;
 
 namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
@@ -27,31 +27,31 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
         {
             FilterStockItem i1 = new FilterStockItem
                         {
-                            Hoeveelheid = 5,
-                            LeverancierNaam = Guid.NewGuid().ToString(),
+                            Quantity = 5,
+                            SupplierName = Guid.NewGuid().ToString(),
                             MinimumStock = 10,
-                            Naam = Guid.NewGuid().ToString(),
-                            Opmerkingen = Guid.NewGuid().ToString(),
-                            Prijs = 12.25M,
+                            Name = Guid.NewGuid().ToString(),
+                            Remark = Guid.NewGuid().ToString(),
+                            Price = 12.25M,
                             Stocknr = Guid.NewGuid().ToString()
                         };
             FilterStockItem i2 = new FilterStockItem
                         {
-                            Hoeveelheid = 2,
-                            LeverancierNaam = Guid.NewGuid().ToString(),
+                            Quantity = 2,
+                            SupplierName = Guid.NewGuid().ToString(),
                             MinimumStock = 10,
-                            Naam = Guid.NewGuid().ToString(),
-                            Opmerkingen = Guid.NewGuid().ToString(),
-                            Prijs = 12.25M,
+                            Name = Guid.NewGuid().ToString(),
+                            Remark = Guid.NewGuid().ToString(),
+                            Price = 12.25M,
                             Stocknr = Guid.NewGuid().ToString()
                         };
             FilterStockItem i3 = new FilterStockItem {
-                Hoeveelheid = 10,
-                LeverancierNaam = Guid.NewGuid().ToString(),
+                Quantity = 10,
+                SupplierName = Guid.NewGuid().ToString(),
                 MinimumStock = 5,
-                Naam = Guid.NewGuid().ToString(),
-                Opmerkingen = Guid.NewGuid().ToString(),
-                Prijs = 7.00M,
+                Name = Guid.NewGuid().ToString(),
+                Remark = Guid.NewGuid().ToString(),
+                Price = 7.00M,
                 Stocknr = Guid.NewGuid().ToString()
             };
 
@@ -68,7 +68,7 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
             };
 
             _getStockRefdataResponse = new GetStockRefdataResponse();
-            _getStockRefdataResponse.Leveranciers = new List<LeverancierRefdata>();
+            _getStockRefdataResponse.Suppliers = new List<SupplierRefdata>();
 
             _getRefdataHandler = new Mock<IGetStockRefdataHandler>();
             _getRefdataHandler
@@ -83,7 +83,7 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
                 .Setup(x => x.Handle(It.Is<FilterStockRequest>(y => y.Manco == true)))
                 .Returns(_FilterStockResponse);
             _FilterStockHandler
-                .Setup(x => x.Handle(It.Is<FilterStockRequest>(y => y.Manco == false && y.LeverancierID <= 0 && y.StockNr == "")))
+                .Setup(x => x.Handle(It.Is<FilterStockRequest>(y => y.Manco == false && y.SupplierId <= 0 && y.StockNr == "")))
                 .Returns(_totalStockResponse);
             Container
                 .Setup(x => x.Resolve<IQueryHandler<FilterStockRequest, FilterStockResponse>>())
@@ -94,14 +94,14 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
         {
             _result = (ViewResult)Sut.Search(new StockFilterViewModel{
                 ComponentTypeFilter = "",
-                LeverancierFilter = 0,
+                SupplierFilter = 0,
                 MancoFilter = true
             });
             _viewModel = (StockViewModel)_result.Model;
 
             var tmp = (ViewResult)Sut.Search(new StockFilterViewModel {
                 ComponentTypeFilter = "",
-                LeverancierFilter = 0,
+                SupplierFilter = 0,
                 MancoFilter = false
             });
             _totalStockValue = ((StockViewModel)tmp.Model)._contentTotalValue;
@@ -112,12 +112,12 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
         {
             _viewModel.List.ShouldMatchAllItemsOf(_FilterStockResponse.List.ToList(),
                 (x, y) => x.Stocknr == y.Stocknr
-                    && x.Hoeveelheid == y.Hoeveelheid
-                    && x.LeverancierNaam == y.LeverancierNaam
+                    && x.Quantity == y.Quantity
+                    && x.SupplierName == y.SupplierName
                     && x.MinimumStock == y.MinimumStock
-                    && x.Naam == y.Naam
-                    && x.Opmerkingen == y.Opmerkingen
-                    && x.Prijs == y.Prijs
+                    && x.Name == y.Name
+                    && x.Remark == y.Remarks
+                    && x.Price == y.Price
                 );
         }
 

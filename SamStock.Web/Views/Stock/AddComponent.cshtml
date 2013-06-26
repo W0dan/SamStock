@@ -1,0 +1,103 @@
+﻿@using SamStock.Web._Util
+@model SamStock.Web.Models.Stock.AddComponentViewModel
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head
+{
+    <link href="@Url.Content("~/Content/styles/Stock/ModifyComponent.css")" rel="stylesheet" type="text/css" />
+}
+@section navigation
+{
+    @Html.Partial("_Navigation")
+}
+@section body
+{
+    <h1>Add Component</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Item Code
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Minimum Stock
+                    </th>
+                    <th>
+                        Supplier
+                    </th>
+                    <th>
+                        Remarks
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <tr>
+                    @using (Html.BeginForm("AddComponent", "Stock")) {
+                        <td class="description">
+                            @Html.TextBoxFor(x => x.Stocknr, new Dictionary<String, Object>{
+                                {"size",(int)8},
+                                {"pattern","\\w{1,}"},
+                                {"required",""}
+                            })
+                        </td>
+                        <td class="description">
+                            @Html.TextBoxFor(x => x.ItemCode, new Dictionary<String, Object>{
+                                {"size",(int)8},
+                                {"pattern","\\d{7}"},
+                                {"required",""}
+                            })
+                        </td>
+                        <td class="description">
+                            @Html.TextBoxFor(x => x.Name, new Dictionary<String, Object>{
+                                {"size",(int)40}
+                            })
+                        </td>
+                        <td class="detail">
+                            @Html.TextBoxFor(x => x.Price, new Dictionary<String, Object>{
+                                {"size",(int)5},
+                                {"pattern","[0-9]+[,[0-9]+]{0,1}"},
+                                {"required",""}
+                            })
+                        </td>
+                        <td class="detail">
+                            @Html.TextBoxFor(x => x.Quantity, new Dictionary<String, Object>{
+                                {"size",(int)5},
+                                {"pattern","[0-9]+"},
+                                {"required",""}
+                            })
+                        </td>
+                        <td class="detail">
+                            @Html.TextBoxFor(x => x.MinimumStock, new Dictionary<String, Object>{
+                                {"size",(int)5},
+                                {"pattern","[0-9]+"},
+                                {"required",""}
+                            })
+                        </td>
+                        <td>
+                            @Html.DropDownList("SupplierId", Model.Suppliers.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString("0") }))
+                        </td>
+                        <td class="description">
+                            @Html.TextBoxFor(x => x.Remarks, new Dictionary<String, Object>{
+                                {"size",(int)20}
+                            })
+                        </td>
+                        <td>
+                            <button>Add Component</button>
+                        </td>
+                    }
+                </tr>
+            </tbody>
+        </table>

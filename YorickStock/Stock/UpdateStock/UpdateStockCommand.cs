@@ -12,13 +12,13 @@ namespace SamStock.Stock.UpdateStock
         public StockUpdate(string stocknr, int amount, decimal price)
         {
             Stocknr = stocknr;
-            Amount = amount;
+            Quantity = amount;
             Price = price;
         }
 
         public string Stocknr { get; private set; }
 
-        public int Amount { get; private set; }
+        public int Quantity { get; private set; }
 
         public decimal Price { get; private set; }
     }

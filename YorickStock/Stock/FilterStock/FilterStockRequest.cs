@@ -1,23 +1,27 @@
-﻿namespace SamStock.Stock.FilterStock {
-    public class FilterStockRequest {
-        private readonly string _stockNr;
-        private readonly int _leverancierID;
-        private readonly bool _manco;
+﻿namespace SamStock.Stock.FilterStock
+{
+	public class FilterStockRequest
+	{
+		private readonly string _stockNr;
+		private readonly int _supplierId;
+		private readonly bool _manco;
 
-        public FilterStockRequest() {
-            _stockNr = "";
-            _leverancierID = 0;
-            _manco = false;
-        }
+		public FilterStockRequest()
+		{
+			_stockNr = "";
+			_supplierId = 0;
+			_manco = false;
+		}
 
-        public FilterStockRequest(string stockNr, int leverancierID, bool manco) {
-            _stockNr = stockNr;
-            _leverancierID = leverancierID;
-            _manco = manco;
-        }
+		public FilterStockRequest(string stockNr, int leverancierID, bool manco)
+		{
+			_stockNr = stockNr;
+			_supplierId = leverancierID;
+			_manco = manco;
+		}
 
-        public string StockNr { get { return _stockNr; } }
-        public int LeverancierID { get { return _leverancierID; } }
-        public bool Manco { get { return _manco; } }
-    }
+		public string StockNr { get { return _stockNr; } }
+		public int SupplierId { get { return _supplierId; } }
+		public bool Manco { get { return _manco; } }
+	}
 }

@@ -1,45 +1,37 @@
-﻿using System.Web.Mvc;
-using SamStock.Supplier.AddSupplier;
-using SamStock.Supplier.GetSuppliers;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using SamStock.Admin.GetAdminData;
+using SamStock.Admin.SetAdminData;
 using SamStock.Utilities;
-using SamStock.Web.Models;
+using SamStock.Web.Models.Admin;
 
 namespace SamStock.Web.Controllers
 {
-    public class AdminController : Controller
-    {
-        private readonly IDispatcher _dispatcher;
+	public class AdminController : Controller
+	{
+		private readonly IDispatcher _dispatcher;
 
-        public AdminController(IDispatcher dispatcher)
-        {
-            _dispatcher = dispatcher;
-        }
+		public AdminController(IDispatcher dispatcher)
+		{
+			_dispatcher = dispatcher;
+		}
 
-        public ViewResult Index()
-        {
-            return View();
-        }
+		public ViewResult Index()
+		{
+			var response = _dispatcher.DispatchRequest<GetAdminDataRequest, GetAdminDataResponse>(new GetAdminDataRequest());
+			return View(new AdminViewModel(response));
+		}
 
-        public ViewResult Suppliers()
-        {
-            var result = _dispatcher.DispatchRequest<GetSuppliersRequest, GetSuppliersResponse>(new GetSuppliersRequest());
-
-            var viewmodel = new SuppliersViewModel(result);
-
-            return View(viewmodel);
-        }
-
-        [HttpGet]
-        public ActionResult Config(int VAT)
-        {
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult AddLeverancier(SupplierViewModelNewItem viewModel)
-        {
-            _dispatcher.DispatchCommand(new AddSupplierCommand(viewModel.Name, viewModel.Address, viewModel.Website));
-            return RedirectToAction("Suppliers");
-        }
-    }
+		[HttpPost]
+		public ActionResult SetConfig(AdminViewModel viewmodel)
+		{
+			var cmd = new SetAdminDataCommand(new Dictionary<String, Decimal>{
+                {"VAT",viewmodel.VAT},
+                {"DefaultPedalPriceMargin",viewmodel.DefaultPedalPriceMargin}
+            });
+			_dispatcher.DispatchCommand<SetAdminDataCommand>(cmd);
+			return RedirectToAction("Index");
+		}
+	}
 }

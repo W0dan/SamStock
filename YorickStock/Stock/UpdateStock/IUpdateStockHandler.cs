@@ -2,7 +2,7 @@
 
 namespace SamStock.Stock.UpdateStock
 {
-    public interface IUpdateStockHandler : ICommandHandler<UpdateStockCommand>
-    {
-    }
+	public interface IUpdateStockHandler : ICommandHandler<UpdateStockCommand>
+	{
+	}
 }

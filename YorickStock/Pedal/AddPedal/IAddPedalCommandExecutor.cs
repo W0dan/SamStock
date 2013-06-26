@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using SamStock.Utilities;
 
-namespace SamStock.Pedal.AddPedal {
-    public interface IAddPedalCommandExecutor : ICommandExecutor {
-        void Execute(AddPedalCommand cmd);
-    }
+namespace SamStock.Pedal.AddPedal
+{
+	public interface IAddPedalCommandExecutor : ICommandExecutor
+	{
+		void Execute(AddPedalCommand cmd);
+	}
 }

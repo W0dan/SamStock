@@ -128,12 +128,27 @@ table
     font-family: Monospace;
 }
 
+.listProperty *
+{
+    margin: 0 auto;
+}
+
 .description
 {
     text-align: left;
 }
 
+.description *
+{
+    margin: 0 auto;
+}
+
 .detail
 {
     text-align: center;
+}
+
+.detail *
+{
+    margin: 0 auto;
 }

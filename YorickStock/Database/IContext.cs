@@ -7,8 +7,9 @@ namespace SamStock.Database
         int SaveChanges();
 
         ObjectSet<Component> Component { get; }
-        ObjectSet<Leverancier> Leverancier { get; }
+        ObjectSet<Supplier> Supplier { get; }
         ObjectSet<Pedal> Pedal { get; }
         ObjectSet<PedalComponent> PedalComponent { get; }
+        ObjectSet<AdminData> AdminData { get; }
     }
 }

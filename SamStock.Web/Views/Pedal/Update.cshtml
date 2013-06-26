@@ -1,10 +1,10 @@
-﻿@model dynamic
+﻿@model SamStock.Web.Models.Pedal.PedalViewModelPedal
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
 @section head
 {
-    <link href="@Url.Content("~/Content/styles/PedalUpdate.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/styles/Pedal/Update.css")" rel="stylesheet" type="text/css" />
 }
 @section navigation
 {
@@ -15,15 +15,23 @@
     <h1>Edit</h1>
     @using (Html.BeginForm("Update", "Pedal"))
     {
-        @Html.Hidden("id",(int)Model.Id)
-        @Html.Label("Name")
-        <input value="@Model.Name" name="name" type="text" title="At least 1 character" pattern=".+" />
+        @Html.HiddenFor(x => x.Id)
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name, new Dictionary<String,Object>{
+            {"required",""}
+        })
         <br />
-        @Html.Label("Price")
-        <input value="@Model.Price.ToString("0.00")" name="price" type="text" title="A valid price" pattern="[0-9]+[,[0-9]+]{0,1}" />
+        @Html.LabelFor(x => x.Price)
+        @Html.TextBoxFor(x => x.Price, new Dictionary<String, Object>{
+            {"pattern","[0-9]+[,[0-9]+]{0,1}"},
+            {"title","A valid price"}
+        })
         <br />
-        @Html.Label("Margin")
-        <input value="@Model.Margin.ToString("0.00")" name="margin" type="text" title="A valid price" pattern="[0-9]+[,[0-9]+]{0,1}" />
+        @Html.LabelFor(x => x.Margin)
+        @Html.TextBoxFor(x => x.Margin, new Dictionary<String, Object>{
+            {"pattern","[[0-9]+[,[0-9]+]{0,1}]{0,1}"},
+            {"title","A valid percentage or blank"}
+        })
         <br />
         <button>Update</button>
     }

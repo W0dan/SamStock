@@ -5,31 +5,31 @@ using NUnit.Framework;
 
 namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockHandler
 {
-    [TestFixture]
-    public class When_Handle_is_called : BaseTest
-    {
-        private FilterStockRequest _request;
-        private FilterStockHandler _sut;
-        private Mock<IFilterStockQueryExecutor> _FilterStockQueryExecutor;
+	[TestFixture]
+	public class When_Handle_is_called : BaseTest
+	{
+		private FilterStockRequest _request;
+		private FilterStockHandler _sut;
+		private Mock<IFilterStockQueryExecutor> _FilterStockQueryExecutor;
 
-        public override void Arrange()
-        {
-            _request = new FilterStockRequest();
+		public override void Arrange()
+		{
+			_request = new FilterStockRequest();
 
-            _FilterStockQueryExecutor = new Mock<IFilterStockQueryExecutor>();
+			_FilterStockQueryExecutor = new Mock<IFilterStockQueryExecutor>();
 
-            _sut = new FilterStockHandler(_FilterStockQueryExecutor.Object);
-        }
+			_sut = new FilterStockHandler(_FilterStockQueryExecutor.Object);
+		}
 
-        public override void Act()
-        {
-            _sut.Handle(_request);
-        }
+		public override void Act()
+		{
+			_sut.Handle(_request);
+		}
 
-        [Test]
-        public void It_should_call_Execute_on_the_FilterStockQueryExecutor()
-        {
-            _FilterStockQueryExecutor.Verify(x => x.Execute(_request));
-        }
-    }
+		[Test]
+		public void It_should_call_Execute_on_the_FilterStockQueryExecutor()
+		{
+			_FilterStockQueryExecutor.Verify(x => x.Execute(_request));
+		}
+	}
 }

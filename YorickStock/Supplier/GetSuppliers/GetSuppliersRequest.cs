@@ -1,6 +1,6 @@
 ﻿namespace SamStock.Supplier.GetSuppliers
 {
-    public class GetSuppliersRequest
-    {
-    }
+	public class GetSuppliersRequest
+	{
+	}
 }

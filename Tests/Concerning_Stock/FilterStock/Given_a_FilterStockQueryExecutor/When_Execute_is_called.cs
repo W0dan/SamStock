@@ -16,59 +16,59 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor
         {
             _request = new FilterStockRequest("", -1, true);
 
-            var leverancier = new Leverancier
+            var leverancier = new Supplier
             {
-                Naam = "Musikding",
-                Site = "www.musikding.de"
+                Name = "Musikding",
+                Website = "www.musikding.de"
             };
-            Context.Leverancier.AddObject(leverancier);
+            Context.Supplier.AddObject(leverancier);
             Context.SaveChanges();
 
             var component1 = new Component
             {
-                Naam = "Weerstand 180 Ohm klein",
+                Name = "Weerstand 180 Ohm klein",
                 Stocknr = "R180E1",
-                Prijs = 0.04M,
-                Hoeveelheid = 10,
+                Price = 0.04M,
+                Stock = 10,
                 MinimumStock = 5,
-                Opmerkingen = "blah",
-                LeverancierId = leverancier.Id
+                Remarks = "blah",
+                SupplierId = leverancier.Id
             };
             Context.Component.AddObject(component1);
 
             var component2 = new Component
             {
-                Naam = "Weerstand 180 Ohm groot",
+                Name = "Weerstand 180 Ohm groot",
                 Stocknr = "R180E2",
-                Prijs = 0.05M,
-                Hoeveelheid = 10,
+                Price = 0.05M,
+                Stock = 10,
                 MinimumStock = 10,
-                Opmerkingen = "blahblah",
-                LeverancierId = leverancier.Id
+                Remarks = "blahblah",
+                SupplierId = leverancier.Id
             };
             Context.Component.AddObject(component2);
 
             var component3 = new Component
             {
-                Naam = "Weerstand 180 Ohm groot",
+                Name = "Weerstand 180 Ohm groot",
                 Stocknr = "R180E3",
-                Prijs = 0.05M,
-                Hoeveelheid = 10,
+                Price = 0.05M,
+                Stock = 10,
                 MinimumStock = 15,
-                Opmerkingen = "blahblah",
-                LeverancierId = leverancier.Id
+                Remarks = "blahblah",
+                SupplierId = leverancier.Id
             };
             Context.Component.AddObject(component3);
 
             var component4 = new Component
             {
-                Naam = "Weerstand 180 Ohm groot",
+                Name = "Weerstand 180 Ohm groot",
                 Stocknr = "R180E4",
-                Prijs = 0.05M,
-                Hoeveelheid = 10,
+                Price = 0.05M,
+                Stock = 10,
                 MinimumStock = 20,
-                Opmerkingen = "blahblah",
-                LeverancierId = leverancier.Id
+                Remarks = "blahblah",
+                SupplierId = leverancier.Id
             };
             Context.Component.AddObject(component4);
             Context.SaveChanges();

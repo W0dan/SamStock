@@ -1,30 +1,34 @@
 ﻿namespace SamStock.Supplier.GetSuppliers
 {
-    public class GetSuppliersItem
-    {
-        public GetSuppliersItem()
-        {
-        }
+	public class GetSuppliersItem
+	{
+		public GetSuppliersItem()
+		{
+		}
 
-        public GetSuppliersItem(string naam, string adres, string website) {
-            Naam = naam;
-            Adres = adres;
-            Website = website;
-        }
+		public GetSuppliersItem(string naam, string adres, string website)
+		{
+			Name = naam;
+			Address = adres;
+			Website = website;
+		}
 
-        public string Naam
-        {
-            get; set;
-        }
+		public string Name
+		{
+			get;
+			set;
+		}
 
-        public string Adres
-        {
-            get; set;
-        }
+		public string Address
+		{
+			get;
+			set;
+		}
 
-        public string Website
-        {
-            get; set;
-        }
-    }
+		public string Website
+		{
+			get;
+			set;
+		}
+	}
 }

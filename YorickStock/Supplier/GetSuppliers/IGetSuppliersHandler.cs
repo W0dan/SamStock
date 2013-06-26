@@ -2,7 +2,7 @@
 
 namespace SamStock.Supplier.GetSuppliers
 {
-    public interface IGetSuppliersHandler : IQueryHandler<GetSuppliersRequest, GetSuppliersResponse>
-    {
-    }
+	public interface IGetSuppliersHandler : IQueryHandler<GetSuppliersRequest, GetSuppliersResponse>
+	{
+	}
 }

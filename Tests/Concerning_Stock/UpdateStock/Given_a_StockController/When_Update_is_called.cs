@@ -5,7 +5,7 @@ using Moq;
 using NUnit.Framework;
 using SamStock.Stock.UpdateStock;
 using SamStock.Utilities;
-using SamStock.Web.Models;
+using SamStock.Web.Models.Stock;
 
 namespace Tests.Concerning_Stock.UpdateStock.Given_a_StockController
 {
@@ -21,8 +21,8 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_a_StockController
             _viewModel = new StockChangesViewModel();
             _viewModel.List = new List<StockChange>
                 {
-                    new StockChange{ Stocknr = "x25", Amount = 5} ,
-                    new StockChange{ Stocknr = "a10", Amount = -3} ,
+                    new StockChange{ Stocknr = "x25", Quantity = 5} ,
+                    new StockChange{ Stocknr = "a10", Quantity = -3} ,
                 };
 
             _handler = new Mock<IUpdateStockHandler>();
@@ -64,13 +64,13 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_a_StockController
         [Test]
         public void the_handlers_items_should_contain_an_item_with_amount_5()
         {
-            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.List.First().Amount == _viewModel.List.First().Amount)));
+            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.List.First().Quantity == _viewModel.List.First().Quantity)));
         }
 
         [Test]
         public void the_handlers_items_should_contain_an_item_with_amount_minus_3()
         {
-            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.List.Last().Amount == _viewModel.List.Last().Amount)));
+            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.List.Last().Quantity == _viewModel.List.Last().Quantity)));
         }
 
         [Test]

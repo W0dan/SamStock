@@ -1,11 +1,11 @@
 ﻿@using SamStock.Web._Util
-@model SamStock.Web.Models.StockViewModel
+@model SamStock.Web.Models.Stock.StockViewModel
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
 @section head
 {
-    <link href="@Url.Content("~/Content/styles/Stock.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/styles/Stock/Index.css")" rel="stylesheet" type="text/css" />
 }
 @section navigation
 {
@@ -15,15 +15,16 @@
 {
     <h1>Stock</h1>
     <div>
-        @using (Html.BeginForm("Search", "Stock"))
-        {
+        @using (Html.BeginForm("Search", "Stock")) {
             <table>
                 <tr>
                     <th>
                         ID
                     </th>
                     <td>
-                        <input name="ComponentTypeFilter" type="text" title="At least 1 letter, no spaces" pattern="[[a-z|A-Z]+]*" />
+                        @Html.TextBox("ComponentTypeFilter", "", new Dictionary<String, Object>{
+                            {"pattern","\\w{1,}"}
+                        })
                     </td>
                     <td rowspan="3">
                         <button>Go</button>
@@ -34,13 +35,13 @@
                     <th>
                         Supplier
                     </th>
-                    <td>@Html.DropDownList("LeverancierFilter", Model.Leveranciers.ToSelectList(true))
+                    <td>@Html.DropDownList("SupplierFilter", Model.Suppliers.ToSelectList(true))
                     </td>
                     <td class="detail" rowspan="2">€@Model._contentTotalValue.ToString("0.00")</td>
                 </tr>
                 <tr>
                     <th>
-                        Shortage
+                        Shortages
                     </th>
                     <td>@Html.CheckBox("MancoFilter")
                     </td>
@@ -75,85 +76,43 @@
             <th>
             </th>
         </tr>
-        <tr>
-            @using (Html.BeginForm("ComponentToevoegen", "Stock"))
-            {
-                <td>
-                    @Html.TextBox("Stocknr","",new Dictionary<String,Object>{
-                        {"size",(int)8},
-                        {"pattern","\\w{1,}"},
-                        {"required",""}
-                    })
-                </td>
-                <td>
-                    @Html.TextBox("Naam","",new Dictionary<String,Object>{
-                        {"size",(int)40}
-                    })
-                </td>
-                <td>
-                    @Html.TextBox("Prijs","",new Dictionary<String,Object>{
-                        {"size",(int)8},
-                        {"pattern","[0-9]+[,[0-9]+]{0,1}"},
-                        {"required",""}
-                    })
-                </td>
-                <td>
-                    @Html.TextBox("Hoeveelheid","",new Dictionary<String,Object>{
-                        {"size",(int)8},
-                        {"pattern","[0-9]+"},
-                        {"required",""}
-                    })
-                </td>
-                <td>
-                    @Html.TextBox("Minimumstock","",new Dictionary<String,Object>{
-                        {"size",(int)8},
-                        {"pattern","[0-9]+"},
-                        {"required",""}
-                    })
-                </td>
-                <td>
-                    @Html.DropDownList("LeverancierId", Model.Leveranciers.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString("0") }))
-                </td>
-                <td>
-                    @Html.TextBox("Opmerkingen","",new Dictionary<String,Object>{
-                        {"size",(int)20}
-                    })
-                </td>
-                <td>
-                    <button>Add Component</button>
-                </td>
-            }
-        </tr>
         @using (Html.BeginForm("Update", "Stock"))
         {
-            for (int i = 0; i < Model.List.Count; i++)
+            List<SamStock.Web.Models.Stock.StockViewModelItem> componentlist = Model.List.OrderBy(x => x.ItemCode).ToList();
+            for (int i = 0; i < componentlist.Count; i++)
             {
-                var item = Model.List[i];
-            <tr>
-                <td class="description">@item.Stocknr
-                </td>
-                <td class="description">@item.Naam
-                </td>
-                <td class="detail">@item.Prijs.ToString("0.00")
-                </td>
-                <td class="detail">@item.Hoeveelheid
-                </td>
-                <td class="detail">@item.MinimumStock
-                </td>
-                <td class="description">@item.LeverancierNaam
-                </td>
-                <td class="description">@item.Opmerkingen
-                </td>
-                <td>
-                    @Html.HiddenFor(x => x.List[i].Stocknr)
-                    @Html.TextBoxFor(x => x.List[i].Prijs,new Dictionary<String,Object>{
-                        {"size",(int)8},
-                        {"pattern","[0-9]+[,[0-9]+]{0,1}"},
-                        {"title","A valid price"}
-                    })
-                    <input type="text" title="A valid quantity" pattern="[\-]{0,1}[0-9]+" size="8" value="0" name="@("List[" + i.ToString("0") + "].Amount")"/>
-                </td>
-            </tr>
+                var item = componentlist[i];
+                <tr>
+                    <td class="description">@item.Stocknr</td>
+                    <td class="description">@item.Name</td>
+                    <td class="detail">@item.Price.ToString("0.00")
+                    </td>
+                    <td class="detail">@item.Quantity
+                    </td>
+                    <td class="detail">@item.MinimumStock
+                    </td>
+                    <td class="description">@item.SupplierName
+                    </td>
+                    <td class="description">@item.Remarks
+                    </td>
+                    <td>
+                        @Html.HiddenFor(x => x.List[i].Stocknr)
+                        @Html.TextBoxFor(x => x.List[i].Price, new Dictionary<String, Object>{
+                            {"size",(int)8},
+                            {"pattern","[0-9]+[,[0-9]+]{0,1}"},
+                            {"title","A valid price"},
+                            {"class","updateStockInput"}
+                        })
+                        <!--  @Html.TextBoxFor(x => x.List[i].Quantity, new Dictionary<String, Object>{
+                            {"size",(int)8},
+                            {"value",(int)0},
+                            {"pattern","[\\-]{0,1}[0-9]+"},
+                            {"title","A valid quantity"},
+                            {"class","updateStockInput"}
+                        })  -->
+                        <input type="text" class="updateStockInput" title="A valid quantity" pattern="[\-]{0,1}[0-9]+" size="8" value="0" name="@("List[" + i.ToString("0") + "].Amount")"/>
+                    </td>
+                </tr>
             }
             <tr>
                 <td>

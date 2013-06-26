@@ -6,21 +6,18 @@ using System.Web.Mvc;
 
 namespace SamStock.Web.Controllers
 {
-    public class OrderController : Controller
-    {
-        //
-        // GET: /Order/
+	public class OrderController : Controller
+	{
+		[HttpGet]
+		public ActionResult Index()
+		{
+			return View();
+		}
 
-        [HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-    }
+		[HttpGet]
+		public ActionResult Details(int id)
+		{
+			return View();
+		}
+	}
 }
