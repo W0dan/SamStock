@@ -1,125 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using SamStock.Database;
 
 namespace SamStock.Pedal.FilterPedal
 {
-	public class FilterPedalQueryExecutor : IFilterPedalQueryExecutor
-	{
-		private IContext _context;
+    public class FilterPedalQueryExecutor : IFilterPedalQueryExecutor
+    {
+        private readonly IContext _context;
 
-		public FilterPedalQueryExecutor(IContext context)
-		{
-			_context = context;
-		}
-		public FilterPedalResponse Execute(FilterPedalRequest request)
-		{
-			decimal defaultpedalpricemargin = _context.AdminData.Where(y => y.Name == "DefaultPedalPriceMargin").Single().Value;
-			FilterPedalResponse response = new FilterPedalResponse();
-			if (request.Id > 0)
-			{
-				/*  response.List.Add(_context.Pedal.Where(p => p.Id == request.Id).Select(p => new FilterPedalResponsePedal {
-					Id = p.Id,
-					Name = p.Name,
-					Price = p.Price,
-					Margin = (p.Margin != null) ? (decimal)p.Margin : defaultpedalpricemargin,
-					List = _context.PedalComponent.Where(c => c.PedalId == p.Id).Select(c => new FilterPedalResponseComponent{
-						Stocknr = c.Component.Stocknr,
-						Description = c.Component.Name,
-						Quantity = c.Number,
-						Price = c.Component.Price,
-						Stock = c.Component.Quantity,
-						MinimumStock = c.Component.MinimumStock
-					}).ToList()
-				}).Single());    */
+        public FilterPedalQueryExecutor(IContext context)
+        {
+            _context = context;
+        }
 
-				response.Pedals.Add(_context.Pedal.Where(p => p.Id == request.Id).Select(p => new FilterPedalResponsePedal
-				{
-					Id = p.Id,
-					Name = p.Name,
-					Price = p.Price,
-					Margin = (p.Margin != null) ? (decimal)p.Margin : defaultpedalpricemargin
-				}).Single());
+        public FilterPedalResponse Execute(FilterPedalRequest request)
+        {
+            var defaultpedalpricemargin = _context.AdminData.Single(y => y.Name == "DefaultPedalPriceMargin").Value;
 
-				List<PedalComponentDelegator> pedalcomps = _context.PedalComponent.Where(c => c.PedalId == request.Id).Select(c => new PedalComponentDelegator
-				{
-					Id = c.ComponentId,
-					Quantity = c.Number
-				}).ToList();
+            var allPedals = from p in _context.Pedal
+                         select new FilterPedalResponsePedal
+                             {
+                                 Id = p.Id,
+                                 Margin = p.Margin ?? defaultpedalpricemargin,
+                                 Name = p.Name,
+                                 Price = p.Price,
+                                 Components = _context.PedalComponent.Where(pc => pc.PedalId == p.Id).Select(pc => new FilterPedalResponseComponent
+                                     {
+                                         Description = pc.Component.Name,
+                                         ItemCode = pc.Component.ItemCode,
+                                         Price = pc.Component.Price,
+                                         Quantity = pc.Number,
+                                         Stock = pc.Component.Stock,
+                                         Stocknr = pc.Component.Stocknr
+                                     })
+                             };
 
-				for (int i = 0; i < pedalcomps.Count; i++)
-				{
-					int id = pedalcomps[i].Id;
-					int count = pedalcomps[i].Quantity;
-					response.Pedals[0].Components.Add(_context.Component.Where(c => c.Id == id).Select(c => new FilterPedalResponseComponent
-					{
-						Stocknr = c.Stocknr,
-						Description = c.Name,
-						Quantity = count,
-						Price = c.Price,
-						Stock = c.Stock,
-						ItemCode = c.ItemCode
-					}).Single());
-				}
-			}
-			else
-			{
-				/*  response.List.AddRange(_context.Pedal.Select(p => new FilterPedalResponsePedal {
-					Id = p.Id,
-					Name = p.Name,
-					Price = p.Price,
-					Margin = (p.Margin != null) ? (decimal)p.Margin : defaultpedalpricemargin,
-					List = _context.PedalComponent.Where(c => c.PedalId == p.Id).Select(c => new FilterPedalResponseComponent{
-						Stocknr = c.Component.Stocknr,
-						Description = c.Component.Name,
-						Quantity = c.Number,
-						Price = c.Component.Price,
-						Stock = c.Component.Quantity,
-						MinimumStock = c.Component.MinimumStock
-					}).ToList()
-				}).ToList());   */
+            var filterPedalResponse = new FilterPedalResponse
+                {
+                    Pedals = request.Id > 0 ? allPedals.Where(p => p.Id == request.Id).ToList() : allPedals.ToList()
+                };
+            return filterPedalResponse;
+        }
+    }
 
-				response.Pedals.AddRange(_context.Pedal.Select(p => new FilterPedalResponsePedal
-				{
-					Id = p.Id,
-					Name = p.Name,
-					Price = p.Price,
-					Margin = p.Margin == null ? defaultpedalpricemargin : (decimal)p.Margin
-				}).ToList());
-
-				for (int pedal = 0; pedal < response.Pedals.Count; pedal++)
-				{
-					int pid = response.Pedals[pedal].Id;
-					List<PedalComponentDelegator> pedalcomps = _context.PedalComponent.Where(c => c.PedalId == pid).Select(c => new PedalComponentDelegator
-					{
-						Id = c.ComponentId,
-						Quantity = c.Number
-					}).ToList();
-
-					for (int i = 0; i < pedalcomps.Count; i++)
-					{
-						int cid = pedalcomps[i].Id;
-						int count = pedalcomps[i].Quantity;
-						response.Pedals[pedal].Components.Add(_context.Component.Where(c => c.Id == cid).Select(c => new FilterPedalResponseComponent
-						{
-							Stocknr = c.Stocknr,
-							Description = c.Name,
-							Quantity = count,
-							Price = c.Price,
-							ItemCode = c.ItemCode
-						}).Single());
-					}
-				}
-			}
-			return response;
-		}
-	}
-
-	public class PedalComponentDelegator
-	{
-		public int Id;
-		public int Quantity;
-	}
+    public class PedalComponentDelegator
+    {
+        public int Id;
+        public int Quantity;
+    }
 }

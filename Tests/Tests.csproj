@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalQueryExecutor\When_Execute_is_called_without_a_pedalId.cs" />
     <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Build_is_called.cs" />
     <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Details_is_called.cs" />
     <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_UpdateComponents_is_called.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="Concerning_Pedal\AddPedal\Given_an_AddPedalHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Pedal\AddPedal\Given_a_PedalController\When_Create_is_called.cs" />
     <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalQueryExecutor\When_Execute_is_called.cs" />
+    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalQueryExecutor\When_Execute_is_called_with_a_pedalId.cs" />
     <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Index_is_called.cs" />
     <Compile Include="Concerning_Pedal\PedalControllerBaseTest.cs" />
     <Compile Include="Concerning_Pedal\UpdatePedalComponents\Given_an_UpdatePedalComponentsCommandExecutor\When_Execute_is_called.cs" />

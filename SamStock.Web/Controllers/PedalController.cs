@@ -52,7 +52,7 @@ namespace SamStock.Web.Controllers
 		[HttpPost]
 		public RedirectToRouteResult Update(PedalViewModelPedal viewmodel)
 		{
-			_dispatcher.DispatchCommand<UpdatePedalCommand>(new UpdatePedalCommand(viewmodel.Id, viewmodel.Name, viewmodel.Price, viewmodel.Margin));
+			_dispatcher.DispatchCommand(new UpdatePedalCommand(viewmodel.Id, viewmodel.Name, viewmodel.Price, viewmodel.Margin));
 			return RedirectToAction("Update", new { viewmodel.Id });
 		}
 

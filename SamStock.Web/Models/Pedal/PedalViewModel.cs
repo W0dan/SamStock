@@ -10,7 +10,7 @@ namespace SamStock.Web.Models.Pedal
 	public class PedalViewModel
 	{
 		public List<PedalViewModelPedal> Pedals { get; private set; }
-		public decimal VAT { get; private set; }
+		public decimal VATAmount { get; private set; }
 		public int BuildCount { get; private set;}
 		public decimal Price { get; private set; }
 		public decimal Margin { get; private set; }
@@ -31,8 +31,8 @@ namespace SamStock.Web.Models.Pedal
 			Price = Pedals[0].Price;
 			Margin = Pedals[0].Margin;
 			Baseprice = Costs * (Margin + 100) / 100;
-			VAT = (Price - Costs) * admindata.VAT / 100;
-			Profit = Price - Costs - VAT;
+			VATAmount = (Price - Costs) * admindata.VAT / 100;
+			Profit = Price - Costs - VATAmount;
 
 			if (Pedals[0].Components.Count > 0)
 			{

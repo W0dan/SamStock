@@ -39,9 +39,10 @@ namespace Tests.Concerning_Pedal.FilterPedal.Given_a_PedalController
 			{
 				Stocknr = "ABC",
 				Quantity = 5,
-				Price = 1.0M
+				Price = 1.0M,
+                ItemCode = "ABC123X"
 			};
-			_FilterPedalResponse.Pedals[0].Components.Add(pc1);
+		    _FilterPedalResponse.Pedals[0].Components = new List<FilterPedalResponseComponent> {pc1};
 
 			_AdminData = new GetAdminDataResponse(21.0M, 50.0M);
 
@@ -83,10 +84,11 @@ namespace Tests.Concerning_Pedal.FilterPedal.Given_a_PedalController
 		}
 
 		[Test]
-		public void It_should_put_the_admindata_into_the_viewmodel()
+		public void It_should_take_the_admindata_into_account_in_the_viewmodel()
 		{
-			Assert.IsTrue(_viewModel.VAT == _AdminData.VAT && _viewModel.Pedals[0].Margin > -1);
+			Assert.IsTrue(_viewModel.Pedals[0].Margin > -1);
 			// margin can be pedal-specific
+		    Assert.AreEqual(1.05M, _viewModel.VATAmount);
 		}
 	}
 }

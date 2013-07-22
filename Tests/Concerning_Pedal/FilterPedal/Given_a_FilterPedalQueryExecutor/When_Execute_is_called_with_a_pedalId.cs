@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using NUnit.Framework;
-using SamStock.Pedal.FilterPedal;
 using SamStock.Database;
+using SamStock.Pedal.FilterPedal;
 
 namespace Tests.Concerning_Pedal.FilterPedal.Given_a_FilterPedalQueryExecutor
 {
 	[TestFixture]
-	public class When_Execute_is_called : DatabaseTest
+	public class When_Execute_is_called_with_a_pedalId : DatabaseTest
 	{
 		private IFilterPedalQueryExecutor _sut;
 		private FilterPedalRequest _request;
@@ -105,7 +102,7 @@ namespace Tests.Concerning_Pedal.FilterPedal.Given_a_FilterPedalQueryExecutor
 		[Test]
 		public void It_should_return_1_component()
 		{
-			Assert.AreEqual(1,_response.Pedals[0].Components.Count);
+			Assert.AreEqual(1,_response.Pedals[0].Components.Count());
 		}
 
 		[Test]
