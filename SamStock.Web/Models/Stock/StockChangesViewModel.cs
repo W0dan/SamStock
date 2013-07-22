@@ -4,6 +4,6 @@ namespace SamStock.Web.Models.Stock
 {
     public class StockChangesViewModel
     {
-        public IEnumerable<StockChange> List { get; set; } 
+        public IEnumerable<StockChange> StockChanges { get; set; } 
     }
 }

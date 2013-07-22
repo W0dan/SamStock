@@ -7,7 +7,7 @@ namespace SamStock.Pedal.FilterPedal
 {
 	public class FilterPedalResponsePedal
 	{
-		public List<FilterPedalResponseComponent> List { get; set; }
+		public List<FilterPedalResponseComponent> Components { get; set; }
 		public int Id { get; set; }
 		public String Name { get; set; }
 		public decimal Price { get; set; }
@@ -15,7 +15,7 @@ namespace SamStock.Pedal.FilterPedal
 
 		public FilterPedalResponsePedal()
 		{
-			List = new List<FilterPedalResponseComponent>();
+			Components = new List<FilterPedalResponseComponent>();
 		}
 	}
 }

@@ -78,10 +78,10 @@
         </tr>
         @using (Html.BeginForm("Update", "Stock"))
         {
-            List<SamStock.Web.Models.Stock.StockViewModelItem> componentlist = Model.List.OrderBy(x => x.ItemCode).ToList();
-            for (int i = 0; i < componentlist.Count; i++)
+            List<SamStock.Web.Models.Stock.StockViewModelItem> list = Model.Components.OrderBy(x => x.ItemCode).ToList();
+            for (int i = 0; i < list.Count; i++)
             {
-                var item = componentlist[i];
+                var item = list[i];
                 <tr>
                     <td class="description">@item.Stocknr</td>
                     <td class="description">@item.Name</td>
@@ -96,21 +96,24 @@
                     <td class="description">@item.Remarks
                     </td>
                     <td>
-                        @Html.HiddenFor(x => x.List[i].Stocknr)
-                        @Html.TextBoxFor(x => x.List[i].Price, new Dictionary<String, Object>{
+                        @Html.HiddenFor(x => list[i].Stocknr, new Dictionary<String,Object>{
+                            {"name","List[" + i.ToString("0") + "].Stocknr"}
+                        })
+                        @Html.TextBoxFor(x => list[i].Price, new Dictionary<String, Object>{
                             {"size",(int)8},
                             {"pattern","[0-9]+[,[0-9]+]{0,1}"},
                             {"title","A valid price"},
-                            {"class","updateStockInput"}
+                            {"class","updateStockInput"},
+                            {"name","List[" + i.ToString("0") + "].Price"}
                         })
-                        <!--  @Html.TextBoxFor(x => x.List[i].Quantity, new Dictionary<String, Object>{
+                        <!--  @Html.TextBoxFor(x => x.Components[i].Quantity, new Dictionary<String, Object>{
                             {"size",(int)8},
                             {"value",(int)0},
                             {"pattern","[\\-]{0,1}[0-9]+"},
                             {"title","A valid quantity"},
                             {"class","updateStockInput"}
                         })  -->
-                        <input type="text" class="updateStockInput" title="A valid quantity" pattern="[\-]{0,1}[0-9]+" size="8" value="0" name="@("List[" + i.ToString("0") + "].Amount")"/>
+                        <input type="text" class="updateStockInput" title="A valid quantity" pattern="[\-]{0,1}[0-9]+" size="8" value="0" name="@("list[" + i.ToString("0") + "].Quantity")"/>
                     </td>
                 </tr>
             }

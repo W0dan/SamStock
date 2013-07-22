@@ -17,9 +17,9 @@ namespace SamStock.Pedal.UpdatePedalComponents
 
 		public void Execute(UpdatePedalComponentsCommand cmd)
 		{
-			if (_context.PedalComponent.Where(p => p.PedalId == cmd.Id && p.ComponentId == cmd.ComponentId).Count() == 1)
+			if (_context.PedalComponent.Where(p => p.PedalId == cmd.PedalId && p.ComponentId == cmd.ComponentId).Count() == 1)
 			{
-				var pedalcomp = _context.PedalComponent.Where(p => p.PedalId == cmd.Id && p.ComponentId == cmd.ComponentId).Single();
+				var pedalcomp = _context.PedalComponent.Where(p => p.PedalId == cmd.PedalId && p.ComponentId == cmd.ComponentId).Single();
 				if (pedalcomp.Number + cmd.Quantity > 0)
 				{
 					pedalcomp.Number = pedalcomp.Number + cmd.Quantity;
@@ -35,7 +35,7 @@ namespace SamStock.Pedal.UpdatePedalComponents
 				{
 					_context.PedalComponent.AddObject(new PedalComponent
 					{
-						PedalId = cmd.Id,
+						PedalId = cmd.PedalId,
 						ComponentId = cmd.ComponentId,
 						Number = cmd.Quantity
 					});

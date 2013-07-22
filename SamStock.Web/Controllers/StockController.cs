@@ -26,7 +26,7 @@ namespace SamStock.Web.Controllers
 			var stockOverzicht = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(new FilterStockRequest());
 			var refdata = GetRefdata();
 
-			var model = new StockViewModel(stockOverzicht.List, refdata);
+			var model = new StockViewModel(stockOverzicht.Components, refdata);
 
 			return View(model);
 		}
@@ -45,7 +45,7 @@ namespace SamStock.Web.Controllers
 
 			var stockOverzicht = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(new FilterStockRequest());
 
-			var model = new StockViewModel(filteredstock.List, GetRefdata(), (new StockViewModel(stockOverzicht.List, GetRefdata()))._contentTotalValue);
+			var model = new StockViewModel(filteredstock.Components, GetRefdata(), (new StockViewModel(stockOverzicht.Components, GetRefdata()))._contentTotalValue);
 
 			return View("Index", model);
 		}
@@ -77,10 +77,10 @@ namespace SamStock.Web.Controllers
 		[HttpPost]
 		public ActionResult Update(StockChangesViewModel stockChanges)
 		{
-			var command = new UpdateStockCommand { List = new List<StockUpdate>() };
-			foreach (var stockChange in stockChanges.List)
+			var command = new UpdateStockCommand { StockUpdates = new List<StockUpdate>() };
+			foreach (var stockChange in stockChanges.StockChanges)
 			{
-				command.List.Add(new StockUpdate(stockChange.Stocknr, stockChange.Quantity, stockChange.Price));
+				command.StockUpdates.Add(new StockUpdate(stockChange.Stocknr, stockChange.Quantity, stockChange.Price));
 			}
 			_dispatcher.DispatchCommand(command);
 			return RedirectToAction("Index");
@@ -96,9 +96,9 @@ namespace SamStock.Web.Controllers
 		public ActionResult SearchByStocknr(string Stocknr)
 		{
 			var response = _dispatcher.DispatchRequest<FilterStockRequest,FilterStockResponse>(new FilterStockRequest(Stocknr,0,false));
-			if (response.List.Count > 0)
+			if (response.Components.Count > 0)
 			{
-				return RedirectToAction("ModifyComponent",response.List[0]);
+				return RedirectToAction("ModifyComponent",response.Components[0]);
 			} else
 			{
 				return RedirectToAction("SearchByStocknr");

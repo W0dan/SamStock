@@ -9,16 +9,16 @@ namespace SamStock.Web.Models.Supplier
 	{
 		public SuppliersViewModel(GetSuppliersResponse getLeveranciersResponse)
 		{
-			List = getLeveranciersResponse.List
-				.Select(x => new BeheerViewModelLeverancier { Address = x.Address, Name = x.Name, Website = x.Website }).ToList();
+			Suppliers = getLeveranciersResponse.Suppliers
+				.Select(x => new AdminViewModelSupplier { Address = x.Address, Name = x.Name, Website = x.Website }).ToList();
 		}
 
-		public List<BeheerViewModelLeverancier> List { get; set; }
+		public List<AdminViewModelSupplier> Suppliers { get; set; }
 
-		public LeveranciersViewModelNewItem NewItem { get; set; }
+		public SuppliersViewModelNewItem NewItem { get; set; }
 	}
 
-	public class LeveranciersViewModelNewItem
+	public class SuppliersViewModelNewItem
 	{
 		public string Name { get; set; }
 
@@ -27,7 +27,7 @@ namespace SamStock.Web.Models.Supplier
 		public string Website { get; set; }
 	}
 
-	public class BeheerViewModelLeverancier
+	public class AdminViewModelSupplier
 	{
 		public string Name { get; set; }
 

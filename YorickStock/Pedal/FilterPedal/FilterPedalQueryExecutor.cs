@@ -35,7 +35,7 @@ namespace SamStock.Pedal.FilterPedal
 					}).ToList()
 				}).Single());    */
 
-				response.List.Add(_context.Pedal.Where(p => p.Id == request.Id).Select(p => new FilterPedalResponsePedal
+				response.Pedals.Add(_context.Pedal.Where(p => p.Id == request.Id).Select(p => new FilterPedalResponsePedal
 				{
 					Id = p.Id,
 					Name = p.Name,
@@ -53,13 +53,14 @@ namespace SamStock.Pedal.FilterPedal
 				{
 					int id = pedalcomps[i].Id;
 					int count = pedalcomps[i].Quantity;
-					response.List[0].List.Add(_context.Component.Where(c => c.Id == id).Select(c => new FilterPedalResponseComponent
+					response.Pedals[0].Components.Add(_context.Component.Where(c => c.Id == id).Select(c => new FilterPedalResponseComponent
 					{
 						Stocknr = c.Stocknr,
 						Description = c.Name,
 						Quantity = count,
 						Price = c.Price,
 						Stock = c.Stock,
+						ItemCode = c.ItemCode
 					}).Single());
 				}
 			}
@@ -80,7 +81,7 @@ namespace SamStock.Pedal.FilterPedal
 					}).ToList()
 				}).ToList());   */
 
-				response.List.AddRange(_context.Pedal.Select(p => new FilterPedalResponsePedal
+				response.Pedals.AddRange(_context.Pedal.Select(p => new FilterPedalResponsePedal
 				{
 					Id = p.Id,
 					Name = p.Name,
@@ -88,9 +89,9 @@ namespace SamStock.Pedal.FilterPedal
 					Margin = p.Margin == null ? defaultpedalpricemargin : (decimal)p.Margin
 				}).ToList());
 
-				for (int pedal = 0; pedal < response.List.Count; pedal++)
+				for (int pedal = 0; pedal < response.Pedals.Count; pedal++)
 				{
-					int pid = response.List[pedal].Id;
+					int pid = response.Pedals[pedal].Id;
 					List<PedalComponentDelegator> pedalcomps = _context.PedalComponent.Where(c => c.PedalId == pid).Select(c => new PedalComponentDelegator
 					{
 						Id = c.ComponentId,
@@ -101,12 +102,13 @@ namespace SamStock.Pedal.FilterPedal
 					{
 						int cid = pedalcomps[i].Id;
 						int count = pedalcomps[i].Quantity;
-						response.List[pedal].List.Add(_context.Component.Where(c => c.Id == cid).Select(c => new FilterPedalResponseComponent
+						response.Pedals[pedal].Components.Add(_context.Component.Where(c => c.Id == cid).Select(c => new FilterPedalResponseComponent
 						{
 							Stocknr = c.Stocknr,
 							Description = c.Name,
 							Quantity = count,
-							Price = c.Price
+							Price = c.Price,
+							ItemCode = c.ItemCode
 						}).Single());
 					}
 				}

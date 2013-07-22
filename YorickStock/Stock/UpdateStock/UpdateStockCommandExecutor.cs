@@ -14,7 +14,7 @@ namespace SamStock.Stock.UpdateStock
 
 		public void Execute(UpdateStockCommand command)
 		{
-			foreach (var su in command.List)
+			foreach (var su in command.StockUpdates)
 			{
 				if (su.Quantity == 0)
 				{

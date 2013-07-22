@@ -1,4 +1,6 @@
-﻿@model SamStock.Web.Models.Pedal.PedalViewModel
+﻿@using System.Linq
+@using System.Text.RegularExpressions
+@model SamStock.Web.Models.Pedal.PedalViewModel
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
@@ -12,83 +14,103 @@
 }
 @section body
 {
-    <h1>@Model.List[0].Name</h1>
-    <a class="button navigation" href="@Url.Action("Update", "Pedal", new { Model.List[0].Id })">Edit</a> <a class="button navigation" href="@Url.Action("Build", "Pedal", new { Model.List[0].Id })">Build</a>
-    @{
-        decimal costs = 0;
-        foreach (var item in Model.List[0].List) {
-            costs += item.Price * item.Quantity;
-        }
-        decimal price = Model.List[0].Price;
-        decimal margin = Model.List[0].Margin;
-        decimal baseprice = costs*(margin + 100)/100;
-        decimal vat = (price - costs) * Model.VAT / 100;
-        decimal profit = price - costs - vat;
-    }
+    <h1>@Model.Pedals[0].Name</h1>
+    <a class="button navigation" href="@Url.Action("Update", "Pedal", new { Model.Pedals[0].Id })">Edit</a> <a class="button navigation" href="@Url.Action("Build", "Pedal", new { Model.Pedals[0].Id })">Build</a>
+    <span>Sufficient stock for @Model.BuildCount builds</span>
     <br />
     <br />
     <table class="priceInfo">
         <tbody>
             <tr class="info">
                 <th>Costs</th>
-                <td class="listProperty">€@costs.ToString("0.00")</td>
-                <td class="listProperty">@((costs * 100 / price).ToString("0.00"))%</td>
+                <td class="listProperty">€@Model.Costs.ToString("0.00")</td>
+                <td class="listProperty">@((Model.Costs * 100 / Model.Price).ToString("0.00"))%</td>
             </tr>
             <tr class="info">
                 <th>Margin</th>
-                <td class="listProperty">€@((margin/100*costs).ToString("0.00"))</td>
-                <td class="listProperty">@(((margin/100*costs) * 100 / price).ToString("0.00"))%</td>
+                <td class="listProperty">€@((Model.Margin / 100 * Model.Costs).ToString("0.00"))</td>
+                <td class="listProperty">@(((Model.Margin / 100 * Model.Costs) * 100 / Model.Price).ToString("0.00"))%</td>
             </tr>
             <tr class="info">
                 <th>Minimum Price</th>
-                <td class="listProperty">€@baseprice.ToString("0.00")</td>
-                <td class="listProperty">@((baseprice * 100 / price).ToString("0.00"))%</td>
+                <td class="listProperty">€@Model.Baseprice.ToString("0.00")</td>
+                <td class="listProperty">@((Model.Baseprice * 100 / Model.Price).ToString("0.00"))%</td>
             </tr>
             <tr class="info">
                 <th>Profit</th>
-                <td class="listProperty">€@((profit).ToString("0.00"))</td>
-                <td class="listProperty">@(((profit * 100) / price).ToString("0.00"))%</td>
+                <td class="listProperty">€@((Model.Profit).ToString("0.00"))</td>
+                <td class="listProperty">@(((Model.Profit * 100) / Model.Price).ToString("0.00"))%</td>
             </tr>
             <tr class="info">
                 <th>VAT</th>
-                <td class="listProperty">€@((vat).ToString("0.00"))</td>
-                <td class="listProperty">@((vat * 100 / price).ToString("0.00"))%</td>
+                <td class="listProperty">€@((Model.VAT).ToString("0.00"))</td>
+                <td class="listProperty">@((Model.VAT * 100 / Model.Price).ToString("0.00"))%</td>
             </tr>
             <tr class="info">
                 <th>Price</th>
-                <td class="listProperty">€@price.ToString("0.00")</td>
+                <td class="listProperty">€@Model.Price.ToString("0.00")</td>
                 <td class="listProperty">100%</td>
             </tr>
         </tbody>
     </table>
     <br />
-    <a class="button navigation" href="@Url.Action("UpdateComponents","Pedal",new {Model.List[0].Id})">Edit Components</a>
+    <a class="button navigation" href="@Url.Action("UpdateComponents", "Pedal", new { Model.Pedals[0].Id })">Edit Components</a>
     <br />
     <br />
     <table class="componentinfo">
         <tbody>
             <tr>
                 <th>ID</th>
+                <!-- <th>Item Code</th>
+                <th>Item Category</th> -->
                 <th>Description</th>
-                <th>Amount</th>
+                <th>Quantity</th>
                 <th>Unit Price</th>
                 <th>Extended Price</th>
                 <th>Stock</th>
             </tr>
-            @foreach (var item in Model.List[0].List) {
-                <tr>
-                    <td class="description">@item.Stocknr</td>
-                    <td class="description">@item.Description</td>
-                    @if (item.Stock >= item.Quantity) {
-                        <td class="detail">@item.Quantity</td>
-                    } else
+            @{
+                String[] categories = {
+                    "Hardware",
+                    "Potentiometer",
+                    "IC",
+                    "Transistor",
+                    "Diode",
+                    "LED",
+                    "Resistor",
+                    "Capacitor",
+                    "Special"
+                };
+            }
+            @foreach (String cat in categories)
+            {
+                var list = Model.Pedals[0].Components.Where(x => x.ItemCategory.IndexOf(cat) == 0).OrderBy(x => x.ItemCategory + x.ItemCode).ToList();
+                if (list.Count > 0)
+                {
+                    <tr>
+                        <td class="categoryHeader" colspan="6">@cat</td>
+                    </tr>
+                    foreach (var item in list)
                     {
-                        <td class="detail stockDeficiency">@item.Quantity</td>
+                    <tr>
+                        <td class="description">@item.Stocknr</td>
+                        <!-- <td class="description">@item.ItemCode</td>
+                        <td class="description">@item.ItemCategory</td> -->
+                        <td class="description">@item.Description</td>
+                        @if (item.Stock >= item.Quantity)
+                        {
+                            <td class="detail">@item.Quantity</td>
+                        }
+                        else
+                        {
+                            <td class="detail stockDeficiency">@item.Quantity</td>
+                        }
+                        <td class="detail">€@item.Price.ToString("0.00")</td>
+                        <td class="detail">€@((item.Price * item.Quantity).ToString("0.00"))</td>
+                        <td class="detail">@(item.Stock)</td>
+                    </tr>
                     }
-                    <td class="detail">€@item.Price.ToString("0.00")</td>
-                    <td class="detail">€@((item.Price * item.Quantity).ToString("0.00"))</td>
-                    <td class="detail">@(item.Stock)</td>
-                </tr>
+                }
             }
         </tbody>
     </table>

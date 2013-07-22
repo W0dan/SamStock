@@ -7,13 +7,13 @@ namespace SamStock.Pedal.UpdatePedalComponents
 {
 	public class UpdatePedalComponentsCommand
 	{
-		public int Id { get; private set; }
+		public int PedalId { get; private set; }
 		public int ComponentId { get; private set; }
 		public int Quantity { get; private set; }
 
 		public UpdatePedalComponentsCommand(int id, int componentid, int quantity)
 		{
-			Id = id;
+			PedalId = id;
 			ComponentId = componentid;
 			Quantity = quantity;
 		}

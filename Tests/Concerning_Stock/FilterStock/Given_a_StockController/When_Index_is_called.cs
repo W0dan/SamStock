@@ -56,13 +56,13 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
             };
 
             _FilterStockResponse = new FilterStockResponse();
-            _FilterStockResponse.List = new List<FilterStockItem>
+            _FilterStockResponse.Components = new List<FilterStockItem>
                 {
                     i1,i2
                 };
 
             _totalStockResponse = new FilterStockResponse();
-            _totalStockResponse.List = new List<FilterStockItem>
+            _totalStockResponse.Components = new List<FilterStockItem>
             {
                 i1,i2,i3
             };
@@ -110,7 +110,7 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_StockController
         [Test]
         public void It_should_put_the_data_into_the_viewmodel()
         {
-            _viewModel.List.ShouldMatchAllItemsOf(_FilterStockResponse.List.ToList(),
+            _viewModel.Components.ShouldMatchAllItemsOf(_FilterStockResponse.Components.ToList(),
                 (x, y) => x.Stocknr == y.Stocknr
                     && x.Quantity == y.Quantity
                     && x.SupplierName == y.SupplierName

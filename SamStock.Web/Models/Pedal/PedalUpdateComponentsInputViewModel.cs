@@ -9,6 +9,6 @@ namespace SamStock.Web.Models.Pedal
 	{
 		public int Id { get; set; }
 		public String Stocknr { get; set; }
-		public int Quanity { get; set; }
+		public int Quantity { get; set; }
 	}
 }

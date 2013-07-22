@@ -94,6 +94,7 @@
     <Compile Include="Stock\ModifyStock\ModifyStockCommand.cs" />
     <Compile Include="Stock\ModifyStock\ModifyStockCommandExecutor.cs" />
     <Compile Include="Stock\ModifyStock\ModifyStockHandler.cs" />
+    <Compile Include="Stock\UpdateStock\StockUpdate.cs" />
     <Compile Include="Supplier\AddSupplier\AddSupplierCommand.cs" />
     <Compile Include="Supplier\AddSupplier\AddSupplierCommandExecutor.cs" />
     <Compile Include="Supplier\AddSupplier\AddSupplierHandler.cs" />

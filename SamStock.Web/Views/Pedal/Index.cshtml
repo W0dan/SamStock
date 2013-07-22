@@ -14,7 +14,7 @@
 {
     <h1>Pedals</h1>
     <div id="pedalList">
-        @foreach(var item in Model.List)
+        @foreach(var item in Model.Pedals)
         {
             <div class="pedal">
                 <a href="@Url.Action("Details", "Pedal", new {item.Id})">@item.Name</a>

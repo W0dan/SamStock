@@ -6,9 +6,9 @@ namespace SamStock.Stock.FilterStock
 	{
 		public FilterStockResponse()
 		{
-			List = new List<FilterStockItem>();
+			Components = new List<FilterStockItem>();
 		}
 
-		public List<FilterStockItem> List { get; set; }
+		public List<FilterStockItem> Components { get; set; }
 	}
 }

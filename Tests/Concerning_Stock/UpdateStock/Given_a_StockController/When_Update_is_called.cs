@@ -19,7 +19,7 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_a_StockController
         public override void Arrange()
         {
             _viewModel = new StockChangesViewModel();
-            _viewModel.List = new List<StockChange>
+            _viewModel.StockChanges = new List<StockChange>
                 {
                     new StockChange{ Stocknr = "x25", Quantity = 5} ,
                     new StockChange{ Stocknr = "a10", Quantity = -3} ,
@@ -46,31 +46,31 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_a_StockController
         [Test]
         public void the_Handler_should_get_two_items()
         {
-            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.List.Count == 2)));
+            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.StockUpdates.Count == 2)));
         }
 
         [Test]
         public void the_handlers_items_should_contain_an_item_with_stocknr_x25()
         {
-            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.List.First().Stocknr == _viewModel.List.First().Stocknr)));
+            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.StockUpdates.First().Stocknr == _viewModel.StockChanges.First().Stocknr)));
         }
 
         [Test]
         public void the_handlers_items_should_contain_an_item_with_stocknr_a10()
         {
-            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.List.Last().Stocknr == _viewModel.List.Last().Stocknr)));
+            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.StockUpdates.Last().Stocknr == _viewModel.StockChanges.Last().Stocknr)));
         }
 
         [Test]
         public void the_handlers_items_should_contain_an_item_with_amount_5()
         {
-            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.List.First().Quantity == _viewModel.List.First().Quantity)));
+            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.StockUpdates.First().Quantity == _viewModel.StockChanges.First().Quantity)));
         }
 
         [Test]
         public void the_handlers_items_should_contain_an_item_with_amount_minus_3()
         {
-            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.List.Last().Quantity == _viewModel.List.Last().Quantity)));
+            _handler.Verify(u => u.Handle(It.Is<UpdateStockCommand>(c => c.StockUpdates.Last().Quantity == _viewModel.StockChanges.Last().Quantity)));
         }
 
         [Test]

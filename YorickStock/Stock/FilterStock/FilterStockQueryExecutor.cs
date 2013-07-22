@@ -37,7 +37,7 @@ namespace SamStock.Stock.FilterStock
 				ItemCode = x.ItemCode
 			}).ToList();
 
-			return new FilterStockResponse { List = result };
+			return new FilterStockResponse { Components = result };
 		}
 	}
 }

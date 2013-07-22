@@ -93,25 +93,25 @@ namespace Tests.Concerning_Pedal.FilterPedal.Given_a_FilterPedalQueryExecutor
 		[Test]
 		public void It_should_return_1_pedal()
 		{
-			Assert.AreEqual(_response.List.Count, 1);
+			Assert.AreEqual(_response.Pedals.Count, 1);
 		}
 
 		[Test]
 		public void It_should_contain_the_correct_pedal_and_its_data()
 		{
-			Assert.IsTrue(_response.List.All(x => x.Name == p1.Name && x.Price == p1.Price && x.Margin == p1.Margin && x.Id == p1.Id));
+			Assert.IsTrue(_response.Pedals.All(x => x.Name == p1.Name && x.Price == p1.Price && x.Margin == p1.Margin && x.Id == p1.Id));
 		}
 
 		[Test]
 		public void It_should_return_1_component()
 		{
-			Assert.AreEqual(1,_response.List[0].List.Count);
+			Assert.AreEqual(1,_response.Pedals[0].Components.Count);
 		}
 
 		[Test]
 		public void It_should_contain_the_pedals_component()
 		{
-			Assert.IsTrue(_response.List[0].List.All(x => x.Description == comp1.Name && x.Price == comp1.Price && x.Quantity == pc1.Number && x.Stocknr == comp1.Stocknr));
+			Assert.IsTrue(_response.Pedals[0].Components.All(x => x.Description == comp1.Name && x.Price == comp1.Price && x.Quantity == pc1.Number && x.Stocknr == comp1.Stocknr));
 		}
 	}
 }

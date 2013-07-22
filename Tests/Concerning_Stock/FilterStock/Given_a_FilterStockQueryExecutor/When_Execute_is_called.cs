@@ -84,19 +84,19 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor
         [Test]
         public void It_should_return_2_items()
         {
-            Assert.AreEqual(2, _result.List.Count);
+            Assert.AreEqual(2, _result.Components.Count);
         }
 
         [Test]
         public void It_should_return_an_item_with_Stocknr_R180E3()
         {
-            Assert.IsTrue(_result.List.Any(x => x.Stocknr == "R180E3"));
+            Assert.IsTrue(_result.Components.Any(x => x.Stocknr == "R180E3"));
         }
 
         [Test]
         public void It_should_return_an_item_with_Stocknr_R180E4()
         {
-            Assert.IsTrue(_result.List.Any(x => x.Stocknr == "R180E4"));
+            Assert.IsTrue(_result.Components.Any(x => x.Stocknr == "R180E4"));
         }
     }
 }

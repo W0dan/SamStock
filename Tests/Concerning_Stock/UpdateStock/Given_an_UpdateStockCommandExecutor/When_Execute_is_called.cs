@@ -45,9 +45,9 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
                 });
 
             _command = new UpdateStockCommand();
-            _command.List = new List<StockUpdate>();
-            _command.List.Add(new StockUpdate("b15", 10, 3M));
-            _command.List.Add(new StockUpdate("c15", -3, 0.75M));
+            _command.StockUpdates = new List<StockUpdate>();
+            _command.StockUpdates.Add(new StockUpdate("b15", 10, 3M));
+            _command.StockUpdates.Add(new StockUpdate("c15", -3, 0.75M));
             _sut = new UpdateStockCommandExecutor(Context);
         }
 

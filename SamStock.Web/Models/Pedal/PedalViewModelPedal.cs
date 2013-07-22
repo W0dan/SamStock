@@ -8,11 +8,11 @@ namespace SamStock.Web.Models.Pedal
 {
 	public class PedalViewModelPedal
 	{
-		public string Name { get; private set; }
-		public int Id { get; private set; }
-		public decimal Price { get; private set; }
-		public decimal Margin { get; private set; }
-		public List<PedalViewModelComponent> List;
+		public string Name { get; set; }
+		public int Id { get; set; }
+		public decimal Price { get; set; }
+		public decimal Margin { get; set; }
+		public List<PedalViewModelComponent> Components = new List<PedalViewModelComponent>();
 
 		public PedalViewModelPedal(FilterPedalResponsePedal item)
 		{
@@ -20,11 +20,10 @@ namespace SamStock.Web.Models.Pedal
 			Id = item.Id;
 			Price = item.Price;
 			Margin = item.Margin;
-			List = new List<PedalViewModelComponent>();
 
-			foreach (FilterPedalResponseComponent comp in item.List)
+			foreach (FilterPedalResponseComponent comp in item.Components)
 			{
-				List.Add(new PedalViewModelComponent(comp));
+				Components.Add(new PedalViewModelComponent(comp));
 			}
 		}
 
@@ -34,6 +33,10 @@ namespace SamStock.Web.Models.Pedal
 			Name = name;
 			Price = price;
 			Margin = margin;
+		}
+
+		public PedalViewModelPedal()
+		{
 		}
 	}
 }

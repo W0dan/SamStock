@@ -37,7 +37,7 @@ namespace SamStock.Web.Controllers
 		{
 			FilterPedalResponse response = _dispatcher.DispatchRequest<FilterPedalRequest, FilterPedalResponse>(new FilterPedalRequest(id));
 			PedalViewModel view = new PedalViewModel(response, _dispatcher.DispatchRequest<GetAdminDataRequest, GetAdminDataResponse>(new GetAdminDataRequest()));
-			view.List[0].List = view.List[0].List.OrderBy(c => c.Stocknr).ToList();
+			view.Pedals[0].Components = view.Pedals[0].Components.OrderBy(c => c.Stocknr).ToList();
 			return View(view);
 		}
 
@@ -45,7 +45,7 @@ namespace SamStock.Web.Controllers
 		public ViewResult Update(int id)
 		{
 			var pedal = _dispatcher.DispatchRequest<FilterPedalRequest, FilterPedalResponse>(new FilterPedalRequest(id));
-			PedalUpdateViewModel view = new PedalUpdateViewModel(pedal.List[0].Id, pedal.List[0].Name, pedal.List[0].Price, pedal.List[0].Margin);
+			PedalViewModelPedal view = new PedalViewModelPedal(pedal.Pedals[0].Id, pedal.Pedals[0].Name, pedal.Pedals[0].Price, pedal.Pedals[0].Margin);
 			return View(view);
 		}
 
@@ -67,9 +67,9 @@ namespace SamStock.Web.Controllers
 		public RedirectToRouteResult UpdateComponents(PedalUpdateComponentsInputViewModel viewmodel)
 		{
 			var stockitem = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(new FilterStockRequest(viewmodel.Stocknr, 0, false));
-			if (stockitem.List.Count > 0)
+			if (stockitem.Components.Count > 0)
 			{
-				_dispatcher.DispatchCommand<UpdatePedalComponentsCommand>(new UpdatePedalComponentsCommand(viewmodel.Id, stockitem.List[0].Id, viewmodel.Quanity));
+				_dispatcher.DispatchCommand<UpdatePedalComponentsCommand>(new UpdatePedalComponentsCommand(viewmodel.Id, stockitem.Components[0].Id, viewmodel.Quantity));
 			}
 			return RedirectToAction("UpdateComponents", new { viewmodel.Id });
 		}
@@ -79,12 +79,12 @@ namespace SamStock.Web.Controllers
 		{
 			var pedal = _dispatcher.DispatchRequest<FilterPedalRequest, FilterPedalResponse>(new FilterPedalRequest(id));
 			List<StockUpdate> list = new List<StockUpdate>();
-			foreach (FilterPedalResponseComponent comp in pedal.List[0].List)
+			foreach (FilterPedalResponseComponent comp in pedal.Pedals[0].Components)
 			{
 				list.Add(new StockUpdate(comp.Stocknr, comp.Quantity * -1, comp.Price));
 			}
 			UpdateStockCommand cmd = new UpdateStockCommand();
-			cmd.List = list;
+			cmd.StockUpdates = list;
 			_dispatcher.DispatchCommand<UpdateStockCommand>(cmd);
 			return RedirectToAction("Details", new { id });
 		}

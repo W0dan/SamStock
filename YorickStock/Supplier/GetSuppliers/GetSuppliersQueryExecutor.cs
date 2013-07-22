@@ -26,7 +26,7 @@ namespace SamStock.Supplier.GetSuppliers
 				})
 				.ToList();
 
-			return new GetSuppliersResponse { List = result };
+			return new GetSuppliersResponse { Suppliers = result };
 		}
 	}
 }

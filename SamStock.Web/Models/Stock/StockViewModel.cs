@@ -7,7 +7,7 @@ namespace SamStock.Web.Models.Stock
 	public class StockViewModel
 	{
 		public readonly decimal _contentTotalValue = 0.00M;
-		public List<StockViewModelItem> List { get; private set; }
+		public List<StockViewModelItem> Components { get; private set; }
 		public List<StockViewModelSupplier> Suppliers { get; private set; }
 
 		public StockViewModel()
@@ -27,11 +27,11 @@ namespace SamStock.Web.Models.Stock
 		public StockViewModel(IEnumerable<FilterStockItem> list, GetStockRefdataResponse refdata)
 			: this(refdata)
 		{
-			List = new List<StockViewModelItem>();
+			Components = new List<StockViewModelItem>();
 
 			foreach (var item in list)
 			{
-				List.Add(new StockViewModelItem(item));
+				Components.Add(new StockViewModelItem(item));
 				_contentTotalValue += item.Quantity * item.Price;
 			}
 		}
@@ -39,11 +39,11 @@ namespace SamStock.Web.Models.Stock
 		public StockViewModel(IEnumerable<FilterStockItem> list, GetStockRefdataResponse refdata, decimal totalStockValue)
 			: this(refdata)
 		{
-			List = new List<StockViewModelItem>();
+			Components = new List<StockViewModelItem>();
 
 			foreach (var item in list)
 			{
-				List.Add(new StockViewModelItem(item));
+				Components.Add(new StockViewModelItem(item));
 			}
 
 			_contentTotalValue = totalStockValue;

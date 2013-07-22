@@ -22,10 +22,10 @@ namespace Tests.Concerning_Suppliers.GetSuppliers.Given_a_SupplierController
 		{
 			_response = new GetSuppliersResponse();
 
-			_response.List = new List<GetSuppliersItem>();
+			_response.Suppliers = new List<GetSuppliersItem>();
 
-			_response.List.Add(new GetSuppliersItem("dummy naam", "dummy adres", "dummy website"));
-			_response.List.Add(new GetSuppliersItem("dummy naam1", "dummy adres1", "dummy website2"));
+			_response.Suppliers.Add(new GetSuppliersItem("dummy naam", "dummy adres", "dummy website"));
+			_response.Suppliers.Add(new GetSuppliersItem("dummy naam1", "dummy adres1", "dummy website2"));
 
 			_getLeveranciersHandler = new Mock<IGetSuppliersHandler>();
 			_getLeveranciersHandler
@@ -46,7 +46,7 @@ namespace Tests.Concerning_Suppliers.GetSuppliers.Given_a_SupplierController
 		[Test]
 		public void It_should_put_the_leveranciers_in_the_viewmodel()
 		{
-			_viewModel.List.ShouldMatchAllItemsOf(_response.List, (x, y) => x.Address == y.Address);
+			_viewModel.Suppliers.ShouldMatchAllItemsOf(_response.Suppliers, (x, y) => x.Address == y.Address);
 		}
 	}
 }

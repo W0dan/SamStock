@@ -9,17 +9,43 @@ namespace SamStock.Web.Models.Pedal
 {
 	public class PedalViewModel
 	{
-		public List<PedalViewModelPedal> List { get; private set; }
+		public List<PedalViewModelPedal> Pedals { get; private set; }
 		public decimal VAT { get; private set; }
+		public int BuildCount { get; private set;}
+		public decimal Price { get; private set; }
+		public decimal Margin { get; private set; }
+		public decimal Baseprice { get; private set; }
+		public decimal Profit { get; private set; }
+		public decimal Costs { get; private set;}
 
 		public PedalViewModel(FilterPedalResponse response, GetAdminDataResponse admindata)
 		{
-			List = new List<PedalViewModelPedal>();
-			foreach (FilterPedalResponsePedal p in response.List)
+			Pedals = new List<PedalViewModelPedal>();
+			foreach (FilterPedalResponsePedal p in response.Pedals)
 			{
-				List.Add(new PedalViewModelPedal(p));
+				Pedals.Add(new PedalViewModelPedal(p));
 			}
-			VAT = admindata.VAT;
+			
+			BuildCount = 0;
+			Costs = 0.0M;
+			Price = Pedals[0].Price;
+			Margin = Pedals[0].Margin;
+			Baseprice = Costs * (Margin + 100) / 100;
+			VAT = (Price - Costs) * admindata.VAT / 100;
+			Profit = Price - Costs - VAT;
+
+			if (Pedals[0].Components.Count > 0)
+			{
+				BuildCount = (int)Math.Floor((double)Pedals[0].Components[0].Stock / Pedals[0].Components[0].Quantity);
+				Costs = Pedals[0].Components[0].Price * Pedals[0].Components[0].Quantity;
+				
+				for (int i = 1; i < Pedals[0].Components.Count; i++)
+				{
+					var item = Pedals[0].Components[i];
+					BuildCount = Math.Min(BuildCount, (int)Math.Floor((double)item.Stock / item.Quantity));
+					Costs += item.Price * item.Quantity;
+				}
+			}
 		}
 	}
 }

@@ -7,11 +7,11 @@ namespace SamStock.Pedal.FilterPedal
 {
 	public class FilterPedalResponse
 	{
-		public List<FilterPedalResponsePedal> List { get; private set; }
+		public List<FilterPedalResponsePedal> Pedals { get; private set; }
 
 		public FilterPedalResponse()
 		{
-			List = new List<FilterPedalResponsePedal>();
+			Pedals = new List<FilterPedalResponsePedal>();
 		}
 	}
 }

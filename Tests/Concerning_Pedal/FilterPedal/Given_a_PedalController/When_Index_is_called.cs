@@ -34,14 +34,14 @@ namespace Tests.Concerning_Pedal.FilterPedal.Given_a_PedalController
 				Margin = 2.0M,
 				Id = 3
 			};
-			_FilterPedalResponse.List.Add(p1);
+			_FilterPedalResponse.Pedals.Add(p1);
 			pc1 = new FilterPedalResponseComponent
 			{
 				Stocknr = "ABC",
 				Quantity = 5,
 				Price = 1.0M
 			};
-			_FilterPedalResponse.List[0].List.Add(pc1);
+			_FilterPedalResponse.Pedals[0].Components.Add(pc1);
 
 			_AdminData = new GetAdminDataResponse(21.0M, 50.0M);
 
@@ -71,21 +71,21 @@ namespace Tests.Concerning_Pedal.FilterPedal.Given_a_PedalController
 		[Test]
 		public void It_should_put_the_pedal_into_the_viewmodel()
 		{
-			var vmp = _viewModel.List[0];
+			var vmp = _viewModel.Pedals[0];
 			Assert.IsTrue(vmp.Id == p1.Id && vmp.Margin == p1.Margin && vmp.Name == p1.Name && vmp.Price == p1.Price);
 		}
 
 		[Test]
 		public void It_should_put_the_component_into_the_viewmodel()
 		{
-			var vmc = _viewModel.List[0].List[0];
+			var vmc = _viewModel.Pedals[0].Components[0];
 			Assert.IsTrue(vmc.Description == pc1.Description && vmc.Price == pc1.Price && vmc.Quantity == pc1.Quantity && vmc.Stock == pc1.Stock && vmc.Stocknr == pc1.Stocknr);
 		}
 
 		[Test]
 		public void It_should_put_the_admindata_into_the_viewmodel()
 		{
-			Assert.IsTrue(_viewModel.VAT == _AdminData.VAT && _viewModel.List[0].Margin > -1);
+			Assert.IsTrue(_viewModel.VAT == _AdminData.VAT && _viewModel.Pedals[0].Margin > -1);
 			// margin can be pedal-specific
 		}
 	}
