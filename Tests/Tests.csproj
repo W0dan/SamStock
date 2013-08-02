@@ -105,9 +105,9 @@
       <Project>{6F16F8A8-3529-47FE-9DF6-E9A23F86D5E3}</Project>
       <Name>SamStock.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\YorickStock\SamStock.csproj">
+    <ProjectReference Include="..\YorickStock\SAMStock.csproj">
       <Project>{201C3FEC-FD13-491A-86CA-866D6CC0A370}</Project>
-      <Name>SamStock</Name>
+      <Name>SAMStock</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
