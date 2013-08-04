@@ -1,10 +1,31 @@
 ﻿<Window x:Class="SAMStock.wpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SAMStock" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="260" d:DesignWidth="389" SizeToContent="WidthAndHeight">
+        xmlns:p="clr-namespace:SAMStock.wpf.Properties"
+        Title="SAMStock" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" SizeToContent="Manual"
+        Height="{Binding Source={x:Static p:Settings.Default}, 
+           Path=WindowHeight, Mode=TwoWay}"
+        Width="{Binding Source={x:Static p:Settings.Default}, 
+           Path=WindowWidth, Mode=TwoWay}"
+        Top="{Binding Source={x:Static p:Settings.Default}, 
+           Path=WindowTop, Mode=TwoWay}"
+        Left="{Binding Source={x:Static p:Settings.Default}, 
+           Path=WindowLeft, Mode=TwoWay}"
+        Closing="Window_Closing"
+        WindowState="{Binding Source={x:Static p:Settings.Default}, 
+           Path=WindowState, Mode=TwoWay}">
     <Grid>
-        <TabControl Height="165" HorizontalAlignment="Left" Name="tabControl1" VerticalAlignment="Top" Width="292">
-            <TabItem Header="Stock" Name="tabStock">
+        <TabControl Name="tabControlCategories" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="Components" Name="tabComponents">
+                <Grid>
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Pedals" Name="tabPedals">
+            </TabItem>
+            <TabItem Header="Suppliers" Name="tabSuppliers">
+            </TabItem>
+            <TabItem Header="Config" Name="tabConfig">
             </TabItem>
         </TabControl>
     </Grid>
