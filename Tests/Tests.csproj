@@ -45,7 +45,6 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,43 +54,25 @@
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
     <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalQueryExecutor\When_Execute_is_called_without_a_pedalId.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Build_is_called.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Details_is_called.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_UpdateComponents_is_called.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_UpdateComponents_is_called_with_arguments.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Update_is_Called.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Update_is_called_with_arguments.cs" />
     <Compile Include="Concerning_Suppliers\AddSupplier\Given_an_AddSupplierCommandExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Suppliers\AddSupplier\Given_an_AddSupplierHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Suppliers\AddSupplier\Given_a_SupplierController\When_AddSupplier_is_called.cs" />
-    <Compile Include="Concerning_Suppliers\SupplierControllerBaseTest.cs" />
-    <Compile Include="Concerning_Suppliers\GetSuppliers\Given_a_SupplierController\When_Suppliers_is_called.cs" />
     <Compile Include="Concerning_Suppliers\GetSuppliers\Given_a_GetSuppliersHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Pedal\AddPedal\Given_an_AddPedalCommandExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Pedal\AddPedal\Given_an_AddPedalHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Pedal\AddPedal\Given_a_PedalController\When_Create_is_called.cs" />
     <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalQueryExecutor\When_Execute_is_called_with_a_pedalId.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_PedalController\When_Index_is_called.cs" />
-    <Compile Include="Concerning_Pedal\PedalControllerBaseTest.cs" />
     <Compile Include="Concerning_Pedal\UpdatePedalComponents\Given_an_UpdatePedalComponentsCommandExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Pedal\UpdatePedalComponents\Given_an_UpdatePedalComponentsHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Pedal\UpdatePedalComponents\Given_a_PedalController\When_UpdateComponents_is_called.cs" />
     <Compile Include="Concerning_Pedal\UpdatePedal\Given_an_UpdatePedalCommandExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Pedal\UpdatePedal\Given_an_UpdatePedalHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Pedal\UpdatePedal\Given_a_PedalController\When_Update_is_called.cs" />
     <Compile Include="Concerning_Stock\AddComponent\Given_an_AddComponentHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\AddComponent\Given_an_AddComponentQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockQueryExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Stock\FilterStock\Given_a_StockController\When_Index_is_called.cs" />
-    <Compile Include="Concerning_Stock\StockControllerBaseTest.cs" />
-    <Compile Include="Concerning_Stock\AddComponent\Given_a_StockController\When_AddComponent_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataHandler\When_Handle_is_called.cs" />
     <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataQueryExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\UpdateStock\Given_an_UpdateStockCommandExecutor\When_Execute_is_called.cs" />
     <Compile Include="Concerning_Stock\UpdateStock\Given_an_UpdateStockHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\UpdateStock\Given_a_StockController\When_Update_is_called.cs" />
     <Compile Include="DatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Util\IListExtensions.cs" />
@@ -101,10 +82,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SamStock.Web\SamStock.Web.csproj">
-      <Project>{6F16F8A8-3529-47FE-9DF6-E9A23F86D5E3}</Project>
-      <Name>SamStock.Web</Name>
-    </ProjectReference>
     <ProjectReference Include="..\YorickStock\SAMStock.csproj">
       <Project>{201C3FEC-FD13-491A-86CA-866D6CC0A370}</Project>
       <Name>SAMStock</Name>

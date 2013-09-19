@@ -1,32 +1,71 @@
 ﻿<Window x:Class="SAMStock.wpf.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:p="clr-namespace:SAMStock.wpf.Properties"
-        Title="SAMStock" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" SizeToContent="Manual"
-        Height="{Binding Source={x:Static p:Settings.Default}, 
-           Path=WindowHeight, Mode=TwoWay}"
-        Width="{Binding Source={x:Static p:Settings.Default}, 
-           Path=WindowWidth, Mode=TwoWay}"
-        Top="{Binding Source={x:Static p:Settings.Default}, 
-           Path=WindowTop, Mode=TwoWay}"
-        Left="{Binding Source={x:Static p:Settings.Default}, 
-           Path=WindowLeft, Mode=TwoWay}"
-        Closing="Window_Closing"
-        WindowState="{Binding Source={x:Static p:Settings.Default}, 
-           Path=WindowState, Mode=TwoWay}">
-    <Grid>
-        <TabControl Name="tabControlCategories" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TabItem Header="Components" Name="tabComponents">
-                <Grid>
-                    
-                </Grid>
-            </TabItem>
-            <TabItem Header="Pedals" Name="tabPedals">
-            </TabItem>
-            <TabItem Header="Suppliers" Name="tabSuppliers">
-            </TabItem>
-            <TabItem Header="Config" Name="tabConfig">
-            </TabItem>
-        </TabControl>
-    </Grid>
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="SAMStock"
+    Closing="Window_Closing">
+	<Grid GotFocus="Grid_GotFocus">
+		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<TabItem Header="Components">
+				<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<TabItem Header="Stock">
+						<ScrollViewer>
+							<DataGrid Name="DataGridComponentsStock">
+							</DataGrid>
+						</ScrollViewer>
+					</TabItem>
+					<TabItem Header="Create">
+						<ScrollViewer></ScrollViewer>
+					</TabItem>
+				</TabControl>
+			</TabItem>
+			<TabItem Header="Pedals">
+				<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<TabItem Header="Stock">
+						<ScrollViewer></ScrollViewer>
+					</TabItem>
+					<TabItem Header="Create">
+						<ScrollViewer></ScrollViewer>
+					</TabItem>
+				</TabControl>
+			</TabItem>
+			<TabItem Header="Suppliers">
+				<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<TabItem Header="List">
+						<ScrollViewer></ScrollViewer>
+					</TabItem>
+					<TabItem Header="Create">
+						<ScrollViewer></ScrollViewer>
+					</TabItem>
+				</TabControl>
+			</TabItem>
+			<TabItem Header="Config">
+				<ScrollViewer>
+					<GroupBox>
+						<GroupBox.Header>
+							<Label>Financial</Label>
+						</GroupBox.Header>
+						<Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"></RowDefinition>
+								<RowDefinition Height="Auto"></RowDefinition>
+								<RowDefinition Height="Auto"></RowDefinition>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"></ColumnDefinition>
+								<ColumnDefinition Width="Auto"></ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Label Content="Value-Added Tax (%)" Grid.Row="0" Grid.Column="0"></Label>
+							<TextBox Name="TextBoxVATPercentage" Grid.Row="0" Grid.Column="1" MaxLength="5"></TextBox>
+							<Label Content="Default Pedal Price Margin (%)" Grid.Row="1" Grid.Column="0"></Label>
+							<TextBox Name="TextBoxDefaultPedalPriceMargin" Grid.Row="1" Grid.Column="1" MaxLength="5"></TextBox>
+							<Button Grid.Row="2" Grid.Column="1" Content="Save" Name="ButtonConfigFinancialSave" Click="ButtonConfigFinancialSave_Click"></Button>
+						</Grid>
+					</GroupBox>
+				</ScrollViewer>
+			</TabItem>
+		</TabControl>
+	</Grid>
 </Window>

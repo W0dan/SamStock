@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using NUnit.Framework;
-using SamStock.Web._Interfaces;
 
 namespace Tests._Util
 {
