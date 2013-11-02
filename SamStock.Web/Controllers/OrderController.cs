@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SamStock.Web.Controllers
+namespace SAMStock.Web.Controllers
 {
 	public class OrderController : Controller
 	{

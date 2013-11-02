@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using SamStock.Web._Interfaces;
+using SAMStock.Web._Interfaces;
 
-namespace SamStock.Web._Util
+namespace SAMStock.Web._Util
 {
     public static class IListExtensions
     {

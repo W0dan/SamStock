@@ -1,5 +1,5 @@
-﻿@using SamStock.Web._Util
-@model SamStock.Web.Models.Stock.StockViewModel
+﻿@using SAMStock.Web._Util
+@model SAMStock.Web.Models.Stock.StockViewModel
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
@@ -78,7 +78,7 @@
         </tr>
         @using (Html.BeginForm("Update", "Stock"))
         {
-            List<SamStock.Web.Models.Stock.StockViewModelItem> list = Model.Components.OrderBy(x => x.ItemCode).ToList();
+            List<SAMStock.Web.Models.Stock.StockViewModelItem> list = Model.Components.OrderBy(x => x.ItemCode).ToList();
             for (int i = 0; i < list.Count; i++)
             {
                 var item = list[i];

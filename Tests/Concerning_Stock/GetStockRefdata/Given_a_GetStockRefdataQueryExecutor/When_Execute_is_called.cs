@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using SamStock.Database;
-using SamStock.Stock.GetStockRefdata;
+using SAMStock.Database;
+using SAMStock.Stock.GetStockRefdata;
 using System.Linq;
 
 namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataQueryExecutor

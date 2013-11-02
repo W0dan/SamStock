@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SamStock.Utilities;
-using SamStock.Web.Models.Pedal;
-using SamStock.Pedal.UpdatePedal;
-using SamStock.Pedal.FilterPedal;
-using SamStock.Stock.UpdateStock;
-using SamStock.Pedal.AddPedal;
-using SamStock.Pedal.UpdatePedalComponents;
-using SamStock.Stock.FilterStock;
-using SamStock.Admin.GetAdminData;
+using SAMStock.Utilities;
+using SAMStock.Web.Models.Pedal;
+using SAMStock.Pedal.UpdatePedal;
+using SAMStock.Pedal.FilterPedal;
+using SAMStock.Stock.UpdateStock;
+using SAMStock.Pedal.AddPedal;
+using SAMStock.Pedal.UpdatePedalComponents;
+using SAMStock.Stock.FilterStock;
+using SAMStock.Admin.GetAdminData;
 
-namespace SamStock.Web.Controllers
+namespace SAMStock.Web.Controllers
 {
 	public class PedalController : Controller
 	{

@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using SamStock.Supplier.GetSuppliers;
+using SAMStock.Supplier.GetSuppliers;
 using Moq;
 
 namespace Tests.Concerning_Suppliers.GetSuppliers.Given_a_GetLeveranciersHandler

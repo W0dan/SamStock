@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using Moq;
-using SamStock.Pedal.UpdatePedal;
+using SAMStock.Pedal.UpdatePedal;
 
 namespace Tests.Concerning_Pedal.UpdatePedal.Given_an_UpdatePedalHandler
 {

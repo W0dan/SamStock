@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SamStock.Web.Models.Pedal
+namespace SAMStock.Web.Models.Pedal
 {
 	public class PedalUpdateViewModel
 	{

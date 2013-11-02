@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SamStock.Web.Models.Stock
+namespace SAMStock.Web.Models.Stock
 {
     public class StockChangesViewModel
     {

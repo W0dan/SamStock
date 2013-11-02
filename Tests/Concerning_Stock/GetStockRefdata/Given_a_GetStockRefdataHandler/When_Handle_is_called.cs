@@ -1,6 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
-using SamStock.Stock.GetStockRefdata;
+using SAMStock.Stock.GetStockRefdata;
 
 namespace Tests.Concerning_Stock.GetStockRefdata.Given_a_GetStockRefdataHandler
 {

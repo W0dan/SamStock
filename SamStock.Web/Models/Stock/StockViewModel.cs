@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using SamStock.Stock.FilterStock;
-using SamStock.Stock.GetStockRefdata;
+using SAMStock.Stock.FilterStock;
+using SAMStock.Stock.GetStockRefdata;
 
-namespace SamStock.Web.Models.Stock
+namespace SAMStock.Web.Models.Stock
 {
 	public class StockViewModel
 	{

@@ -1,6 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
-using SamStock.Stock.AddComponent;
+using SAMStock.Stock.AddComponent;
 
 namespace Tests.Concerning_Stock.AddComponent.Given_an_AddComponentHandler
 {

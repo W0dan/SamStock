@@ -1,6 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
-using SamStock.Stock.UpdateStock;
+using SAMStock.Stock.UpdateStock;
 
 namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockHandler
 {

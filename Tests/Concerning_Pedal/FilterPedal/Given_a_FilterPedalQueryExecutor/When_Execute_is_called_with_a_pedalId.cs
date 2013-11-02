@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using SamStock.Database;
-using SamStock.Pedal.FilterPedal;
+using SAMStock.Database;
+using SAMStock.Pedal.FilterPedal;
 
 namespace Tests.Concerning_Pedal.FilterPedal.Given_a_FilterPedalQueryExecutor
 {

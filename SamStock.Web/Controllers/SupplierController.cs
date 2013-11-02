@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SamStock.Web.Models.Supplier;
-using SamStock.Utilities;
-using SamStock.Supplier.GetSuppliers;
-using SamStock.Supplier.AddSupplier;
+using SAMStock.Web.Models.Supplier;
+using SAMStock.Utilities;
+using SAMStock.Supplier.GetSuppliers;
+using SAMStock.Supplier.AddSupplier;
 
-namespace SamStock.Web.Controllers
+namespace SAMStock.Web.Controllers
 {
 	public class SupplierController : Controller
 	{

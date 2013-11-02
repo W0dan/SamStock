@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Web.Mvc;
 
-namespace SamStock.Web._Util
+namespace SAMStock.Web._Util
 {
     public class DecimalModelBinder : IModelBinder
     {

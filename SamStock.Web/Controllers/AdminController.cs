@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using SamStock.Admin.GetAdminData;
-using SamStock.Admin.SetAdminData;
-using SamStock.Utilities;
-using SamStock.Web.Models.Admin;
+using SAMStock.Admin.GetAdminData;
+using SAMStock.Admin.SetAdminData;
+using SAMStock.Utilities;
+using SAMStock.Web.Models.Admin;
 
-namespace SamStock.Web.Controllers
+namespace SAMStock.Web.Controllers
 {
 	public class AdminController : Controller
 	{
@@ -26,10 +26,7 @@ namespace SamStock.Web.Controllers
 		[HttpPost]
 		public ActionResult SetConfig(AdminViewModel viewmodel)
 		{
-			var cmd = new SetAdminDataCommand(new Dictionary<String, Decimal>{
-                {"VAT",viewmodel.VAT},
-                {"DefaultPedalPriceMargin",viewmodel.DefaultPedalPriceMargin}
-            });
+			var cmd = new SetAdminDataCommand(viewmodel.VAT, viewmodel.DefaultPedalPriceMargin);
 			_dispatcher.DispatchCommand<SetAdminDataCommand>(cmd);
 			return RedirectToAction("Index");
 		}

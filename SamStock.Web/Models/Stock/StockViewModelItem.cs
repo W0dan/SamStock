@@ -1,6 +1,6 @@
-﻿using SamStock.Stock.FilterStock;
+﻿using SAMStock.Stock.FilterStock;
 
-namespace SamStock.Web.Models.Stock
+namespace SAMStock.Web.Models.Stock
 {
     public class StockViewModelItem
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using SamStock.Stock.FilterStock;
+using SAMStock.Stock.FilterStock;
 using Moq;
 using NUnit.Framework;
 

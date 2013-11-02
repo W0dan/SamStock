@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using SamStock.Supplier.GetSuppliers;
+using SAMStock.Supplier.GetSuppliers;
 using System.Linq;
 
-namespace SamStock.Web.Models.Supplier
+namespace SAMStock.Web.Models.Supplier
 {
 	public class SuppliersViewModel
 	{

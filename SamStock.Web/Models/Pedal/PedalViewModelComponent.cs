@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SamStock.Pedal.FilterPedal;
+using SAMStock.Pedal.FilterPedal;
 
-namespace SamStock.Web.Models.Pedal
+namespace SAMStock.Web.Models.Pedal
 {
 	public class PedalViewModelComponent
 	{

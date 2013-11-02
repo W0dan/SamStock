@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using SamStock.Database;
-using SamStock.Stock.UpdateStock;
+using SAMStock.Database;
+using SAMStock.Stock.UpdateStock;
 
 namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
 {

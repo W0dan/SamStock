@@ -1,6 +1,6 @@
 ﻿using Castle.Windsor;
 
-namespace SamStock.Web._Util
+namespace SAMStock.Web._Util
 {
     public static class IoC
     {

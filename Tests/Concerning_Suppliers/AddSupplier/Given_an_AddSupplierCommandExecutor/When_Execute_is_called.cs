@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using SamStock.Supplier.AddSupplier;
+using SAMStock.Supplier.AddSupplier;
 
 namespace Tests.Concerning_Suppliers.AddSupplier.Given_an_AddSupplierCommandExecutor
 {

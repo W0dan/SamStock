@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Transactions;
 using NUnit.Framework;
-using SamStock.Database;
-using SamStock.Utilities;
+using SAMStock.Database;
+using SAMStock.Utilities;
 
 namespace Tests
 {
@@ -11,7 +11,7 @@ namespace Tests
     {
         private TransactionScope _transaction;
 
-        public StockBeheerEntities Context { get; private set; }
+        public SAMStockEntities Context { get; private set; }
 
         [TestFixtureSetUp]
         public override void Setup()
@@ -19,7 +19,7 @@ namespace Tests
             _transaction = TransactionScopeFactory.CreateTransactionScope();
             try
             {
-                Context = new StockBeheerEntities();
+                Context = new SAMStockEntities();
 
                 Arrange();
                 Context.SaveChanges();

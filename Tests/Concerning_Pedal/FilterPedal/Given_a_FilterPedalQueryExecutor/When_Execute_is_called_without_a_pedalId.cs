@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using SamStock.Pedal.FilterPedal;
-using SamStock.Database;
+using SAMStock.Pedal.FilterPedal;
+using SAMStock.Database;
 
 namespace Tests.Concerning_Pedal.FilterPedal.Given_a_FilterPedalQueryExecutor
 {

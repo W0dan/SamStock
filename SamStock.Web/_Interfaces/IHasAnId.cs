@@ -1,4 +1,4 @@
-﻿namespace SamStock.Web._Interfaces
+﻿namespace SAMStock.Web._Interfaces
 {
     public interface IHasAnId
     {

@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using SamStock.Stock.AddComponent;
-using SamStock.Stock.GetStockRefdata;
-using SamStock.Stock.UpdateStock;
-using SamStock.Stock.FilterStock;
-using SamStock.Utilities;
-using SamStock.Web.Models;
-using SamStock.Stock.ModifyStock;
-using SamStock.Web.Models.Stock;
+using SAMStock.Stock.AddComponent;
+using SAMStock.Stock.GetStockRefdata;
+using SAMStock.Stock.UpdateStock;
+using SAMStock.Stock.FilterStock;
+using SAMStock.Utilities;
+using SAMStock.Web.Models;
+using SAMStock.Stock.ModifyStock;
+using SAMStock.Web.Models.Stock;
 
-namespace SamStock.Web.Controllers
+namespace SAMStock.Web.Controllers
 {
 	public class StockController : Controller
 	{

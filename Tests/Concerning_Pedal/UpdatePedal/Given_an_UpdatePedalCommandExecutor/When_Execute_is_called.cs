@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using SamStock.Pedal.UpdatePedal;
-using SamStock.Database;
+using SAMStock.Pedal.UpdatePedal;
+using SAMStock.Database;
 
 namespace Tests.Concerning_Pedal.UpdatePedal.Given_an_UpdatePedalCommandExecutor
 {

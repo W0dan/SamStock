@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
-using SamStock.Database;
-using SamStock.Stock.AddComponent;
+using SAMStock.Database;
+using SAMStock.Stock.AddComponent;
 
 namespace Tests.Concerning_Stock.AddComponent.Given_an_AddComponentQueryExecutor
 {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SamStock.Admin.GetAdminData;
+using SAMStock.Admin.GetAdminData;
 
-namespace SamStock.Web.Models.Admin
+namespace SAMStock.Web.Models.Admin
 {
 	public class AdminViewModel
 	{

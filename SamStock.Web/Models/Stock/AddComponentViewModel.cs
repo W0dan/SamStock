@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SamStock.Stock.GetStockRefdata;
+using SAMStock.Stock.GetStockRefdata;
 
-namespace SamStock.Web.Models.Stock
+namespace SAMStock.Web.Models.Stock
 {
 	public class AddComponentViewModel
 	{

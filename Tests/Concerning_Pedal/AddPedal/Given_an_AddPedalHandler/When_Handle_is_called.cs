@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using SamStock.Pedal.AddPedal;
+using SAMStock.Pedal.AddPedal;
 using Moq;
 
 namespace Tests.Concerning_Pedal.AddPedal.Given_an_AddPedalHandler

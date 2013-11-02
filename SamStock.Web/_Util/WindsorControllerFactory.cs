@@ -4,7 +4,7 @@ using System.Web.SessionState;
 using Castle.MicroKernel;
 using System;
 
-namespace SamStock.Web._Util
+namespace SAMStock.Web._Util
 {
     public class WindsorControllerFactory : IControllerFactory
     {

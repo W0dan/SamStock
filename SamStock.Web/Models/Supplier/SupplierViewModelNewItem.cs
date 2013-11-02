@@ -1,4 +1,4 @@
-﻿namespace SamStock.Web.Models.Supplier
+﻿namespace SAMStock.Web.Models.Supplier
 {
     public class SupplierViewModelNewItem
     {

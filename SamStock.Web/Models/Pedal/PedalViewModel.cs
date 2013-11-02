@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SamStock.Pedal.FilterPedal;
-using SamStock.Admin.GetAdminData;
+using SAMStock.Pedal.FilterPedal;
+using SAMStock.Admin.GetAdminData;
 
-namespace SamStock.Web.Models.Pedal
+namespace SAMStock.Web.Models.Pedal
 {
 	public class PedalViewModel
 	{

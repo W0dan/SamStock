@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using Moq;
 using NUnit.Framework;
-using SamStock.Supplier.AddSupplier;
+using SAMStock.Supplier.AddSupplier;
 
 namespace Tests.Concerning_Suppliers.AddSupplier.Given_an_AddSupplierHandler
 {

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using SamStock.Stock.FilterStock;
-using SamStock.Database;
+using SAMStock.Stock.FilterStock;
+using SAMStock.Database;
 using NUnit.Framework;
 
 namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor

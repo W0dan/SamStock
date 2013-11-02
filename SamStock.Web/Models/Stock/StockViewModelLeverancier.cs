@@ -1,7 +1,7 @@
-﻿using SamStock.Stock.GetStockRefdata;
-using SamStock.Web._Interfaces;
+﻿using SAMStock.Stock.GetStockRefdata;
+using SAMStock.Web._Interfaces;
 
-namespace SamStock.Web.Models.Stock
+namespace SAMStock.Web.Models.Stock
 {
     public class StockViewModelSupplier : IHasAName, IHasAnId
     {
