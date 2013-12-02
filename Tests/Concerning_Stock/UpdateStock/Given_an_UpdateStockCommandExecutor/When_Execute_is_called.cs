@@ -25,7 +25,8 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
                     Stocknr = "a15",
                     Name = "weerstand",
                     Supplier = leverancier,
-                    Stock = 10
+					Stock = 10,
+					ItemCode = "abc1235"
                 });
             Context.Component.AddObject(new Component
                 {
@@ -33,7 +34,8 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
                     Name = "condensator",
                     Supplier = leverancier,
                     Stock = 10,
-                    Price = 1
+					Price = 1,
+					ItemCode = "abc1235"
                 });
             Context.Component.AddObject(new Component
                 {
@@ -41,7 +43,8 @@ namespace Tests.Concerning_Stock.UpdateStock.Given_an_UpdateStockCommandExecutor
                     Name = "led",
                     Supplier = leverancier,
                     Stock = 10,
-                    Price = 1
+					Price = 1,
+					ItemCode = "abc1235"
                 });
 
             _command = new UpdateStockCommand();

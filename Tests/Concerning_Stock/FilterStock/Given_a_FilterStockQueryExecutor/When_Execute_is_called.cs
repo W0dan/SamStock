@@ -32,7 +32,8 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor
                 Stock = 10,
                 MinimumStock = 5,
                 Remarks = "blah",
-                SupplierId = leverancier.Id
+                SupplierId = leverancier.Id,
+				ItemCode = "abc1235"
             };
             Context.Component.AddObject(component1);
 
@@ -44,7 +45,8 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor
                 Stock = 10,
                 MinimumStock = 10,
                 Remarks = "blahblah",
-                SupplierId = leverancier.Id
+				SupplierId = leverancier.Id,
+				ItemCode = "abc1235"
             };
             Context.Component.AddObject(component2);
 
@@ -56,7 +58,8 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor
                 Stock = 10,
                 MinimumStock = 15,
                 Remarks = "blahblah",
-                SupplierId = leverancier.Id
+				SupplierId = leverancier.Id,
+				ItemCode = "abc1235"
             };
             Context.Component.AddObject(component3);
 
@@ -68,7 +71,8 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor
                 Stock = 10,
                 MinimumStock = 20,
                 Remarks = "blahblah",
-                SupplierId = leverancier.Id
+				SupplierId = leverancier.Id,
+				ItemCode = "abc1235"
             };
             Context.Component.AddObject(component4);
             Context.SaveChanges();

@@ -37,7 +37,8 @@ namespace Tests.Concerning_Pedal.FilterPedal.Given_a_FilterPedalQueryExecutor
 				MinimumStock = 15,
 				Name = "something",
 				Id = 1,
-				Remarks = "blabla"
+				Remarks = "blabla",
+				ItemCode = "abc1235"
 			};
 			Context.Component.AddObject(comp1);
 			Context.Component.AddObject(new Component
@@ -49,7 +50,8 @@ namespace Tests.Concerning_Pedal.FilterPedal.Given_a_FilterPedalQueryExecutor
 				MinimumStock = 15,
 				Name = "something else",
 				Id = comp1.Id + 1,
-				Remarks = "blabla"
+				Remarks = "blabla",
+				ItemCode = "abc1235"
 			});
 
 			p1 = new Pedal
