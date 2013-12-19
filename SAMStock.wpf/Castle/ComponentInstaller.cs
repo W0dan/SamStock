@@ -5,7 +5,7 @@ using SAMStock.Database;
 using SAMStock.Utilities;
 using Component = Castle.MicroKernel.Registration.Component;
 
-namespace SAMStock.wpf.Installer
+namespace SAMStock.wpf.Castle
 {
     public class ComponentInstaller : IWindsorInstaller
     {
@@ -17,24 +17,24 @@ namespace SAMStock.wpf.Installer
                 Component.For<IDispatcher>()
                         .ImplementedBy<Dispatcher>(),
                 Component.For<IWindsorContainer>()
-                        .Instance(IoC.Container)
+                        .Instance(WindsorContainerStore.Container)
                         .LifestyleSingleton(),
                 Classes.FromAssemblyContaining<Dispatcher>()
                         .BasedOn(typeof(IQueryHandler<,>))
                         .WithServiceAllInterfaces()
-						.LifestyleTransient(),                
+						.LifestyleSingleton(),             
                 Classes.FromAssemblyContaining<Dispatcher>()
                         .BasedOn(typeof(ICommandHandler<>))
                         .WithServiceAllInterfaces()
-						.LifestyleTransient(),
+						.LifestyleSingleton(),
                 Classes.FromAssemblyContaining<Dispatcher>()
                         .BasedOn<IQuery>()
                         .WithServiceAllInterfaces()
-						.LifestyleTransient(),
+						.LifestyleSingleton(),
                 Classes.FromAssemblyContaining<Dispatcher>()
                         .BasedOn<ICommandExecutor>()
 						.WithServiceAllInterfaces()
-						.LifestyleTransient()
+						.LifestyleSingleton()
             );
         }
     }

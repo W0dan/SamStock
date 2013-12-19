@@ -1,8 +1,42 @@
 ﻿<Window x:Class="SAMStock.wpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:p="clr-namespace:SAMStock.wpf.Properties"
+        Title="SAMStock" Closing="MainWindow_OnClosing">
     <Grid>
-		<Button Click="Go"  Content="Go!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<TabItem Header="Stock">
+				<Grid></Grid>
+			</TabItem>
+			<TabItem Header="Pedals">
+				<Grid></Grid>
+			</TabItem>
+			<TabItem Header="Suppliers">
+				<Grid></Grid>
+			</TabItem>
+			<TabItem Header="Settings">
+				<Grid>
+					<GroupBox>
+						<GroupBox.Header>
+							<Label>Financial</Label>
+						</GroupBox.Header>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"></ColumnDefinition>
+								<ColumnDefinition></ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"></RowDefinition>
+								<RowDefinition></RowDefinition>
+							</Grid.RowDefinitions>
+							<Label>VAT (%)</Label>
+							<TextBox Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="VatPercentageTextBox"/>
+							<Label Grid.Row="1">Default Pedal Price Margin (%)</Label>
+							<TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="DefaultPedalPriceMarginTextBox"/>
+						</Grid>
+					</GroupBox>
+				</Grid>
+			</TabItem>
+		</TabControl>
 	</Grid>
 </Window>

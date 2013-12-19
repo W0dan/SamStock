@@ -1,8 +1,8 @@
 ﻿using Castle.Windsor;
 
-namespace SAMStock.wpf.Installer
+namespace SAMStock.wpf.Castle
 {
-    public static class IoC
+    public static class WindsorContainerStore
     {
         public static IWindsorContainer Container { get; set; }
     }
