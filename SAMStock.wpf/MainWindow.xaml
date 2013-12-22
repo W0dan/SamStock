@@ -3,10 +3,44 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:p="clr-namespace:SAMStock.wpf.Properties"
         Title="SAMStock" Closing="MainWindow_OnClosing">
+	<Window.Resources>
+		<CollectionViewSource x:Key="StockCollectionViewSource" CollectionViewType="ListCollectionView"/>
+	</Window.Resources>
     <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
 		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-			<TabItem Header="Stock">
-				<Grid></Grid>
+			<TabItem Header="Stock" Name="StockTabItem">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="Auto"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<DataGrid IsReadOnly="True" DataContext="{StaticResource StockCollectionViewSource}" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Name="StockDataGrid" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+						<DataGrid.RowHeaderStyle>
+							<Style TargetType="DataGridRowHeader">
+								<Setter Property="Content" Value="{Binding Id}"/>
+								<Setter Property="Width" Value="Auto"></Setter>
+							</Style>
+						</DataGrid.RowHeaderStyle>
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="Stock#" Binding="{Binding Stocknr}"/>
+							<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+						</DataGrid.Columns>
+					</DataGrid>
+					<Grid Grid.Column="1" VerticalAlignment="Center">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"></RowDefinition>
+							<RowDefinition Height="Auto"></RowDefinition>
+							<RowDefinition Height="Auto"></RowDefinition>
+						</Grid.RowDefinitions>
+						<Button Name="StockNewButton" Click="StockNewButton_OnClick">New...</Button>
+						<Button Grid.Row="1" Name="StockEditButton" Click="StockEditButton_OnClick">Edit...</Button>
+						<Button Grid.Row="2" Name="StockDeleteButton" Click="StockDeleteButton_OnClick">Delete</Button>
+					</Grid>
+				</Grid>
 			</TabItem>
 			<TabItem Header="Pedals">
 				<Grid></Grid>
@@ -14,7 +48,7 @@
 			<TabItem Header="Suppliers">
 				<Grid></Grid>
 			</TabItem>
-			<TabItem Header="Settings">
+			<TabItem Header="Settings" Name="SettingsTabItem" GotFocus="SettingsTabItem_OnGotFocus">
 				<Grid>
 					<GroupBox>
 						<GroupBox.Header>
@@ -30,13 +64,18 @@
 								<RowDefinition></RowDefinition>
 							</Grid.RowDefinitions>
 							<Label>VAT (%)</Label>
-							<TextBox Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="VatPercentageTextBox"/>
+							<TextBox Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="VatPercentageTextBox" TextChanged="VatPercentageTextBox_OnTextChanged" GotFocus="VatPercentageTextBox_OnGotFocus"/>
 							<Label Grid.Row="1">Default Pedal Price Margin (%)</Label>
-							<TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="DefaultPedalPriceMarginTextBox"/>
+							<TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="DefaultPedalPriceMarginTextBox" TextChanged="DefaultPedalPriceMarginTextBox_OnTextChanged" GotFocus="DefaultPedalPriceMarginTextBox_OnGotFocus"/>
 						</Grid>
 					</GroupBox>
 				</Grid>
 			</TabItem>
 		</TabControl>
+		<StatusBar Grid.Row="1">
+			<StatusBarItem>
+				<TextBlock Name="StatusTextBlock"></TextBlock>
+			</StatusBarItem>
+		</StatusBar>
 	</Grid>
 </Window>

@@ -89,6 +89,7 @@
     <Compile Include="Pedal\UpdatePedal\IUpdatePedalHandler.cs" />
     <Compile Include="Pedal\UpdatePedal\UpdatePedalHandler.cs" />
     <Compile Include="Pedal\UpdatePedal\UpdatePedalCommandExecutor.cs" />
+    <Compile Include="Stock\ModifyStock\ComponentInUseException.cs" />
     <Compile Include="Stock\ModifyStock\IModifyStockCommandExecutor.cs" />
     <Compile Include="Stock\ModifyStock\IModifyStockHandler.cs" />
     <Compile Include="Stock\ModifyStock\ModifyStockCommand.cs" />

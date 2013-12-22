@@ -18,6 +18,8 @@ namespace SAMStock.Stock.FilterStock
 
 			if (request.SupplierId > 0)
 				query = query.Where(component => component.SupplierId == request.SupplierId);
+			if (request.ComponentId > 0)
+				query = query.Where(component => component.Id == request.ComponentId);
 			if (!string.IsNullOrEmpty(request.StockNr))
 				query = query.Where(component => component.Stocknr.ToLower().StartsWith(request.StockNr.ToLower()));
 			if (request.Manco == true)
