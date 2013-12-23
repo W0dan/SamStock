@@ -7,7 +7,7 @@ namespace SAMStock.Admin.GetAdminData
 {
 	public class GetAdminDataHandler : IGetAdminDataHandler
 	{
-		private IGetAdminDataQueryExecutor _queryexecutor;
+		private readonly IGetAdminDataQueryExecutor _queryexecutor;
 
 		public GetAdminDataHandler(IGetAdminDataQueryExecutor queryexecutor)
 		{

@@ -7,7 +7,7 @@ namespace SAMStock.Pedal.FilterPedal
 {
 	public class FilterPedalHandler : IFilterPedalHandler
 	{
-		private IFilterPedalQueryExecutor _queryexecutor;
+		private readonly IFilterPedalQueryExecutor _queryexecutor;
 
 		public FilterPedalHandler(IFilterPedalQueryExecutor queryexecutor)
 		{

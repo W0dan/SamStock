@@ -7,17 +7,9 @@ namespace SAMStock.Pedal.UpdatePedal
 {
 	public class UpdatePedalCommand
 	{
-		public int Id { get; private set; }
-		public String Name { get; private set; }
-		public decimal Price { get; private set; }
-		public decimal Margin { get; private set; }
-
-		public UpdatePedalCommand(int id, String name, decimal price, decimal margin)
-		{
-			Id = id;
-			Name = name;
-			Price = price;
-			Margin = margin;
-		}
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public decimal? Price { get; set; }
+		public decimal? Margin { get; set; }
 	}
 }

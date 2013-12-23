@@ -8,5 +8,6 @@ namespace SAMStock.Admin.SetAdminData
 {
 	public interface ISetAdminDataHandler : ICommandHandler<SetAdminDataCommand>
 	{
+		new void Handle(SetAdminDataCommand command);
 	}
 }

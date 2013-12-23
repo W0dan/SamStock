@@ -14,7 +14,7 @@ namespace Tests.Concerning_Stock.FilterStock.Given_a_FilterStockQueryExecutor
 
         public override void Arrange()
         {
-            _request = new FilterStockRequest("", -1, true);
+            _request = new FilterStockRequest(manco: true);
 
             var leverancier = new Supplier
             {

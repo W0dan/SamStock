@@ -10,7 +10,7 @@ namespace SAMStock.Admin.GetAdminData
 {
 	public class GetAdminDataQueryExecutor : IGetAdminDataQueryExecutor
 	{
-		private IContext _context;
+		private readonly IContext _context;
 
 		public GetAdminDataQueryExecutor(IContext context)
 		{
@@ -19,9 +19,12 @@ namespace SAMStock.Admin.GetAdminData
 
 		public GetAdminDataResponse Execute(GetAdminDataRequest request)
 		{
-			decimal vat = _context.AdminData.Single().VAT;
-			decimal pricemargin = _context.AdminData.Single().DefaultPedalPriceMargin;
-			return new GetAdminDataResponse(vat, pricemargin);
+			var config = _context.AdminData.Single();
+			return new GetAdminDataResponse
+			{
+				VAT = config.VAT,
+				DefaultPedalPriceMargin = config.DefaultPedalPriceMargin
+			};
 		}
 	}
 }

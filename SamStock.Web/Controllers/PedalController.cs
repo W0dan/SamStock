@@ -66,7 +66,7 @@ namespace SAMStock.Web.Controllers
 		[HttpPost]
 		public RedirectToRouteResult UpdateComponents(PedalUpdateComponentsInputViewModel viewmodel)
 		{
-			var stockitem = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(new FilterStockRequest(viewmodel.Stocknr, 0, false));
+			var stockitem = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(new FilterStockRequest(stockNr:viewmodel.Stocknr));
 			if (stockitem.Components.Count > 0)
 			{
 				_dispatcher.DispatchCommand<UpdatePedalComponentsCommand>(new UpdatePedalComponentsCommand(viewmodel.Id, stockitem.Components[0].Id, viewmodel.Quantity));

@@ -8,7 +8,7 @@ namespace SAMStock.Pedal.AddPedal
 {
 	public class AddPedalCommandExecutor : IAddPedalCommandExecutor
 	{
-		private IContext _context;
+		private readonly IContext _context;
 
 		public AddPedalCommandExecutor(IContext context)
 		{

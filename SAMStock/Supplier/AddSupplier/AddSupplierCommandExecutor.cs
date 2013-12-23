@@ -13,14 +13,12 @@ namespace SAMStock.Supplier.AddSupplier
 
 		public void Execute(AddSupplierCommand command)
 		{
-			var leverancier = new SAMStock.Database.Supplier
-				{
-					Name = command.Name,
-					Address = command.Address,
-					Website = command.Website
-				};
-
-			_context.Supplier.AddObject(leverancier);
+			_context.Supplier.AddObject(new Database.Supplier
+			{
+				Name = command.Name,
+				Address = command.Address,
+				Website = command.Website
+			});
 		}
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Castle.Core.Internal;
 using SAMStock.Database;
 using SAMStock.Utilities;
 
@@ -9,7 +10,7 @@ namespace SAMStock.Pedal.UpdatePedal
 {
 	public class UpdatePedalCommandExecutor : IUpdatePedalCommandExecutor
 	{
-		private IContext _context;
+		private readonly IContext _context;
 
 		public UpdatePedalCommandExecutor(IContext context)
 		{
@@ -19,9 +20,9 @@ namespace SAMStock.Pedal.UpdatePedal
 		public void Execute(UpdatePedalCommand cmd)
 		{
 			var pedal = _context.Pedal.Single(p => p.Id == cmd.Id);
-			pedal.Name = cmd.Name;
-			pedal.Price = cmd.Price;
-			pedal.Margin = cmd.Margin;
+			if (!cmd.Name.IsNullOrEmpty()) pedal.Name = cmd.Name;
+			if (cmd.Price.HasValue) pedal.Price = cmd.Price.Value;
+			if (cmd.Margin.HasValue) pedal.Margin = cmd.Margin;
 		}
 	}
 }

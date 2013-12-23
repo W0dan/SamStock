@@ -7,7 +7,7 @@ namespace SAMStock.Admin.SetAdminData
 {
 	public class SetAdminDataHandler : ISetAdminDataHandler
 	{
-		private ISetAdminDataCommandExecutor _cmdexecutor;
+		private readonly  ISetAdminDataCommandExecutor _cmdexecutor;
 
 		public SetAdminDataHandler(ISetAdminDataCommandExecutor cmdexecutor)
 		{

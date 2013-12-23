@@ -40,7 +40,7 @@ namespace SAMStock.Web.Controllers
 
 		public ActionResult Search(StockFilterViewModel stockFilterViewModel)
 		{
-			var request = new FilterStockRequest(stockFilterViewModel.ComponentTypeFilter, stockFilterViewModel.SupplierFilter, stockFilterViewModel.MancoFilter);
+			var request = new FilterStockRequest(stockNr:stockFilterViewModel.ComponentTypeFilter, supplierId:stockFilterViewModel.SupplierFilter, manco:stockFilterViewModel.MancoFilter);
 			var filteredstock = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(request);
 
 			var stockOverzicht = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(new FilterStockRequest());
@@ -95,7 +95,7 @@ namespace SAMStock.Web.Controllers
 		[HttpPost]
 		public ActionResult SearchByStocknr(string Stocknr)
 		{
-			var response = _dispatcher.DispatchRequest<FilterStockRequest,FilterStockResponse>(new FilterStockRequest(Stocknr,0,false));
+			var response = _dispatcher.DispatchRequest<FilterStockRequest,FilterStockResponse>(new FilterStockRequest(stockNr:Stocknr));
 			if (response.Components.Count > 0)
 			{
 				return RedirectToAction("ModifyComponent",response.Components[0]);

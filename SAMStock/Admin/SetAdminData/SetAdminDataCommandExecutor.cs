@@ -8,7 +8,7 @@ namespace SAMStock.Admin.SetAdminData
 {
 	public class SetAdminDataCommandExecutor : ISetAdminDataCommandExecutor
 	{
-		private IContext _context;
+		private readonly IContext _context;
 
 		public SetAdminDataCommandExecutor(IContext context)
 		{
@@ -17,8 +17,9 @@ namespace SAMStock.Admin.SetAdminData
 
 		public void Execute(SetAdminDataCommand cmd)
 		{
-			_context.AdminData.Single().VAT = cmd.VAT;
-			_context.AdminData.Single().DefaultPedalPriceMargin = cmd.DefaultPedalPriceMargin;
+			var data = _context.AdminData.Single();
+			if (cmd.VAT.HasValue) data.VAT = cmd.VAT.Value;
+			if (cmd.DefaultPedalPriceMargin.HasValue) data.DefaultPedalPriceMargin = cmd.DefaultPedalPriceMargin.Value;
 		}
 	}
 }

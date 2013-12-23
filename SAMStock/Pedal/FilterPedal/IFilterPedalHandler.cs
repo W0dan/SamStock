@@ -8,5 +8,6 @@ namespace SAMStock.Pedal.FilterPedal
 {
 	public interface IFilterPedalHandler : IQueryHandler<FilterPedalRequest, FilterPedalResponse>
 	{
+		new FilterPedalResponse Handle(FilterPedalRequest request);
 	}
 }

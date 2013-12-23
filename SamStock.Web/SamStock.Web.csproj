@@ -90,7 +90,6 @@
     <Content Include="Content\styles\Stock\SearchByStocknr.css" />
     <Content Include="Content\styles\Supplier\Index.css" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PedalController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />

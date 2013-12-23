@@ -19,9 +19,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SAMStock.Stock.FilterStock;
-using SAMStock.Stock.ModifyStock;
-using SAMStock.Stock.UpdateStock;
+using SAMStock.Component.FilterComponent;
+using SAMStock.Component.UpdateStock;
+using SAMStock.Component.UpdateStock;
 using SAMStock.Utilities;
 using SAMStock.wpf.Castle;
 using SAMStock.wpf.Stock;
@@ -34,6 +34,7 @@ namespace SAMStock.wpf
 	public partial class MainWindow : Window
 	{
 		private IDispatcher _dispatcher;
+		private int? abc { get; set; }
 
 		public MainWindow()
 		{
@@ -44,6 +45,8 @@ namespace SAMStock.wpf
 			prepareStockTab();
 
 			SetStatus("Ready");
+
+			System.Console.WriteLine(abc ?? 5);
 		}
 
 		private void prepareStockTab()
@@ -169,7 +172,7 @@ namespace SAMStock.wpf
 				{
 					try
 					{
-						_dispatcher.DispatchCommand<ModifyStockCommand>(new ModifyStockCommand(((FilterStockItem) StockDataGrid.SelectedItem).Id, deleteoption: true));
+						_dispatcher.DispatchCommand<UpdateStockCommand>(new UpdateStockCommand(((FilterStockItem) StockDataGrid.SelectedItem).Id, deleteoption: true));
 						MessageBox.Show("Deletion completed");
 					}
 					catch (ComponentInUseException ex)

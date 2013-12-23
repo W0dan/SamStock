@@ -7,13 +7,7 @@ namespace SAMStock.Admin.GetAdminData
 {
 	public class GetAdminDataResponse
 	{
-		public decimal VAT { get; private set; }
-		public decimal DefaultPedalPriceMargin { get; private set; }
-
-		public GetAdminDataResponse(decimal vat, decimal pricemargin)
-		{
-			VAT = vat;
-			DefaultPedalPriceMargin = pricemargin;
-		}
+		public decimal VAT { get; set; }
+		public decimal DefaultPedalPriceMargin { get; set; }
 	}
 }

@@ -8,5 +8,6 @@ namespace SAMStock.Admin.GetAdminData
 {
 	public interface IGetAdminDataHandler : IQueryHandler<GetAdminDataRequest, GetAdminDataResponse>
 	{
+		new GetAdminDataResponse Handle(GetAdminDataRequest request);
 	}
 }

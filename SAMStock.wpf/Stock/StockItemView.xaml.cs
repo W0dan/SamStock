@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using SAMStock.Stock.FilterStock;
+using SAMStock.Component.FilterComponent;
 using SAMStock.Utilities;
 
 namespace SAMStock.wpf.Stock
