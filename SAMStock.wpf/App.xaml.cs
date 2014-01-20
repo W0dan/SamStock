@@ -5,6 +5,10 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Castle.Windsor;
+using Castle.Windsor.Installer;
+using SAMStock.Utilities;
+using SAMStock.wpf.Castle;
 
 namespace SAMStock.wpf
 {

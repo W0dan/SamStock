@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAMStock", "SAMStock\SAMSto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C15C0B18-3475-4EBA-A39F-8F765AC2FA7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAMStock.wpf", "SAMStock.wpf\SAMStock.wpf.csproj", "{85CB9453-7454-4437-A1E0-2A04F80933D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "SAMStock.wpf\WPF.csproj", "{85CB9453-7454-4437-A1E0-2A04F80933D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

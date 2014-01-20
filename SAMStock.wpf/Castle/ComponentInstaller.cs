@@ -3,7 +3,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SAMStock.Database;
 using SAMStock.Utilities;
-using Component = Castle.MicroKernel.Registration.Component;
+using Cmp = Castle.MicroKernel.Registration.Component;
 
 namespace SAMStock.wpf.Castle
 {
@@ -12,11 +12,11 @@ namespace SAMStock.wpf.Castle
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                Component.For<IContext>()
+                Cmp.For<IContext>()
                         .UsingFactoryMethod(fm => new SAMStockEntities()),
-                Component.For<IDispatcher>()
+                Cmp.For<IDispatcher>()
                         .ImplementedBy<Dispatcher>(),
-                Component.For<IWindsorContainer>()
+                Cmp.For<IWindsorContainer>()
                         .Instance(WindsorContainerStore.Container)
                         .LifestyleSingleton(),
                 Classes.FromAssemblyContaining<Dispatcher>()

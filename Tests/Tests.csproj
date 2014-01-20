@@ -53,27 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\GetAdminData\GetAdminDataQueryExecutor\WhenExecuteIsCalled.cs" />
+    <Compile Include="Admin\SetAdminData\WhenExecuteIsCalled.cs" />
     <Compile Include="BaseTest.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalQueryExecutor\When_Execute_is_called_without_a_pedalId.cs" />
-    <Compile Include="Concerning_Suppliers\AddSupplier\Given_an_AddSupplierCommandExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Suppliers\AddSupplier\Given_an_AddSupplierHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Suppliers\GetSuppliers\Given_a_GetSuppliersHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Pedal\AddPedal\Given_an_AddPedalCommandExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Pedal\AddPedal\Given_an_AddPedalHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Pedal\FilterPedal\Given_a_FilterPedalQueryExecutor\When_Execute_is_called_with_a_pedalId.cs" />
-    <Compile Include="Concerning_Pedal\UpdatePedalComponents\Given_an_UpdatePedalComponentsCommandExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Pedal\UpdatePedalComponents\Given_an_UpdatePedalComponentsHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Pedal\UpdatePedal\Given_an_UpdatePedalCommandExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Pedal\UpdatePedal\Given_an_UpdatePedalHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\AddComponent\Given_an_AddComponentHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\AddComponent\Given_an_AddComponentQueryExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\FilterStock\Given_a_FilterStockQueryExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataHandler\When_Handle_is_called.cs" />
-    <Compile Include="Concerning_Stock\GetStockRefdata\Given_a_GetStockRefdataQueryExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Stock\UpdateStock\Given_an_UpdateStockCommandExecutor\When_Execute_is_called.cs" />
-    <Compile Include="Concerning_Stock\UpdateStock\Given_an_UpdateStockHandler\When_Handle_is_called.cs" />
+    <Compile Include="Components\DeleteComponent\DeleteComponentQueryExecutor\WhenExecuteIsCalled.cs" />
+    <Compile Include="Components\FilterComponent\FilterStockQueryExecutor\WhenExecuteIsCalledWithStocknr.cs" />
+    <Compile Include="Pedals\FilterPedal\FilterPedalQueryExecutor\WhenExecuteIsCalled.cs" />
+    <Compile Include="Suppliers\AddSupplier\AddSupplierCommandExecutor\WhenExecuteIsCalled.cs" />
+    <Compile Include="Pedals\AddPedal\AddPedalCommandExecutor\WhenExecuteIsCalled.cs" />
+    <Compile Include="Pedals\FilterPedal\FilterPedalQueryExecutor\WhenExecuteIsCalledWithPedalId.cs" />
+    <Compile Include="Components\AddComponent\AddComponentQueryExecutor\WhenExecuteIsCalled.cs" />
+    <Compile Include="Components\FilterComponent\FilterStockQueryExecutor\WhenExecuteIsCalledWithShortage.cs" />
+    <Compile Include="Components\UpdateComponent\UpdateStockCommandExecutor\WhenExecuteIsCalled.cs" />
     <Compile Include="DatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +78,7 @@
       <Name>SAMStock</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

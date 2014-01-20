@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="SAMStock.wpf.UserControls.ComponentsTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+	<UserControl.Resources>
+		<CollectionViewSource x:Key="ComponentsCollectionViewSource" CollectionViewType="ListCollectionView"/>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="Auto"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<TextBox>total value:</TextBox>
+		<DataGrid Grid.Row="1" IsReadOnly="True" DataContext="{StaticResource ComponentsCollectionViewSource}" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Name="ComponentsDataGrid" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False"
+		          x:FieldModifier="private">
+			<DataGrid.RowHeaderStyle>
+				<Style TargetType="DataGridRowHeader">
+					<Setter Property="Content" Value="{Binding Id}"/>
+					<Setter Property="Width" Value="Auto"></Setter>
+				</Style>
+			</DataGrid.RowHeaderStyle>
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Stocknr" Binding="{Binding Stocknr}"/>
+				<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+				<DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+				<DataGridTextColumn Header="Minimumstock" Binding="{Binding MinimumStock}"/>
+				<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+				<DataGridTextColumn Header="Remark" Binding="{Binding Remark}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Button Name="ComponentsRefreshButton" Click="ComponentsRefreshButton_OnClick">Refresh</Button>
+			<Button Grid.Row="1" Name="ComponentsNewButton" Click="ComponentsNewButton_OnClick">New...</Button>
+			<Button Grid.Row="2" Name="ComponentsEditButton" Click="ComponentsEditButton_OnClick">Edit...</Button>
+			<Button Grid.Row="3" Name="ComponentsDeleteButton" Click="ComponentsDeleteButton_OnClick">Delete</Button>
+		</Grid>
+	</Grid>
+</UserControl>

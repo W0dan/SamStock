@@ -19,12 +19,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SAMStock.Component.FilterComponent;
-using SAMStock.Component.UpdateStock;
-using SAMStock.Component.UpdateStock;
 using SAMStock.Utilities;
 using SAMStock.wpf.Castle;
-using SAMStock.wpf.Stock;
 
 namespace SAMStock.wpf
 {
@@ -33,30 +29,20 @@ namespace SAMStock.wpf
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private IDispatcher _dispatcher;
-		private int? abc { get; set; }
-
 		public MainWindow()
 		{
-			InitializeComponent();
-			BootstrapWindsorContainer();
-			restoreWindowPosition();
+			var container = new WindsorContainer();
+			WindsorContainerStore.Container = container;
+			container.Install(FromAssembly.This());
 
-			prepareStockTab();
+			InitializeComponent();
+
+			RestoreWindowPosition();
 
 			SetStatus("Ready");
-
-			System.Console.WriteLine(abc ?? 5);
 		}
 
-		private void prepareStockTab()
-		{
-			CollectionViewSource stockCollectionViewSource = (CollectionViewSource)(FindResource("StockCollectionViewSource"));
-			stockCollectionViewSource.Source = _dispatcher.DispatchRequest<FilterStockRequest, FilterStockResponse>(new FilterStockRequest()).Components;
-			StockDataGrid.SelectedIndex = -1;
-		}
-
-		private void restoreWindowPosition()
+		private void RestoreWindowPosition()
 		{
 			Top = Properties.Settings.Default.WindowTop;
 			Left = Properties.Settings.Default.WindowLeft;
@@ -79,15 +65,6 @@ namespace SAMStock.wpf
 			StatusTextBlock.Text = status;
 		}
 
-		private void BootstrapWindsorContainer()
-		{
-			var container = new WindsorContainer();
-			WindsorContainerStore.Container = container;
-			container.Install(FromAssembly.This());
-
-			_dispatcher = container.Resolve<IDispatcher>();
-		}
-
 		private void MainWindow_OnClosing(object sender, CancelEventArgs e)
 		{
 			if (WindowState != WindowState.Minimized)
@@ -98,101 +75,6 @@ namespace SAMStock.wpf
 				Properties.Settings.Default.WindowHeight = Height;
 				Properties.Settings.Default.WindowWidth = Width;
 				Properties.Settings.Default.Save();
-			}
-		}
-
-		private void SettingsTabItem_OnGotFocus(object sender, RoutedEventArgs e)
-		{
-			VatPercentageTextBox.Text = Properties.Settings.Default.VATPercentage.ToString();
-			DefaultPedalPriceMarginTextBox.Text = Properties.Settings.Default.DefaultPedalPriceMargin.ToString();
-		}
-
-		private void VatPercentageTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
-		{
-			HandleSettingsInput(VatPercentageTextBox, "VATPercentage");
-		}
-
-		private void DefaultPedalPriceMarginTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
-		{
-			HandleSettingsInput(DefaultPedalPriceMarginTextBox, "DefaultPedalPriceMargin");
-		}
-
-		private void HandleSettingsInput(TextBox element, string branch)
-		{
-			double parsedInput;
-			if (Double.TryParse(element.Text, out parsedInput))
-			{
-				Properties.Settings.Default[branch] = parsedInput;
-				Properties.Settings.Default.Save();
-			}
-			else
-			{
-				DefaultPedalPriceMarginTextBox.Text = Properties.Settings.Default[branch].ToString();
-			}
-		}
-
-		private void VatPercentageTextBox_OnGotFocus(object sender, RoutedEventArgs e)
-		{
-			VatPercentageTextBox.Select(0, VatPercentageTextBox.Text.Length);
-		}
-
-		private void DefaultPedalPriceMarginTextBox_OnGotFocus(object sender, RoutedEventArgs e)
-		{
-			DefaultPedalPriceMarginTextBox.Select(0, DefaultPedalPriceMarginTextBox.Text.Length);
-		}
-
-		private void StockNewButton_OnClick(object sender, RoutedEventArgs e)
-		{
-			Window dialog = new StockItemView(_dispatcher);
-			dialog.Owner = this;
-			dialog.ShowDialog();
-		}
-
-		private void StockEditButton_OnClick(object sender, RoutedEventArgs e)
-		{
-			if (StockDataGrid.SelectedIndex > -1)
-			{
-				Window dialog = new StockItemView(_dispatcher, ((FilterStockItem)StockDataGrid.SelectedItem).Id);
-				dialog.Owner = this;
-				dialog.ShowDialog();
-			}
-			else
-			{
-				MessageBox.Show("No component selected");
-			}
-		}
-
-		private void StockDeleteButton_OnClick(object sender, RoutedEventArgs e)
-		{
-			if (StockDataGrid.SelectedIndex > -1)
-			{
-
-				if (
-					MessageBox.Show("Are you sure you want to delete " + ((FilterStockItem) StockDataGrid.SelectedItem).ItemCode + "?", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-				{
-					try
-					{
-						_dispatcher.DispatchCommand<UpdateStockCommand>(new UpdateStockCommand(((FilterStockItem) StockDataGrid.SelectedItem).Id, deleteoption: true));
-						MessageBox.Show("Deletion completed");
-					}
-					catch (ComponentInUseException ex)
-					{
-						StringBuilder sb = new StringBuilder();
-						foreach (string name in ex.PedalNames)
-						{
-							sb.Append("\n\t" + name);
-						}
-						MessageBox.Show("Deletion failed: the following pedals rely on this component:" + sb.ToString());
-					}
-				}
-				else
-				{
-					MessageBox.Show("Deletion cancelled");
-				}
-			}
-			else
-			{
-				MessageBox.Show("No component selected");
 			}
 		}
 	}
