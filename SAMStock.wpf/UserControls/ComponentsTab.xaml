@@ -3,22 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d">
+			 xmlns:utilities="clr-namespace:SAMStock.wpf.Utilities"
+			 mc:Ignorable="d">
 	<UserControl.Resources>
-		<CollectionViewSource x:Key="ComponentsCollectionViewSource" CollectionViewType="ListCollectionView"/>
+		<CollectionViewSource x:Key="Components" CollectionViewType="ListCollectionView"/>
+		<utilities:SupplierIdToSupplierNameConverter x:Key="SupplierIdToSupplierNameConverter" />
 	</UserControl.Resources>
 	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"></RowDefinition>
-			<RowDefinition Height="*"></RowDefinition>
-		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"></ColumnDefinition>
 			<ColumnDefinition Width="Auto"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
-		<TextBox>total value:</TextBox>
-		<DataGrid Grid.Row="1" IsReadOnly="True" DataContext="{StaticResource ComponentsCollectionViewSource}" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Name="ComponentsDataGrid" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False"
-		          x:FieldModifier="private">
+		<DataGrid Name="ComponentsDataGrid" DataContext="{StaticResource Components}" ItemsSource="{Binding}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
 			<DataGrid.RowHeaderStyle>
 				<Style TargetType="DataGridRowHeader">
 					<Setter Property="Content" Value="{Binding Id}"/>
@@ -32,6 +28,8 @@
 				<DataGridTextColumn Header="Minimumstock" Binding="{Binding MinimumStock}"/>
 				<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
 				<DataGridTextColumn Header="Remark" Binding="{Binding Remark}"/>
+				<DataGridTextColumn Header="Supplier" Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, 
+    Path=Item.SupplierId, Converter={StaticResource SupplierIdToSupplierNameConverter}}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 		<Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">

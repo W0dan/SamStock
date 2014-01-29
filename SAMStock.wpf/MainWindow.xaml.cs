@@ -38,8 +38,6 @@ namespace SAMStock.wpf
 			InitializeComponent();
 
 			RestoreWindowPosition();
-
-			SetStatus("Ready");
 		}
 
 		private void RestoreWindowPosition()
@@ -58,11 +56,6 @@ namespace SAMStock.wpf
 			{
 				Left = 100;
 			}
-		}
-
-		private void SetStatus(string status)
-		{
-			StatusTextBlock.Text = status;
 		}
 
 		private void MainWindow_OnClosing(object sender, CancelEventArgs e)

@@ -40,7 +40,8 @@ namespace SAMStock.DTO.Component.FilterComponent
 					MinimumStock = x.MinimumStock,
 					Remark = x.Remarks,
 					Id = x.Id,
-					ItemCode = x.ItemCode
+					ItemCode = x.ItemCode,
+					SupplierId = x.SupplierId
 				}).ToList()
 			};
 			foreach (var item in resp.Components)

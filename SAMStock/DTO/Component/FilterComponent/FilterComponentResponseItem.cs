@@ -13,5 +13,6 @@ namespace SAMStock.DTO.Component.FilterComponent
 		public int Id { get; set; }
 		public string ItemCode { get; set; }
 		public List<int> PedalIds { get; set; }
+		public int SupplierId { get; set; }
 	}
 }

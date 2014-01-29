@@ -13,9 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SAMStock.Database;
 using SAMStock.DTO.Component.DeleteComponent;
 using SAMStock.DTO.Component.DeleteComponent.Exceptions;
 using SAMStock.DTO.Component.FilterComponent;
+using SAMStock.DTO.Supplier.FilterSuppliers;
 using SAMStock.Utilities;
 using SAMStock.wpf.Castle;
 using SAMStock.wpf.Dialogs;
@@ -28,17 +30,18 @@ namespace SAMStock.wpf.UserControls
 	public partial class ComponentsTab : UserControl
 	{
 		private readonly IDispatcher _dispatcher = WindsorContainerStore.Container.Resolve<IDispatcher>();
-		private readonly CollectionViewSource _componentsCollectionViewSource;
+		private readonly CollectionViewSource _components;
 
 		public ComponentsTab()
 		{
 			InitializeComponent();
-			_componentsCollectionViewSource = (CollectionViewSource)(FindResource("ComponentsCollectionViewSource"));
+			_components = (CollectionViewSource)FindResource("Components");
+			RefreshComponentsDataGrid();
 		}
 
 		private void RefreshComponentsDataGrid()
 		{
-			_componentsCollectionViewSource.Source = _dispatcher.DispatchRequest<FilterComponentRequest, FilterComponentResponse>(new FilterComponentRequest()).Components;
+			_components.Source = _dispatcher.DispatchRequest<FilterComponentRequest, FilterComponentResponse>(new FilterComponentRequest()).Components;
 			ComponentsDataGrid.SelectedIndex = -1;
 		}
 

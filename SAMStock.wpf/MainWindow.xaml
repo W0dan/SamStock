@@ -5,10 +5,6 @@
         xmlns:userControls="clr-namespace:SAMStock.wpf.UserControls"
         Title="SAMStock" Closing="MainWindow_OnClosing">
     <Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="*"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
-		</Grid.RowDefinitions>
 		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 			<TabItem Header="Components">
 				<userControls:ComponentsTab x:Name="ComponentsTabControl"></userControls:ComponentsTab>
@@ -23,10 +19,5 @@
 				<userControls:SettingsTab x:Name="SettingsTabControl"></userControls:SettingsTab>
 			</TabItem>
 		</TabControl>
-		<StatusBar Grid.Row="1">
-			<StatusBarItem>
-				<TextBlock Name="StatusTextBlock" x:FieldModifier="private"></TextBlock>
-			</StatusBarItem>
-		</StatusBar>
 	</Grid>
 </Window>

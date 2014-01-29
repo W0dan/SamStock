@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SAMStock.Database;
 using SAMStock.DTO.Component.AddComponent;
 using SAMStock.DTO.Component.FilterComponent;
 using SAMStock.DTO.Component.UpdateComponent;
@@ -29,32 +30,30 @@ namespace SAMStock.wpf.Dialogs
 		private readonly bool _editMode = false;
 		private readonly IDispatcher _dispatcher = WindsorContainerStore.Container.Resolve<IDispatcher>();
 		private readonly FilterComponentResponseItem _comp;
-		public List<FilterSuppliersResponseItem> Suppliers { get; private set; }
+		private readonly CollectionViewSource _suppliers;
 
 		public ComponentViewWindow()
 		{
 			InitializeComponent();
-			SupplierComboBox.ItemsSource =
+			_suppliers = (CollectionViewSource)FindResource("Suppliers");
+			_suppliers.Source =
 				_dispatcher.DispatchRequest<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest())
 					.Suppliers;
 		}
 
-		public ComponentViewWindow(FilterComponentResponseItem comp)
+		public ComponentViewWindow(FilterComponentResponseItem comp): this()
 		{
-			InitializeComponent();
-			SupplierComboBox.ItemsSource =
-				_dispatcher.DispatchRequest<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest())
-					.Suppliers;
 			_editMode = true;
 			_comp = comp;
 
 			StocknrTextBox.Text = _comp.Stocknr;
 			NameTextBox.Text = _comp.Name;
-			PriceTextBox.Text = _comp.Price.ToString(CultureInfo.InvariantCulture);
-			MinimumStockTextBox.Text = _comp.MinimumStock.ToString(CultureInfo.InvariantCulture);
-			QuantityTextBox.Text = _comp.Quantity.ToString(CultureInfo.InvariantCulture);
+			PriceTextBox.Text = _comp.Price.ToString(CultureInfo.CurrentCulture);
+			MinimumStockTextBox.Text = _comp.MinimumStock.ToString(CultureInfo.CurrentCulture);
+			QuantityTextBox.Text = _comp.Quantity.ToString(CultureInfo.CurrentCulture);
 			RemarkTextBox.Text = _comp.Remark;
 			ItemCodeTextBox.Text = _comp.ItemCode;
+			SupplierComboBox.SelectedIndex = ((List<FilterSuppliersResponseItem>) _suppliers.Source).FindIndex(x => x.Id == _comp.SupplierId);
 		}
 
 		private void SaveButton_OnClick(object sender, RoutedEventArgs e)

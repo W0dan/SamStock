@@ -74,6 +74,8 @@
     <Compile Include="UserControls\SettingsTab.xaml.cs">
       <DependentUpon>SettingsTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\SupplierIdToSupplierNameConverter.cs" />
+    <Compile Include="Utilities\TextBoxExtensions.cs" />
     <Page Include="Dialogs\ComponentViewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
