@@ -1,0 +1,35 @@
+﻿<Window x:Class="SAMStock.wpf.Dialogs.DeleteComponentDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DeleteComponentDialog">
+    <Grid>
+        <Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Label Name="Warning"></Label>
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"></ColumnDefinition>
+				<ColumnDefinition Width="Auto"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Label Content="Enter the item code to confirm deletion"></Label>
+			<Label Content="Force deletion even if still in use by pedals" Grid.Row="0" Grid.Column="1"></Label>
+			<TextBox Name="ItemCodeTextBox" Grid.Column="0" Grid.Row="1"></TextBox>
+			<CheckBox Name="CascadeCheckBox" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1"></CheckBox>
+		</Grid>
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+				<ColumnDefinition Width="Auto"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Button HorizontalAlignment="Right" Name="OkButton" Click="OkButton_OnClick">Ok</Button>
+			<Button Grid.Column="1" Name="CloseButton" HorizontalAlignment="Right" Click="CloseButton_OnClick">Cancel</Button>
+		</Grid>
+    </Grid>
+</Window>

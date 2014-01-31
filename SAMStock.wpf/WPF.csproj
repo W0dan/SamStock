@@ -68,15 +68,24 @@
     <Compile Include="Dialogs\ComponentViewWindow.xaml.cs">
       <DependentUpon>ComponentViewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DeleteComponentDialog.xaml.cs">
+      <DependentUpon>DeleteComponentDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ComponentsTab.xaml.cs">
       <DependentUpon>ComponentsTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SettingsTab.xaml.cs">
       <DependentUpon>SettingsTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\IllegalInputException.cs" />
+    <Compile Include="Utilities\NumberFormatException.cs" />
     <Compile Include="Utilities\SupplierIdToSupplierNameConverter.cs" />
     <Compile Include="Utilities\TextBoxExtensions.cs" />
     <Page Include="Dialogs\ComponentViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\DeleteComponentDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,8 +97,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Castle\ComponentInstaller.cs" />
-    <Compile Include="Castle\WindsorContainerStore.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -8,7 +8,6 @@ using System.Windows;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using SAMStock.Utilities;
-using SAMStock.wpf.Castle;
 
 namespace SAMStock.wpf
 {

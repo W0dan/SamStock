@@ -20,7 +20,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SAMStock.Utilities;
-using SAMStock.wpf.Castle;
 
 namespace SAMStock.wpf
 {
@@ -31,12 +30,7 @@ namespace SAMStock.wpf
 	{
 		public MainWindow()
 		{
-			var container = new WindsorContainer();
-			WindsorContainerStore.Container = container;
-			container.Install(FromAssembly.This());
-
 			InitializeComponent();
-
 			RestoreWindowPosition();
 		}
 

@@ -12,13 +12,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SAMStock.Castle;
 using SAMStock.Database;
 using SAMStock.DTO.Component.AddComponent;
 using SAMStock.DTO.Component.FilterComponent;
 using SAMStock.DTO.Component.UpdateComponent;
 using SAMStock.DTO.Supplier.FilterSuppliers;
 using SAMStock.Utilities;
-using SAMStock.wpf.Castle;
+using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.Dialogs
 {
@@ -59,10 +60,46 @@ namespace SAMStock.wpf.Dialogs
 		private void SaveButton_OnClick(object sender, RoutedEventArgs e)
 		{
 			decimal price;
-			int minimumstock, quantity;
-			decimal.TryParse(PriceTextBox.Text, out price);
-			int.TryParse(MinimumStockTextBox.Text, out minimumstock);
-			int.TryParse(QuantityTextBox.Text, out quantity);
+			try
+			{
+				price = PriceTextBox.GetDecimal();
+			}
+			catch (NumberFormatException)
+			{
+				MessageBox.Show("Price is not a valid number");
+				return;
+			}
+
+			int minimumstock;
+			try
+			{
+				minimumstock = MinimumStockTextBox.GetInt();
+			}
+			catch (NumberFormatException)
+			{
+				MessageBox.Show("Minimum Stock is not a valid number");
+				return;
+			}
+			int quantity;
+			try
+			{
+				quantity = QuantityTextBox.GetInt();
+			}
+			catch (NumberFormatException)
+			{
+				MessageBox.Show("Quantity is not a valid number");
+				return;
+			}
+			string itemcode;
+			try
+			{
+				itemcode = ItemCodeTextBox.GetStringWithExactLength(7);
+			}
+			catch (IllegalInputException)
+			{
+				MessageBox.Show("Item Code is not 7 characters");
+				return;
+			}
 			if (_editMode)
 			{
 				_dispatcher.DispatchCommand<UpdateComponentCommand>(new UpdateComponentCommand
@@ -74,7 +111,7 @@ namespace SAMStock.wpf.Dialogs
 					MinimumStock = minimumstock,
 					Quantity = quantity,
 					Remarks = RemarkTextBox.Text,
-					ItemCode = ItemCodeTextBox.Text,
+					ItemCode = itemcode,
 					SupplierId = (int)SupplierComboBox.SelectedValue
 				});
 			}
@@ -88,8 +125,8 @@ namespace SAMStock.wpf.Dialogs
 					MinimumStock = minimumstock,
 					Quantity = quantity,
 					Remarks = RemarkTextBox.Text,
-					ItemCode = ItemCodeTextBox.Text,
-					SupplierId = (int)SupplierComboBox.SelectedValue
+					ItemCode = itemcode,
+					SupplierId = (int) SupplierComboBox.SelectedValue
 				});
 			}
 		}

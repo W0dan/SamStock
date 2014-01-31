@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Castle\ComponentInstaller.cs" />
+    <Compile Include="Castle\WindsorContainerStore.cs" />
     <Compile Include="DTO\Admin\GetAdminData\GetAdminDataHandler.cs" />
     <Compile Include="DTO\Admin\GetAdminData\GetAdminDataQueryExecutor.cs" />
     <Compile Include="DTO\Admin\GetAdminData\GetAdminDataRequest.cs" />

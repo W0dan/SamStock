@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-			 xmlns:utilities="clr-namespace:SAMStock.wpf.Utilities"
-			 mc:Ignorable="d">
+             xmlns:utilities="clr-namespace:SAMStock.wpf.Utilities"
+             mc:Ignorable="d">
 	<UserControl.Resources>
 		<CollectionViewSource x:Key="Components" CollectionViewType="ListCollectionView"/>
 		<utilities:SupplierIdToSupplierNameConverter x:Key="SupplierIdToSupplierNameConverter" />
@@ -22,14 +22,15 @@
 				</Style>
 			</DataGrid.RowHeaderStyle>
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Stocknr" Binding="{Binding Stocknr}"/>
-				<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-				<DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
-				<DataGridTextColumn Header="Minimumstock" Binding="{Binding MinimumStock}"/>
-				<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
-				<DataGridTextColumn Header="Remark" Binding="{Binding Remark}"/>
-				<DataGridTextColumn Header="Supplier" Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, 
-    Path=Item.SupplierId, Converter={StaticResource SupplierIdToSupplierNameConverter}}"/>
+				<DataGridTextColumn Header="Stocknr" Binding="{Binding Stocknr}" Width="*"/>
+				<DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+				<DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*"/>
+				<DataGridTextColumn Header="Minimumstock" Binding="{Binding MinimumStock}" Width="*"/>
+				<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/>
+				<DataGridTextColumn Header="Remark" Binding="{Binding Remark}" Width="*"/>
+				<!-- <DataGridTextColumn Header="Supplier" Binding="{Binding SupplierName}" Width="*"/> -->
+				<DataGridTextColumn Header="Supplier" Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}},
+Path=Item.SupplierId, Converter={StaticResource SupplierIdToSupplierNameConverter}}" Width="*"/>
 			</DataGrid.Columns>
 		</DataGrid>
 		<Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">

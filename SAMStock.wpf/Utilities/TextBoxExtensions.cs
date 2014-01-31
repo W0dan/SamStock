@@ -9,9 +9,42 @@ namespace SAMStock.wpf.Utilities
 {
 	public static class TextBoxExtensions
 	{
-		public static bool TryGetDecimal(this TextBox box, out Decimal dec)
+		public static decimal GetDecimal(this TextBox box)
 		{
-			return Decimal.TryParse(box.Text, out dec);
+			decimal dec;
+			if (decimal.TryParse(box.Text, out dec))
+			{
+				return dec;
+			}
+			else
+			{
+				throw new NumberFormatException();
+			}
+		}
+
+		public static int GetInt(this TextBox box)
+		{
+			int val;
+			if (int.TryParse(box.Text, out val))
+			{
+				return val;
+			}
+			else
+			{
+				throw new NumberFormatException();
+			}
+		}
+
+		public static string GetStringWithExactLength(this TextBox box, int l)
+		{
+			if (box.Text.Length == l)
+			{
+				return box.Text;
+			}
+			else
+			{
+				throw new IllegalInputException();
+			}
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -13,14 +14,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SAMStock.Castle;
 using SAMStock.Database;
 using SAMStock.DTO.Component.DeleteComponent;
 using SAMStock.DTO.Component.DeleteComponent.Exceptions;
 using SAMStock.DTO.Component.FilterComponent;
 using SAMStock.DTO.Supplier.FilterSuppliers;
 using SAMStock.Utilities;
-using SAMStock.wpf.Castle;
 using SAMStock.wpf.Dialogs;
+using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.UserControls
 {
@@ -36,12 +38,16 @@ namespace SAMStock.wpf.UserControls
 		{
 			InitializeComponent();
 			_components = (CollectionViewSource)FindResource("Components");
-			RefreshComponentsDataGrid();
 		}
 
 		private void RefreshComponentsDataGrid()
 		{
-			_components.Source = _dispatcher.DispatchRequest<FilterComponentRequest, FilterComponentResponse>(new FilterComponentRequest()).Components;
+			SupplierIdToSupplierNameConverter.Suppliers =
+				_dispatcher.DispatchRequest<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest()).Suppliers;
+			_components.Source =
+				_dispatcher.DispatchRequest<FilterComponentRequest, FilterComponentResponse>(new FilterComponentRequest())
+					.Components;
+			
 			ComponentsDataGrid.SelectedIndex = -1;
 		}
 
@@ -52,8 +58,10 @@ namespace SAMStock.wpf.UserControls
 
 		private void ComponentsNewButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			Window dialog = new ComponentViewWindow();
-			dialog.Owner = Application.Current.MainWindow;
+			Window dialog = new ComponentViewWindow
+			{
+				Owner = Application.Current.MainWindow
+			};
 			dialog.Show();
 		}
 
@@ -75,37 +83,16 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (ComponentsDataGrid.SelectedIndex > -1)
 			{
-
-				if (
-					MessageBox.Show("Are you sure you want to delete " + ((FilterComponentResponseItem)ComponentsDataGrid.SelectedItem).ItemCode + "?", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+				var dlg = new DeleteComponentDialog((FilterComponentResponseItem)ComponentsDataGrid.SelectedItem)
 				{
-					try
-					{
-						_dispatcher.DispatchCommand<DeleteComponentCommand>(new DeleteComponentCommand
-						{
-							Id = ((FilterComponentResponseItem)ComponentsDataGrid.SelectedItem).Id
-						});
-						MessageBox.Show("Deletion completed");
-					}
-					catch (ComponentInUseException ex)
-					{
-						MessageBox.Show("Deletion failed: the following pedals rely on this component:");
-					}
-				}
-				else
-				{
-					MessageBox.Show("Deletion cancelled");
-				}
+					Owner = Application.Current.MainWindow
+				};
+				dlg.Show();
 			}
 			else
 			{
 				MessageBox.Show("No component selected");
 			}
-		}
-
-		private void ComponentsTab_OnGotFocus(object sender, RoutedEventArgs e)
-		{
-			RefreshComponentsDataGrid();
 		}
 	}
 }
