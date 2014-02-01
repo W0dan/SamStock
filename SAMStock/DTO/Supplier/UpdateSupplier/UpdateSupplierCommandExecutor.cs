@@ -4,18 +4,15 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Supplier.UpdateSupplier
 {
-	public class UpdateSupplierCommandExecutor: IUpdateSupplierCommandExecutor
+	public class UpdateSupplierCommandExecutor: CommandExecutor<UpdateSupplierCommand>
 	{
-		private readonly IContext _context;
-
-		public UpdateSupplierCommandExecutor(IContext context)
+		public UpdateSupplierCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(UpdateSupplierCommand cmd)
+		public override void Execute(UpdateSupplierCommand cmd)
 		{
-			var supplier = _context.Supplier.Single(x => x.Id == cmd.Id);
+			var supplier = Context.Supplier.Single(x => x.Id == cmd.Id);
 			if (!cmd.Address.IsNullOrEmpty()) supplier.Address = cmd.Address;
 			if (!cmd.Name.IsNullOrEmpty()) supplier.Name = cmd.Name;
 			if (!cmd.Website.IsNullOrEmpty()) supplier.Website = cmd.Website;

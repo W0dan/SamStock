@@ -5,27 +5,24 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Pedal.FilterPedal
 {
-    public class FilterPedalQueryExecutor : IFilterPedalQueryExecutor
+	public class FilterPedalRequestExecutor : RequestExecutor<FilterPedalRequest, FilterPedalResponse>
     {
-        private readonly IContext _context;
-
-        public FilterPedalQueryExecutor(IContext context)
+        public FilterPedalRequestExecutor(IContext context):base(context)
         {
-            _context = context;
         }
 
-        public FilterPedalResponse Execute(FilterPedalRequest request)
+        public override FilterPedalResponse Execute(FilterPedalRequest request)
         {
-	        var defaultMargin = _context.AdminData.Single().DefaultPedalPriceMargin;
+	        var defaultMargin = Context.AdminData.Single().DefaultPedalPriceMargin;
 
-			IQueryable<Database.Pedal> pedals = _context.Pedal;
+			IQueryable<Database.Pedal> pedals = Context.Pedal;
 	        if (request.Id.HasValue) pedals = pedals.Where(x => x.Id == request.Id.Value);
 	        if (!string.IsNullOrWhiteSpace(request.Name))
 	        {
 		        pedals = pedals.Where(x => x.Name.ToLower().Contains(request.Name.ToLower()));
 	        }
 
-			var componentids = _context.PedalComponent
+			var componentids = Context.PedalComponent
 				.Select(x => new { x.PedalId, x.ComponentId })
 				.GroupBy(x => x.PedalId)
 				.ToList()

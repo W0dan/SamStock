@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Pedal.DeleteComponent
 {
-	public class DeleteComponentCommandHandler: IDeleteComponentCommandHandler
+	public class DeleteComponentCommandHandler: CommandHandler<DeleteComponentCommand>
 	{
-		private readonly IDeleteComponentCommandExecutor _executor;
-
-		public DeleteComponentCommandHandler(IDeleteComponentCommandExecutor executor)
+		public DeleteComponentCommandHandler(ICommandExecutor<DeleteComponentCommand> executor): base(executor)
 		{
-			_executor = executor;
-		}
-
-		public void Handle(DeleteComponentCommand cmd)
-		{
-			_executor.Execute(cmd);
 		}
 	}
 }

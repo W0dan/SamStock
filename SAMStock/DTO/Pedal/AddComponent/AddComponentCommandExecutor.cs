@@ -2,18 +2,15 @@
 
 namespace SAMStock.DTO.Pedal.AddComponent
 {
-	public class AddComponentCommandExecutor: IAddComponentCommandExecutor
+	public class AddComponentCommandExecutor: CommandExecutor<AddComponentCommand>
 	{
-		private readonly IContext _context;
-
-		public AddComponentCommandExecutor(IContext context)
+		public AddComponentCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(AddComponentCommand cmd)
+		public override void Execute(AddComponentCommand cmd)
 		{
-			_context.PedalComponent.AddObject(new PedalComponent
+			Context.PedalComponent.AddObject(new PedalComponent
 			{
 				PedalId = cmd.PedalId,
 				ComponentId = cmd.ComponentId,

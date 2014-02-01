@@ -8,7 +8,7 @@ namespace Tests.Pedals.FilterPedal.FilterPedalQueryExecutor
 	[TestFixture]
     public class WhenExecuteIsCalled : DatabaseTest
 	{
-		private IFilterPedalQueryExecutor _sut;
+		private IFilterPedalRequestExecutorExecutor _sut;
 		private FilterPedalRequest _request;
 		private FilterPedalResponse _response;
 		private Component _c1;
@@ -18,7 +18,7 @@ namespace Tests.Pedals.FilterPedal.FilterPedalQueryExecutor
 
 		public override void Arrange()
 		{
-			_sut = new SAMStock.DTO.Pedal.FilterPedal.FilterPedalQueryExecutor(Context);
+			_sut = new SAMStock.DTO.Pedal.FilterPedal.FilterPedalRequestExecutor(Context);
 
 			_s1 = new Supplier
 			{

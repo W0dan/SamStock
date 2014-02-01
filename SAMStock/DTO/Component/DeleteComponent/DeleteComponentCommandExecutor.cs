@@ -4,36 +4,33 @@ using SAMStock.DTO.Component.DeleteComponent.Exceptions;
 
 namespace SAMStock.DTO.Component.DeleteComponent
 {
-	public class DeleteComponentCommandExecutor: IDeleteComponentCommandExecutor
+	public class DeleteComponentCommandExecutor: CommandExecutor<DeleteComponentCommand>
 	{
-		private readonly IContext _context;
-
-		public DeleteComponentCommandExecutor(IContext context)
+		public DeleteComponentCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(DeleteComponentCommand cmd)
+		public override void Execute(DeleteComponentCommand cmd)
 		{
-			if (_context.PedalComponent.Count(x => x.ComponentId == cmd.Id) == 0)
+			if (Context.PedalComponent.Count(x => x.ComponentId == cmd.Id) == 0)
 			{
-				_context.Component.DeleteObject(_context.Component.Single(x => x.Id == cmd.Id));
+				Context.Component.DeleteObject(Context.Component.Single(x => x.Id == cmd.Id));
 			}
 			else
 			{
 				if (cmd.Cascade)
 				{
-					var pcs = _context.PedalComponent.Where(x => x.ComponentId == cmd.Id).Select(x => x).ToList();
+					var pcs = Context.PedalComponent.Where(x => x.ComponentId == cmd.Id).Select(x => x).ToList();
 					foreach (var pc in pcs)
 					{
-						_context.PedalComponent.DeleteObject(pc);
+						Context.PedalComponent.DeleteObject(pc);
 					}
-					_context.Component.DeleteObject(_context.Component.Single(x => x.Id == cmd.Id));
+					Context.Component.DeleteObject(Context.Component.Single(x => x.Id == cmd.Id));
 				}
 				else
 				{
-					var pedalIds = _context.PedalComponent.Where(x => x.ComponentId == cmd.Id).Select(x => x.PedalId).ToList();
-					throw new ComponentInUseException(_context.Pedal.Where(x => pedalIds.Contains(x.Id)).Select(x => x.Name).ToList());
+					var pedalIds = Context.PedalComponent.Where(x => x.ComponentId == cmd.Id).Select(x => x.PedalId).ToList();
+					throw new ComponentInUseException(Context.Pedal.Where(x => pedalIds.Contains(x.Id)).Select(x => x.Name).ToList());
 				}
 			}
 		}

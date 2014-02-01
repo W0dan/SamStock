@@ -29,7 +29,6 @@ namespace SAMStock.wpf.Dialogs
 	public partial class ComponentViewWindow : Window
 	{
 		private readonly bool _editMode = false;
-		private readonly IDispatcher _dispatcher = WindsorContainerStore.Container.Resolve<IDispatcher>();
 		private readonly FilterComponentResponseItem _comp;
 		private readonly CollectionViewSource _suppliers;
 
@@ -38,7 +37,7 @@ namespace SAMStock.wpf.Dialogs
 			InitializeComponent();
 			_suppliers = (CollectionViewSource)FindResource("Suppliers");
 			_suppliers.Source =
-				_dispatcher.DispatchRequest<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest())
+				SAMStockDispatcher.DispatchRequest<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest())
 					.Suppliers;
 		}
 
@@ -102,7 +101,7 @@ namespace SAMStock.wpf.Dialogs
 			}
 			if (_editMode)
 			{
-				_dispatcher.DispatchCommand<UpdateComponentCommand>(new UpdateComponentCommand
+				SAMStockDispatcher.DispatchCommand<UpdateComponentCommand>(new UpdateComponentCommand
 				{
 					Id = _comp.Id,
 					Stocknr = StocknrTextBox.Text,
@@ -117,7 +116,7 @@ namespace SAMStock.wpf.Dialogs
 			}
 			else
 			{
-				_dispatcher.DispatchCommand<AddComponentCommand>(new AddComponentCommand
+				SAMStockDispatcher.DispatchCommand<AddComponentCommand>(new AddComponentCommand
 				{
 					Stocknr = StocknrTextBox.Text,
 					Name = NameTextBox.Text,

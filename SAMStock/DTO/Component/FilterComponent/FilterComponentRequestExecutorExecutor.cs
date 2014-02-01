@@ -4,25 +4,22 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Component.FilterComponent
 {
-	public class FilterComponentQueryExecutor : IFilterComponentQueryExecutor
+	public class FilterComponentRequestExecutorExecutor : RequestExecutor<FilterComponentRequest, FilterComponentResponse>
 	{
-		private readonly IContext _context;
-
-		public FilterComponentQueryExecutor(IContext context)
+		public FilterComponentRequestExecutorExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public FilterComponentResponse Execute(FilterComponentRequest request)
+		public override FilterComponentResponse Execute(FilterComponentRequest request)
 		{
-			IQueryable<Database.Component> query = _context.Component;
+			IQueryable<Database.Component> query = Context.Component;
 
 			if (request.SupplierId.HasValue) query = query.Where(x => x.Supplier.Id == request.SupplierId.Value);
 			if (request.ComponentId.HasValue) query = query.Where(x => x.Id == request.ComponentId.Value);
 			if (!string.IsNullOrWhiteSpace(request.StockNr)) query = query.Where(x => x.Stocknr.ToLower().Contains(request.StockNr.ToLower()));
 			if (request.Shortage) query = query.Where(x => x.Stock < x.MinimumStock);
 
-			var pedalids = _context.PedalComponent
+			var pedalids = Context.PedalComponent
 				.Select(x => new { x.ComponentId, x.PedalId })
 				.GroupBy(x => x.ComponentId)
 				.ToList()

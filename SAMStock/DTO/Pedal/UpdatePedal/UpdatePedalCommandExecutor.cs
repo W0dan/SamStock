@@ -4,18 +4,15 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Pedal.UpdatePedal
 {
-	public class UpdatePedalCommandExecutor : IUpdatePedalCommandExecutor
+	public class UpdatePedalCommandExecutor : CommandExecutor<UpdatePedalCommand>
 	{
-		private readonly IContext _context;
-
-		public UpdatePedalCommandExecutor(IContext context)
+		public UpdatePedalCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(UpdatePedalCommand cmd)
+		public override void Execute(UpdatePedalCommand cmd)
 		{
-			var pedal = _context.Pedal.Single(p => p.Id == cmd.Id);
+			var pedal = Context.Pedal.Single(p => p.Id == cmd.Id);
 			if (!cmd.Name.IsNullOrEmpty()) pedal.Name = cmd.Name;
 			if (cmd.Price.HasValue) pedal.Price = cmd.Price.Value;
 			if (cmd.Margin.HasValue) pedal.Margin = cmd.Margin;

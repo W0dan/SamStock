@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Component.UpdateComponent
 {
-	public class UpdateComponentHandler:IUpdateComponentHandler
+	public class UpdateComponentHandler: CommandHandler<UpdateComponentCommand>
 	{
-		private readonly IUpdateStockCommandExecutor _executor;
-
-		public UpdateComponentHandler(IUpdateStockCommandExecutor executor)
+		public UpdateComponentHandler(ICommandExecutor<UpdateComponentCommand> executor): base(executor)
 		{
-			_executor = executor;
-		}
-
-		public void Handle(UpdateComponentCommand cmd)
-		{
-			_executor.Execute(cmd);
 		}
 	}
 }

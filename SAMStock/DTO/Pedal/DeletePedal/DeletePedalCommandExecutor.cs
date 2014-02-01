@@ -3,26 +3,23 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Pedal.DeletePedal
 {
-	public class DeletePedalCommandExecutor: IDeletePedalCommandExecutor
+	public class DeletePedalCommandExecutor: CommandExecutor<DeletePedalCommand>
 	{
-		private readonly IContext _context;
-
-		public DeletePedalCommandExecutor(IContext context)
+		public DeletePedalCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(DeletePedalCommand cmd)
+		public override void Execute(DeletePedalCommand cmd)
 		{
 			if (cmd.Cascade)
 			{
-				var delete = _context.PedalComponent.Where(x => x.PedalId == cmd.Id);
+				var delete = Context.PedalComponent.Where(x => x.PedalId == cmd.Id);
 				foreach (var pedalcomp in delete)
 				{
-					_context.PedalComponent.DeleteObject(pedalcomp);
+					Context.PedalComponent.DeleteObject(pedalcomp);
 				}
 			}
-			_context.Pedal.DeleteObject(_context.Pedal.Single(x => x.Id == cmd.Id));
+			Context.Pedal.DeleteObject(Context.Pedal.Single(x => x.Id == cmd.Id));
 		}
 	}
 }

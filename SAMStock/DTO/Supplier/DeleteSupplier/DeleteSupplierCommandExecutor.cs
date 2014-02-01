@@ -3,18 +3,15 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Supplier.DeleteSupplier
 {
-	public class DeleteSupplierCommandExecutor: IDeleteSupplierCommandExecutor
+	public class DeleteSupplierCommandExecutor: CommandExecutor<DeleteSupplierCommand>
 	{
-		private readonly IContext _context;
-
-		public DeleteSupplierCommandExecutor(IContext context)
+		public DeleteSupplierCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(DeleteSupplierCommand cmd)
+		public override void Execute(DeleteSupplierCommand cmd)
 		{
-			_context.Supplier.DeleteObject(_context.Supplier.Single(x => x.Id == cmd.Id));
+			Context.Supplier.DeleteObject(Context.Supplier.Single(x => x.Id == cmd.Id));
 		}
 	}
 }

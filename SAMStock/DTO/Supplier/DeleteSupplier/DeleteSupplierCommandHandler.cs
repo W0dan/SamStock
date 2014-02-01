@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Supplier.DeleteSupplier
 {
-	public class DeleteSupplierCommandHandler: IDeleteSupplierCommandHandler
+	public class DeleteSupplierCommandHandler: CommandHandler<DeleteSupplierCommand>
 	{
-		private readonly IDeleteSupplierCommandExecutor _executor;
-
-		public DeleteSupplierCommandHandler(IDeleteSupplierCommandExecutor executor)
+		public DeleteSupplierCommandHandler(ICommandExecutor<DeleteSupplierCommand> executor): base(executor)
 		{
-			_executor = executor;
-		}
-
-		public void Handle(DeleteSupplierCommand cmd)
-		{
-			_executor.Execute(cmd);
 		}
 	}
 }

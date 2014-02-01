@@ -1,4 +1,4 @@
-﻿namespace SAMStock.Utilities
+﻿namespace SAMStock.DTO
 {
     public interface ICommandHandler<in TCommand>
     {

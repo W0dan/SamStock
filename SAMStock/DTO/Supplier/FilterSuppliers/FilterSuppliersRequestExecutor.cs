@@ -4,18 +4,15 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Supplier.FilterSuppliers
 {
-	public class FilterSuppliersQueryExecutor : IFilterSuppliersQueryExecutor
+	public class FilterSuppliersRequestExecutor : RequestExecutor<FilterSuppliersRequest, FilterSuppliersResponse>
 	{
-		private readonly IContext _context;
-
-		public FilterSuppliersQueryExecutor(IContext context)
+		public FilterSuppliersRequestExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public FilterSuppliersResponse Execute(FilterSuppliersRequest request)
+		public override FilterSuppliersResponse Execute(FilterSuppliersRequest request)
 		{
-			IEnumerable<Database.Supplier> suppliers = _context.Supplier;
+			IEnumerable<Database.Supplier> suppliers = Context.Supplier;
 			if (request.Id.HasValue) suppliers = suppliers.Where(x => x.Id == request.Id.Value);
 			return new FilterSuppliersResponse
 			{

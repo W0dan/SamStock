@@ -1,10 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Castle.Components.DictionaryAdapter.Xml;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using Castle.MicroKernel.SubSystems.Configuration;
-using Castle.Windsor;
-using Castle.Windsor.Installer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +18,6 @@ using SAMStock.Utilities;
 
 namespace SAMStock.wpf
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
 	public partial class MainWindow : Window
 	{
 		public MainWindow()

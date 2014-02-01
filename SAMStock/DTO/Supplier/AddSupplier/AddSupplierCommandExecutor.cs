@@ -2,18 +2,15 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Supplier.AddSupplier
 {
-	public class AddSupplierCommandExecutor : IAddSupplierCommandExecutor
+	public class AddSupplierCommandExecutor : CommandExecutor<AddSupplierCommand>
 	{
-		private readonly IContext _context;
-
-		public AddSupplierCommandExecutor(IContext context)
+		public AddSupplierCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(AddSupplierCommand command)
+		public override void Execute(AddSupplierCommand command)
 		{
-			_context.Supplier.AddObject(new Database.Supplier
+			Context.Supplier.AddObject(new Database.Supplier
 			{
 				Name = command.Name,
 				Address = command.Address,

@@ -5,18 +5,15 @@ using SAMStock.DTO.Component.UpdateComponent.Exceptions;
 
 namespace SAMStock.DTO.Component.UpdateComponent
 {
-	public class UpdateComponentCommandExecutor: IUpdateStockCommandExecutor
+	public class UpdateComponentCommandExecutor: CommandExecutor<UpdateComponentCommand>
 	{
-		private readonly IContext _context;
-
-		public UpdateComponentCommandExecutor(IContext context)
+		public UpdateComponentCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(UpdateComponentCommand cmd)
+		public override void Execute(UpdateComponentCommand cmd)
 		{
-			var comp = _context.Component.Single(x => x.Id == cmd.Id);
+			var comp = Context.Component.Single(x => x.Id == cmd.Id);
 				if (cmd.ItemCode != null)
 				{
 					if (cmd.ItemCode.Length == 7)

@@ -25,7 +25,6 @@ namespace SAMStock.wpf.Dialogs
 	public partial class DeleteComponentDialog : Window
 	{
 		private readonly FilterComponentResponseItem _item;
-		private readonly IDispatcher _dispatcher = WindsorContainerStore.Container.Resolve<IDispatcher>();
 
 		public DeleteComponentDialog(FilterComponentResponseItem item)
 		{
@@ -45,7 +44,7 @@ namespace SAMStock.wpf.Dialogs
 			{
 				try
 				{
-					_dispatcher.DispatchCommand(new DeleteComponentCommand
+					SAMStockDispatcher.DispatchCommand(new DeleteComponentCommand
 					{
 						Id = _item.Id,
 						Cascade = CascadeCheckBox.IsChecked.HasValue && CascadeCheckBox.IsChecked.Value

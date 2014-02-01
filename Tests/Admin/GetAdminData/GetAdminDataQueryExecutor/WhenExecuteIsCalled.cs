@@ -13,14 +13,14 @@ namespace Tests.Admin.GetAdminData.GetAdminDataQueryExecutor
 	public class WhenExecuteIsCalled: DatabaseTest
 	{
 		private GetAdminDataRequest _req;
-		private SAMStock.DTO.Admin.GetAdminData.GetAdminDataQueryExecutor _sut;
+		private SAMStock.DTO.Admin.GetAdminData.GetAdminDataRequestExecutor _sut;
 		private GetAdminDataResponse _resp;
 		private AdminData _data;
 
 		public override void Arrange()
 		{
 			_req = new GetAdminDataRequest();
-			_sut = new SAMStock.DTO.Admin.GetAdminData.GetAdminDataQueryExecutor(Context);
+			_sut = new SAMStock.DTO.Admin.GetAdminData.GetAdminDataRequestExecutor(Context);
 			_data = Context.AdminData.Single();
 		}
 

@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Admin.SetAdminData
 {
-	public class SetAdminDataHandler : ISetAdminDataHandler
+	public class SetAdminDataHandler : CommandHandler<SetAdminDataCommand>
 	{
-		private readonly  ISetAdminDataCommandExecutor _cmdexecutor;
-
-		public SetAdminDataHandler(ISetAdminDataCommandExecutor cmdexecutor)
+		public SetAdminDataHandler(ICommandExecutor<SetAdminDataCommand> cmdexecutor): base(cmdexecutor)
 		{
-			_cmdexecutor = cmdexecutor;
-		}
-
-		public void Handle(SetAdminDataCommand cmd)
-		{
-			_cmdexecutor.Execute(cmd);
 		}
 	}
 }

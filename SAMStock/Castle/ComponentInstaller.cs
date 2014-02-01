@@ -2,6 +2,7 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SAMStock.Database;
+using SAMStock.DTO;
 using SAMStock.Utilities;
 using Cmp = Castle.MicroKernel.Registration.Component;
 
@@ -14,13 +15,11 @@ namespace SAMStock.Castle
             container.Register(
                 Cmp.For<IContext>()
                         .UsingFactoryMethod(fm => new SAMStockEntities()),
-                Cmp.For<IDispatcher>()
-                        .ImplementedBy<Dispatcher>(),
                 Cmp.For<IWindsorContainer>()
                         .Instance(WindsorContainerStore.Container)
                         .LifestyleSingleton(),
                 Classes.FromThisAssembly()
-                        .BasedOn(typeof(IQueryHandler<,>))
+                        .BasedOn(typeof(IRequestHandler<,>))
                         .WithServiceAllInterfaces()
 						.LifestyleSingleton(),
 				Classes.FromThisAssembly()
@@ -28,11 +27,11 @@ namespace SAMStock.Castle
                         .WithServiceAllInterfaces()
 						.LifestyleSingleton(),
 				Classes.FromThisAssembly()
-                        .BasedOn<IQuery>()
+                        .BasedOn(typeof(IRequestExecutor<,>))
                         .WithServiceAllInterfaces()
 						.LifestyleSingleton(),
 				Classes.FromThisAssembly()
-                        .BasedOn<ICommandExecutor>()
+                        .BasedOn(typeof(ICommandExecutor<>))
 						.WithServiceAllInterfaces()
 						.LifestyleSingleton()
             );

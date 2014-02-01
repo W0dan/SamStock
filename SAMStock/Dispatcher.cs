@@ -1,20 +1,23 @@
 ﻿using System;
 using Castle.Windsor;
+using SAMStock.Castle;
 using SAMStock.Database;
+using SAMStock.DTO;
+using SAMStock.Utilities;
 
-namespace SAMStock.Utilities
+namespace SAMStock
 {
-    public class Dispatcher : IDispatcher {
-        readonly IWindsorContainer _windsorContainer;
+    public class SAMStockDispatcher
+    {
+	    private static IWindsorContainer _windsorContainer;
+		private static IWindsorContainer Container {
+			get { return _windsorContainer ?? (_windsorContainer = WindsorContainerStore.Container); }
+			set { _windsorContainer = value; }
+		}
 
-        public Dispatcher(IWindsorContainer windsorContainer)
+        public static TResponse DispatchRequest<TRequest, TResponse>(TRequest request)
         {
-            _windsorContainer = windsorContainer;
-        }
-
-        public TResponse DispatchRequest<TRequest, TResponse>(TRequest request)
-        {
-            var handler = _windsorContainer.Resolve<IQueryHandler<TRequest, TResponse>>();
+            var handler = Container.Resolve<IRequestHandler<TRequest, TResponse>>();
 
             if (handler == null)
                 throw new ArgumentException(string.Format("No handler found for handling {0} and {1}", typeof(TRequest).Name, typeof(TResponse).Name));
@@ -25,18 +28,18 @@ namespace SAMStock.Utilities
             }
             finally
             {
-                _windsorContainer.Release(handler);
+				Container.Release(handler);
             }
         }
 
-        public void DispatchCommand<TCommand>(TCommand command)
+        public static void DispatchCommand<TCommand>(TCommand command)
         {
-            var handler = _windsorContainer.Resolve<ICommandHandler<TCommand>>();
+			var handler = Container.Resolve<ICommandHandler<TCommand>>();
 
             if (handler == null)
                 throw new ArgumentException(string.Format("No handler found for handling {0}", typeof(TCommand).Name));
 
-            var context = _windsorContainer.Resolve<IContext>();
+			var context = Container.Resolve<IContext>();
             try
             {
                 using (var tran = TransactionScopeFactory.CreateTransactionScope())
@@ -49,8 +52,8 @@ namespace SAMStock.Utilities
             }
             finally
             {
-                _windsorContainer.Release(handler);
-                _windsorContainer.Release(context);
+				Container.Release(handler);
+				Container.Release(context);
             }
         }
 

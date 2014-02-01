@@ -3,16 +3,13 @@ using SAMStock.DTO.Component.AddComponent.Exceptions;
 
 namespace SAMStock.DTO.Component.AddComponent
 {
-	public class AddComponentCommandExecutor : IAddComponentCommandExecutor
+	public class AddComponentCommandExecutor : CommandExecutor<AddComponentCommand>
 	{
-		private readonly IContext _context;
-
-		public AddComponentCommandExecutor(IContext context)
+		public AddComponentCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(AddComponentCommand command)
+		public override void Execute(AddComponentCommand command)
 		{
 			if (command.ItemCode.Length == 7)
 			{
@@ -27,7 +24,7 @@ namespace SAMStock.DTO.Component.AddComponent
 					Remarks = command.Remarks,
 					ItemCode = command.ItemCode
 				};
-				_context.Component.AddObject(component);
+				Context.Component.AddObject(component);
 			}
 			else
 			{

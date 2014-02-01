@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Pedal.UpdateComponent
 {
-	public class UpdateComponentCommandHandler: IUpdateComponentCommandHandler
+	public class UpdateComponentCommandHandler: CommandHandler<UpdateComponentCommand>
 	{
-		private readonly IUpdateComponentCommandExecutor _executor;
-
-		public UpdateComponentCommandHandler(IUpdateComponentCommandExecutor executor)
+		public UpdateComponentCommandHandler(ICommandExecutor<UpdateComponentCommand> executor): base(executor)
 		{
-			_executor = executor;
-		}
-
-		public void Handle(UpdateComponentCommand cmd)
-		{
-			_executor.Execute(cmd);
 		}
 	}
 }

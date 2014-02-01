@@ -3,18 +3,15 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Admin.SetAdminData
 {
-	public class SetAdminDataCommandExecutor : ISetAdminDataCommandExecutor
+	public class SetAdminDataCommandExecutor : CommandExecutor<SetAdminDataCommand>
 	{
-		private readonly IContext _context;
-
-		public SetAdminDataCommandExecutor(IContext context)
+		public SetAdminDataCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(SetAdminDataCommand cmd)
+		public override void Execute(SetAdminDataCommand cmd)
 		{
-			var data = _context.AdminData.Single();
+			var data = Context.AdminData.Single();
 			if (cmd.VAT.HasValue) data.VAT = cmd.VAT.Value;
 			if (cmd.DefaultPedalPriceMargin.HasValue) data.DefaultPedalPriceMargin = cmd.DefaultPedalPriceMargin.Value;
 		}

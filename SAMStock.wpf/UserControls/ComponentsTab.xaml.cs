@@ -31,7 +31,6 @@ namespace SAMStock.wpf.UserControls
 	/// </summary>
 	public partial class ComponentsTab : UserControl
 	{
-		private readonly IDispatcher _dispatcher = WindsorContainerStore.Container.Resolve<IDispatcher>();
 		private readonly CollectionViewSource _components;
 
 		public ComponentsTab()
@@ -43,9 +42,9 @@ namespace SAMStock.wpf.UserControls
 		private void RefreshComponentsDataGrid()
 		{
 			SupplierIdToSupplierNameConverter.Suppliers =
-				_dispatcher.DispatchRequest<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest()).Suppliers;
+				SAMStockDispatcher.DispatchRequest<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest()).Suppliers;
 			_components.Source =
-				_dispatcher.DispatchRequest<FilterComponentRequest, FilterComponentResponse>(new FilterComponentRequest())
+				SAMStockDispatcher.DispatchRequest<FilterComponentRequest, FilterComponentResponse>(new FilterComponentRequest())
 					.Components;
 			
 			ComponentsDataGrid.SelectedIndex = -1;

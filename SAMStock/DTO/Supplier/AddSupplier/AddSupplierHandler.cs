@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Supplier.AddSupplier
 {
-	public class AddSupplierHandler : IAddSupplierHandler
+	public class AddSupplierHandler : CommandHandler<AddSupplierCommand>
 	{
-		private readonly IAddSupplierCommandExecutor _addLeverancierCommandExecutor;
-
-		public AddSupplierHandler(IAddSupplierCommandExecutor addLeverancierCommandExecutor)
+		public AddSupplierHandler(ICommandExecutor<AddSupplierCommand> addLeverancierCommandExecutor): base(addLeverancierCommandExecutor)
 		{
-			_addLeverancierCommandExecutor = addLeverancierCommandExecutor;
-		}
-
-		public void Handle(AddSupplierCommand command)
-		{
-			_addLeverancierCommandExecutor.Execute(command);
 		}
 	}
 }

@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Admin.GetAdminData
 {
-	public class GetAdminDataHandler : IGetAdminDataHandler
+	public class GetAdminDataHandler : RequestHandler<GetAdminDataRequest, GetAdminDataResponse>
 	{
-		private readonly IGetAdminDataQueryExecutor _queryexecutor;
-
-		public GetAdminDataHandler(IGetAdminDataQueryExecutor queryexecutor)
+		public GetAdminDataHandler(IRequestExecutor<GetAdminDataRequest, GetAdminDataResponse> queryexecutor): base(queryexecutor)
 		{
-			_queryexecutor = queryexecutor;
-		}
-
-		public GetAdminDataResponse Handle(GetAdminDataRequest request)
-		{
-			return _queryexecutor.Execute(request);
 		}
 	}
 }

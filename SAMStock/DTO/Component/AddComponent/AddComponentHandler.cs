@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Component.AddComponent
 {
-	public class AddComponentHandler : IAddComponentHandler
+	public class AddComponentHandler : CommandHandler<AddComponentCommand>
 	{
-		private readonly IAddComponentCommandExecutor _addComponentCommandExecutor;
-
-		public AddComponentHandler(IAddComponentCommandExecutor addComponentCommandExecutor)
+		public AddComponentHandler(ICommandExecutor<AddComponentCommand> addComponentCommandExecutor): base(addComponentCommandExecutor)
 		{
-			_addComponentCommandExecutor = addComponentCommandExecutor;
-		}
-
-		public void Handle(AddComponentCommand command)
-		{
-			_addComponentCommandExecutor.Execute(command);
 		}
 	}
 }

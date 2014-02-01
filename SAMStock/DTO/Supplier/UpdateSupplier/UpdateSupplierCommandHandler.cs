@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Supplier.UpdateSupplier
 {
-	public class UpdateSupplierCommandHandler: IUpdateSupplierCommandHandler
+	public class UpdateSupplierCommandHandler: CommandHandler<UpdateSupplierCommand>
 	{
-		private readonly IUpdateSupplierCommandExecutor _executor;
-
-		public UpdateSupplierCommandHandler(IUpdateSupplierCommandExecutor executor)
+		public UpdateSupplierCommandHandler(ICommandExecutor<UpdateSupplierCommand> executor): base(executor)
 		{
-			_executor = executor;
-		}
-
-		public void Handle(UpdateSupplierCommand cmd)
-		{
-			_executor.Execute(cmd);
 		}
 	}
 }

@@ -3,18 +3,15 @@ using SAMStock.Database;
 
 namespace SAMStock.DTO.Pedal.DeleteComponent
 {
-	public class DeleteComponentCommandExecutor: IDeleteComponentCommandExecutor
+	public class DeleteComponentCommandExecutor: CommandExecutor<DeleteComponentCommand>
 	{
-		private readonly IContext _context;
-
-		public DeleteComponentCommandExecutor(IContext context)
+		public DeleteComponentCommandExecutor(IContext context): base(context)
 		{
-			_context = context;
 		}
 
-		public void Execute(DeleteComponentCommand cmd)
+		public override void Execute(DeleteComponentCommand cmd)
 		{
-			_context.PedalComponent.DeleteObject(_context.PedalComponent.Single(x => x.PedalId == cmd.PedalId && x.ComponentId == cmd.ComponentId));
+			Context.PedalComponent.DeleteObject(Context.PedalComponent.Single(x => x.PedalId == cmd.PedalId && x.ComponentId == cmd.ComponentId));
 		}
 	}
 }

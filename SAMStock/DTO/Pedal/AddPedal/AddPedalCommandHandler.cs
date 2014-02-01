@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Pedal.AddPedal
 {
-	public class AddPedalCommandHandler : IAddPedalCommandHandler
+	public class AddPedalCommandHandler : CommandHandler<AddPedalCommand>
 	{
-		private readonly IAddPedalCommandExecutor _cmdexecutor;
-
-		public AddPedalCommandHandler(IAddPedalCommandExecutor cmdexecutor)
+		public AddPedalCommandHandler(ICommandExecutor<AddPedalCommand> cmdexecutor): base(cmdexecutor)
 		{
-			_cmdexecutor = cmdexecutor;
-		}
-
-		public void Handle(AddPedalCommand cmd)
-		{
-			_cmdexecutor.Execute(cmd);
 		}
 	}
 }

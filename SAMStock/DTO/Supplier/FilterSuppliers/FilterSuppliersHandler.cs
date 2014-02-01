@@ -1,17 +1,9 @@
 ﻿namespace SAMStock.DTO.Supplier.FilterSuppliers
 {
-	public class FilterSuppliersHandler: IFilterSuppliersHandler
+	public class FilterSuppliersHandler: RequestHandler<FilterSuppliersRequest, FilterSuppliersResponse>
 	{
-		private readonly IFilterSuppliersQueryExecutor _getLeveranciersQueryExecutor;
-
-		public FilterSuppliersHandler(IFilterSuppliersQueryExecutor getLeveranciersQueryExecutor)
+		public FilterSuppliersHandler(IRequestExecutor<FilterSuppliersRequest, FilterSuppliersResponse> getLeveranciersRequestExecutorExecutor): base(getLeveranciersRequestExecutorExecutor)
 		{
-			_getLeveranciersQueryExecutor = getLeveranciersQueryExecutor;
-		}
-
-		public FilterSuppliersResponse Handle(FilterSuppliersRequest request)
-		{
-			return _getLeveranciersQueryExecutor.Execute(request);
 		}
 	}
 }

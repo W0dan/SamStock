@@ -8,7 +8,7 @@ namespace Tests.Components.FilterComponent.FilterStockQueryExecutor
     [TestFixture]
     public class WhenExecuteIsCalledWithStocknr : DatabaseTest
     {
-        private FilterComponentQueryExecutor _sut;
+        private FilterComponentRequestExecutorExecutor _sut;
         private FilterComponentRequest _req;
         private FilterComponentResponse _resp;
 	    private Component _c1, _c2, _c3, _c4;
@@ -79,7 +79,7 @@ namespace Tests.Components.FilterComponent.FilterStockQueryExecutor
             Context.Component.AddObject(_c4);
             Context.SaveChanges();
 
-            _sut = new FilterComponentQueryExecutor(Context);
+            _sut = new FilterComponentRequestExecutorExecutor(Context);
         }
 
         public override void Act()
