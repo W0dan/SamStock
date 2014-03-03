@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using SAMStock.Database;
-using SAMStock.DTO.Admin.GetAdminData;
-using SAMStock.DTO.Pedal.AddPedal;
+using SAMStock.DAL.Admin.GetAdminData;
+using SAMStock.DAL.Pedal.AddPedal;
 
 namespace Tests.Admin.GetAdminData.GetAdminDataQueryExecutor
 {
@@ -13,14 +13,14 @@ namespace Tests.Admin.GetAdminData.GetAdminDataQueryExecutor
 	public class WhenExecuteIsCalled: DatabaseTest
 	{
 		private GetAdminDataRequest _req;
-		private SAMStock.DTO.Admin.GetAdminData.GetAdminDataRequestExecutor _sut;
+		private SAMStock.DAL.Admin.GetAdminData.GetAdminDataRequestExecutor _sut;
 		private GetAdminDataResponse _resp;
 		private AdminData _data;
 
 		public override void Arrange()
 		{
 			_req = new GetAdminDataRequest();
-			_sut = new SAMStock.DTO.Admin.GetAdminData.GetAdminDataRequestExecutor(Context);
+			_sut = new SAMStock.DAL.Admin.GetAdminData.GetAdminDataRequestExecutor(Context);
 			_data = Context.AdminData.Single();
 		}
 

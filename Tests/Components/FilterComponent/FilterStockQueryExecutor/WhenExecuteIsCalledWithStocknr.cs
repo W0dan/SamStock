@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 using SAMStock.Database;
-using SAMStock.DTO.Component.FilterComponent;
+using SAMStock.DAL.Component.FilterComponent;
 
 namespace Tests.Components.FilterComponent.FilterStockQueryExecutor
 {

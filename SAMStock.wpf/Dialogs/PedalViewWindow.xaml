@@ -1,0 +1,41 @@
+﻿<Window x:Class="SAMStock.wpf.Dialogs.PedalViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PedalViewWindow" Height="300" Width="300">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+		<GroupBox>
+			<GroupBox.Header>
+				<Label>Details</Label>
+			</GroupBox.Header>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Label>Name</Label>
+				<TextBox Name="NameTextBox" Grid.Row="0" Grid.Column="1"></TextBox>
+				<Label Grid.Row="1" Grid.Column="0">Price</Label>
+				<TextBox Name="PriceTextBox" Grid.Row="1" Grid.Column="1"></TextBox>
+				<Label Grid.Row="2" Grid.Column="0">Margin</Label>
+				<TextBox Name="MarginTextBox" Grid.Row="2" Grid.Column="1"></TextBox>
+			</Grid>
+		</GroupBox>
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+				<ColumnDefinition Width="Auto"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Button HorizontalAlignment="Right" Name="SaveButton" Click="SaveButton_OnClick">Save/update</Button>
+			<Button Grid.Column="1" Name="CloseButton" HorizontalAlignment="Right" Click="CloseButton_OnClick">Close</Button>
+		</Grid>
+	</Grid>
+</Window>

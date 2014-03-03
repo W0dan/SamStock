@@ -65,8 +65,17 @@
     <Compile Include="Dialogs\DeleteComponentDialog.xaml.cs">
       <DependentUpon>DeleteComponentDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DeletePedalDialog.xaml.cs">
+      <DependentUpon>DeletePedalDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PedalViewWindow.xaml.cs">
+      <DependentUpon>PedalViewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ComponentsTab.xaml.cs">
       <DependentUpon>ComponentsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PedalsTab.xaml.cs">
+      <DependentUpon>PedalsTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SettingsTab.xaml.cs">
       <DependentUpon>SettingsTab.xaml</DependentUpon>
@@ -83,6 +92,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\DeletePedalDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\PedalViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,6 +113,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\ComponentsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PedalsTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

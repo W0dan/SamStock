@@ -1,21 +1,21 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 using SAMStock.Database;
-using SAMStock.DTO.Pedal.FilterPedal;
+using SAMStock.DAL.Pedal.FilterPedal;
 
 namespace Tests.Pedals.FilterPedal.FilterPedalQueryExecutor
 {
 	[TestFixture]
 	public class WhenExecuteIsCalledWithPedalId : DatabaseTest
 	{
-		private IFilterPedalRequestExecutorExecutor _sut;
+		private SAMStock.DAL.Pedal.FilterPedal.FilterPedalRequestExecutor _sut;
 		private FilterPedalRequest _req;
 		private FilterPedalResponse _resp;
 		private Pedal _p1;
 
 		public override void Arrange()
 		{
-			_sut = new SAMStock.DTO.Pedal.FilterPedal.FilterPedalRequestExecutor(Context);
+			_sut = new SAMStock.DAL.Pedal.FilterPedal.FilterPedalRequestExecutor(Context);
 
 			_p1 = new Pedal
 			{

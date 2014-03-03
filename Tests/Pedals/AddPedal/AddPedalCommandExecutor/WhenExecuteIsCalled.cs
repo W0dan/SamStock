@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using SAMStock.DTO.Pedal.AddPedal;
+using SAMStock.DAL.Pedal.AddPedal;
 
 namespace Tests.Pedals.AddPedal.AddPedalCommandExecutor
 {
@@ -8,7 +8,7 @@ namespace Tests.Pedals.AddPedal.AddPedalCommandExecutor
 	public class WhenExecuteIsCalled : DatabaseTest
 	{
 		private AddPedalCommand _cmd;
-		private IAddPedalCommandExecutor _sut;
+		private SAMStock.DAL.Pedal.AddPedal.AddPedalCommandExecutor _sut;
 
 		public override void Arrange()
 		{
@@ -19,7 +19,7 @@ namespace Tests.Pedals.AddPedal.AddPedalCommandExecutor
 				Price = 50
 			};
 
-			_sut = new SAMStock.DTO.Pedal.AddPedal.AddPedalCommandExecutor(Context);
+			_sut = new SAMStock.DAL.Pedal.AddPedal.AddPedalCommandExecutor(Context);
 		}
 
 		public override void Act()

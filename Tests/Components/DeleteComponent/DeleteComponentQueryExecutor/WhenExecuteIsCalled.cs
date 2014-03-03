@@ -5,7 +5,7 @@ using System.Security;
 using System.Text;
 using NUnit.Framework;
 using SAMStock.Database;
-using SAMStock.DTO.Component.DeleteComponent;
+using SAMStock.DAL.Component.DeleteComponent;
 
 namespace Tests.Components.DeleteComponent.DeleteComponentQueryExecutor
 {

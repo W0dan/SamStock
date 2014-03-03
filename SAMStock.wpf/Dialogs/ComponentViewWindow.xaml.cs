@@ -14,10 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SAMStock.Castle;
 using SAMStock.Database;
-using SAMStock.DTO.Component.AddComponent;
-using SAMStock.DTO.Component.FilterComponent;
-using SAMStock.DTO.Component.UpdateComponent;
-using SAMStock.DTO.Supplier.FilterSuppliers;
+using SAMStock.DAL.Component.AddComponent;
+using SAMStock.DAL.Component.FilterComponent;
+using SAMStock.DAL.Component.UpdateComponent;
+using SAMStock.DAL.Supplier.FilterSuppliers;
 using SAMStock.Utilities;
 using SAMStock.wpf.Utilities;
 

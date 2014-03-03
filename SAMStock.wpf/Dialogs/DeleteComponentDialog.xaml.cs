@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SAMStock.Castle;
-using SAMStock.DTO.Component.DeleteComponent;
-using SAMStock.DTO.Component.DeleteComponent.Exceptions;
-using SAMStock.DTO.Component.FilterComponent;
+using SAMStock.DAL.Component.DeleteComponent;
+using SAMStock.DAL.Component.DeleteComponent.Exceptions;
+using SAMStock.DAL.Component.FilterComponent;
 using SAMStock.Utilities;
 
 namespace SAMStock.wpf.Dialogs
@@ -40,25 +40,18 @@ namespace SAMStock.wpf.Dialogs
 
 		private void OkButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			if (ItemCodeTextBox.Text.Equals(_item.ItemCode))
+			try
 			{
-				try
+				SAMStockDispatcher.DispatchCommand(new DeleteComponentCommand
 				{
-					SAMStockDispatcher.DispatchCommand(new DeleteComponentCommand
-					{
-						Id = _item.Id,
-						Cascade = CascadeCheckBox.IsChecked.HasValue && CascadeCheckBox.IsChecked.Value
-					});
-					Close();
-				}
-				catch (ComponentInUseException ex)
-				{
-					MessageBox.Show("Deletion failed: the following pedals rely on this component:\n" + string.Join("\n", ex.PedalNames.ToArray()));
-				}
+					Id = _item.Id,
+					Cascade = CascadeCheckBox.IsChecked.HasValue && CascadeCheckBox.IsChecked.Value
+				});
+				Close();
 			}
-			else
+			catch (ComponentInUseException ex)
 			{
-				MessageBox.Show("Incorrect item code");
+				MessageBox.Show("Deletion failed: the following pedals rely on this component:\n" + string.Join("\n", ex.PedalNames.ToArray()));
 			}
 		}
 	}

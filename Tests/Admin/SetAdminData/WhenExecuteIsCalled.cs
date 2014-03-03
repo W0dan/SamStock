@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using SAMStock.DTO.Admin.SetAdminData;
+using SAMStock.DAL.Admin.SetAdminData;
 
 namespace Tests.Admin.SetAdminData
 {

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SAMStock.DAL.Admin.GetAdminData;
+using SAMStock.DAL.Admin.SetAdminData;
+using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.UserControls
 {
@@ -23,46 +28,29 @@ namespace SAMStock.wpf.UserControls
 		public SettingsTab()
 		{
 			InitializeComponent();
+			Refresh();
 		}
 
-		private void SettingsTabItem_OnGotFocus(object sender, RoutedEventArgs e)
+		private void Refresh()
 		{
-			VatPercentageTextBox.Text = Properties.Settings.Default.VATPercentage.ToString();
-			DefaultPedalPriceMarginTextBox.Text = Properties.Settings.Default.DefaultPedalPriceMargin.ToString();
+			var settings = SAMStockDispatcher.DispatchRequest<GetAdminDataRequest, GetAdminDataResponse>(new GetAdminDataRequest());
+			VatPercentageTextBox.Text = settings.VAT.ToString(CultureInfo.InvariantCulture);
+			DefaultPedalPriceMarginTextBox.Text = settings.DefaultPedalPriceMargin.ToString(CultureInfo.InvariantCulture);
 		}
 
-		private void VatPercentageTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+		private void SaveButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			HandleSettingsInput(VatPercentageTextBox, "VATPercentage");
-		}
-
-		private void DefaultPedalPriceMarginTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
-		{
-			HandleSettingsInput(DefaultPedalPriceMarginTextBox, "DefaultPedalPriceMargin");
-		}
-
-		private void HandleSettingsInput(TextBox element, string branch)
-		{
-			double parsedInput;
-			if (Double.TryParse(element.Text, out parsedInput))
+			try
 			{
-				Properties.Settings.Default[branch] = parsedInput;
-				Properties.Settings.Default.Save();
+				SAMStockDispatcher.DispatchCommand<SetAdminDataCommand>(new SetAdminDataCommand
+				{
+					VAT = VatPercentageTextBox.GetDecimal(),
+					DefaultPedalPriceMargin = DefaultPedalPriceMarginTextBox.GetDecimal()
+				});
 			}
-			else
-			{
-				DefaultPedalPriceMarginTextBox.Text = Properties.Settings.Default[branch].ToString();
-			}
-		}
-
-		private void VatPercentageTextBox_OnGotFocus(object sender, RoutedEventArgs e)
-		{
-			VatPercentageTextBox.Select(0, VatPercentageTextBox.Text.Length);
-		}
-
-		private void DefaultPedalPriceMarginTextBox_OnGotFocus(object sender, RoutedEventArgs e)
-		{
-			DefaultPedalPriceMarginTextBox.Select(0, DefaultPedalPriceMarginTextBox.Text.Length);
+			catch (NumberFormatException)
+			{}
+			Refresh();
 		}
 	}
 }

@@ -7,16 +7,16 @@
     <Grid>
 		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 			<TabItem Header="Components">
-				<userControls:ComponentsTab x:Name="ComponentsTabControl"></userControls:ComponentsTab>
+				<userControls:ComponentsTab></userControls:ComponentsTab>
 			</TabItem>
 			<TabItem Header="Pedals">
-				<Grid></Grid>
+				<userControls:PedalsTab></userControls:PedalsTab>
 			</TabItem>
 			<TabItem Header="Suppliers">
 				<Grid></Grid>
 			</TabItem>
 			<TabItem Header="Settings">
-				<userControls:SettingsTab x:Name="SettingsTabControl"></userControls:SettingsTab>
+				<userControls:SettingsTab></userControls:SettingsTab>
 			</TabItem>
 		</TabControl>
 	</Grid>

@@ -14,14 +14,8 @@
 				<ColumnDefinition Width="Auto"></ColumnDefinition>
 				<ColumnDefinition Width="Auto"></ColumnDefinition>
 			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto"></RowDefinition>
-				<RowDefinition Height="Auto"></RowDefinition>
-			</Grid.RowDefinitions>
-			<Label Content="Enter the item code to confirm deletion"></Label>
-			<Label Content="Force deletion even if still in use by pedals" Grid.Row="0" Grid.Column="1"></Label>
-			<TextBox Name="ItemCodeTextBox" Grid.Column="0" Grid.Row="1"></TextBox>
-			<CheckBox Name="CascadeCheckBox" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1"></CheckBox>
+			<Label Content="Force deletion even if still in use by pedals"></Label>
+			<CheckBox Name="CascadeCheckBox" HorizontalAlignment="Center" Grid.Column="1"></CheckBox>
 		</Grid>
 		<Grid Grid.Row="2">
 			<Grid.ColumnDefinitions>

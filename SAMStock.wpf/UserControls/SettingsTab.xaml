@@ -6,24 +6,31 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 	<Grid>
-		<GroupBox>
-			<GroupBox.Header>
-				<Label>Financial</Label>
-			</GroupBox.Header>
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto"></ColumnDefinition>
-					<ColumnDefinition></ColumnDefinition>
-				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto"></RowDefinition>
-					<RowDefinition></RowDefinition>
-				</Grid.RowDefinitions>
-				<Label>VAT (%)</Label>
-				<TextBox Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="VatPercentageTextBox" TextChanged="VatPercentageTextBox_OnTextChanged" GotFocus="VatPercentageTextBox_OnGotFocus"/>
-				<Label Grid.Row="1">Default Pedal Price Margin (%)</Label>
-				<TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="DefaultPedalPriceMarginTextBox" TextChanged="DefaultPedalPriceMarginTextBox_OnTextChanged" GotFocus="DefaultPedalPriceMarginTextBox_OnGotFocus"/>
-			</Grid>
-		</GroupBox>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0">
+			<GroupBox>
+				<GroupBox.Header>
+					<Label>Financial</Label>
+				</GroupBox.Header>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"></ColumnDefinition>
+						<ColumnDefinition></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"></RowDefinition>
+						<RowDefinition></RowDefinition>
+					</Grid.RowDefinitions>
+					<Label>VAT (%)</Label>
+					<TextBox Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="VatPercentageTextBox"/>
+					<Label Grid.Row="1">Default Pedal Price Margin (%)</Label>
+					<TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="23" TextWrapping="NoWrap" Name="DefaultPedalPriceMarginTextBox"/>
+				</Grid>
+			</GroupBox>
+		</Grid>
+		<Button Grid.Row="1" HorizontalAlignment="Right" Name="SaveButton" Click="SaveButton_OnClick">Save</Button>
 	</Grid>
 </UserControl>

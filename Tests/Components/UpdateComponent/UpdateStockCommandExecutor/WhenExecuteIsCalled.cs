@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 using SAMStock.Database;
-using SAMStock.DTO.Component.UpdateComponent;
+using SAMStock.DAL.Component.UpdateComponent;
 
 namespace Tests.Components.UpdateComponent.UpdateStockCommandExecutor
 {

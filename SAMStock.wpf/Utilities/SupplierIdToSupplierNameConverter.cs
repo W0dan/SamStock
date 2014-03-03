@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using SAMStock.DTO.Supplier.FilterSuppliers;
+using SAMStock.DAL.Supplier.FilterSuppliers;
 using SAMStock.Utilities;
 
 namespace SAMStock.wpf.Utilities
