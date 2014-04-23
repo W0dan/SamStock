@@ -66,6 +66,12 @@
   <ItemGroup>
     <Compile Include="Castle\ComponentInstaller.cs" />
     <Compile Include="Castle\WindsorContainerStore.cs" />
+    <Compile Include="DAL\Component\FilterComponent\FilterComponentResponsePedal.cs" />
+    <Compile Include="DAL\Pedal\FilterComponent\FilterComponentExecutor.cs" />
+    <Compile Include="DAL\Pedal\FilterComponent\FilterComponentRequest.cs" />
+    <Compile Include="DAL\Pedal\FilterComponent\FilterComponentResponse.cs" />
+    <Compile Include="DAL\Pedal\FilterComponent\FilterComponentResponseComponent.cs" />
+    <Compile Include="DAL\Pedal\FilterPedal\FilterPedalResponseComponent.cs" />
     <Compile Include="SAMStockDispatcher.cs" />
     <Compile Include="DAL\Admin\GetAdminData\GetAdminDataHandler.cs" />
     <Compile Include="DAL\Admin\GetAdminData\GetAdminDataRequestExecutorExecutor.cs" />
@@ -85,10 +91,10 @@
     <Compile Include="DAL\Component\DeleteComponent\DeleteComponentCommandHandler.cs" />
     <Compile Include="DAL\Component\DeleteComponent\Exceptions\ComponentInUseException.cs" />
     <Compile Include="DAL\Component\FilterComponent\FilterComponentHandler.cs" />
-    <Compile Include="DAL\Component\FilterComponent\FilterComponentRequestExecutorExecutor.cs" />
+    <Compile Include="DAL\Component\FilterComponent\FilterComponentRequestExecutor.cs" />
     <Compile Include="DAL\Component\FilterComponent\FilterComponentRequest.cs" />
     <Compile Include="DAL\Component\FilterComponent\FilterComponentResponse.cs" />
-    <Compile Include="DAL\Component\FilterComponent\FilterComponentResponseItem.cs" />
+    <Compile Include="DAL\Component\FilterComponent\FilterComponentResponseComponent.cs" />
     <Compile Include="DAL\Component\UpdateComponent\Exceptions\ComponentItemCodeIllegalLengthException.cs" />
     <Compile Include="DAL\Component\UpdateComponent\UpdateComponentCommand.cs" />
     <Compile Include="DAL\Component\UpdateComponent\UpdateComponentCommandExecutor.cs" />
@@ -110,7 +116,7 @@
     <Compile Include="DAL\Pedal\DeletePedal\DeletePedalCommandExecutor.cs" />
     <Compile Include="DAL\Pedal\DeletePedal\DeletePedalCommandHandler.cs" />
     <Compile Include="DAL\Pedal\FilterPedal\FilterPedalHandler.cs" />
-    <Compile Include="DAL\Pedal\FilterPedal\FilterPedalRequestExecutorExecutor.cs" />
+    <Compile Include="DAL\Pedal\FilterPedal\FilterPedalRequestExecutor.cs" />
     <Compile Include="DAL\Pedal\FilterPedal\FilterPedalRequest.cs" />
     <Compile Include="DAL\Pedal\FilterPedal\FilterPedalResponse.cs" />
     <Compile Include="DAL\Pedal\FilterPedal\FilterPedalResponsePedal.cs" />

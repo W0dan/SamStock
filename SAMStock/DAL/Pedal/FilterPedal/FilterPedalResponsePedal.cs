@@ -9,6 +9,6 @@ namespace SAMStock.DAL.Pedal.FilterPedal
 		public decimal Price { get; set; }
 		public decimal? Margin { get; set; }
 		public decimal DefaultMargin { get; set; }
-		public List<int> ComponentIds { get; set; } 
+		public List<FilterPedalResponseComponent> Components { get; set; } 
 	}
 }

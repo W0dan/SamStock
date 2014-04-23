@@ -7,14 +7,13 @@
              mc:Ignorable="d">
 	<UserControl.Resources>
 		<CollectionViewSource x:Key="Components" CollectionViewType="ListCollectionView"/>
-		<utilities:SupplierIdToSupplierNameConverter x:Key="SupplierIdToSupplierNameConverter" />
 	</UserControl.Resources>
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"></ColumnDefinition>
 			<ColumnDefinition Width="Auto"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
-		<DataGrid Name="ComponentsDataGrid" DataContext="{StaticResource Components}" ItemsSource="{Binding}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+		<DataGrid Name="ComponentsDataGrid" DataContext="{StaticResource Components}" ItemsSource="{Binding}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
 			<DataGrid.RowHeaderStyle>
 				<Style TargetType="DataGridRowHeader">
 					<Setter Property="Content" Value="{Binding Id}"/>
@@ -22,15 +21,12 @@
 				</Style>
 			</DataGrid.RowHeaderStyle>
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Stocknr" Binding="{Binding Stocknr}" Width="*"/>
+				<DataGridTextColumn Header="Stocknr" Binding="{Binding Stocknr}" Width="Auto"/>
 				<DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
-				<DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*"/>
-				<DataGridTextColumn Header="Minimumstock" Binding="{Binding MinimumStock}" Width="*"/>
-				<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/>
+				<DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="Auto"/>
+				<DataGridTextColumn Header="Minimumstock" Binding="{Binding MinimumStock}" Width="Auto"/>
+				<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="Auto"/>
 				<DataGridTextColumn Header="Remark" Binding="{Binding Remark}" Width="*"/>
-				<!-- <DataGridTextColumn Header="Supplier" Binding="{Binding SupplierName}" Width="*"/> -->
-				<DataGridTextColumn Header="Supplier" Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}},
-Path=Item.SupplierId, Converter={StaticResource SupplierIdToSupplierNameConverter}}" Width="*"/>
 			</DataGrid.Columns>
 		</DataGrid>
 		<Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">

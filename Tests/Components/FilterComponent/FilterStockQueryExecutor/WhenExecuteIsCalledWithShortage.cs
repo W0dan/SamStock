@@ -10,7 +10,7 @@ namespace Tests.Components.FilterComponent.FilterStockQueryExecutor
     [TestFixture]
     public class WhenExecuteIsCalledForShortage : DatabaseTest
     {
-        private FilterComponentRequestExecutorExecutor _sut;
+        private FilterComponentRequestExecutor _sut;
         private FilterComponentRequest _req;
         private FilterComponentResponse _resp;
 	    private Component _c1, _c2, _c3, _c4;
@@ -80,7 +80,7 @@ namespace Tests.Components.FilterComponent.FilterStockQueryExecutor
             };
             Context.Component.AddObject(_c4);
 
-            _sut = new FilterComponentRequestExecutorExecutor(Context);
+            _sut = new FilterComponentRequestExecutor(Context);
         }
 
         public override void Act()

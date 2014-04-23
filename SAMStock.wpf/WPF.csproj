@@ -59,17 +59,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Dialogs\ComponentViewWindow.xaml.cs">
-      <DependentUpon>ComponentViewWindow.xaml</DependentUpon>
+    <Compile Include="Dialogs\ComponentViewDialog.xaml.cs">
+      <DependentUpon>ComponentViewDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\DeleteComponentDialog.xaml.cs">
-      <DependentUpon>DeleteComponentDialog.xaml</DependentUpon>
+    <Compile Include="Dialogs\ComponentDeleteDialog.xaml.cs">
+      <DependentUpon>ComponentDeleteDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\DeletePedalDialog.xaml.cs">
-      <DependentUpon>DeletePedalDialog.xaml</DependentUpon>
+    <Compile Include="Dialogs\PedalComponentsModifyDialog.xaml.cs">
+      <DependentUpon>PedalComponentsModifyDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\PedalViewWindow.xaml.cs">
-      <DependentUpon>PedalViewWindow.xaml</DependentUpon>
+    <Compile Include="Dialogs\PedalDeleteDialog.xaml.cs">
+      <DependentUpon>PedalDeleteDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PedalComponentsViewDialog.xaml.cs">
+      <DependentUpon>PedalComponentsViewDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PedalViewDialog.xaml.cs">
+      <DependentUpon>PedalViewDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ComponentsTab.xaml.cs">
       <DependentUpon>ComponentsTab.xaml</DependentUpon>
@@ -82,21 +88,28 @@
     </Compile>
     <Compile Include="Utilities\IllegalInputException.cs" />
     <Compile Include="Utilities\NumberFormatException.cs" />
-    <Compile Include="Utilities\SupplierIdToSupplierNameConverter.cs" />
     <Compile Include="Utilities\TextBoxExtensions.cs" />
-    <Page Include="Dialogs\ComponentViewWindow.xaml">
+    <Page Include="Dialogs\ComponentViewDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\DeleteComponentDialog.xaml">
+    <Page Include="Dialogs\ComponentDeleteDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\DeletePedalDialog.xaml">
+    <Page Include="Dialogs\PedalComponentsModifyDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\PedalViewWindow.xaml">
+    <Page Include="Dialogs\PedalDeleteDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\PedalComponentsViewDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\PedalViewDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

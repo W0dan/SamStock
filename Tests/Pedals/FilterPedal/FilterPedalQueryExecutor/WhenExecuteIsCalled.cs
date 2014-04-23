@@ -90,10 +90,10 @@ namespace Tests.Pedals.FilterPedal.FilterPedalQueryExecutor
 		[Test]
 		public void It_should_return_the_Pedals_Components()
 		{
-			var ids = _response.Pedals.Single(x => x.Name.Equals(_p1.Name)).ComponentIds;
+			var ids = _response.Pedals.Single(x => x.Name.Equals(_p1.Name)).Components;
 			var c1Id = Context.Component.Single(x => x.Stocknr.Equals(_c1.Stocknr)).Id;
 			Assert.AreEqual(ids.Count, 1);
-			Assert.IsTrue(ids.Any(x => x == c1Id));
+			Assert.IsTrue(ids.Any(x => x.Id == c1Id));
 		}
 	}
 }

@@ -45,7 +45,7 @@ namespace SAMStock.wpf.UserControls
 
 		private void PedalsNewButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			Window dialog = new PedalViewWindow
+			Window dialog = new PedalViewDialog
 			{
 				Owner = Application.Current.MainWindow
 			};
@@ -56,7 +56,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				Window dialog = new PedalViewWindow((FilterPedalResponsePedal)PedalsDataGrid.SelectedItem);
+				Window dialog = new PedalViewDialog((FilterPedalResponsePedal)PedalsDataGrid.SelectedItem);
 				dialog.Owner = Application.Current.MainWindow;
 				dialog.Show();
 			}
@@ -70,7 +70,23 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new DeletePedalDialog((FilterPedalResponsePedal)PedalsDataGrid.SelectedItem)
+				var dlg = new PedalDeleteDialog((FilterPedalResponsePedal)PedalsDataGrid.SelectedItem)
+				{
+					Owner = Application.Current.MainWindow
+				};
+				dlg.Show();
+			}
+			else
+			{
+				MessageBox.Show("No pedal selected");
+			}
+		}
+
+		private void PedalComponentsManage_OnClick(object sender, RoutedEventArgs e)
+		{
+			if (PedalsDataGrid.SelectedIndex > -1)
+			{
+				var dlg = new PedalComponentsViewDialog((FilterPedalResponsePedal)PedalsDataGrid.SelectedItem)
 				{
 					Owner = Application.Current.MainWindow
 				};

@@ -1,4 +1,6 @@
-﻿namespace SAMStock.DAL.Component.FilterComponent
+﻿using System.Collections.Generic;
+
+namespace SAMStock.DAL.Component.FilterComponent
 {
 	public class FilterComponentRequest
 	{
@@ -6,6 +8,8 @@
 		public int? SupplierId { get; set; }
 		public int? ComponentId { get; set; }
 		public bool Shortage { get; set; }
+		public List<int> Ids = new List<int>();
+		public int? PedalId { get; set; }
 
 		public FilterComponentRequest()
 		{

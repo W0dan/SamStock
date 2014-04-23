@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:p="clr-namespace:SAMStock.wpf.Properties"
         xmlns:userControls="clr-namespace:SAMStock.wpf.UserControls"
-        Title="SAMStock" Closing="MainWindow_OnClosing">
+        Title="SAMStock">
     <Grid>
 		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 			<TabItem Header="Components">
@@ -11,9 +11,6 @@
 			</TabItem>
 			<TabItem Header="Pedals">
 				<userControls:PedalsTab></userControls:PedalsTab>
-			</TabItem>
-			<TabItem Header="Suppliers">
-				<Grid></Grid>
 			</TabItem>
 			<TabItem Header="Settings">
 				<userControls:SettingsTab></userControls:SettingsTab>

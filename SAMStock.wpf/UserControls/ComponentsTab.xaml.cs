@@ -41,8 +41,6 @@ namespace SAMStock.wpf.UserControls
 
 		private void RefreshComponentsDataGrid()
 		{
-			SupplierIdToSupplierNameConverter.Suppliers =
-				SAMStockDispatcher.DispatchRequest<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest()).Suppliers;
 			_components.Source =
 				SAMStockDispatcher.DispatchRequest<FilterComponentRequest, FilterComponentResponse>(new FilterComponentRequest())
 					.Components;
@@ -57,7 +55,7 @@ namespace SAMStock.wpf.UserControls
 
 		private void ComponentsNewButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			Window dialog = new ComponentViewWindow
+			Window dialog = new ComponentViewDialog
 			{
 				Owner = Application.Current.MainWindow
 			};
@@ -68,7 +66,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (ComponentsDataGrid.SelectedIndex > -1)
 			{
-				Window dialog = new ComponentViewWindow((FilterComponentResponseItem)ComponentsDataGrid.SelectedItem);
+				Window dialog = new ComponentViewDialog((FilterComponentResponseComponent)ComponentsDataGrid.SelectedItem);
 				dialog.Owner = Application.Current.MainWindow;
 				dialog.Show();
 			}
@@ -82,7 +80,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (ComponentsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new DeleteComponentDialog((FilterComponentResponseItem)ComponentsDataGrid.SelectedItem)
+				var dlg = new ComponentDeleteDialog((FilterComponentResponseComponent)ComponentsDataGrid.SelectedItem)
 				{
 					Owner = Application.Current.MainWindow
 				};
