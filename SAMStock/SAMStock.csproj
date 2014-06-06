@@ -74,8 +74,22 @@
     <Compile Include="BO\Supplier.cs" />
     <Compile Include="Castle\ComponentInstaller.cs" />
     <Compile Include="Castle\WindsorContainerStore.cs" />
-    <Compile Include="DAL\CommandExecutor.cs" />
-    <Compile Include="DAL\CommandHandler.cs" />
+    <Compile Include="DAL\Base\CommandExecutor.cs" />
+    <Compile Include="DAL\Base\CommandHandler.cs" />
+    <Compile Include="DAL\Base\ICommand.cs" />
+    <Compile Include="DAL\Base\ICommandExecutor.cs" />
+    <Compile Include="DAL\Base\ICommandHandler.cs" />
+    <Compile Include="DAL\Base\IRequest.cs" />
+    <Compile Include="DAL\Base\IRequestExecutor.cs" />
+    <Compile Include="DAL\Base\IRequestHandler.cs" />
+    <Compile Include="DAL\Base\IResponse.cs" />
+    <Compile Include="DAL\Base\RequestExecutor.cs" />
+    <Compile Include="DAL\Base\RequestHandler.cs" />
+    <Compile Include="DAL\Components\Create\CreateComponentCommand.cs" />
+    <Compile Include="DAL\Components\Delete\DeleteComponentCommand.cs" />
+    <Compile Include="DAL\Components\Filter\FilterComponentsRequest.cs" />
+    <Compile Include="DAL\Components\Filter\FilterComponentsResponse.cs" />
+    <Compile Include="DAL\Components\Update\UpdateComponentCommand.cs" />
     <Compile Include="DAL\Config\CreateConfig\CreateConfigCommand.cs" />
     <Compile Include="DAL\Config\CreateConfig\CreateConfigExecutor.cs" />
     <Compile Include="DAL\Config\CreateConfig\CreateConfigHandler.cs" />
@@ -86,15 +100,12 @@
     <Compile Include="DAL\Config\UpdateConfig\UpdateConfigCommand.cs" />
     <Compile Include="DAL\Config\UpdateConfig\UpdateConfigExecutor.cs" />
     <Compile Include="DAL\Config\UpdateConfig\UpdateConfigHandler.cs" />
-    <Compile Include="DAL\ICommand.cs" />
-    <Compile Include="DAL\ICommandExecutor.cs" />
-    <Compile Include="DAL\ICommandHandler.cs" />
-    <Compile Include="DAL\IRequest.cs" />
-    <Compile Include="DAL\IRequestExecutor.cs" />
-    <Compile Include="DAL\IRequestHandler.cs" />
-    <Compile Include="DAL\IResponse.cs" />
-    <Compile Include="DAL\RequestExecutor.cs" />
-    <Compile Include="DAL\RequestHandler.cs" />
+    <Compile Include="DAL\Pedals\AddComponent\AddComponentCommand.cs" />
+    <Compile Include="DAL\Pedals\Create\CreatePedalCommand.cs" />
+    <Compile Include="DAL\Pedals\Delete\DeletePedalCommand.cs" />
+    <Compile Include="DAL\Pedals\Filter\FilterPedalsRequest.cs" />
+    <Compile Include="DAL\Pedals\Filter\FilterPedalsResponse.cs" />
+    <Compile Include="DAL\Pedals\Update\UpdatePedalCommand.cs" />
     <Compile Include="Database\Component.cs">
       <DependentUpon>SAMStockEntities.tt</DependentUpon>
     </Compile>
@@ -175,7 +186,14 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DAL\Pedals\RemoveComponent\" />
+    <Folder Include="DAL\Pedals\UpdateComponent\" />
+    <Folder Include="DAL\Suppliers\Create\" />
+    <Folder Include="DAL\Suppliers\Delete\" />
+    <Folder Include="DAL\Suppliers\Filter\" />
+    <Folder Include="DAL\Suppliers\Update\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

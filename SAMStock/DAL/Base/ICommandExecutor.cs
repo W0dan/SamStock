@@ -1,4 +1,4 @@
-﻿namespace SAMStock.DAL
+﻿namespace SAMStock.DAL.Base
 {
     public interface ICommandExecutor<in TCommand>
     {

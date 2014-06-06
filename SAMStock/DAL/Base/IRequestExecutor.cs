@@ -1,4 +1,4 @@
-﻿namespace SAMStock.DAL
+﻿namespace SAMStock.DAL.Base
 {
     public interface IRequestExecutor<in TRequest, out TResponse>
     {

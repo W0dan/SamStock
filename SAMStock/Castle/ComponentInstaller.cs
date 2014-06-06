@@ -1,6 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using SAMStock.DAL.Base;
 using SAMStock.Database;
 using SAMStock.DAL;
 using SAMStock.Utilities;

@@ -1,4 +1,4 @@
-﻿namespace SAMStock.DAL
+﻿namespace SAMStock.DAL.Base
 {
 	public abstract class CommandHandler<TCommand>: ICommandHandler<TCommand>
 	{

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SAMStock.Database;
+﻿using SAMStock.Database;
 
-namespace SAMStock.DAL
+namespace SAMStock.DAL.Base
 {
 	public abstract class CommandExecutor<TCommand>: ICommandExecutor<TCommand>
 	{
