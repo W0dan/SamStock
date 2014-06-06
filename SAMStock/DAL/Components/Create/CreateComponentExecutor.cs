@@ -15,7 +15,7 @@ namespace SAMStock.DAL.Components.Create
 
 		public override int Execute(CreateComponentCommand cmd)
 		{
-			throw new NotImplementedException();
+			return 0;
 		}
 	}
 }
