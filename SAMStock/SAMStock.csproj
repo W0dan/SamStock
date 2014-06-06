@@ -86,6 +86,8 @@
     <Compile Include="DAL\Base\RequestExecutor.cs" />
     <Compile Include="DAL\Base\RequestHandler.cs" />
     <Compile Include="DAL\Components\Create\CreateComponentCommand.cs" />
+    <Compile Include="DAL\Components\Create\CreateComponentExecutor.cs" />
+    <Compile Include="DAL\Components\Create\CreateComponentHandler.cs" />
     <Compile Include="DAL\Components\Delete\DeleteComponentCommand.cs" />
     <Compile Include="DAL\Components\Filter\FilterComponentsRequest.cs" />
     <Compile Include="DAL\Components\Filter\FilterComponentsResponse.cs" />
