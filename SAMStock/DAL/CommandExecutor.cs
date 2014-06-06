@@ -15,6 +15,6 @@ namespace SAMStock.DAL
 			Context = context;
 		}
 
-		public abstract void Execute(TCommand cmd);
+		public abstract int Execute(TCommand cmd);
 	}
 }

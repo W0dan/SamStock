@@ -2,6 +2,6 @@
 {
     public interface ICommandExecutor<in TCommand>
     {
-	    void Execute(TCommand cmd);
+	    int Execute(TCommand cmd);
     }
 }

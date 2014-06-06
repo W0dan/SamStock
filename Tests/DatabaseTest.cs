@@ -11,7 +11,7 @@ namespace Tests
     {
         private TransactionScope _transaction;
 
-        public SAMStockEntities Context { get; private set; }
+        public IContext Context { get; private set; }
 
         [TestFixtureSetUp]
         public override void Setup()
@@ -38,8 +38,8 @@ namespace Tests
         {
             _transaction.Dispose();
 
-            if (Context.Component.Any())
-                throw new Exception(string.Format("Test cleanup failed: {0} components still exist in the test db", Context.Component.Count()));
+            if (Context.Components.Any())
+                throw new Exception(string.Format("Test cleanup failed: {0} components still exist in the test db", Context.Components.Count()));
         }
 
     }

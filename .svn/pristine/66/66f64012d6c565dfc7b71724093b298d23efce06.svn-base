@@ -1,0 +1,20 @@
+﻿<Window x:Class="SAMStock.wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:SAMStock.wpf.Properties"
+        xmlns:userControls="clr-namespace:SAMStock.wpf.UserControls"
+        Title="SAMStock">
+    <Grid>
+		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<TabItem Header="Components">
+				<userControls:ComponentsTab></userControls:ComponentsTab>
+			</TabItem>
+			<TabItem Header="Pedals">
+				<userControls:PedalsTab></userControls:PedalsTab>
+			</TabItem>
+			<TabItem Header="Settings">
+				<userControls:SettingsTab></userControls:SettingsTab>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>

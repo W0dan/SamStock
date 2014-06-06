@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SAMStockModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SAMStockModelStoreContainer">
+          <EntitySet Name="Components" EntityType="SAMStockModel.Store.Components" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ComponentsOfPedals" EntityType="SAMStockModel.Store.ComponentsOfPedals" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Config" EntityType="SAMStockModel.Store.Config" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pedals" EntityType="SAMStockModel.Store.Pedals" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Suppliers" EntityType="SAMStockModel.Store.Suppliers" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Component_Leverancier" Association="SAMStockModel.Store.FK_Component_Leverancier">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Components" EntitySet="Components" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedalComponent_Component" Association="SAMStockModel.Store.FK_PedalComponent_Component">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="ComponentsOfPedals" EntitySet="ComponentsOfPedals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedalComponent_Pedaal" Association="SAMStockModel.Store.FK_PedalComponent_Pedaal">
+            <End Role="Pedals" EntitySet="Pedals" />
+            <End Role="ComponentsOfPedals" EntitySet="ComponentsOfPedals" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Components">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MinimumStock" Type="int" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="StockNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Price" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="ItemCode" Type="nchar" Nullable="false" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="ComponentsOfPedals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ComponentId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="PedalId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VAT" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="DefaultPedalProfitMargin" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="Pedals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Price" Type="numeric" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="ProfitMargin" Type="numeric" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Component_Leverancier">
+          <End Role="Suppliers" Type="SAMStockModel.Store.Suppliers" Multiplicity="1" />
+          <End Role="Components" Type="SAMStockModel.Store.Components" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Components">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedalComponent_Component">
+          <End Role="Components" Type="SAMStockModel.Store.Components" Multiplicity="1" />
+          <End Role="ComponentsOfPedals" Type="SAMStockModel.Store.ComponentsOfPedals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentsOfPedals">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedalComponent_Pedaal">
+          <End Role="Pedals" Type="SAMStockModel.Store.Pedals" Multiplicity="1" />
+          <End Role="ComponentsOfPedals" Type="SAMStockModel.Store.ComponentsOfPedals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentsOfPedals">
+              <PropertyRef Name="PedalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAMStockModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SAMStockEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Components" EntityType="SAMStockModel.Component" />
+          <EntitySet Name="ComponentsOfPedals" EntityType="SAMStockModel.ComponentsOfPedals" />
+          <EntitySet Name="Config" EntityType="SAMStockModel.Config" />
+          <EntitySet Name="Pedals" EntityType="SAMStockModel.Pedal" />
+          <EntitySet Name="Suppliers" EntityType="SAMStockModel.Supplier" />
+          <AssociationSet Name="FK_Component_Leverancier" Association="SAMStockModel.FK_Component_Leverancier">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Components" EntitySet="Components" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedalComponent_Component" Association="SAMStockModel.FK_PedalComponent_Component">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="ComponentsOfPedals" EntitySet="ComponentsOfPedals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedalComponent_Pedaal" Association="SAMStockModel.FK_PedalComponent_Pedaal">
+            <End Role="Pedals" EntitySet="Pedals" />
+            <End Role="ComponentsOfPedals" EntitySet="ComponentsOfPedals" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="MinimumStock" Type="Int32" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="StockNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="7" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Supplier" Relationship="SAMStockModel.FK_Component_Leverancier" FromRole="Components" ToRole="Suppliers" />
+          <NavigationProperty Name="ComponentsOfPedals" Relationship="SAMStockModel.FK_PedalComponent_Component" FromRole="Components" ToRole="ComponentsOfPedals" />
+        </EntityType>
+        <EntityType Name="ComponentsOfPedals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComponentId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="PedalId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Component" Relationship="SAMStockModel.FK_PedalComponent_Component" FromRole="ComponentsOfPedals" ToRole="Components" />
+          <NavigationProperty Name="Pedal" Relationship="SAMStockModel.FK_PedalComponent_Pedaal" FromRole="ComponentsOfPedals" ToRole="Pedals" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VAT" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="DefaultPedalProfitMargin" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="Pedal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="ProfitMargin" Type="Decimal" Precision="10" Scale="4" />
+          <NavigationProperty Name="ComponentsOfPedals" Relationship="SAMStockModel.FK_PedalComponent_Pedaal" FromRole="Pedals" ToRole="ComponentsOfPedals" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Website" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Components" Relationship="SAMStockModel.FK_Component_Leverancier" FromRole="Suppliers" ToRole="Components" />
+        </EntityType>
+        <Association Name="FK_Component_Leverancier">
+          <End Role="Suppliers" Type="SAMStockModel.Supplier" Multiplicity="1" />
+          <End Role="Components" Type="SAMStockModel.Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Components">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedalComponent_Component">
+          <End Role="Components" Type="SAMStockModel.Component" Multiplicity="1" />
+          <End Role="ComponentsOfPedals" Type="SAMStockModel.ComponentsOfPedals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentsOfPedals">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedalComponent_Pedaal">
+          <End Role="Pedals" Type="SAMStockModel.Pedal" Multiplicity="1" />
+          <End Role="ComponentsOfPedals" Type="SAMStockModel.ComponentsOfPedals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentsOfPedals">
+              <PropertyRef Name="PedalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAMStockModelStoreContainer" CdmEntityContainer="SAMStockEntities">
+          <EntitySetMapping Name="Components">
+            <EntityTypeMapping TypeName="SAMStockModel.Component">
+              <MappingFragment StoreEntitySet="Components">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MinimumStock" ColumnName="MinimumStock" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="StockNumber" ColumnName="StockNumber" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComponentsOfPedals">
+            <EntityTypeMapping TypeName="SAMStockModel.ComponentsOfPedals">
+              <MappingFragment StoreEntitySet="ComponentsOfPedals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ComponentId" ColumnName="ComponentId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PedalId" ColumnName="PedalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Config">
+            <EntityTypeMapping TypeName="SAMStockModel.Config">
+              <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="DefaultPedalProfitMargin" ColumnName="DefaultPedalProfitMargin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedals">
+            <EntityTypeMapping TypeName="SAMStockModel.Pedal">
+              <MappingFragment StoreEntitySet="Pedals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProfitMargin" ColumnName="ProfitMargin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="SAMStockModel.Supplier">
+              <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

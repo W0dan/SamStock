@@ -9,9 +9,9 @@
 			Executor = executor;
 		}
 
-		public void Handle(TCommand cmd)
+		public int Handle(TCommand cmd)
 		{
-			Executor.Execute(cmd);
+			return Executor.Execute(cmd);
 		}
 	}
 }

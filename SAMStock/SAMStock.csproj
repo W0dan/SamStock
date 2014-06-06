@@ -14,6 +14,10 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,92 +68,68 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BO\Component.cs" />
+    <Compile Include="BO\Config.cs" />
+    <Compile Include="BO\Pedal.cs" />
+    <Compile Include="BO\Supplier.cs" />
     <Compile Include="Castle\ComponentInstaller.cs" />
     <Compile Include="Castle\WindsorContainerStore.cs" />
-    <Compile Include="DAL\Component\FilterComponent\FilterComponentResponsePedal.cs" />
-    <Compile Include="DAL\Pedal\FilterComponent\FilterComponentExecutor.cs" />
-    <Compile Include="DAL\Pedal\FilterComponent\FilterComponentRequest.cs" />
-    <Compile Include="DAL\Pedal\FilterComponent\FilterComponentResponse.cs" />
-    <Compile Include="DAL\Pedal\FilterComponent\FilterComponentResponseComponent.cs" />
-    <Compile Include="DAL\Pedal\FilterPedal\FilterPedalResponseComponent.cs" />
-    <Compile Include="SAMStockDispatcher.cs" />
-    <Compile Include="DAL\Admin\GetAdminData\GetAdminDataHandler.cs" />
-    <Compile Include="DAL\Admin\GetAdminData\GetAdminDataRequestExecutorExecutor.cs" />
-    <Compile Include="DAL\Admin\GetAdminData\GetAdminDataRequest.cs" />
-    <Compile Include="DAL\Admin\GetAdminData\GetAdminDataResponse.cs" />
-    <Compile Include="DAL\Admin\SetAdminData\SetAdminDataCommand.cs" />
-    <Compile Include="DAL\Admin\SetAdminData\SetAdminDataCommandExecutor.cs" />
-    <Compile Include="DAL\Admin\SetAdminData\SetAdminDataHandler.cs" />
     <Compile Include="DAL\CommandExecutor.cs" />
     <Compile Include="DAL\CommandHandler.cs" />
-    <Compile Include="DAL\Component\AddComponent\AddComponentCommand.cs" />
-    <Compile Include="DAL\Component\AddComponent\AddComponentCommandExecutor.cs" />
-    <Compile Include="DAL\Component\AddComponent\AddComponentHandler.cs" />
-    <Compile Include="DAL\Component\AddComponent\Exceptions\ComponentItemCodeIllegalLengthException.cs" />
-    <Compile Include="DAL\Component\DeleteComponent\DeleteComponentCommand.cs" />
-    <Compile Include="DAL\Component\DeleteComponent\DeleteComponentCommandExecutor.cs" />
-    <Compile Include="DAL\Component\DeleteComponent\DeleteComponentCommandHandler.cs" />
-    <Compile Include="DAL\Component\DeleteComponent\Exceptions\ComponentInUseException.cs" />
-    <Compile Include="DAL\Component\FilterComponent\FilterComponentHandler.cs" />
-    <Compile Include="DAL\Component\FilterComponent\FilterComponentRequestExecutor.cs" />
-    <Compile Include="DAL\Component\FilterComponent\FilterComponentRequest.cs" />
-    <Compile Include="DAL\Component\FilterComponent\FilterComponentResponse.cs" />
-    <Compile Include="DAL\Component\FilterComponent\FilterComponentResponseComponent.cs" />
-    <Compile Include="DAL\Component\UpdateComponent\Exceptions\ComponentItemCodeIllegalLengthException.cs" />
-    <Compile Include="DAL\Component\UpdateComponent\UpdateComponentCommand.cs" />
-    <Compile Include="DAL\Component\UpdateComponent\UpdateComponentCommandExecutor.cs" />
-    <Compile Include="DAL\Component\UpdateComponent\UpdateComponentHandler.cs" />
+    <Compile Include="DAL\Config\CreateConfig\CreateConfigCommand.cs" />
+    <Compile Include="DAL\Config\CreateConfig\CreateConfigExecutor.cs" />
+    <Compile Include="DAL\Config\CreateConfig\CreateConfigHandler.cs" />
+    <Compile Include="DAL\Config\GetConfig\GetConfigExecutor.cs" />
+    <Compile Include="DAL\Config\GetConfig\GetConfigHandler.cs" />
+    <Compile Include="DAL\Config\GetConfig\GetConfigRequest.cs" />
+    <Compile Include="DAL\Config\GetConfig\GetConfigResponse.cs" />
+    <Compile Include="DAL\Config\UpdateConfig\UpdateConfigCommand.cs" />
+    <Compile Include="DAL\Config\UpdateConfig\UpdateConfigExecutor.cs" />
+    <Compile Include="DAL\Config\UpdateConfig\UpdateConfigHandler.cs" />
+    <Compile Include="DAL\ICommand.cs" />
     <Compile Include="DAL\ICommandExecutor.cs" />
     <Compile Include="DAL\ICommandHandler.cs" />
+    <Compile Include="DAL\IRequest.cs" />
     <Compile Include="DAL\IRequestExecutor.cs" />
     <Compile Include="DAL\IRequestHandler.cs" />
-    <Compile Include="DAL\Pedal\AddComponent\AddComponentCommand.cs" />
-    <Compile Include="DAL\Pedal\AddComponent\AddComponentCommandExecutor.cs" />
-    <Compile Include="DAL\Pedal\AddComponent\AddComponentCommandHandler.cs" />
-    <Compile Include="DAL\Pedal\AddPedal\AddPedalCommand.cs" />
-    <Compile Include="DAL\Pedal\AddPedal\AddPedalCommandExecutor.cs" />
-    <Compile Include="DAL\Pedal\AddPedal\AddPedalCommandHandler.cs" />
-    <Compile Include="DAL\Pedal\DeleteComponent\DeleteComponentCommand.cs" />
-    <Compile Include="DAL\Pedal\DeleteComponent\DeleteComponentCommandExecutor.cs" />
-    <Compile Include="DAL\Pedal\DeleteComponent\DeleteComponentCommandHandler.cs" />
-    <Compile Include="DAL\Pedal\DeletePedal\DeletePedalCommand.cs" />
-    <Compile Include="DAL\Pedal\DeletePedal\DeletePedalCommandExecutor.cs" />
-    <Compile Include="DAL\Pedal\DeletePedal\DeletePedalCommandHandler.cs" />
-    <Compile Include="DAL\Pedal\FilterPedal\FilterPedalHandler.cs" />
-    <Compile Include="DAL\Pedal\FilterPedal\FilterPedalRequestExecutor.cs" />
-    <Compile Include="DAL\Pedal\FilterPedal\FilterPedalRequest.cs" />
-    <Compile Include="DAL\Pedal\FilterPedal\FilterPedalResponse.cs" />
-    <Compile Include="DAL\Pedal\FilterPedal\FilterPedalResponsePedal.cs" />
-    <Compile Include="DAL\Pedal\UpdateComponent\UpdateComponentCommand.cs" />
-    <Compile Include="DAL\Pedal\UpdateComponent\UpdateComponentCommandExecutor.cs" />
-    <Compile Include="DAL\Pedal\UpdateComponent\UpdateComponentCommandHandler.cs" />
-    <Compile Include="DAL\Pedal\UpdatePedal\UpdatePedalCommand.cs" />
-    <Compile Include="DAL\Pedal\UpdatePedal\UpdatePedalCommandExecutor.cs" />
-    <Compile Include="DAL\Pedal\UpdatePedal\UpdatePedalCommandHandler.cs" />
+    <Compile Include="DAL\IResponse.cs" />
     <Compile Include="DAL\RequestExecutor.cs" />
     <Compile Include="DAL\RequestHandler.cs" />
-    <Compile Include="DAL\Supplier\AddSupplier\AddSupplierCommand.cs" />
-    <Compile Include="DAL\Supplier\AddSupplier\AddSupplierCommandExecutor.cs" />
-    <Compile Include="DAL\Supplier\AddSupplier\AddSupplierHandler.cs" />
-    <Compile Include="DAL\Supplier\DeleteSupplier\DeleteSupplierCommand.cs" />
-    <Compile Include="DAL\Supplier\DeleteSupplier\DeleteSupplierCommandExecutor.cs" />
-    <Compile Include="DAL\Supplier\DeleteSupplier\DeleteSupplierCommandHandler.cs" />
-    <Compile Include="DAL\Supplier\FilterSuppliers\FilterSuppliersHandler.cs" />
-    <Compile Include="DAL\Supplier\FilterSuppliers\FilterSuppliersRequestExecutor.cs" />
-    <Compile Include="DAL\Supplier\FilterSuppliers\FilterSuppliersRequest.cs" />
-    <Compile Include="DAL\Supplier\FilterSuppliers\FilterSuppliersResponse.cs" />
-    <Compile Include="DAL\Supplier\FilterSuppliers\FilterSuppliersResponseItem.cs" />
-    <Compile Include="DAL\Supplier\UpdateSupplier\UpdateSupplierCommand.cs" />
-    <Compile Include="DAL\Supplier\UpdateSupplier\UpdateSupplierCommandExecutor.cs" />
-    <Compile Include="DAL\Supplier\UpdateSupplier\UpdateSupplierCommandHandler.cs" />
+    <Compile Include="Database\Component.cs">
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ComponentsOfPedals.cs">
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Config.cs">
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\IContext.cs" />
-    <Compile Include="Database\Stock.Designer.cs">
+    <Compile Include="Database\Pedal.cs">
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SAMStockEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Stock.edmx</DependentUpon>
+      <DependentUpon>SAMStockEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\SAMStockEntities.cs" />
+    <Compile Include="Database\SAMStockEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SAMStockEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SAMStockEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SAMStockEntitiesPartial.cs" />
+    <Compile Include="Database\Supplier.cs">
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dispatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\MiscExtensions.cs" />
     <Compile Include="Utilities\TransactionScopeFactory.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -164,10 +144,23 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="Database\Stock.edmx">
+    <EntityDeploy Include="Database\SAMStockEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Stock.Designer.cs</LastGenOutput>
+      <LastGenOutput>SAMStockEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Database\SAMStockEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SAMStockEntities.edmx</DependentUpon>
+      <LastGenOutput>SAMStockEntities.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Database\SAMStockEntities.edmx.diagram">
+      <DependentUpon>SAMStockEntities.edmx</DependentUpon>
+    </None>
+    <None Include="Database\SAMStockEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SAMStockEntities.edmx</DependentUpon>
+      <LastGenOutput>SAMStockEntities.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -178,6 +171,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
