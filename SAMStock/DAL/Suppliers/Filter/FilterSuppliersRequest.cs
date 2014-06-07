@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using SAMStock.DAL.Base;
 
-namespace SAMStock.DAL.Pedals.Filter
+namespace SAMStock.DAL.Suppliers.Filter
 {
-	public class FilterPedalsRequest: IRequest
+	public class FilterSuppliersRequest: IRequest
 	{
-		public int? Id { get; set; }
 		public int? ComponentId { get; set; }
+		public int? SupplierId { get; set; }
 	}
 }

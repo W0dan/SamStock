@@ -83,5 +83,15 @@ namespace SAMStock.Utilities
 			set.ForEach(x => set.Remove(x));
 			return count;
 		}
+
+		public static void FilterBy<T>(this IQueryable<T> set, Func<T, bool> filter)
+		{
+			set = set.Where(x => filter(x));
+		}
+
+		public static string JoinToString<T>(this IEnumerable<T> list, string glue)
+		{
+			return string.Join(glue, list.Select(s => s.ToString()));
+		}
 	}
 }

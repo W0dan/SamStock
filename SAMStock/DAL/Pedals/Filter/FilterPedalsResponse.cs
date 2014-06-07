@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SAMStock.BO;
 using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Pedals.Filter
 {
 	public class FilterPedalsResponse: IResponse
 	{
-		public List<BO.Pedal> Pedals { get; private set; }
+		public List<Pedal> Pedals { get; private set; }
 
-		public FilterPedalsResponse(IEnumerable<BO.Pedal> pedals)
+		public FilterPedalsResponse(IEnumerable<Database.Pedal> pedals, decimal defaultpedalprofitmargin)
 		{
-			Pedals = pedals.ToList();
+			Pedals = pedals.Select(x => new Pedal(x, defaultpedalprofitmargin)).ToList();
 		} 
 	}
 }

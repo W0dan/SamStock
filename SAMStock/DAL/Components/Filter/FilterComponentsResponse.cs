@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Castle.MicroKernel.Registration;
 using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Components.Filter
@@ -10,9 +11,9 @@ namespace SAMStock.DAL.Components.Filter
 	{
 		public List<BO.Component> Components { get; private set; }
 
-		public FilterComponentsResponse(IEnumerable<BO.Component> components)
+		public FilterComponentsResponse(IEnumerable<Database.Component> components)
 		{
-			Components = components.ToList();
+			Components = components.Select(x => new BO.Component(x)).ToList();
 		}
 	}
 }

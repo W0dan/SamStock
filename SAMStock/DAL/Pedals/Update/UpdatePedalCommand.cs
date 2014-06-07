@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SAMStock.DAL.Base;
+﻿using SAMStock.DAL.Base;
 
-namespace SAMStock.DAL.Pedal.Update
+namespace SAMStock.DAL.Pedals.Update
 {
-	public class UpdatePedalCommand: ICommand
+	public class UpdatePedalCommand: IBOCommand<BO.Pedal>
 	{
 		public int Id { get; private set; }
 		public string Name { get; set; }

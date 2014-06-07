@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.DAL.Components.Filter;
+using SAMStock.DAL.Pedals.Filter;
 
 namespace SAMStock.BO
 {
-	public class Pedal
+	public class Pedal: IBO
 	{
 		public int Id { get; private set; }
 		public string Name { get; private set; }
@@ -18,6 +20,14 @@ namespace SAMStock.BO
 			Name = pedal.Name;
 			Price = pedal.Price;
 			ProfitMargin = pedal.ProfitMargin?? defaultprofitmargin;
+		}
+
+		public List<Component> Components
+		{
+			get { return Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest
+			{
+				PedalId = Id
+			}).Components; }
 		}
 	}
 }

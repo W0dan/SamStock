@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SAMStock.DAL.Base;
+﻿using SAMStock.DAL.Base;
 
-namespace SAMStock.DAL.Pedal.Create
+namespace SAMStock.DAL.Pedals.Create
 {
-	public class CreatePedalCommand : ICommand
+	public class CreatePedalCommand : IBOCommand<BO.Pedal>
 	{
 		public string Name { get; private set; }
 		public decimal Price { get; private set; }

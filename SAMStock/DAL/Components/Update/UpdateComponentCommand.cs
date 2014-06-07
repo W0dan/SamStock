@@ -2,7 +2,7 @@
 
 namespace SAMStock.DAL.Components.Update
 {
-	public class UpdateComponentCommand: ICommand
+	public class UpdateComponentCommand: IBOCommand<BO.Component>
 	{
 		public int Id { get; private set; }
 		public string Name { get; set; }

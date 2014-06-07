@@ -68,14 +68,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BO\IBO.cs" />
     <Compile Include="BO\Component.cs" />
     <Compile Include="BO\Config.cs" />
     <Compile Include="BO\Pedal.cs" />
     <Compile Include="BO\Supplier.cs" />
     <Compile Include="Castle\ComponentInstaller.cs" />
     <Compile Include="Castle\WindsorContainerStore.cs" />
+    <Compile Include="DAL\Base\BOCommandExecutor.cs" />
+    <Compile Include="DAL\Base\BOCommandHandler.cs" />
     <Compile Include="DAL\Base\CommandExecutor.cs" />
     <Compile Include="DAL\Base\CommandHandler.cs" />
+    <Compile Include="DAL\Base\IBOCommandExecutor.cs" />
+    <Compile Include="DAL\Base\IBOCommandHandler.cs" />
     <Compile Include="DAL\Base\ICommand.cs" />
     <Compile Include="DAL\Base\ICommandExecutor.cs" />
     <Compile Include="DAL\Base\ICommandHandler.cs" />
@@ -83,15 +88,22 @@
     <Compile Include="DAL\Base\IRequestExecutor.cs" />
     <Compile Include="DAL\Base\IRequestHandler.cs" />
     <Compile Include="DAL\Base\IResponse.cs" />
+    <Compile Include="DAL\Base\IBOCommand.cs" />
     <Compile Include="DAL\Base\RequestExecutor.cs" />
     <Compile Include="DAL\Base\RequestHandler.cs" />
     <Compile Include="DAL\Components\Create\CreateComponentCommand.cs" />
     <Compile Include="DAL\Components\Create\CreateComponentExecutor.cs" />
     <Compile Include="DAL\Components\Create\CreateComponentHandler.cs" />
     <Compile Include="DAL\Components\Delete\DeleteComponentCommand.cs" />
+    <Compile Include="DAL\Components\Delete\DeleteComponentExecutor.cs" />
+    <Compile Include="DAL\Components\Delete\DeleteComponentHandler.cs" />
+    <Compile Include="DAL\Components\Filter\FilterComponentsExecutor.cs" />
+    <Compile Include="DAL\Components\Filter\FilterComponentsHandler.cs" />
     <Compile Include="DAL\Components\Filter\FilterComponentsRequest.cs" />
     <Compile Include="DAL\Components\Filter\FilterComponentsResponse.cs" />
     <Compile Include="DAL\Components\Update\UpdateComponentCommand.cs" />
+    <Compile Include="DAL\Components\Update\UpdateComponentExecutor.cs" />
+    <Compile Include="DAL\Components\Update\UpdateComponentHandler.cs" />
     <Compile Include="DAL\Config\CreateConfig\CreateConfigCommand.cs" />
     <Compile Include="DAL\Config\CreateConfig\CreateConfigExecutor.cs" />
     <Compile Include="DAL\Config\CreateConfig\CreateConfigHandler.cs" />
@@ -102,12 +114,36 @@
     <Compile Include="DAL\Config\UpdateConfig\UpdateConfigCommand.cs" />
     <Compile Include="DAL\Config\UpdateConfig\UpdateConfigExecutor.cs" />
     <Compile Include="DAL\Config\UpdateConfig\UpdateConfigHandler.cs" />
+    <Compile Include="DAL\Exceptions\ForeignKeyException.cs" />
     <Compile Include="DAL\Pedals\AddComponent\AddComponentCommand.cs" />
+    <Compile Include="DAL\Pedals\AddComponent\AddComponentExecutor.cs" />
+    <Compile Include="DAL\Pedals\AddComponent\AddComponentHandler.cs" />
     <Compile Include="DAL\Pedals\Create\CreatePedalCommand.cs" />
+    <Compile Include="DAL\Pedals\Create\CreatePedalExecutor.cs" />
+    <Compile Include="DAL\Pedals\Create\CreatePedalHandler.cs" />
     <Compile Include="DAL\Pedals\Delete\DeletePedalCommand.cs" />
+    <Compile Include="DAL\Pedals\Delete\DeletePedalExecutor.cs" />
+    <Compile Include="DAL\Pedals\Delete\DeletePedalHandler.cs" />
+    <Compile Include="DAL\Pedals\Filter\FilterPedalsExecutor.cs" />
+    <Compile Include="DAL\Pedals\Filter\FilterPedalsHandler.cs" />
     <Compile Include="DAL\Pedals\Filter\FilterPedalsRequest.cs" />
     <Compile Include="DAL\Pedals\Filter\FilterPedalsResponse.cs" />
     <Compile Include="DAL\Pedals\Update\UpdatePedalCommand.cs" />
+    <Compile Include="DAL\Pedals\Update\UpdatePedalExecutor.cs" />
+    <Compile Include="DAL\Pedals\Update\UpdatePedalHandler.cs" />
+    <Compile Include="DAL\Suppliers\Create\CreateSupplierCommand.cs" />
+    <Compile Include="DAL\Suppliers\Create\CreateSupplierExecutor.cs" />
+    <Compile Include="DAL\Suppliers\Create\CreateSupplierHandler.cs" />
+    <Compile Include="DAL\Suppliers\Delete\DeleteSupplierCommand.cs" />
+    <Compile Include="DAL\Suppliers\Delete\DeleteSupplierExecutor.cs" />
+    <Compile Include="DAL\Suppliers\Delete\DeleteSupplierHandler.cs" />
+    <Compile Include="DAL\Suppliers\Filter\FilterSuppliersExecutor.cs" />
+    <Compile Include="DAL\Suppliers\Filter\FilterSuppliersHandler.cs" />
+    <Compile Include="DAL\Suppliers\Filter\FilterSuppliersRequest.cs" />
+    <Compile Include="DAL\Suppliers\Filter\FilterSuppliersResponse.cs" />
+    <Compile Include="DAL\Suppliers\Update\UpdateSupplierCommand.cs" />
+    <Compile Include="DAL\Suppliers\Update\UpdateSupplierExecutor.cs" />
+    <Compile Include="DAL\Suppliers\Update\UpdateSupplierHandler.cs" />
     <Compile Include="Database\Component.cs">
       <DependentUpon>SAMStockEntities.tt</DependentUpon>
     </Compile>
@@ -191,10 +227,6 @@
   <ItemGroup>
     <Folder Include="DAL\Pedals\RemoveComponent\" />
     <Folder Include="DAL\Pedals\UpdateComponent\" />
-    <Folder Include="DAL\Suppliers\Create\" />
-    <Folder Include="DAL\Suppliers\Delete\" />
-    <Folder Include="DAL\Suppliers\Filter\" />
-    <Folder Include="DAL\Suppliers\Update\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

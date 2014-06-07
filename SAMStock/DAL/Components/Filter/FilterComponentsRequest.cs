@@ -13,5 +13,6 @@ namespace SAMStock.DAL.Components.Filter
 		public int? StockLowerThan { get; set; }
 		public int? StockHigherThan { get; set; }
 		public bool? Shortage { get; set; }
+		public int? SupplierId { get; set; }
 	}
 }

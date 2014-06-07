@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.DAL.Components.Filter;
 
 namespace SAMStock.BO
 {
-	public class Supplier
+	public class Supplier: IBO
 	{
 		public int Id { get; private set; }
 		public string Name { get; private set; }
@@ -25,6 +26,17 @@ namespace SAMStock.BO
 				Website = new Uri(String.Format("https://www.google.co.uk/#q={0}", supplier.Name));
 			}
 			Address = supplier.Address;
+		}
+
+		public List<Component> Components
+		{
+			get
+			{
+				return Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest
+				{
+					SupplierId = Id
+				}).Components;
+			}
 		}
 	}
 }
