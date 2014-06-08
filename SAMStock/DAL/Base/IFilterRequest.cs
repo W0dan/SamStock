@@ -1,5 +1,4 @@
-﻿using SAMStock.BO;
-using SAMStock.BO.Base;
+﻿using SAMStock.BO.Base;
 
 namespace SAMStock.DAL.Base
 {

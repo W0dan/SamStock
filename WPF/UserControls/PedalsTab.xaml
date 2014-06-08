@@ -11,8 +11,8 @@
 	</UserControl.DataContext>
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*"></ColumnDefinition>
-			<ColumnDefinition Width="Auto"></ColumnDefinition>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
 		</Grid.ColumnDefinitions>
 		<DataGrid Name="PedalsDataGrid" ItemsSource="{Binding Pedals}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
 			<DataGrid.Columns>
@@ -23,17 +23,17 @@
 		</DataGrid>
 		<Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto"></RowDefinition>
-				<RowDefinition Height="Auto"></RowDefinition>
-				<RowDefinition Height="Auto"></RowDefinition>
-				<RowDefinition Height="Auto"></RowDefinition>
-				<RowDefinition Height="Auto"></RowDefinition>
-				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			<Button Grid.Row="1" Name="PedalsNewButton" Click="PedalsNewButton_OnClick">New...</Button>
 			<Button Grid.Row="2" Name="PedalsEditButton" Click="PedalsEditButton_OnClick">Edit...</Button>
 			<Button Grid.Row="3" Name="PedalsDeleteButton" Click="PedalsDeleteButton_OnClick">Delete</Button>
-			<Separator Grid.Row="4"></Separator>
+			<Separator Grid.Row="4" />
 			<Button Grid.Row="5" Name="PedalComponentsManage" Click="PedalComponentsManage_OnClick">Manage components</Button>
 		</Grid>
 	</Grid>

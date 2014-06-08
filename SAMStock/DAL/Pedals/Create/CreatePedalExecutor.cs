@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Castle.MicroKernel;
+﻿using System.Linq;
 using SAMStock.DAL.Base;
 using SAMStock.Database;
+using Pedal = SAMStock.BO.Pedal;
 
 namespace SAMStock.DAL.Pedals.Create
 {
-	public class CreatePedalExecutor: BOCommandExecutor<CreatePedalCommand, BO.Pedal>
+	public class CreatePedalExecutor: BOCommandExecutor<CreatePedalCommand, Pedal>
 	{
 		public CreatePedalExecutor(IContext context) : base(context)
 		{
 		}
 
-		public override BO.Pedal Execute(CreatePedalCommand cmd)
+		public override Pedal Execute(CreatePedalCommand cmd)
 		{
-			var pedal = new Pedal
+			var pedal = new Database.Pedal
 			{
 				Name = cmd.Name,
 				Price = cmd.Price,
@@ -24,7 +21,7 @@ namespace SAMStock.DAL.Pedals.Create
 			};
 			Context.Pedals.Add(pedal);
 			Context.SaveChanges();
-			var p = new BO.Pedal(pedal, Context.Config.Single().DefaultPedalProfitMargin);
+			var p = new Pedal(pedal, Context.Config.Single().DefaultPedalProfitMargin);
 			BO.Pedals.TriggerCreated(cmd, p);
 			return p;
 		}

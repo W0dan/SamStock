@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using SAMStock.BO;
 using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Components.Create
 {
-	public class CreateComponentHandler: BOCommandHandler<CreateComponentCommand, BO.Component>
+	public class CreateComponentHandler: BOCommandHandler<CreateComponentCommand, Component>
 	{
-		public CreateComponentHandler(IBOCommandExecutor<CreateComponentCommand, BO.Component> executor) : base(executor)
+		public CreateComponentHandler(IBOCommandExecutor<CreateComponentCommand, Component> executor) : base(executor)
 		{
 		}
 	}

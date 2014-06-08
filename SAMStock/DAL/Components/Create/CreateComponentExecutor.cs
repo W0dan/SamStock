@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SAMStock.BO.Base;
-using SAMStock.DAL.Base;
+﻿using SAMStock.DAL.Base;
 using SAMStock.Database;
+using Component = SAMStock.BO.Component;
 
 namespace SAMStock.DAL.Components.Create
 {
-	public class CreateComponentExecutor: BOCommandExecutor<CreateComponentCommand, BO.Component>
+	public class CreateComponentExecutor: BOCommandExecutor<CreateComponentCommand, Component>
 	{
 		public CreateComponentExecutor(IContext context) : base(context)
 		{
 		}
 
-		public override BO.Component Execute(CreateComponentCommand cmd)
+		public override Component Execute(CreateComponentCommand cmd)
 		{
-			var component = new Component
+			var component = new Database.Component
 			{
 				Name = cmd.Name,
 				ItemCode = cmd.ItemCode,
@@ -29,7 +25,7 @@ namespace SAMStock.DAL.Components.Create
 			};
 			Context.Components.Add(component);
 			Context.SaveChanges();
-			var c = new BO.Component(component);
+			var c = new Component(component);
 			BO.Components.TriggerCreated(cmd, c);
 			return c;
 		}

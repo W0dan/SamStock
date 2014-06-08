@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Windows.Forms.VisualStyles;
-using Castle.DynamicProxy.Generators.Emitters.CodeBuilders;
 using Castle.MicroKernel;
-using Castle.MicroKernel.ModelBuilder.Descriptors;
 using Castle.Windsor;
-using Castle.Windsor.Configuration.Interpreters;
 using SAMStock.BO.Base;
 using SAMStock.Castle;
 using SAMStock.DAL.Base;
 using SAMStock.Database;
-using SAMStock.DAL;
 using SAMStock.Utilities;
 
 namespace SAMStock
@@ -72,6 +66,7 @@ namespace SAMStock
 			}
 		}
 
+		// ReSharper disable once InconsistentNaming
 		public static TBO Command<TCommand, TBO>(TCommand command) where TCommand : IBOCommand<TBO> where TBO: IBO
 		{
 			var context = Container.Resolve<IContext>();

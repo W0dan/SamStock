@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using SAMStock.BO.Base;
 using SAMStock.DAL.Pedals.Filter;
 using SAMStock.DAL.Suppliers.Filter;

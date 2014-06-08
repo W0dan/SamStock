@@ -4,8 +4,8 @@
         Title="PedalViewDialog" Height="300" Width="300">
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 		<GroupBox>
 			<GroupBox.Header>
@@ -13,26 +13,26 @@
 			</GroupBox.Header>
 			<Grid>
 				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto"></RowDefinition>
-					<RowDefinition Height="Auto"></RowDefinition>
-					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition></ColumnDefinition>
-					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition />
+					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Label>Name</Label>
-				<TextBox Name="NameTextBox" Grid.Row="0" Grid.Column="1"></TextBox>
+				<TextBox Name="NameTextBox" Grid.Row="0" Grid.Column="1" />
 				<Label Grid.Row="1" Grid.Column="0">Price</Label>
-				<TextBox Name="PriceTextBox" Grid.Row="1" Grid.Column="1"></TextBox>
+				<TextBox Name="PriceTextBox" Grid.Row="1" Grid.Column="1" />
 				<Label Grid.Row="2" Grid.Column="0">Margin</Label>
-				<TextBox Name="MarginTextBox" Grid.Row="2" Grid.Column="1"></TextBox>
+				<TextBox Name="MarginTextBox" Grid.Row="2" Grid.Column="1" />
 			</Grid>
 		</GroupBox>
 		<Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"></ColumnDefinition>
-				<ColumnDefinition Width="Auto"></ColumnDefinition>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 			<Button HorizontalAlignment="Right" Name="SaveButton" Click="SaveButton_OnClick">Save/update</Button>
 			<Button Grid.Column="1" Name="CloseButton" HorizontalAlignment="Right" Click="CloseButton_OnClick">Close</Button>

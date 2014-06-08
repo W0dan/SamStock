@@ -4,23 +4,23 @@
         Title="ComponentDeleteDialog">
     <Grid>
         <Grid.RowDefinitions>
-			<RowDefinition Height="Auto"></RowDefinition>
-			<RowDefinition Height="*"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
-		</Grid.RowDefinitions>
-		<Label Name="Warning"></Label>
-		<Grid Grid.Row="1">
+			<RowDefinition Height="Auto" />
+	        <RowDefinition Height="*" />
+	        <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+		<Label Name="Warning" />
+	    <Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto"></ColumnDefinition>
-				<ColumnDefinition Width="Auto"></ColumnDefinition>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
-			<Label Content="Force deletion even if still in use by pedals"></Label>
-			<CheckBox Name="CascadeCheckBox" HorizontalAlignment="Center" Grid.Column="1"></CheckBox>
-		</Grid>
+			<Label Content="Force deletion even if still in use by pedals" />
+		    <CheckBox Name="CascadeCheckBox" HorizontalAlignment="Center" Grid.Column="1" />
+	    </Grid>
 		<Grid Grid.Row="2">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"></ColumnDefinition>
-				<ColumnDefinition Width="Auto"></ColumnDefinition>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 			<Button HorizontalAlignment="Right" Name="OkButton" Click="OkButton_OnClick">Ok</Button>
 			<Button Grid.Column="1" Name="CloseButton" HorizontalAlignment="Right" Click="CloseButton_OnClick">Cancel</Button>

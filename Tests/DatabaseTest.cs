@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Transactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
 using SAMStock.Database;
 using SAMStock.Utilities;
 

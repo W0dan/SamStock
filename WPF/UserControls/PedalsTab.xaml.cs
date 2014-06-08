@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SAMStock.BO;
 using SAMStock.DAL.Pedals.Filter;
 using SAMStock.wpf.Dialogs;
@@ -57,7 +45,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				Window dialog = new PedalViewDialog((BO.Pedal)PedalsDataGrid.SelectedItem);
+				Window dialog = new PedalViewDialog((Pedal)PedalsDataGrid.SelectedItem);
 				dialog.Owner = Application.Current.MainWindow;
 				dialog.Show();
 			}
@@ -71,7 +59,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new PedalDeleteDialog((BO.Pedal)PedalsDataGrid.SelectedItem)
+				var dlg = new PedalDeleteDialog((Pedal)PedalsDataGrid.SelectedItem)
 				{
 					Owner = Application.Current.MainWindow
 				};
@@ -87,7 +75,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new PedalComponentsViewDialog((BO.Pedal)PedalsDataGrid.SelectedItem)
+				var dlg = new PedalComponentsViewDialog((Pedal)PedalsDataGrid.SelectedItem)
 				{
 					Owner = Application.Current.MainWindow
 				};

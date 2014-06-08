@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SAMStock.DAL.Base;
+﻿using SAMStock.DAL.Base;
 using SAMStock.Database;
 using Supplier = SAMStock.BO.Supplier;
 
 namespace SAMStock.DAL.Suppliers.Create
 {
-	public class CreateSupplierExecutor: BOCommandExecutor<CreateSupplierCommand, BO.Supplier>
+	public class CreateSupplierExecutor: BOCommandExecutor<CreateSupplierCommand, Supplier>
 	{
 		public CreateSupplierExecutor(IContext context) : base(context)
 		{

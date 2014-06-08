@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using SAMStock.BO;
 using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Suppliers.Update
 {
-	public class UpdateSupplierCommand: IUpdateCommand<BO.Supplier>
+	public class UpdateSupplierCommand: IUpdateCommand<Supplier>
 	{
 		public int Id { get; private set; }
 		public string Name { get; set; }

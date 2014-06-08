@@ -1,8 +1,9 @@
-﻿using SAMStock.DAL.Base;
+﻿using SAMStock.BO;
+using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Pedals.Update
 {
-	public class UpdatePedalCommand: IUpdateCommand<BO.Pedal>
+	public class UpdatePedalCommand: IUpdateCommand<Pedal>
 	{
 		public int Id { get; private set; }
 		public string Name { get; set; }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Castle.MicroKernel;
+﻿using System.Linq;
 using SAMStock.DAL.Base;
 using SAMStock.Database;
 using SAMStock.Utilities;

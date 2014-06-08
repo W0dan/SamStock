@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using SAMStock.DAL.Base;
 using SAMStock.Database;
 using SAMStock.Utilities;
@@ -9,7 +6,7 @@ using Supplier = SAMStock.BO.Supplier;
 
 namespace SAMStock.DAL.Suppliers.Update
 {
-	public class UpdateSupplierExecutor: BOCommandExecutor<UpdateSupplierCommand, BO.Supplier>
+	public class UpdateSupplierExecutor: BOCommandExecutor<UpdateSupplierCommand, Supplier>
 	{
 		public UpdateSupplierExecutor(IContext context) : base(context)
 		{

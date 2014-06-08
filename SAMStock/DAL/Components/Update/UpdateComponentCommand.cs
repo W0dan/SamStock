@@ -1,8 +1,9 @@
-﻿using SAMStock.DAL.Base;
+﻿using SAMStock.BO;
+using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Components.Update
 {
-	public class UpdateComponentCommand: IBOCommand<BO.Component>
+	public class UpdateComponentCommand: IBOCommand<Component>
 	{
 		public int Id { get; private set; }
 		public string Name { get; set; }

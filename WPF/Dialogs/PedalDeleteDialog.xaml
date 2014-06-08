@@ -4,14 +4,14 @@
         Title="PedalDeleteDialog" Height="300" Width="300">
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
-		<Label Name="Warning"></Label>
+		<Label Name="Warning" />
 		<Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"></ColumnDefinition>
-				<ColumnDefinition Width="Auto"></ColumnDefinition>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 			<Button HorizontalAlignment="Right" Name="OkButton" Click="OkButton_OnClick">Ok</Button>
 			<Button Grid.Column="1" Name="CloseButton" HorizontalAlignment="Right" Click="CloseButton_OnClick">Cancel</Button>

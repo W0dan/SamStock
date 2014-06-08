@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using SAMStock.BO;
 using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Suppliers.Create
 {
-	public class CreateSupplierCommand: ICreateCommand<BO.Supplier>
+	public class CreateSupplierCommand: ICreateCommand<Supplier>
 	{
 		public string Name { get; private set; }
 		public string Address { get; private set; }

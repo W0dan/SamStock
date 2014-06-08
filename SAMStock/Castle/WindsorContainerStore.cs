@@ -1,5 +1,4 @@
 ﻿using Castle.Windsor;
-using Castle.Windsor.Installer;
 
 namespace SAMStock.Castle
 {

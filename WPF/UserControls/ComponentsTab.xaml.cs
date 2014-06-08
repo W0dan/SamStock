@@ -1,24 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SAMStock.BO;
-using SAMStock.Castle;
 using SAMStock.DAL.Components.Filter;
-using SAMStock.Database;
-using SAMStock.Utilities;
 using SAMStock.wpf.Dialogs;
 using SAMStock.wpf.UserControls.Base;
 using SAMStock.wpf.Utilities;
@@ -63,7 +46,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (ComponentsDataGrid.SelectedIndex > -1)
 			{
-				Window dialog = new ComponentViewDialog((BO.Component)ComponentsDataGrid.SelectedItem);
+				Window dialog = new ComponentViewDialog((Component)ComponentsDataGrid.SelectedItem);
 				dialog.Owner = Application.Current.MainWindow;
 				dialog.Show();
 			}
@@ -77,7 +60,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (ComponentsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new ComponentDeleteDialog((BO.Component)ComponentsDataGrid.SelectedItem)
+				var dlg = new ComponentDeleteDialog((Component)ComponentsDataGrid.SelectedItem)
 				{
 					Owner = Application.Current.MainWindow
 				};

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using SAMStock.DAL.Base;
 using SAMStock.Database;
 using SAMStock.Utilities;
@@ -9,7 +6,7 @@ using Pedal = SAMStock.BO.Pedal;
 
 namespace SAMStock.DAL.Pedals.Update
 {
-	public class UpdatePedalExecutor: BOCommandExecutor<UpdatePedalCommand, BO.Pedal>
+	public class UpdatePedalExecutor: BOCommandExecutor<UpdatePedalCommand, Pedal>
 	{
 		public UpdatePedalExecutor(IContext context) : base(context)
 		{

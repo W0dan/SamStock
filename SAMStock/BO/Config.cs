@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using SAMStock.BO.Base;
-using SAMStock.DAL.Base;
 using SAMStock.DAL.Config.CreateConfig;
 using SAMStock.DAL.Config.GetConfig;
 using SAMStock.DAL.Config.UpdateConfig;
