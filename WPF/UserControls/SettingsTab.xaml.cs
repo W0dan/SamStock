@@ -8,49 +8,34 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using SAMStock.DAL.Admin.GetAdminData;
-using SAMStock.DAL.Admin.SetAdminData;
+using SAMStock.BO;
+using SAMStock.wpf.UserControls.Base;
 using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.UserControls
 {
-	/// <summary>
-	/// Interaction logic for SettingsTab.xaml
-	/// </summary>
-	public partial class SettingsTab : UserControl
+	public partial class SettingsTab : ISAMStockUserControl
 	{
 		public SettingsTab()
 		{
 			InitializeComponent();
-			Refresh();
+			if (!Enviromment.IsInDesignTime)
+			{
+				Config.Modified += (x, y) => Refresh();
+				Refresh();
+			}
 		}
 
-		private void Refresh()
+		public void Refresh()
 		{
-			var settings = SAMStock.Dispatcher.Request<GetAdminDataRequest, GetAdminDataResponse>(new GetAdminDataRequest());
-			VatPercentageTextBox.Text = settings.VAT.ToString(CultureInfo.InvariantCulture);
-			DefaultPedalPriceMarginTextBox.Text = settings.DefaultPedalPriceMargin.ToString(CultureInfo.InvariantCulture);
+			VatPercentageTextBox.Text = Config.VAT.ToString();
+			DefaultPedalPriceMarginTextBox.Text = Config.DefaultPedalProfitMargin.ToString();
 		}
 
 		private void SaveButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			try
-			{
-				SAMStock.Dispatcher.Command<SetAdminDataCommand>(new SetAdminDataCommand
-				{
-					VAT = VatPercentageTextBox.GetDecimal(),
-					DefaultPedalPriceMargin = DefaultPedalPriceMarginTextBox.GetDecimal()
-				});
-			}
-			catch (NumberFormatException)
-			{}
-			Refresh();
+			Config.VAT = VatPercentageTextBox.GetDecimal();
+			Config.DefaultPedalProfitMargin = DefaultPedalPriceMarginTextBox.GetDecimal();
 		}
 	}
 }

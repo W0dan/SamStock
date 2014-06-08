@@ -2,7 +2,7 @@
 
 namespace SAMStock.DAL.Pedals.Update
 {
-	public class UpdatePedalCommand: IBOCommand<BO.Pedal>
+	public class UpdatePedalCommand: IUpdateCommand<BO.Pedal>
 	{
 		public int Id { get; private set; }
 		public string Name { get; set; }

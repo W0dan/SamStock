@@ -5,13 +5,13 @@ using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Pedals.Filter
 {
-	public class FilterPedalsResponse: IResponse
+	public class FilterPedalsResponse: IFilterResponse<Pedal>
 	{
-		public List<Pedal> Pedals { get; private set; }
+		public IEnumerable<Pedal> Items { get; private set; }
 
 		public FilterPedalsResponse(IEnumerable<Database.Pedal> pedals, decimal defaultpedalprofitmargin)
 		{
-			Pedals = pedals.Select(x => new Pedal(x, defaultpedalprofitmargin)).ToList();
+			Items = pedals.Select(x => new Pedal(x, defaultpedalprofitmargin));
 		} 
 	}
 }

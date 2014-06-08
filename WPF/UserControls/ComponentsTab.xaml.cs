@@ -14,43 +14,40 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SAMStock.BO;
 using SAMStock.Castle;
+using SAMStock.DAL.Components.Filter;
 using SAMStock.Database;
-using SAMStock.DAL.Component.DeleteComponent;
-using SAMStock.DAL.Component.DeleteComponent.Exceptions;
-using SAMStock.DAL.Component.FilterComponent;
-using SAMStock.DAL.Supplier.FilterSuppliers;
 using SAMStock.Utilities;
 using SAMStock.wpf.Dialogs;
+using SAMStock.wpf.UserControls.Base;
 using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.UserControls
 {
-	/// <summary>
-	/// Interaction logic for ComponentsTab.xaml
-	/// </summary>
-	public partial class ComponentsTab : UserControl
+	public partial class ComponentsTab : ISAMStockUserControl
 	{
-		private readonly CollectionViewSource _components;
+		private readonly ComponentsTabModel _model;
 
 		public ComponentsTab()
 		{
-			InitializeComponent();
-			_components = (CollectionViewSource)FindResource("Components");
-		}
-
-		private void RefreshComponentsDataGrid()
-		{
-			_components.Source =
-				SAMStock.Dispatcher.Request<FilterComponentRequest, FilterComponentResponse>(new FilterComponentRequest())
-					.Components;
 			
-			ComponentsDataGrid.SelectedIndex = -1;
+			InitializeComponent();
+			_model = DataContext as ComponentsTabModel;
+			if (!Enviromment.IsInDesignTime)
+			{
+				Components.Created += (x, y) => Refresh();
+				Components.Deleted += (x, y) => Refresh();
+				Components.Updated += (x, y) => Refresh();
+				Refresh();
+			}
 		}
 
-		private void ComponentsRefreshButton_OnClick(object sender, RoutedEventArgs e)
+		public void Refresh()
 		{
-			RefreshComponentsDataGrid();
+			_model.Components.Clear();
+			SAMStock.Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest()).Items.ToList().ForEach(x => _model.Components.Add(x));
+			ComponentsDataGrid.SelectedIndex = -1;
 		}
 
 		private void ComponentsNewButton_OnClick(object sender, RoutedEventArgs e)
@@ -66,7 +63,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (ComponentsDataGrid.SelectedIndex > -1)
 			{
-				Window dialog = new ComponentViewDialog((FilterComponentResponseComponent)ComponentsDataGrid.SelectedItem);
+				Window dialog = new ComponentViewDialog((BO.Component)ComponentsDataGrid.SelectedItem);
 				dialog.Owner = Application.Current.MainWindow;
 				dialog.Show();
 			}
@@ -80,7 +77,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (ComponentsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new ComponentDeleteDialog((FilterComponentResponseComponent)ComponentsDataGrid.SelectedItem)
+				var dlg = new ComponentDeleteDialog((BO.Component)ComponentsDataGrid.SelectedItem)
 				{
 					Owner = Application.Current.MainWindow
 				};

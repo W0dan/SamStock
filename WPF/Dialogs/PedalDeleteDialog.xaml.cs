@@ -11,8 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using SAMStock.DAL.Pedal.DeletePedal;
-using SAMStock.DAL.Pedal.FilterPedal;
+using SAMStock.BO;
+using SAMStock.DAL.Pedals.Delete;
 
 namespace SAMStock.wpf.Dialogs
 {
@@ -21,13 +21,13 @@ namespace SAMStock.wpf.Dialogs
 	/// </summary>
 	public partial class PedalDeleteDialog : Window
 	{
-		private readonly FilterPedalResponsePedal _item;
+		private readonly Pedal _pedal;
 
-		public PedalDeleteDialog(FilterPedalResponsePedal item)
+		public PedalDeleteDialog(Pedal pedal)
 		{
-			_item = item;
+			_pedal = pedal;
 			InitializeComponent();
-			Warning.Content = string.Format("Are you sure you want to delete {0}?", item.Name);
+			Warning.Content = string.Format("Are you sure you want to delete {0}?", pedal.Name);
 		}
 
 		private void CloseButton_OnClick(object sender, RoutedEventArgs e)
@@ -37,10 +37,7 @@ namespace SAMStock.wpf.Dialogs
 
 		private void OkButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			SAMStock.Dispatcher.Command(new DeletePedalCommand
-			{
-				Id = _item.Id
-			});
+			SAMStock.Dispatcher.Command<DeletePedalCommand, Pedal>(new DeletePedalCommand(_pedal.Id));
 			Close();
 		}
 	}

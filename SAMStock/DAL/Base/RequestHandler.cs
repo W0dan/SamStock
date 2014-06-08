@@ -1,6 +1,6 @@
 ﻿namespace SAMStock.DAL.Base
 {
-	public abstract class RequestHandler<TRequest, TResponse>: IRequestHandler<TRequest, TResponse>
+	public abstract class RequestHandler<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
 	{
 		protected readonly IRequestExecutor<TRequest, TResponse> Executor;
 

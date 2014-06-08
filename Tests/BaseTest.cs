@@ -1,18 +1,18 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests
 {
-    [TestFixture]
+    [TestClass]
     public abstract class BaseTest
     {
-        [TestFixtureSetUp]
+        [TestInitialize]
         public virtual void Setup()
         {
             Arrange();
             Act();
         }
 
-        [TestFixtureTearDown]
+        [TestCleanup]
         public virtual void CleanUp()
         {
             

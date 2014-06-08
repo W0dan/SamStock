@@ -12,9 +12,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using SAMStock.DAL.Pedal.AddPedal;
-using SAMStock.DAL.Pedal.FilterPedal;
-using SAMStock.DAL.Pedal.UpdatePedal;
+using SAMStock.BO;
+using SAMStock.DAL.Pedals.Create;
+using SAMStock.DAL.Pedals.Update;
+using SAMStock.wpf.Exceptions;
 using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.Dialogs
@@ -25,20 +26,20 @@ namespace SAMStock.wpf.Dialogs
 	public partial class PedalViewDialog : Window
 	{
 		private readonly bool _editMode = false;
-		private readonly FilterPedalResponsePedal _item;
+		private readonly Pedal _pedal;
 
 		public PedalViewDialog()
 		{
 			InitializeComponent();
 		}
-		public PedalViewDialog(FilterPedalResponsePedal pedal): this()
+		public PedalViewDialog(Pedal pedal): this()
 		{
 			_editMode = true;
-			_item = pedal;
+			_pedal = pedal;
 
-			NameTextBox.Text = _item.Name;
-			PriceTextBox.Text = _item.Price.ToString(CultureInfo.InvariantCulture);
-			MarginTextBox.Text = _item.Margin.ToString();
+			NameTextBox.Text = _pedal.Name;
+			PriceTextBox.Text = _pedal.Price.ToString(CultureInfo.InvariantCulture);
+			MarginTextBox.Text = _pedal.ProfitMargin.ToString();
 		}
 
 		
@@ -71,21 +72,21 @@ namespace SAMStock.wpf.Dialogs
 			}
 			if (_editMode)
 			{
-				SAMStock.Dispatcher.Command<UpdatePedalCommand>(new UpdatePedalCommand
+				SAMStock.Dispatcher.Command<UpdatePedalCommand, Pedal>(new UpdatePedalCommand(_pedal.Id)
 				{
-					Id = _item.Id,
 					Name = NameTextBox.Text,
 					Price = price,
-					Margin = margin
+					ProfitMargin = margin
 				});
 			}
 			else
 			{
-				SAMStock.Dispatcher.Command<AddPedalCommand>(new AddPedalCommand
+				SAMStock.Dispatcher.Command<CreatePedalCommand, Pedal>(new CreatePedalCommand(
+					name: NameTextBox.Text,
+					price: price
+				)
 				{
-					Name = NameTextBox.Text,
-					Price = price,
-					Margin = margin
+					ProfitMargin = margin
 				});
 			}
 		}

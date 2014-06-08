@@ -25,6 +25,7 @@ namespace SAMStock.DAL.Config.CreateConfig
 			};
 			Context.Config.Add(config);
 			Context.SaveChanges();
+			BO.Config.TriggerModified();
 			return config.Id;
 		}
 	}

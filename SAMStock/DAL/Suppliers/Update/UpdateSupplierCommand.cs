@@ -7,7 +7,7 @@ using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Suppliers.Update
 {
-	public class UpdateSupplierCommand: IBOCommand<BO.Supplier>
+	public class UpdateSupplierCommand: IUpdateCommand<BO.Supplier>
 	{
 		public int Id { get; private set; }
 		public string Name { get; set; }

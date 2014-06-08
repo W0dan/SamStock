@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using Castle.Core.Internal;
 using SAMStock.DAL.Base;
-using SAMStock.DAL.Exceptions;
 using SAMStock.Database;
+using SAMStock.Exceptions;
 
 namespace SAMStock.DAL.Suppliers.Delete
 {
@@ -31,6 +31,7 @@ namespace SAMStock.DAL.Suppliers.Delete
 			}
 			Context.Suppliers.Remove(supplier);
 			Context.SaveChanges();
+			BO.Suppliers.TriggerDeleted(cmd, supplier.Id);
 			return supplier.Id;
 		}
 	}

@@ -18,6 +18,7 @@ namespace SAMStock.DAL.Pedals.Delete
 			var pedal = Context.Pedals.Single(x => x.Id == cmd.Id);
 			Context.Pedals.Remove(pedal);
 			Context.SaveChanges();
+			BO.Pedals.TriggerDeleted(cmd, pedal.Id);
 			return pedal.Id;
 		}
 	}

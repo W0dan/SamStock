@@ -11,20 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using SAMStock.DAL.Component.FilterComponent;
-using SAMStock.DAL.Pedal.FilterPedal;
+using SAMStock.BO;
+using SAMStock.DAL.Components.Filter;
 
 namespace SAMStock.wpf.Dialogs
 {
-	/// <summary>
-	/// Interaction logic for PedalComponentsViewDialog.xaml
-	/// </summary>
 	public partial class PedalComponentsViewDialog : Window
 	{
-		private readonly FilterPedalResponsePedal _pedal;
+		private readonly Pedal _pedal;
 		private readonly CollectionViewSource _components;
 
-		public PedalComponentsViewDialog(FilterPedalResponsePedal pedal)
+		public PedalComponentsViewDialog(Pedal pedal)
 		{
 			_pedal = pedal;
 			InitializeComponent();
@@ -39,11 +36,10 @@ namespace SAMStock.wpf.Dialogs
 
 		private void Refresh()
 		{
-			_components.Source =
-				SAMStock.Dispatcher.Request<FilterComponentRequest, FilterComponentResponse>(new FilterComponentRequest
+			_components.Source = SAMStock.Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest
 				{
 					PedalId = _pedal.Id
-				}).Components;
+				}).Items;
 			ComponentsDataGrid.SelectedIndex = -1;
 		}
 
@@ -63,7 +59,6 @@ namespace SAMStock.wpf.Dialogs
 
 		private void RemoveButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			
 		}
 	}
 }

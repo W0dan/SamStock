@@ -22,7 +22,9 @@ namespace SAMStock.DAL.Pedals.Update
 			cmd.Price.IfNotNull(x => pedal.Price = x);
 			cmd.ProfitMargin.IfNotNull(x => pedal.ProfitMargin = x);
 			Context.SaveChanges();
-			return new Pedal(pedal, Context.Config.Single().DefaultPedalProfitMargin);
+			var p = new Pedal(pedal, Context.Config.Single().DefaultPedalProfitMargin);
+			BO.Pedals.TriggerUpdated(cmd, p);
+			return p;
 		}
 	}
 }

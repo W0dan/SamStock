@@ -20,6 +20,7 @@ namespace SAMStock.DAL.Config.UpdateConfig
 			cmd.DefaultPedalProfitMargin.IfNotNull(x => config.DefaultPedalProfitMargin = x);
 			cmd.VAT.IfNotNull(x => config.VAT = x);
 			Context.SaveChanges();
+			BO.Config.TriggerModified();
 			return config.Id;
 		}
 	}

@@ -12,35 +12,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SAMStock.DAL.Pedal.FilterPedal;
+using SAMStock.BO;
+using SAMStock.DAL.Pedals.Filter;
 using SAMStock.wpf.Dialogs;
+using SAMStock.wpf.UserControls.Base;
+using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.UserControls
 {
-	/// <summary>
-	/// Interaction logic for PedalsTab.xaml
-	/// </summary>
-	public partial class PedalsTab : UserControl
+	public partial class PedalsTab : ISAMStockUserControl
 	{
-		private readonly CollectionViewSource _pedals;
+		private readonly PedalsTabModel _model;
 
 		public PedalsTab()
 		{
 			InitializeComponent();
-			_pedals = (CollectionViewSource)FindResource("Pedals");
+			_model = DataContext as PedalsTabModel;
+			if (!Enviromment.IsInDesignTime)
+			{
+				Pedals.Created += (x, y) => Refresh();
+				Pedals.Deleted += (x, y) => Refresh();
+				Pedals.Updated += (x, y) => Refresh();
+				Refresh();
+			}
 		}
 
-		private void RefreshPedalsDataGrid()
+		public void Refresh()
 		{
-			_pedals.Source =
-				SAMStock.Dispatcher.Request<FilterPedalRequest, FilterPedalResponse>(new FilterPedalRequest())
-					.Pedals;
+			_model.Pedals.Clear();
+			SAMStock.Dispatcher.Request<FilterPedalsRequest, FilterPedalsResponse>(new FilterPedalsRequest()).Items.ToList().ForEach(x => _model.Pedals.Add(x));
 			PedalsDataGrid.SelectedIndex = -1;
-		}
-
-		private void PedalsRefreshButton_OnClick(object sender, RoutedEventArgs e)
-		{
-			RefreshPedalsDataGrid();
 		}
 
 		private void PedalsNewButton_OnClick(object sender, RoutedEventArgs e)
@@ -56,7 +57,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				Window dialog = new PedalViewDialog((FilterPedalResponsePedal)PedalsDataGrid.SelectedItem);
+				Window dialog = new PedalViewDialog((BO.Pedal)PedalsDataGrid.SelectedItem);
 				dialog.Owner = Application.Current.MainWindow;
 				dialog.Show();
 			}
@@ -70,7 +71,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new PedalDeleteDialog((FilterPedalResponsePedal)PedalsDataGrid.SelectedItem)
+				var dlg = new PedalDeleteDialog((BO.Pedal)PedalsDataGrid.SelectedItem)
 				{
 					Owner = Application.Current.MainWindow
 				};
@@ -86,7 +87,7 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new PedalComponentsViewDialog((FilterPedalResponsePedal)PedalsDataGrid.SelectedItem)
+				var dlg = new PedalComponentsViewDialog((BO.Pedal)PedalsDataGrid.SelectedItem)
 				{
 					Owner = Application.Current.MainWindow
 				};

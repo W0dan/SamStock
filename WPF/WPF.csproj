@@ -63,12 +63,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Base\BaseModel.cs" />
     <Compile Include="Dialogs\ComponentViewDialog.xaml.cs">
       <DependentUpon>ComponentViewDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\ComponentDeleteDialog.xaml.cs">
       <DependentUpon>ComponentDeleteDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ComponentViewModel.cs" />
     <Compile Include="Dialogs\PedalComponentsModifyDialog.xaml.cs">
       <DependentUpon>PedalComponentsModifyDialog.xaml</DependentUpon>
     </Compile>
@@ -81,18 +83,23 @@
     <Compile Include="Dialogs\PedalViewDialog.xaml.cs">
       <DependentUpon>PedalViewDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Exceptions\IllegalInputException.cs" />
+    <Compile Include="Exceptions\NumberFormatException.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="UserControls\Base\ISAMStockUserControl.cs" />
     <Compile Include="UserControls\ComponentsTab.xaml.cs">
       <DependentUpon>ComponentsTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ComponentsTabModel.cs" />
     <Compile Include="UserControls\PedalsTab.xaml.cs">
       <DependentUpon>PedalsTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PedalsTabModel.cs" />
     <Compile Include="UserControls\SettingsTab.xaml.cs">
       <DependentUpon>SettingsTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\IllegalInputException.cs" />
-    <Compile Include="Utilities\NumberFormatException.cs" />
-    <Compile Include="Utilities\TextBoxExtensions.cs" />
+    <Compile Include="Utilities\Enviromment.cs" />
+    <Compile Include="Utilities\MiscExtensions.cs" />
     <Page Include="Dialogs\ComponentViewDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

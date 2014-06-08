@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.BO.Base;
 using SAMStock.DAL.Components.Filter;
 using SAMStock.DAL.Pedals.Filter;
 
@@ -27,7 +28,7 @@ namespace SAMStock.BO
 			get { return Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest
 			{
 				PedalId = Id
-			}).Components; }
+			}).Items.ToList(); }
 		}
 	}
 }

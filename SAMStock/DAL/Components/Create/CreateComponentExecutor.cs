@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.BO.Base;
 using SAMStock.DAL.Base;
 using SAMStock.Database;
 
@@ -28,7 +29,9 @@ namespace SAMStock.DAL.Components.Create
 			};
 			Context.Components.Add(component);
 			Context.SaveChanges();
-			return new BO.Component(component);
+			var c = new BO.Component(component);
+			BO.Components.TriggerCreated(cmd, c);
+			return c;
 		}
 	}
 }

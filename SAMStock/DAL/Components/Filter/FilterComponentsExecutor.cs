@@ -9,7 +9,7 @@ using SAMStock.Utilities;
 
 namespace SAMStock.DAL.Components.Filter
 {
-	public class FilterComponentsExecutor: RequestExecutor<FilterComponentsRequest, FilterComponentsResponse>
+	public class FilterComponentsExecutor : RequestExecutor<FilterComponentsRequest, FilterComponentsResponse>
 	{
 		public FilterComponentsExecutor(IContext context) : base(context)
 		{
@@ -18,12 +18,12 @@ namespace SAMStock.DAL.Components.Filter
 		public override FilterComponentsResponse Execute(FilterComponentsRequest req)
 		{
 			IQueryable<Component> components = Context.Components;
-			req.Id.IfNotNull(x => components.FilterBy(y => y.Id == x));
-			req.PedalId.IfNotNull(x => components.FilterBy(y => y.ComponentsOfPedals.Any(z => z.PedalId == x)));
-			req.Shortage.IfNotNull(x => components.FilterBy(y => y.Stock < y.MinimumStock));
-			req.StockHigherThan.IfNotNull(x => components.FilterBy(y => y.Stock > x));
-			req.StockLowerThan.IfNotNull(x => components.FilterBy(y => y.Stock < x));
-			req.SupplierId.IfNotNull(x => components.FilterBy(y => y.SupplierId == x));
+			req.Id.IfNotNull(x => components = components.Where(y => y.Id == x));
+			req.PedalId.IfNotNull(x => components = components.Where(y => y.ComponentsOfPedals.Any(z => z.PedalId == x)));
+			req.Shortage.IfNotNull(x => components = components.Where(y => y.Stock < y.MinimumStock));
+			req.StockHigherThan.IfNotNull(x => components = components.Where(y => y.Stock > x));
+			req.StockLowerThan.IfNotNull(x => components = components.Where(y => y.Stock < x));
+			req.SupplierId.IfNotNull(x => components = components.Where(y => y.SupplierId == x));
 			return new FilterComponentsResponse(components);
 		}
 	}

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.BO.Base;
 using SAMStock.Database;
 
 namespace SAMStock.DAL.Base
 {
-	public abstract class BOCommandExecutor<TCommand, TBO>: IBOCommandExecutor<TCommand, TBO> where TCommand: IBOCommand<TBO> where TBO: BO.IBO
+	public abstract class BOCommandExecutor<TCommand, TBO>: IBOCommandExecutor<TCommand, TBO> where TCommand: IBOCommand<TBO> where TBO: IBO
 	{
 		protected readonly IContext Context;
 

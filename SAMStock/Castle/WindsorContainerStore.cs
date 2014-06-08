@@ -3,7 +3,7 @@ using Castle.Windsor.Installer;
 
 namespace SAMStock.Castle
 {
-    public static class WindsorContainerStore
+    internal abstract class WindsorContainerStore
     {
 	    private static IWindsorContainer _container;
         public static IWindsorContainer Container {

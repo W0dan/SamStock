@@ -6,7 +6,7 @@ using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Components.Create
 {
-	public class CreateComponentCommand: IBOCommand<BO.Component>
+	public class CreateComponentCommand: ICreateCommand<BO.Component>
 	{
 		public string Name { get; private set; }
 		public int MinimumStock { get; private set; }

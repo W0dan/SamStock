@@ -6,7 +6,7 @@ using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Suppliers.Create
 {
-	public class CreateSupplierCommand: IBOCommand<BO.Supplier>
+	public class CreateSupplierCommand: ICreateCommand<BO.Supplier>
 	{
 		public string Name { get; private set; }
 		public string Address { get; private set; }

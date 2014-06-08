@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.BO.Base;
 using SAMStock.DAL.Components.Filter;
 
 namespace SAMStock.BO
@@ -35,7 +36,7 @@ namespace SAMStock.BO
 				return Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest
 				{
 					SupplierId = Id
-				}).Components;
+				}).Items.ToList();
 			}
 		}
 	}

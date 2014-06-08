@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.BO;
 using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Components.Filter
 {
-	public class FilterComponentsRequest: IRequest
+	public class FilterComponentsRequest: IFilterRequest<Component>
 	{
 		public int? Id { get; set; }
 		public int? PedalId { get; set; }

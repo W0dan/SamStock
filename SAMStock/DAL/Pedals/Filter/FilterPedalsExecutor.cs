@@ -8,7 +8,7 @@ using SAMStock.Utilities;
 
 namespace SAMStock.DAL.Pedals.Filter
 {
-	public class FilterPedalsExecutor: RequestExecutor<FilterPedalsRequest, FilterPedalsResponse>
+	public class FilterPedalsExecutor : RequestExecutor<FilterPedalsRequest, FilterPedalsResponse>
 	{
 		public FilterPedalsExecutor(IContext context) : base(context)
 		{
@@ -17,8 +17,8 @@ namespace SAMStock.DAL.Pedals.Filter
 		public override FilterPedalsResponse Execute(FilterPedalsRequest req)
 		{
 			IQueryable<Pedal> pedals = Context.Pedals;
-			req.ComponentId.IfNotNull(x => pedals.FilterBy(y => y.ComponentsOfPedals.Any(z => z.ComponentId == x)));
-			req.Id.IfNotNull(x => pedals.FilterBy(y => y.Id == x));
+			req.ComponentId.IfNotNull(x => pedals = pedals.Where(y => y.ComponentsOfPedals.Any(z => z.ComponentId == x)));
+			req.Id.IfNotNull(x => pedals = pedals.Where(y => y.Id == x));
 			return new FilterPedalsResponse(pedals, Context.Config.Single().DefaultPedalProfitMargin);
 		}
 	}

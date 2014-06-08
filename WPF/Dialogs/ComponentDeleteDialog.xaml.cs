@@ -11,10 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SAMStock.BO;
 using SAMStock.Castle;
-using SAMStock.DAL.Component.DeleteComponent;
-using SAMStock.DAL.Component.DeleteComponent.Exceptions;
-using SAMStock.DAL.Component.FilterComponent;
+using SAMStock.DAL.Components.Delete;
 using SAMStock.Utilities;
 
 namespace SAMStock.wpf.Dialogs
@@ -24,13 +23,13 @@ namespace SAMStock.wpf.Dialogs
 	/// </summary>
 	public partial class ComponentDeleteDialog : Window
 	{
-		private readonly FilterComponentResponseComponent _item;
+		private readonly Component _component;
 
-		public ComponentDeleteDialog(FilterComponentResponseComponent item)
+		public ComponentDeleteDialog(Component component)
 		{
-			_item = item;
+			_component = component;
 			InitializeComponent();
-			Warning.Content = string.Format("Are you sure you want to delete {0} ({1})?", item.Name, item.ItemCode);
+			Warning.Content = string.Format("Are you sure you want to delete {0} ({1})?", component.Name, component.ItemCode);
 		}
 
 		private void CloseButton_OnClick(object sender, RoutedEventArgs e)
@@ -40,19 +39,11 @@ namespace SAMStock.wpf.Dialogs
 
 		private void OkButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			try
+			SAMStock.Dispatcher.Command<DeleteComponentCommand, Component>(new DeleteComponentCommand(_component.Id)
 			{
-				SAMStock.Dispatcher.Command(new DeleteComponentCommand
-				{
-					Id = _item.Id,
-					Cascade = CascadeCheckBox.IsChecked.HasValue && CascadeCheckBox.IsChecked.Value
-				});
-				Close();
-			}
-			catch (ComponentInUseException ex)
-			{
-				MessageBox.Show("Deletion failed: the following pedals rely on this component:\n" + string.Join("\n", ex.PedalNames.ToArray()));
-			}
+				Cascade = CascadeCheckBox.IsChecked.HasValue && CascadeCheckBox.IsChecked.Value
+			});
+			Close();
 		}
 	}
 }

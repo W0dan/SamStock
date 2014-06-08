@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.BO.Base;
 using SAMStock.DAL.Pedals.Filter;
 using SAMStock.DAL.Suppliers.Filter;
 
@@ -37,7 +38,7 @@ namespace SAMStock.BO
 			get { return Dispatcher.Request<FilterPedalsRequest, FilterPedalsResponse>(new FilterPedalsRequest
 			{
 				ComponentId = Id
-			}).Pedals; }
+			}).Items.ToList(); }
 		}
 
 		public Supplier Supplier
@@ -46,8 +47,8 @@ namespace SAMStock.BO
 			{
 				return Dispatcher.Request<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest
 				{
-					SupplierId = _supplierId
-				}).Suppliers.Single();
+					Id = _supplierId
+				}).Items.Single();
 			}
 		}
 	}

@@ -24,7 +24,9 @@ namespace SAMStock.DAL.Suppliers.Create
 			};
 			Context.Suppliers.Add(supplier);
 			Context.SaveChanges();
-			return new Supplier(supplier);
+			var s = new Supplier(supplier);
+			BO.Suppliers.TriggerCreated(cmd, s);
+			return s;
 		}
 	}
 }

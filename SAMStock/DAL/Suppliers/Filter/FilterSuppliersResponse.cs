@@ -7,13 +7,13 @@ using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Suppliers.Filter
 {
-	public class FilterSuppliersResponse: IResponse
+	public class FilterSuppliersResponse: IFilterResponse<Supplier>
 	{
-		public List<Supplier> Suppliers { get; private set; }
+		public IEnumerable<Supplier> Items { get; private set; }
 
 		public FilterSuppliersResponse(IEnumerable<Database.Supplier> suppliers)
 		{
-			Suppliers = suppliers.Select(x => new Supplier(x)).ToList();
+			Items = suppliers.Select(x => new Supplier(x));
 		}
 	}
 }

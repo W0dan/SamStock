@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.BO;
 using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Components.Delete
 {
-	public class DeleteComponentCommand: ICommand
+	public class DeleteComponentCommand: IDeleteCommand<Component>
 	{
 		public int Id { get; private set; }
 		public bool Cascade { get; set; }

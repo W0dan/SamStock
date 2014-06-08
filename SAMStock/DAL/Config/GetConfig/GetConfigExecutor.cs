@@ -7,7 +7,7 @@ using SAMStock.Database;
 
 namespace SAMStock.DAL.Config.GetConfig
 {
-	public class GetConfigExecutor: RequestExecutor<GetConfigRequest, GetConfigResponse>
+	public class GetConfigExecutor : RequestExecutor<GetConfigRequest, GetConfigResponse>
 	{
 		public GetConfigExecutor(IContext context) : base(context)
 		{
@@ -15,7 +15,14 @@ namespace SAMStock.DAL.Config.GetConfig
 
 		public override GetConfigResponse Execute(GetConfigRequest req)
 		{
-			return new GetConfigResponse(Context.Config.Single());
+			try
+			{
+				return new GetConfigResponse(Context.Config.Single());
+			}
+			catch (InvalidOperationException)
+			{
+				throw new InvalidOperationException("Configuration has not been set yet.");
+			}
 		}
 	}
 }

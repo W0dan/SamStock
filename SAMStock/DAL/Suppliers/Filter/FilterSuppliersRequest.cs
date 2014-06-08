@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SAMStock.BO;
 using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Suppliers.Filter
 {
-	public class FilterSuppliersRequest: IRequest
+	public class FilterSuppliersRequest: IFilterRequest<Supplier>
 	{
+		public int? Id { get; set; }
 		public int? ComponentId { get; set; }
-		public int? SupplierId { get; set; }
 	}
 }

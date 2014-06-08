@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAMStock.BO.Base;
 
 namespace SAMStock.DAL.Base
 {
-	public interface IBOCommand<TBO>: ICommand where TBO: BO.IBO
+	public interface IBOCommand<TBO> where TBO: IBO
 	{
 	}
 }

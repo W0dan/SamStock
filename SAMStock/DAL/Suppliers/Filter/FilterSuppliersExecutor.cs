@@ -9,7 +9,7 @@ using SAMStock.Utilities;
 
 namespace SAMStock.DAL.Suppliers.Filter
 {
-	public class FilterSuppliersExecutor: RequestExecutor<FilterSuppliersRequest, FilterSuppliersResponse>
+	public class FilterSuppliersExecutor : RequestExecutor<FilterSuppliersRequest, FilterSuppliersResponse>
 	{
 		public FilterSuppliersExecutor(IContext context) : base(context)
 		{
@@ -17,9 +17,9 @@ namespace SAMStock.DAL.Suppliers.Filter
 
 		public override FilterSuppliersResponse Execute(FilterSuppliersRequest req)
 		{
-			var suppliers = Context.Suppliers;
-			req.ComponentId.IfNotNull(x => suppliers.FilterBy(y => y.Components.Any(z => z.Id == x)));
-			req.SupplierId.IfNotNull(x => suppliers.FilterBy(y => y.Id == x));
+			IQueryable<Supplier> suppliers = Context.Suppliers;
+			req.ComponentId.IfNotNull(x => suppliers = suppliers.Where(y => y.Components.Any(z => z.Id == x)));
+			req.Id.IfNotNull(x => suppliers = suppliers.Where(y => y.Id == x));
 			return new FilterSuppliersResponse(suppliers);
 		}
 	}

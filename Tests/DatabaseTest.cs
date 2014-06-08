@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Linq;
 using System.Transactions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using SAMStock.Database;
 using SAMStock.Utilities;
 
 namespace Tests
 {
+	[TestClass]
     public abstract class DatabaseTest : BaseTest
     {
         private TransactionScope _transaction;
+        protected IContext Context { get; private set; }
 
-        public IContext Context { get; private set; }
-
-        [TestFixtureSetUp]
+        [TestInitialize]
         public override void Setup()
         {
             _transaction = TransactionScopeFactory.CreateTransactionScope();
@@ -33,14 +34,10 @@ namespace Tests
             }
         }
 
-        [TestFixtureTearDown]
+        [TestCleanup]
         public override void CleanUp()
         {
             _transaction.Dispose();
-
-            if (Context.Components.Any())
-                throw new Exception(string.Format("Test cleanup failed: {0} components still exist in the test db", Context.Components.Count()));
         }
-
     }
 }

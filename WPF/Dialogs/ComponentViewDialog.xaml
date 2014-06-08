@@ -1,10 +1,10 @@
 ﻿<Window x:Class="SAMStock.wpf.Dialogs.ComponentViewDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ComponentViewDialog">
-	<Window.Resources>
-		<CollectionViewSource x:Key="Suppliers" CollectionViewType="ListCollectionView"/>
-	</Window.Resources>
+        xmlns:dialogs="clr-namespace:SAMStock.wpf.Dialogs">
+	<Window.DataContext>
+		<dialogs:ComponentViewModel/>
+	</Window.DataContext>
     <Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"></RowDefinition>
@@ -29,31 +29,24 @@
 					<ColumnDefinition></ColumnDefinition>
 					<ColumnDefinition></ColumnDefinition>
 				</Grid.ColumnDefinitions>
-				<Label>Stocknr</Label>
+				<Label>Stocknumber</Label>
 				<TextBox Name="StocknrTextBox" Grid.Row="0" Grid.Column="1"></TextBox>
 				<Label Grid.Row="1" Grid.Column="0">Name</Label>
 				<TextBox Name="NameTextBox" Grid.Row="1" Grid.Column="1"></TextBox>
 				<Label Grid.Row="2" Grid.Column="0">Price</Label>
 				<TextBox Name="PriceTextBox" Grid.Row="2" Grid.Column="1"></TextBox>
-				<Label Grid.Row="3" Grid.Column="0">Minimumstock</Label>
+				<Label Grid.Row="3" Grid.Column="0">Minimum stock</Label>
 				<TextBox Name="MinimumStockTextBox" Grid.Row="3" Grid.Column="1"></TextBox>
-				<Label Grid.Row="4" Grid.Column="0">Quantity</Label>
-				<TextBox Name="QuantityTextBox" Grid.Row="4" Grid.Column="1"></TextBox>
-				<Label Grid.Row="5" Grid.Column="0">Remark</Label>
+				<Label Grid.Row="4" Grid.Column="0">Stock</Label>
+				<TextBox Name="QuantityTextBox" Grid.Row="4" Grid.Column="1">0</TextBox>
+				<Label Grid.Row="5" Grid.Column="0">Remarks</Label>
 				<TextBox Name="RemarkTextBox" Grid.Row="5" Grid.Column="1"></TextBox>
 				<Label Grid.Row="6" Grid.Column="0">Itemcode</Label>
 				<TextBox Name="ItemCodeTextBox" Grid.Row="6" Grid.Column="1"></TextBox>
 				<Label Grid.Row="7" Grid.Column="0">Supplier</Label>
-				<ComboBox Name="SupplierComboBox" Grid.Row="7" Grid.Column="1" DataContext="{StaticResource Suppliers}" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedValuePath="Id"></ComboBox>
+				<ComboBox Name="SupplierComboBox" Grid.Row="7" Grid.Column="1" ItemsSource="{Binding Suppliers}" DisplayMemberPath="Name" SelectedValuePath="Id"></ComboBox>
 			</Grid>
 		</GroupBox>
-		<Grid Grid.Row="1">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"></ColumnDefinition>
-				<ColumnDefinition Width="Auto"></ColumnDefinition>
-			</Grid.ColumnDefinitions>
-			<Button HorizontalAlignment="Right" Name="SaveButton" Click="SaveButton_OnClick">Save/update</Button>
-			<Button Grid.Column="1" Name="CloseButton" HorizontalAlignment="Right" Click="CloseButton_OnClick">Close</Button>
-		</Grid>
+		<Button Grid.Row="1" HorizontalAlignment="Right" Name="SaveButton" Click="SaveButton_OnClick" Content="{Binding SaveButtonText}"></Button>
 	</Grid>
 </Window>

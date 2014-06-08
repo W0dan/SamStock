@@ -5,15 +5,15 @@
         xmlns:userControls="clr-namespace:SAMStock.wpf.UserControls"
         Title="SAMStock">
     <Grid>
-		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-			<TabItem Header="Components">
-				<userControls:ComponentsTab></userControls:ComponentsTab>
+		<TabControl HorizontalAlignment="Stretch" Name="Tabs" VerticalAlignment="Stretch">
+			<TabItem Header="Components" Name="ComponentsTabItem">
+				<userControls:ComponentsTab x:Name="ComponentsTab"></userControls:ComponentsTab>
 			</TabItem>
-			<TabItem Header="Pedals">
-				<userControls:PedalsTab></userControls:PedalsTab>
+			<TabItem Header="Pedals" Name="PedalsTabItem">
+				<userControls:PedalsTab x:Name="PedalsTab"></userControls:PedalsTab>
 			</TabItem>
-			<TabItem Header="Settings">
-				<userControls:SettingsTab></userControls:SettingsTab>
+			<TabItem Header="Settings" Name="SettingsTabItem">
+				<userControls:SettingsTab x:Name="SettingsTab"></userControls:SettingsTab>
 			</TabItem>
 		</TabControl>
 	</Grid>

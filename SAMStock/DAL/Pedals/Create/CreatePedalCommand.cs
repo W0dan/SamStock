@@ -2,7 +2,7 @@
 
 namespace SAMStock.DAL.Pedals.Create
 {
-	public class CreatePedalCommand : IBOCommand<BO.Pedal>
+	public class CreatePedalCommand : ICreateCommand<BO.Pedal>
 	{
 		public string Name { get; private set; }
 		public decimal Price { get; private set; }

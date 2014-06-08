@@ -2,28 +2,23 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:userControls="clr-namespace:SAMStock.wpf.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-	<UserControl.Resources>
-		<CollectionViewSource x:Key="Pedals" CollectionViewType="ListCollectionView"/>
-	</UserControl.Resources>
+	<UserControl.DataContext>
+		<userControls:PedalsTabModel/>
+	</UserControl.DataContext>
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"></ColumnDefinition>
 			<ColumnDefinition Width="Auto"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
-		<DataGrid Name="PedalsDataGrid" DataContext="{StaticResource Pedals}" ItemsSource="{Binding}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
-			<DataGrid.RowHeaderStyle>
-				<Style TargetType="DataGridRowHeader">
-					<Setter Property="Content" Value="{Binding Id}"/>
-					<Setter Property="Width" Value="Auto"></Setter>
-				</Style>
-			</DataGrid.RowHeaderStyle>
+		<DataGrid Name="PedalsDataGrid" ItemsSource="{Binding Pedals}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Stocknr" Binding="{Binding Name}" Width="*"/>
 				<DataGridTextColumn Header="Name" Binding="{Binding Price}" Width="*"/>
-				<DataGridTextColumn Header="Price" Binding="{Binding Margin}" Width="*"/>
+				<DataGridTextColumn Header="Price" Binding="{Binding ProfitMargin}" Width="*"/>
 			</DataGrid.Columns>
 		</DataGrid>
 		<Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
@@ -35,7 +30,6 @@
 				<RowDefinition Height="Auto"></RowDefinition>
 				<RowDefinition Height="Auto"></RowDefinition>
 			</Grid.RowDefinitions>
-			<Button Name="PedalsRefreshButton" Click="PedalsRefreshButton_OnClick">Refresh</Button>
 			<Button Grid.Row="1" Name="PedalsNewButton" Click="PedalsNewButton_OnClick">New...</Button>
 			<Button Grid.Row="2" Name="PedalsEditButton" Click="PedalsEditButton_OnClick">Edit...</Button>
 			<Button Grid.Row="3" Name="PedalsDeleteButton" Click="PedalsDeleteButton_OnClick">Delete</Button>
