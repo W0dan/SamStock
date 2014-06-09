@@ -10,7 +10,7 @@ using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.UserControls
 {
-	public partial class ComponentsTab : ISAMStockUserControl
+	public partial class ComponentsTab : IInventoryListControl
 	{
 		private readonly ComponentsTabModel _model;
 
@@ -72,18 +72,6 @@ namespace SAMStock.wpf.UserControls
 			{
 				MessageBox.Show("No component selected");
 			}
-		}
-
-		private void TestButton_OnClick(object sender, RoutedEventArgs e)
-		{
-			var dlg = new BaseWindow(new Label()
-			{
-				Content = "abc"
-			})
-			{
-				Owner = Application.Current.MainWindow
-			};
-			dlg.Show();
 		}
 	}
 }

@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml">
@@ -57,9 +58,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Base\BaseModel.cs" />
-    <Compile Include="Dialogs\Base\BaseWindow.xaml.cs">
-      <DependentUpon>BaseWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Dialogs\Base\BaseDialog.cs" />
+    <Compile Include="Dialogs\Base\BaseWindow.cs" />
     <Compile Include="Dialogs\ComponentViewDialog.xaml.cs">
       <DependentUpon>ComponentViewDialog.xaml</DependentUpon>
     </Compile>
@@ -87,7 +87,7 @@
     <Compile Include="Exceptions\IllegalInputException.cs" />
     <Compile Include="Exceptions\NumberFormatException.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="UserControls\Base\ISAMStockUserControl.cs" />
+    <Compile Include="UserControls\Base\IInventoryListControl.cs" />
     <Compile Include="UserControls\ComponentsTab.xaml.cs">
       <DependentUpon>ComponentsTab.xaml</DependentUpon>
     </Compile>
@@ -101,10 +101,6 @@
     </Compile>
     <Compile Include="Utilities\Enviromment.cs" />
     <Compile Include="Utilities\MiscExtensions.cs" />
-    <Page Include="Dialogs\Base\BaseWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Dialogs\ComponentViewDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

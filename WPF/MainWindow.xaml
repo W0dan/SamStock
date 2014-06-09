@@ -1,8 +1,8 @@
-﻿<Window x:Class="SAMStock.wpf.MainWindow"
+﻿<base:BaseWindow x:Class="SAMStock.wpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:p="clr-namespace:SAMStock.wpf.Properties"
         xmlns:userControls="clr-namespace:SAMStock.wpf.UserControls"
+        xmlns:base="clr-namespace:SAMStock.wpf.Dialogs.Base"
         Title="SAMStock">
     <Grid>
 		<TabControl HorizontalAlignment="Stretch" Name="Tabs" VerticalAlignment="Stretch">
@@ -17,4 +17,4 @@
 			</TabItem>
 		</TabControl>
 	</Grid>
-</Window>
+</base:BaseWindow>

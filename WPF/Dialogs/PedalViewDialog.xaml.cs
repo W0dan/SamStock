@@ -8,7 +8,7 @@ using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.Dialogs
 {
-	public partial class PedalViewDialog : Window
+	public partial class PedalViewDialog
 	{
 		private readonly bool _editMode = false;
 		private readonly Pedal _pedal;
@@ -77,7 +77,7 @@ namespace SAMStock.wpf.Dialogs
 
 		private void CloseButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			Close();
+			Window.Close();
 		}
 	}
 }

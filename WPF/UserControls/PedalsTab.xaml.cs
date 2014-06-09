@@ -3,12 +3,13 @@ using System.Windows;
 using SAMStock.BO;
 using SAMStock.DAL.Pedals.Filter;
 using SAMStock.wpf.Dialogs;
+using SAMStock.wpf.Dialogs.Base;
 using SAMStock.wpf.UserControls.Base;
 using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.UserControls
 {
-	public partial class PedalsTab : ISAMStockUserControl
+	public partial class PedalsTab : IInventoryListControl
 	{
 		private readonly PedalsTabModel _model;
 
@@ -34,7 +35,7 @@ namespace SAMStock.wpf.UserControls
 
 		private void PedalsNewButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			Window dialog = new PedalViewDialog
+			Window dialog = new BaseWindow(new PedalViewDialog())
 			{
 				Owner = Application.Current.MainWindow
 			};
@@ -45,8 +46,10 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				Window dialog = new PedalViewDialog((Pedal)PedalsDataGrid.SelectedItem);
-				dialog.Owner = Application.Current.MainWindow;
+				var dialog = new BaseWindow(new PedalViewDialog((Pedal) PedalsDataGrid.SelectedItem))
+				{
+					Owner = Application.Current.MainWindow
+				};
 				dialog.Show();
 			}
 			else

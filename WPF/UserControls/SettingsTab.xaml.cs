@@ -5,7 +5,7 @@ using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.UserControls
 {
-	public partial class SettingsTab : ISAMStockUserControl
+	public partial class SettingsTab : IInventoryListControl
 	{
 		public SettingsTab()
 		{

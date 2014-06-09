@@ -1,7 +1,7 @@
-﻿<Window x:Class="SAMStock.wpf.Dialogs.PedalViewDialog"
+﻿<base:BaseDialog x:Class="SAMStock.wpf.Dialogs.PedalViewDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PedalViewDialog" Height="300" Width="300">
+        xmlns:base="clr-namespace:SAMStock.wpf.Dialogs.Base">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
@@ -38,4 +38,4 @@
 			<Button Grid.Column="1" Name="CloseButton" HorizontalAlignment="Right" Click="CloseButton_OnClick">Close</Button>
 		</Grid>
 	</Grid>
-</Window>
+</base:BaseDialog>

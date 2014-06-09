@@ -2,7 +2,7 @@
 
 namespace SAMStock.wpf
 {
-	public partial class MainWindow : Window
+	public partial class MainWindow
 	{
 		public MainWindow()
 		{

@@ -8,7 +8,7 @@ namespace SAMStock.wpf
 	{
 		public App()
 		{
-			// DispatcherUnhandledException += OnError;
+			DispatcherUnhandledException += OnError;
 		}
 
 		void OnError(object sender, DispatcherUnhandledExceptionEventArgs exception)
