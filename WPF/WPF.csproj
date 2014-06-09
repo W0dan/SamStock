@@ -57,6 +57,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Base\BaseModel.cs" />
+    <Compile Include="Dialogs\Base\BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\ComponentViewDialog.xaml.cs">
       <DependentUpon>ComponentViewDialog.xaml</DependentUpon>
     </Compile>
@@ -64,8 +67,13 @@
       <DependentUpon>ComponentDeleteDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\ComponentViewModel.cs" />
-    <Compile Include="Dialogs\PedalComponentsModifyDialog.xaml.cs">
-      <DependentUpon>PedalComponentsModifyDialog.xaml</DependentUpon>
+    <Compile Include="Dialogs\PedalComponentAddDialog.xaml.cs">
+      <DependentUpon>PedalComponentAddDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PedalComponentAddModel.cs" />
+    <Compile Include="Dialogs\PedalComponentsViewModel.cs" />
+    <Compile Include="Dialogs\PedalComponentUpdateDialog.xaml.cs">
+      <DependentUpon>PedalComponentUpdateDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\PedalDeleteDialog.xaml.cs">
       <DependentUpon>PedalDeleteDialog.xaml</DependentUpon>
@@ -93,6 +101,10 @@
     </Compile>
     <Compile Include="Utilities\Enviromment.cs" />
     <Compile Include="Utilities\MiscExtensions.cs" />
+    <Page Include="Dialogs\Base\BaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\ComponentViewDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,7 +113,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\PedalComponentsModifyDialog.xaml">
+    <Page Include="Dialogs\PedalComponentAddDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\PedalComponentUpdateDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using SAMStock.BO;
 using SAMStock.DAL.Components.Filter;
 using SAMStock.wpf.Dialogs;
+using SAMStock.wpf.Dialogs.Base;
 using SAMStock.wpf.UserControls.Base;
 using SAMStock.wpf.Utilities;
 
@@ -70,6 +72,18 @@ namespace SAMStock.wpf.UserControls
 			{
 				MessageBox.Show("No component selected");
 			}
+		}
+
+		private void TestButton_OnClick(object sender, RoutedEventArgs e)
+		{
+			var dlg = new BaseWindow(new Label()
+			{
+				Content = "abc"
+			})
+			{
+				Owner = Application.Current.MainWindow
+			};
+			dlg.Show();
 		}
 	}
 }

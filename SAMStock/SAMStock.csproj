@@ -52,8 +52,12 @@
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.DomainServices.Hosting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ServiceModel.DomainServices.Server, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +128,10 @@
     <Compile Include="DAL\Pedals\Delete\DeletePedalCommand.cs" />
     <Compile Include="DAL\Pedals\Delete\DeletePedalExecutor.cs" />
     <Compile Include="DAL\Pedals\Delete\DeletePedalHandler.cs" />
+    <Compile Include="DAL\Pedals\FilterComponents\FilterComponentsExecutor.cs" />
+    <Compile Include="DAL\Pedals\FilterComponents\FilterComponentsHandler.cs" />
+    <Compile Include="DAL\Pedals\FilterComponents\FilterComponentsRequest.cs" />
+    <Compile Include="DAL\Pedals\FilterComponents\FilterComponentsResponse.cs" />
     <Compile Include="DAL\Pedals\Filter\FilterPedalsExecutor.cs" />
     <Compile Include="DAL\Pedals\Filter\FilterPedalsHandler.cs" />
     <Compile Include="DAL\Pedals\Filter\FilterPedalsRequest.cs" />

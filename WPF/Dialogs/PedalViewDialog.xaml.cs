@@ -8,9 +8,6 @@ using SAMStock.wpf.Utilities;
 
 namespace SAMStock.wpf.Dialogs
 {
-	/// <summary>
-	/// Interaction logic for PedalViewDialog.xaml
-	/// </summary>
 	public partial class PedalViewDialog : Window
 	{
 		private readonly bool _editMode = false;
@@ -24,9 +21,8 @@ namespace SAMStock.wpf.Dialogs
 		{
 			_editMode = true;
 			_pedal = pedal;
-
 			NameTextBox.Text = _pedal.Name;
-			PriceTextBox.Text = _pedal.Price.ToString(CultureInfo.InvariantCulture);
+			PriceTextBox.Text = _pedal.Price.ToString();
 			MarginTextBox.Text = _pedal.ProfitMargin.ToString();
 		}
 

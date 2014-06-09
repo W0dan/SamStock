@@ -4,9 +4,6 @@ using SAMStock.DAL.Components.Delete;
 
 namespace SAMStock.wpf.Dialogs
 {
-	/// <summary>
-	/// Interaction logic for ComponentDeleteDialog.xaml
-	/// </summary>
 	public partial class ComponentDeleteDialog : Window
 	{
 		private readonly Component _component;

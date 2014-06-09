@@ -86,5 +86,12 @@ namespace SAMStock.Utilities
 		{
 			return string.Join(glue, list.Select(s => s.ToString()));
 		}
+
+		public static TValue GetValue<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key)
+		{
+			TValue val;
+			dictionary.TryGetValue(key, out val);
+			return val;
+		}
 	}
 }

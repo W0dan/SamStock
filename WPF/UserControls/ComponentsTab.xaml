@@ -14,12 +14,6 @@
 			<ColumnDefinition Width="Auto" />
 		</Grid.ColumnDefinitions>
 		<DataGrid Name="ComponentsDataGrid" ItemsSource="{Binding Components}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
-			<!-- <DataGrid.RowHeaderStyle>
-				<Style TargetType="DataGridRowHeader">
-					<Setter Property="Content" Value="{Binding Id}"/>
-					<Setter Property="Width" Value="Auto"></Setter>
-				</Style>
-			</DataGrid.RowHeaderStyle> -->
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Stocknr" Binding="{Binding StockNumber}" Width="Auto"/>
 				<DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
@@ -39,6 +33,7 @@
 			<Button Grid.Row="1" Name="ComponentsNewButton" Click="ComponentsNewButton_OnClick">New...</Button>
 			<Button Grid.Row="2" Name="ComponentsEditButton" Click="ComponentsEditButton_OnClick">Edit...</Button>
 			<Button Grid.Row="3" Name="ComponentsDeleteButton" Click="ComponentsDeleteButton_OnClick">Delete</Button>
+			<Button Grid.Row="0" Name="TestButton" Click="TestButton_OnClick">Test</Button>
 		</Grid>
 	</Grid>
 </UserControl>
