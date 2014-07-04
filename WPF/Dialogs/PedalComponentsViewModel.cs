@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SAMStock.BO;
-using SAMStock.wpf.Base;
+using WPF.Base;
 
-namespace SAMStock.wpf.Dialogs
+namespace WPF.Dialogs
 {
 	public class PedalComponentsViewModel: BaseModel
 	{
-		private ObservableCollection<Component> _components = new ObservableCollection<Component>();
+		private Dictionary<Component, int> _components = new Dictionary<Component, int>();
 
-		public ObservableCollection<Component> Components
+		public Dictionary<Component, int> Components
 		{
 			get { return _components; }
 			set

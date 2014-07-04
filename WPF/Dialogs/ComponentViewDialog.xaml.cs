@@ -5,12 +5,12 @@ using SAMStock.BO;
 using SAMStock.DAL.Components.Create;
 using SAMStock.DAL.Components.Update;
 using SAMStock.DAL.Suppliers.Filter;
-using SAMStock.wpf.Exceptions;
-using SAMStock.wpf.Utilities;
+using WPF.Utilities;
+using WPF.Exceptions;
 
-namespace SAMStock.wpf.Dialogs
+namespace WPF.Dialogs
 {
-	public partial class ComponentViewDialog : Window
+	public partial class ComponentViewDialog
 	{
 		private readonly bool _editMode = false;
 		private readonly Component _comp;

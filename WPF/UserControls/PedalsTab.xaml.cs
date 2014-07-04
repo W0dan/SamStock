@@ -1,13 +1,15 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using SAMStock.BO;
+using SAMStock.DAL.Pedals.Delete;
 using SAMStock.DAL.Pedals.Filter;
-using SAMStock.wpf.Dialogs;
-using SAMStock.wpf.Dialogs.Base;
-using SAMStock.wpf.UserControls.Base;
-using SAMStock.wpf.Utilities;
+using WPF.Dialogs;
+using WPF.Dialogs.Base;
+using WPF.UserControls.Base;
+using WPF.Utilities;
 
-namespace SAMStock.wpf.UserControls
+namespace WPF.UserControls
 {
 	public partial class PedalsTab : IInventoryListControl
 	{
@@ -62,11 +64,11 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (PedalsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new PedalDeleteDialog((Pedal)PedalsDataGrid.SelectedItem)
-				{
-					Owner = Application.Current.MainWindow
-				};
-				dlg.Show();
+			    var pedal = (Pedal) PedalsDataGrid.SelectedItem;
+			    if (MessageBox.Show(Application.Current.MainWindow, String.Format("Are you sure you want to delete {0}?", pedal.Name), "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes)
+			    {
+				    SAMStock.Dispatcher.Command<DeletePedalCommand, Pedal>(new DeletePedalCommand(pedal.Id));
+			    }
 			}
 			else
 			{

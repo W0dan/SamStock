@@ -17,6 +17,8 @@ namespace SAMStock.Database
         public Component()
         {
             this.ComponentsOfPedals = new HashSet<ComponentsOfPedals>();
+            this.ComponentsOfComponentOrders = new HashSet<ComponentsOfComponentOrder>();
+            this.ComponentsOfComponentOrderDeliveries = new HashSet<ComponentsOfComponentOrderDelivery>();
         }
     
         public int Id { get; set; }
@@ -31,5 +33,7 @@ namespace SAMStock.Database
     
         public virtual Supplier Supplier { get; set; }
         public virtual ICollection<ComponentsOfPedals> ComponentsOfPedals { get; set; }
+        public virtual ICollection<ComponentsOfComponentOrder> ComponentsOfComponentOrders { get; set; }
+        public virtual ICollection<ComponentsOfComponentOrderDelivery> ComponentsOfComponentOrderDeliveries { get; set; }
     }
 }

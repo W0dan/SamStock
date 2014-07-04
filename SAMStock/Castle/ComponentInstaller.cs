@@ -1,6 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using SAMStock.BO.Base;
 using SAMStock.DAL.Base;
 using SAMStock.Database;
 using Cmp = Castle.MicroKernel.Registration.Component;

@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using SAMStock.BO;
-using SAMStock.wpf.Base;
+using WPF.Base;
 
-namespace SAMStock.wpf.UserControls
+namespace WPF.UserControls
 {
 	public class PedalsTabModel: BaseModel
 	{

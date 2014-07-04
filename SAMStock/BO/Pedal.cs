@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using SAMStock.BO.Base;
-using SAMStock.DAL.Components.Filter;
+using SAMStock.DAL.Pedals.FilterComponents;
 
 namespace SAMStock.BO
 {
@@ -20,12 +22,38 @@ namespace SAMStock.BO
 			ProfitMargin = pedal.ProfitMargin?? defaultprofitmargin;
 		}
 
-		public List<Component> Components
+		public Dictionary<Component, int> Components
 		{
-			get { return Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest
+			get
 			{
-				PedalId = Id
-			}).Items.ToList(); }
+				return Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest
+				{
+					PedalId = Id
+				}).Components;
+			}
+		}
+
+		public int VirtualStock
+		{
+			get { return CalculateVirtualStock(); }
+		}
+
+		private int CalculateVirtualStock()
+		{
+			var allcomponents = Dispatcher.Request<DAL.Components.Filter.FilterComponentsRequest, DAL.Components.Filter.FilterComponentsResponse>(new DAL.Components.Filter.FilterComponentsRequest()).Items;
+			var max = (int?)null;
+			foreach (var component in Components)
+			{
+				if (max.HasValue)
+				{
+					max = Math.Min(max.Value, (int)Math.Floor((double) allcomponents.Single(x => x.Id == component.Key.Id).Stock / component.Value));
+				}
+				else
+				{
+					max = (int)Math.Floor((double) allcomponents.Single(x => x.Id == component.Key.Id).Stock / component.Value);
+				}
+			}
+			return max ?? 0;
 		}
 	}
 }

@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using SAMStock.BO;
-using SAMStock.wpf.Base;
+using WPF.Base;
 
-namespace SAMStock.wpf.Dialogs
+namespace WPF.Dialogs
 {
 	public class ComponentViewModel : BaseModel
 	{

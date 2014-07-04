@@ -5,7 +5,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace SAMStock.wpf.Dialogs.Base
+namespace WPF.Dialogs.Base
 {
 	public class BaseWindow: Window
 	{

@@ -3,7 +3,7 @@ using SAMStock.DAL.Base;
 
 namespace SAMStock.BO.Base
 {
-	public abstract class BOManager<TBO> where TBO: IBO
+	public abstract class BOManager<TBO>: IBOManager<TBO> where TBO: IBO
 	{
 		public static event EventHandler<BOCreatedEvent<TBO>> Created;
 		public static event EventHandler<BOUpdatedEvent<TBO>> Updated;

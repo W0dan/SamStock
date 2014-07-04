@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SAMStock.BO;
-using SAMStock.wpf.Base;
+using WPF.Base;
 
-namespace SAMStock.wpf.Dialogs
+namespace WPF.Dialogs
 {
 	public class PedalComponentAddModel: BaseModel
 	{

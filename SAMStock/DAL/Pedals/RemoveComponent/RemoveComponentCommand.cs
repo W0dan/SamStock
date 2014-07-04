@@ -1,8 +1,9 @@
-﻿using SAMStock.DAL.Base;
+﻿using SAMStock.BO;
+using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Pedals.RemoveComponent
 {
-	public class RemoveComponentCommand: ICommand
+	public class RemoveComponentCommand: ICommand, IUpdateCommand<Pedal>
 	{
 		public int ComponentId { get; private set; }
 		public int PedalId { get; private set; }

@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using SAMStock.BO;
 using SAMStock.DAL.Components.Filter;
 using SAMStock.DAL.Pedals.RemoveComponent;
-using SAMStock.wpf.Utilities;
+using WPF.Utilities;
 
-namespace SAMStock.wpf.Dialogs
+namespace WPF.Dialogs
 {
 	public partial class PedalComponentsViewDialog : Window
 	{
@@ -18,9 +20,15 @@ namespace SAMStock.wpf.Dialogs
 			InitializeComponent();
 			if (!Enviromment.IsInDesignTime)
 			{
-				var model = (PedalComponentsViewModel)DataContext;
-				_pedal.Components.ForEach(x => model.Components.Add(x));
+				Refresh();
+				Pedals.Updated += (x,y) => Refresh();
 			}
+		}
+
+		public void Refresh()
+		{
+			var model = (PedalComponentsViewModel)DataContext;
+			model.Components = _pedal.Components;
 		}
 
 		private void AddButton_OnClick(object sender, RoutedEventArgs e)
@@ -36,7 +44,8 @@ namespace SAMStock.wpf.Dialogs
 		{
 			if (ComponentsDataGrid.SelectedIndex != -1)
 			{
-				var dlg = new PedalComponentUpdateDialog(_pedal, (Component)ComponentsDataGrid.SelectedItem)
+				var pair = (KeyValuePair<Component, int>) ComponentsDataGrid.SelectedItem;
+				var dlg = new PedalComponentUpdateDialog(_pedal, pair.Key, pair.Value)
 				{
 					Owner = Application.Current.MainWindow
 				};

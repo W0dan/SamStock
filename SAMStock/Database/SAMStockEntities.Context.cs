@@ -30,5 +30,9 @@ namespace SAMStock.Database
         public DbSet<Config> Config { get; set; }
         public DbSet<Pedal> Pedals { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<ComponentOrder> ComponentOrders { get; set; }
+        public DbSet<ComponentsOfComponentOrder> ComponentsOfComponentOrders { get; set; }
+        public DbSet<ComponentOrderDelivery> ComponentOrderDeliveries { get; set; }
+        public DbSet<ComponentsOfComponentOrderDelivery> ComponentsOfComponentOrderDeliveries { get; set; }
     }
 }

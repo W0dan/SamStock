@@ -12,11 +12,12 @@ namespace SAMStock
 	public class Dispatcher
 	{
 		private static IWindsorContainer _windsorContainer;
-
 		private static IWindsorContainer Container
 		{
 			get { return _windsorContainer ?? (_windsorContainer = WindsorContainerStore.Container); }
 		}
+
+		public static event EventHandler<CommandExecuted> CommandExecuted;
 
 		public static TResponse Request<TRequest, TResponse>(TRequest request) where TRequest : IRequest where TResponse : IResponse
 		{
@@ -51,6 +52,10 @@ namespace SAMStock
 					{
 						r = handler.Handle(command);
 						tran.Complete();
+						if (CommandExecuted != null)
+						{
+							CommandExecuted(command, new CommandExecuted(command));
+						}
 					}
 				}
 				finally

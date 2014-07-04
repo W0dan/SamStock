@@ -1,7 +1,7 @@
-﻿<Window x:Class="SAMStock.wpf.Dialogs.PedalComponentAddDialog"
+﻿<Window x:Class="WPF.Dialogs.PedalComponentAddDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:dialogs="clr-namespace:SAMStock.wpf.Dialogs">
+        xmlns:dialogs="clr-namespace:WPF.Dialogs">
 		<Window.DataContext>
 			<dialogs:PedalComponentAddModel/>
 		</Window.DataContext>

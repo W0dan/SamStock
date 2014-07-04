@@ -1,14 +1,16 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using SAMStock.BO;
+using SAMStock.DAL.Components.Delete;
 using SAMStock.DAL.Components.Filter;
-using SAMStock.wpf.Dialogs;
-using SAMStock.wpf.Dialogs.Base;
-using SAMStock.wpf.UserControls.Base;
-using SAMStock.wpf.Utilities;
+using WPF.Dialogs.Base;
+using WPF.Dialogs;
+using WPF.UserControls.Base;
+using WPF.Utilities;
 
-namespace SAMStock.wpf.UserControls
+namespace WPF.UserControls
 {
 	public partial class ComponentsTab : IInventoryListControl
 	{
@@ -62,11 +64,11 @@ namespace SAMStock.wpf.UserControls
 		{
 			if (ComponentsDataGrid.SelectedIndex > -1)
 			{
-				var dlg = new ComponentDeleteDialog((Component)ComponentsDataGrid.SelectedItem)
+				var component = (Component) ComponentsDataGrid.SelectedItem;
+				if (MessageBox.Show(Application.Current.MainWindow, String.Format("Are you sure you want to delete {0}?", component.Name), "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes)
 				{
-					Owner = Application.Current.MainWindow
-				};
-				dlg.Show();
+					SAMStock.Dispatcher.Command<DeleteComponentCommand, Component>(new DeleteComponentCommand(component.Id));
+				}
 			}
 			else
 			{

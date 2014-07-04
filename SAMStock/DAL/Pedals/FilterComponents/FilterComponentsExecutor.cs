@@ -18,6 +18,7 @@ namespace SAMStock.DAL.Pedals.FilterComponents
 		{
 			IQueryable<ComponentsOfPedals> cop = Context.ComponentsOfPedals;
 			req.PedalId.IfNotNull(x => cop = cop.Where(y => y.PedalId == x));
+			req.ComponentId.IfNotNull(x => cop = cop.Where(y => y.ComponentId == x));
 			return new FilterComponentsResponse(cop);
 		}
 	}

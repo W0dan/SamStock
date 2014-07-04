@@ -7,8 +7,8 @@
     <ProjectGuid>{85CB9453-7454-4437-A1E0-2A04F80933D6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SAMStock.wpf</RootNamespace>
-    <AssemblyName>SAMStock.wpf</AssemblyName>
+    <RootNamespace>WPF</RootNamespace>
+    <AssemblyName>WPF</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,9 +63,6 @@
     <Compile Include="Dialogs\ComponentViewDialog.xaml.cs">
       <DependentUpon>ComponentViewDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\ComponentDeleteDialog.xaml.cs">
-      <DependentUpon>ComponentDeleteDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\ComponentViewModel.cs" />
     <Compile Include="Dialogs\PedalComponentAddDialog.xaml.cs">
       <DependentUpon>PedalComponentAddDialog.xaml</DependentUpon>
@@ -75,14 +72,14 @@
     <Compile Include="Dialogs\PedalComponentUpdateDialog.xaml.cs">
       <DependentUpon>PedalComponentUpdateDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\PedalDeleteDialog.xaml.cs">
-      <DependentUpon>PedalDeleteDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\PedalComponentsViewDialog.xaml.cs">
       <DependentUpon>PedalComponentsViewDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\PedalViewDialog.xaml.cs">
       <DependentUpon>PedalViewDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SupplierViewDialog.xaml.cs">
+      <DependentUpon>SupplierViewDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Exceptions\IllegalInputException.cs" />
     <Compile Include="Exceptions\NumberFormatException.cs" />
@@ -99,13 +96,13 @@
     <Compile Include="UserControls\SettingsTab.xaml.cs">
       <DependentUpon>SettingsTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SuppliersTab.xaml.cs">
+      <DependentUpon>SuppliersTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SuppliersTabModel.cs" />
     <Compile Include="Utilities\Enviromment.cs" />
     <Compile Include="Utilities\MiscExtensions.cs" />
     <Page Include="Dialogs\ComponentViewDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\ComponentDeleteDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,15 +114,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\PedalDeleteDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Dialogs\PedalComponentsViewDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\PedalViewDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\SupplierViewDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SettingsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SuppliersTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

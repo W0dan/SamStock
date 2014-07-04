@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
-using SAMStock.wpf.Exceptions;
+using WPF.Exceptions;
 
-namespace SAMStock.wpf.Utilities
+namespace WPF.Utilities
 {
 	public static class MiscExtensions
 	{

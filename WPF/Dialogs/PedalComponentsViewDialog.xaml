@@ -1,8 +1,8 @@
-﻿<Window x:Class="SAMStock.wpf.Dialogs.PedalComponentsViewDialog"
+﻿<Window x:Class="WPF.Dialogs.PedalComponentsViewDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="PedalComponentsViewDialog"
-		xmlns:dialogs="clr-namespace:SAMStock.wpf.Dialogs">
+		xmlns:dialogs="clr-namespace:WPF.Dialogs">
 	<Window.DataContext>
 		<dialogs:PedalComponentsViewModel />
 	</Window.DataContext>
@@ -13,9 +13,9 @@
 		</Grid.ColumnDefinitions>
 		<DataGrid Grid.Column="0"  Name="ComponentsDataGrid" ItemsSource="{Binding Components}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Quantity" Binding="{Binding Stock}" Width="Auto" />
-				<DataGridTextColumn Header="Stocknr" Binding="{Binding StockNumber}" Width="Auto" />
-				<DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+				<DataGridTextColumn Header="Quantity" Binding="{Binding Value}" Width="Auto" />
+				<DataGridTextColumn Header="Stocknr" Binding="{Binding Key.StockNumber}" Width="Auto" />
+				<DataGridTextColumn Header="Name" Binding="{Binding Key.Name}" Width="*" />
 			</DataGrid.Columns>
 		</DataGrid>
 		<Grid Grid.Column="1" VerticalAlignment="Center">

@@ -66,6 +66,11 @@
     <Compile Include="BO\Base\BOCreatedEvent.cs" />
     <Compile Include="BO\Base\BODeletedEvent.cs" />
     <Compile Include="BO\Base\BOUpdatedEvent.cs" />
+    <Compile Include="BO\Base\IBOManager.cs" />
+    <Compile Include="BO\ComponentOrder.cs" />
+    <Compile Include="BO\ComponentOrderComponent.cs" />
+    <Compile Include="BO\ComponentOrderDelivery.cs" />
+    <Compile Include="BO\ComponentOrderDeliveryComponent.cs" />
     <Compile Include="BO\Components.cs" />
     <Compile Include="BO\Component.cs" />
     <Compile Include="BO\Config.cs" />
@@ -75,6 +80,7 @@
     <Compile Include="BO\Suppliers.cs" />
     <Compile Include="Castle\ComponentInstaller.cs" />
     <Compile Include="Castle\WindsorContainerStore.cs" />
+    <Compile Include="CommandExecuted.cs" />
     <Compile Include="DAL\Base\BOCommandExecutor.cs" />
     <Compile Include="DAL\Base\BOCommandHandler.cs" />
     <Compile Include="DAL\Base\CommandExecutor.cs" />
@@ -141,6 +147,7 @@
     <Compile Include="DAL\Pedals\RemoveComponent\RemoveComponentHandler.cs" />
     <Compile Include="DAL\Pedals\UpdateComponent\UpdateComponentCommand.cs" />
     <Compile Include="DAL\Pedals\UpdateComponent\UpdateComponentExecutor.cs" />
+    <Compile Include="DAL\Pedals\UpdateComponent\UpdateComponentHandler.cs" />
     <Compile Include="DAL\Pedals\Update\UpdatePedalCommand.cs" />
     <Compile Include="DAL\Pedals\Update\UpdatePedalExecutor.cs" />
     <Compile Include="DAL\Pedals\Update\UpdatePedalHandler.cs" />
@@ -158,6 +165,18 @@
     <Compile Include="DAL\Suppliers\Update\UpdateSupplierExecutor.cs" />
     <Compile Include="DAL\Suppliers\Update\UpdateSupplierHandler.cs" />
     <Compile Include="Database\Component.cs">
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ComponentOrder.cs">
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ComponentOrderDelivery.cs">
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ComponentsOfComponentOrder.cs">
+      <DependentUpon>SAMStockEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ComponentsOfComponentOrderDelivery.cs">
       <DependentUpon>SAMStockEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\ComponentsOfPedals.cs">
@@ -238,7 +257,24 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Database\SAMStockEntities.edmx.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAL\ComponentOrderDeliveries\AddComponent\" />
+    <Folder Include="DAL\ComponentOrderDeliveries\Create\" />
+    <Folder Include="DAL\ComponentOrderDeliveries\FilterComponents\" />
+    <Folder Include="DAL\ComponentOrderDeliveries\Filter\" />
+    <Folder Include="DAL\ComponentOrderDeliveries\Update\" />
+    <Folder Include="DAL\ComponentOrders\AddComponent\" />
+    <Folder Include="DAL\ComponentOrders\Create\" />
+    <Folder Include="DAL\ComponentOrders\Delete\" />
+    <Folder Include="DAL\ComponentOrders\FilterComponents\" />
+    <Folder Include="DAL\ComponentOrders\Filter\" />
+    <Folder Include="DAL\ComponentOrders\RemoveComponent\" />
+    <Folder Include="DAL\ComponentOrders\UpdateComponent\" />
+    <Folder Include="DAL\ComponentOrders\Update\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

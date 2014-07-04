@@ -2,5 +2,6 @@
 {
 	public interface IBO
 	{
+        int Id { get; }
 	}
 }

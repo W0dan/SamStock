@@ -1,10 +1,16 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
-using SAMStock.wpf.Annotations;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using WPF.Annotations;
 
-namespace SAMStock.wpf.Base
+namespace WPF.Base
 {
-	public class BaseModel: INotifyPropertyChanged
+    public class BaseModel: INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 

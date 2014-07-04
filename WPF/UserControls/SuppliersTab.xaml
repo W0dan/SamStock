@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="WPF.UserControls.SuppliersTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:userControls="clr-namespace:WPF.UserControls"
+             mc:Ignorable="d" >
+    <UserControl.DataContext>
+        <userControls:SuppliersTabModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="SuppliersDataGrid" ItemsSource="{Binding Suppliers}" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Website" Binding="{Binding Website}" Width="*"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Name="SuppliersNewButton" Click="SuppliersNewButton_OnClick">New...</Button>
+            <Button Grid.Row="1" Name="SuppliersEditButton" Click="SuppliersEditButton_OnClick">Edit...</Button>
+            <Button Grid.Row="2" Name="SuppliersDeleteButton" Click="SuppliersDeleteButton_OnClick">Delete</Button>
+        </Grid>
+    </Grid>
+</UserControl>
+

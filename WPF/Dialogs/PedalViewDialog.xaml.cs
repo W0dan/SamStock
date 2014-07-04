@@ -3,10 +3,10 @@ using System.Windows;
 using SAMStock.BO;
 using SAMStock.DAL.Pedals.Create;
 using SAMStock.DAL.Pedals.Update;
-using SAMStock.wpf.Exceptions;
-using SAMStock.wpf.Utilities;
+using WPF.Utilities;
+using WPF.Exceptions;
 
-namespace SAMStock.wpf.Dialogs
+namespace WPF.Dialogs
 {
 	public partial class PedalViewDialog
 	{

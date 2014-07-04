@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SAMStock.wpf.Exceptions
+namespace WPF.Exceptions
 {
 	public class IllegalInputException : Exception
 	{

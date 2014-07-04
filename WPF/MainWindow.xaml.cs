@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SAMStock.wpf
+namespace WPF
 {
 	public partial class MainWindow
 	{

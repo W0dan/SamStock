@@ -1,8 +1,9 @@
-﻿using SAMStock.DAL.Base;
+﻿using SAMStock.BO;
+using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Pedals.AddComponent
 {
-	public class AddComponentCommand: ICommand
+	public class AddComponentCommand: ICommand, IUpdateCommand<Pedal>
 	{
 		public int PedalId { get; private set; }
 		public int ComponentId { get; private set; }

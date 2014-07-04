@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace SAMStock.wpf.Utilities
+namespace WPF.Utilities
 {
 	internal static class Enviromment
 	{

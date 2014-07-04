@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using SAMStock.BO;
-using SAMStock.wpf.UserControls.Base;
-using SAMStock.wpf.Utilities;
+using WPF.UserControls.Base;
+using WPF.Utilities;
 
-namespace SAMStock.wpf.UserControls
+namespace WPF.UserControls
 {
 	public partial class SettingsTab : IInventoryListControl
 	{

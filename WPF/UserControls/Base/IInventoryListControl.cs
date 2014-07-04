@@ -1,4 +1,4 @@
-﻿namespace SAMStock.wpf.UserControls.Base
+﻿namespace WPF.UserControls.Base
 {
 	// ReSharper disable once InconsistentNaming
 	interface IInventoryListControl

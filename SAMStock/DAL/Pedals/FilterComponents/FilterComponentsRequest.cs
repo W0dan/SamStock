@@ -9,5 +9,6 @@ namespace SAMStock.DAL.Pedals.FilterComponents
 	public class FilterComponentsRequest: IRequest
 	{
 		public int? PedalId { get; set; }
+		public int? ComponentId { get; set; }
 	}
 }

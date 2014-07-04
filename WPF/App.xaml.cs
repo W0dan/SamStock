@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Threading;
 
-namespace SAMStock.wpf
+namespace WPF
 {
 	public partial class App : Application
 	{

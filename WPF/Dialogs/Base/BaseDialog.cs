@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace SAMStock.wpf.Dialogs.Base
+namespace WPF.Dialogs.Base
 {
 	public class BaseDialog : UserControl
 	{

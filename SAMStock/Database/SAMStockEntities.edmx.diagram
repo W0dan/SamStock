@@ -13,7 +13,16 @@
         <AssociationConnector Association="SAMStockModel.FK_Component_Leverancier" ManuallyRouted="false" />
         <AssociationConnector Association="SAMStockModel.FK_PedalComponent_Component" ManuallyRouted="false" />
         <AssociationConnector Association="SAMStockModel.FK_PedalComponent_Pedaal" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="SAMStockModel.ComponentOrder" Width="1.5" PointX="6.375" PointY="5.5" />
+        <EntityTypeShape EntityType="SAMStockModel.ComponentsOfComponentOrder" Width="1.5" PointX="4.25" PointY="3.75" />
+        <AssociationConnector Association="SAMStockModel.FK_ComponentsOfComponentOrders_ComponentOrders1" />
+        <AssociationConnector Association="SAMStockModel.FK_ComponentsOfComponentOrders_Components1" />
+        <EntityTypeShape EntityType="SAMStockModel.ComponentOrderDelivery" Width="1.5" PointX="8.625" PointY="5.5" />
+        <EntityTypeShape EntityType="SAMStockModel.ComponentsOfComponentOrderDelivery" Width="1.5" PointX="10.75" PointY="3.75" />
+        <AssociationConnector Association="SAMStockModel.FK_ComponentOrderDeliveries_ComponentOrders" />
+        <AssociationConnector Association="SAMStockModel.FK_ComponentsOfComponentOrderDeliveries_ComponentOrderDeliveries" />
+        <AssociationConnector Association="SAMStockModel.FK_ComponentsOfComponentOrderDeliveries_Components" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
