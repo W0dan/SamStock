@@ -22,7 +22,6 @@ namespace SAMStock.DAL.Pedals.Create
 			Context.Pedals.Add(pedal);
 			Context.SaveChanges();
 			var p = new Pedal(pedal, Context.Config.Single().DefaultPedalProfitMargin);
-			BO.Pedals.TriggerCreated(cmd, p);
 			return p;
 		}
 	}

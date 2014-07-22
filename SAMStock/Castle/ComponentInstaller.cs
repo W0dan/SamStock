@@ -31,7 +31,7 @@ namespace SAMStock.Castle
                         .BasedOn(typeof(ICommandExecutor<>))
 						.WithServiceAllInterfaces()
 						.LifestyleSingleton(),
-						Classes.FromThisAssembly()
+				Classes.FromThisAssembly()
 						.BasedOn(typeof(IBOCommandHandler<,>))
 						.WithServiceAllInterfaces()
 						.LifestyleSingleton(),

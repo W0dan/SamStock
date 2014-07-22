@@ -3,7 +3,7 @@ using SAMStock.DAL.Base;
 
 namespace SAMStock.DAL.Pedals.UpdateComponent
 {
-	public class UpdateComponentCommand: ICommand, IUpdateCommand<Pedal>
+	public class UpdateComponentCommand: IUpdateCommand<Pedal>
 	{
 		public int ComponentId { get; private set; }
 		public int PedalId { get; private set; }

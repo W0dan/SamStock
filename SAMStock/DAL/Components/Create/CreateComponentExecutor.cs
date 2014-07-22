@@ -26,7 +26,6 @@ namespace SAMStock.DAL.Components.Create
 			Context.Components.Add(component);
 			Context.SaveChanges();
 			var c = new Component(component);
-			BO.Components.TriggerCreated(cmd, c);
 			return c;
 		}
 	}

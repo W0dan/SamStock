@@ -24,7 +24,6 @@ namespace SAMStock.DAL.Components.Update
 			cmd.StockNumber.IfMeaningful(x => component.StockNumber = x);
 			cmd.SupplierId.IfNotNull(x => component.SupplierId = x);
 			Context.SaveChanges();
-			BO.Components.TriggerUpdated(cmd, new Component(component));
 			return new Component(component);
 		}
 	}

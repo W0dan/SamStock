@@ -1,38 +1,40 @@
 ﻿using System;
-using SAMStock.DAL.Base;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace SAMStock.BO.Base
 {
-	public abstract class BOManager<TBO>: IBOManager<TBO> where TBO: IBO
+	public class BOManager<T>: IBOManager<T> where T: BOBase
 	{
-		public static event EventHandler<BOCreatedEvent<TBO>> Created;
-		public static event EventHandler<BOUpdatedEvent<TBO>> Updated;
-		public static event EventHandler<BODeletedEvent<TBO>> Deleted;
+		public event EventHandler<T> Created;
+		public event EventHandler<T> Deleted;
+		public event EventHandler<T> Updated;
 
-		internal static void TriggerCreated(ICreateCommand<TBO> command, TBO bo)
+		internal void TriggerCreated(T bo)
 		{
 			var handler = Created;
 			if (handler != null)
 			{
-				handler(command, new BOCreatedEvent<TBO>(bo));
+				handler(null, bo);
 			}
 		}
 
-		internal static void TriggerDeleted(IDeleteCommand<TBO> command, int id)
+		internal void TriggerDeleted(T bo)
 		{
 			var handler = Deleted;
 			if (handler != null)
 			{
-				handler(command, new BODeletedEvent<TBO>(id));
+				handler(null, bo);
 			}
 		}
 
-		internal static void TriggerUpdated(IUpdateCommand<TBO> command, TBO bo)
+		internal void TriggerUpdated(T bo)
 		{
 			var handler = Updated;
 			if (handler != null)
 			{
-				handler(command, new BOUpdatedEvent<TBO>(bo));
+				handler(null, bo);
 			}
 		}
 	}

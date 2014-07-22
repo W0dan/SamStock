@@ -28,7 +28,6 @@ namespace SAMStock.DAL.Suppliers.Delete
 			}
 			Context.Suppliers.Remove(supplier);
 			Context.SaveChanges();
-			BO.Suppliers.TriggerDeleted(cmd, supplier.Id);
 			return supplier.Id;
 		}
 	}

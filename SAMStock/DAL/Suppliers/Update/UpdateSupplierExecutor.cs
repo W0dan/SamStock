@@ -20,7 +20,6 @@ namespace SAMStock.DAL.Suppliers.Update
 			cmd.Address.IfMeaningful(x => supplier.Address = x);
 			Context.SaveChanges();
 			var s = new Supplier(supplier);
-			BO.Suppliers.TriggerUpdated(cmd, s);
 			return s;
 		}
 	}

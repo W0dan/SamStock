@@ -7,9 +7,8 @@ using SAMStock.DAL.Pedals.FilterComponents;
 
 namespace SAMStock.BO
 {
-	public class Pedal: IBO
+	public class Pedal: Base.BOBase
 	{
-		public int Id { get; private set; }
 		public string Name { get; private set; }
 		public decimal Price { get; private set; }
 		public decimal ProfitMargin { get; private set; }

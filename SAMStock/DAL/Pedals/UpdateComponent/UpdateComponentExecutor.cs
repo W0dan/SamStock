@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using SAMStock.DAL.Base;
 using SAMStock.Database;
+using Pedal = SAMStock.BO.Pedal;
 
 namespace SAMStock.DAL.Pedals.UpdateComponent
 {
@@ -16,7 +17,6 @@ namespace SAMStock.DAL.Pedals.UpdateComponent
 			cop.Amount = cmd.Amount;
 			Context.SaveChanges();
 			var pedal = Context.Pedals.Single(x => x.Id == cmd.PedalId);
-			BO.Pedals.TriggerUpdated(cmd, new BO.Pedal(pedal, pedal.ProfitMargin.HasValue ? pedal.ProfitMargin.Value : Context.Config.Single().DefaultPedalProfitMargin));
 			return cop.Id;
 		}
 	}

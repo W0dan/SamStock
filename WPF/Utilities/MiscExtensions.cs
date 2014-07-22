@@ -1,4 +1,8 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using WPF.Exceptions;
 
 namespace WPF.Utilities
@@ -39,8 +43,13 @@ namespace WPF.Utilities
 			}
 			else
 			{
-				throw new IllegalInputException();
+				throw new ArgumentException();
 			}
+		}
+
+		public static bool IsVowel(this char c)
+		{
+			return "aeiou".Contains(c);
 		}
 	}
 }

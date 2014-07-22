@@ -6,15 +6,14 @@ using SAMStock.BO.Base;
 
 namespace SAMStock.BO
 {
-    public class ComponentOrder: IBO
+	public class ComponentOrder : Base.BOBase
     {
-        public List<ComponentOrderComponent> Components { get; private set; }
+        public Dictionary<Component, int> Components { get; private set; }
         public DateTime DateCreated { get; private set; }
-        public int Id { get; private set; }
 
         public ComponentOrder(Database.ComponentOrder order)
         {
-            Components = order.ComponentsOfComponentOrders.Select(x => new ComponentOrderComponent(x)).ToList();
+	        Components = order.ComponentsOfComponentOrders.ToDictionary(x => new Component(x.Component), x => x.Amount);
             DateCreated = order.DateCreated;
             Id = order.Id;
         }

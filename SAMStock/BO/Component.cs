@@ -6,9 +6,8 @@ using SAMStock.DAL.Suppliers.Filter;
 
 namespace SAMStock.BO
 {
-	public class Component: IBO
+	public class Component: BOBase
 	{
-		public int Id { get; private set; }
 		public string Name { get; private set; }
 		public int MinimumStock { get; private set; }
 		public int Stock { get; private set; }

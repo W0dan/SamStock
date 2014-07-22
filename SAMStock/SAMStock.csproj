@@ -61,17 +61,13 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BO\Base\BOBase.cs" />
     <Compile Include="BO\Base\BOManager.cs" />
-    <Compile Include="BO\Base\IBO.cs" />
-    <Compile Include="BO\Base\BOCreatedEvent.cs" />
-    <Compile Include="BO\Base\BODeletedEvent.cs" />
-    <Compile Include="BO\Base\BOUpdatedEvent.cs" />
     <Compile Include="BO\Base\IBOManager.cs" />
-    <Compile Include="BO\ComponentOrder.cs" />
-    <Compile Include="BO\ComponentOrderComponent.cs" />
-    <Compile Include="BO\ComponentOrderDelivery.cs" />
-    <Compile Include="BO\ComponentOrderDeliveryComponent.cs" />
     <Compile Include="BO\Components.cs" />
+    <Compile Include="BO\Base\IBO.cs" />
+    <Compile Include="BO\ComponentOrder.cs" />
+    <Compile Include="BO\ComponentOrderDelivery.cs" />
     <Compile Include="BO\Component.cs" />
     <Compile Include="BO\Config.cs" />
     <Compile Include="BO\Pedal.cs" />
@@ -80,7 +76,6 @@
     <Compile Include="BO\Suppliers.cs" />
     <Compile Include="Castle\ComponentInstaller.cs" />
     <Compile Include="Castle\WindsorContainerStore.cs" />
-    <Compile Include="CommandExecuted.cs" />
     <Compile Include="DAL\Base\BOCommandExecutor.cs" />
     <Compile Include="DAL\Base\BOCommandHandler.cs" />
     <Compile Include="DAL\Base\CommandExecutor.cs" />

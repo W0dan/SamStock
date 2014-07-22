@@ -16,7 +16,6 @@ namespace SAMStock.DAL.Pedals.RemoveComponent
 			Context.ComponentsOfPedals.Remove(cop);
 			Context.SaveChanges();
 			var pedal = Context.Pedals.Single(x => x.Id == cmd.PedalId);
-			BO.Pedals.TriggerUpdated(cmd, new BO.Pedal(pedal, pedal.ProfitMargin.HasValue ? pedal.ProfitMargin.Value : Context.Config.Single().DefaultPedalProfitMargin));
 			return cop.Id;
 		}
 	}

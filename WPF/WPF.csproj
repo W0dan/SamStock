@@ -57,75 +57,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Base\BaseModel.cs" />
-    <Compile Include="Dialogs\Base\BaseDialog.cs" />
-    <Compile Include="Dialogs\Base\BaseWindow.cs" />
-    <Compile Include="Dialogs\ComponentViewDialog.xaml.cs">
-      <DependentUpon>ComponentViewDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\ComponentViewModel.cs" />
-    <Compile Include="Dialogs\PedalComponentAddDialog.xaml.cs">
-      <DependentUpon>PedalComponentAddDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\PedalComponentAddModel.cs" />
-    <Compile Include="Dialogs\PedalComponentsViewModel.cs" />
-    <Compile Include="Dialogs\PedalComponentUpdateDialog.xaml.cs">
-      <DependentUpon>PedalComponentUpdateDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\PedalComponentsViewDialog.xaml.cs">
-      <DependentUpon>PedalComponentsViewDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\PedalViewDialog.xaml.cs">
-      <DependentUpon>PedalViewDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\SupplierViewDialog.xaml.cs">
-      <DependentUpon>SupplierViewDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Exceptions\IllegalInputException.cs" />
     <Compile Include="Exceptions\NumberFormatException.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="UserControls\Base\IInventoryListControl.cs" />
-    <Compile Include="UserControls\ComponentsTab.xaml.cs">
-      <DependentUpon>ComponentsTab.xaml</DependentUpon>
+    <Compile Include="UserControls\Base\BOManagerBase.cs" />
+    <Compile Include="UserControls\Base\BOViewerBase.cs" />
+    <Compile Include="UserControls\Base\DialogBase.cs" />
+    <Compile Include="UserControls\Base\BOManagerModelBase.cs" />
+    <Compile Include="UserControls\Base\WindowBase.cs" />
+    <Compile Include="UserControls\Components\ComponentsManager.xaml.cs">
+      <DependentUpon>ComponentsManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ComponentsTabModel.cs" />
-    <Compile Include="UserControls\PedalsTab.xaml.cs">
-      <DependentUpon>PedalsTab.xaml</DependentUpon>
+    <Compile Include="UserControls\Components\ComponentsManagerModel.cs" />
+    <Compile Include="UserControls\Components\ComponentViewModel.cs" />
+    <Compile Include="UserControls\Components\ComponentViewDialog.xaml.cs">
+      <DependentUpon>ComponentViewDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\PedalsTabModel.cs" />
-    <Compile Include="UserControls\SettingsTab.xaml.cs">
-      <DependentUpon>SettingsTab.xaml</DependentUpon>
+    <Compile Include="UserControls\Config\SettingsManager.xaml.cs">
+      <DependentUpon>SettingsManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SuppliersTab.xaml.cs">
-      <DependentUpon>SuppliersTab.xaml</DependentUpon>
+    <Compile Include="UserControls\Pedals\PedalComponentAdd.cs" />
+    <Compile Include="UserControls\Pedals\PedalComponentAddDialog.xaml.cs">
+      <DependentUpon>PedalComponentAddDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SuppliersTabModel.cs" />
+    <Compile Include="UserControls\Pedals\PedalComponentsView.cs" />
+    <Compile Include="UserControls\Pedals\PedalComponentsViewDialog.xaml.cs">
+      <DependentUpon>PedalComponentsViewDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Pedals\PedalComponentUpdateDialog.xaml.cs">
+      <DependentUpon>PedalComponentUpdateDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Pedals\PedalsManager.xaml.cs">
+      <DependentUpon>PedalsManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Pedals\PedalsBoManagerModel.cs" />
+    <Compile Include="UserControls\Pedals\PedalViewDialog.xaml.cs">
+      <DependentUpon>PedalViewDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Suppliers\SuppliersManager.xaml.cs">
+      <DependentUpon>SuppliersManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Suppliers\SuppliersBoManagerModel.cs" />
+    <Compile Include="UserControls\Suppliers\SupplierViewDialog.xaml.cs">
+      <DependentUpon>SupplierViewDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Enviromment.cs" />
     <Compile Include="Utilities\MiscExtensions.cs" />
-    <Page Include="Dialogs\ComponentViewDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\PedalComponentAddDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\PedalComponentUpdateDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\PedalComponentsViewDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\PedalViewDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\SupplierViewDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,21 +114,45 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\ComponentsTab.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UserControls\Components\ComponentsManager.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\PedalsTab.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UserControls\Components\ComponentViewDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\SettingsTab.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UserControls\Config\SettingsManager.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\SuppliersTab.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UserControls\Pedals\PedalComponentAddDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Pedals\PedalComponentsViewDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Pedals\PedalComponentUpdateDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Pedals\PedalsManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Pedals\PedalViewDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Suppliers\SuppliersManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Suppliers\SupplierViewDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -17,8 +17,6 @@ namespace SAMStock
 			get { return _windsorContainer ?? (_windsorContainer = WindsorContainerStore.Container); }
 		}
 
-		public static event EventHandler<CommandExecuted> CommandExecuted;
-
 		public static TResponse Request<TRequest, TResponse>(TRequest request) where TRequest : IRequest where TResponse : IResponse
 		{
 			try
@@ -52,10 +50,6 @@ namespace SAMStock
 					{
 						r = handler.Handle(command);
 						tran.Complete();
-						if (CommandExecuted != null)
-						{
-							CommandExecuted(command, new CommandExecuted(command));
-						}
 					}
 				}
 				finally
