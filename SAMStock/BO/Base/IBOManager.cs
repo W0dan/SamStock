@@ -8,7 +8,17 @@ namespace SAMStock.BO.Base
 	public interface IBOManager<T> where T: BOBase
 	{
 		event EventHandler<T> Created;
-		event EventHandler<T> Deleted;
+		event EventHandler<BODeletedEvent> Deleted;
 		event EventHandler<T> Updated;
+	}
+
+	public class BODeletedEvent : EventArgs
+	{
+		public int Id { get; private set; }
+
+		internal BODeletedEvent(int id)
+		{
+			Id = id;
+		}
 	}
 }

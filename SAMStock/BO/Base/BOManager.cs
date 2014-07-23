@@ -8,7 +8,7 @@ namespace SAMStock.BO.Base
 	public class BOManager<T>: IBOManager<T> where T: BOBase
 	{
 		public event EventHandler<T> Created;
-		public event EventHandler<T> Deleted;
+		public event EventHandler<BODeletedEvent> Deleted;
 		public event EventHandler<T> Updated;
 
 		internal void TriggerCreated(T bo)
@@ -20,12 +20,12 @@ namespace SAMStock.BO.Base
 			}
 		}
 
-		internal void TriggerDeleted(T bo)
+		internal void TriggerDeleted(int id)
 		{
 			var handler = Deleted;
 			if (handler != null)
 			{
-				handler(null, bo);
+				handler(null, new BODeletedEvent(id));
 			}
 		}
 

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using SAMStock.DAL.Base;
 using SAMStock.Database;
+using Pedal = SAMStock.BO.Pedal;
 
 namespace SAMStock.DAL.Pedals.RemoveComponent
 {
@@ -16,6 +17,7 @@ namespace SAMStock.DAL.Pedals.RemoveComponent
 			Context.ComponentsOfPedals.Remove(cop);
 			Context.SaveChanges();
 			var pedal = Context.Pedals.Single(x => x.Id == cmd.PedalId);
+			BO.Pedals.Manager.TriggerUpdated(new Pedal(pedal, Context.Config.Single().DefaultPedalProfitMargin));
 			return cop.Id;
 		}
 	}

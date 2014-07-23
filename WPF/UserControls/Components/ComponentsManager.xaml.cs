@@ -22,6 +22,9 @@ namespace WPF.UserControls.Components
 			{
 				Refresh();
 			}
+			SAMStock.BO.Components.Instance.Created += (sender, component) => Refresh();
+			SAMStock.BO.Components.Instance.Deleted += (sender, id) => Refresh();
+			SAMStock.BO.Components.Instance.Updated += (sender, component) => Refresh();
 		}
 
 		public override sealed void Refresh()

@@ -29,6 +29,7 @@ namespace SAMStock.DAL.Components.Delete
 			Context.SaveChanges();
 			Context.Components.Remove(component);
 			Context.SaveChanges();
+			BO.Components.Manager.TriggerDeleted(component.Id);
 			return component.Id;
 		}
 	}

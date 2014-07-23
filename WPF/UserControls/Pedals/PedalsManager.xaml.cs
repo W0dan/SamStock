@@ -21,6 +21,9 @@ namespace WPF.UserControls.Pedals
 			{
 				Refresh();
 			}
+			SAMStock.BO.Pedals.Instance.Created += (sender, component) => Refresh();
+			SAMStock.BO.Pedals.Instance.Deleted += (sender, id) => Refresh();
+			SAMStock.BO.Pedals.Instance.Updated += (sender, component) => Refresh();
 		}
 
 		public void Refresh()

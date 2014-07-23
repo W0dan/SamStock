@@ -21,6 +21,9 @@ namespace WPF.UserControls.Suppliers
             {
                 Refresh();
             }
+			SAMStock.BO.Suppliers.Instance.Created += (sender, component) => Refresh();
+			SAMStock.BO.Suppliers.Instance.Deleted += (sender, id) => Refresh();
+			SAMStock.BO.Suppliers.Instance.Updated += (sender, component) => Refresh();
         }
 
         private void SuppliersNewButton_OnClick(object sender, RoutedEventArgs e)

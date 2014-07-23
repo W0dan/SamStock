@@ -23,6 +23,7 @@ namespace SAMStock.DAL.Pedals.AddComponent
 			Context.ComponentsOfPedals.Add(cop);
 			Context.SaveChanges();
 			var pedal = Context.Pedals.Single(x => x.Id == cmd.PedalId);
+			BO.Pedals.Manager.TriggerUpdated(new Pedal(pedal, Context.Config.Single().DefaultPedalProfitMargin));
 			return cop.Id;
 		}
 	}
