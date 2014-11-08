@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SAMStock.BO;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Pedals.Filter
 {
-	public class FilterPedalsResponse: IFilterResponse<Pedal>
+	public class FilterPedalsResponse: Response
 	{
 		public IEnumerable<Pedal> Items { get; private set; }
 

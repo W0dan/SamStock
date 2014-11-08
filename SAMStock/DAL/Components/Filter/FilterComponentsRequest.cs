@@ -1,10 +1,14 @@
 ﻿using SAMStock.BO;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Components.Filter
 {
-	public class FilterComponentsRequest: IFilterRequest<Component>
+	public class FilterComponentsRequest: Request<FilterComponentsResponse>
 	{
+		public FilterComponentsRequest(object s) : base(s)
+		{
+		}
+
 		public int? Id { get; set; }
 		public int? PedalId { get; set; }
 		public int? StockLowerThan { get; set; }

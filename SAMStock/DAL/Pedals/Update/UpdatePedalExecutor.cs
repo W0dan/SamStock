@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using SAMStock.Utilities;
 using Pedal = SAMStock.BO.Pedal;

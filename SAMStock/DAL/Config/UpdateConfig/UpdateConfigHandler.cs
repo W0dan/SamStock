@@ -1,10 +1,10 @@
-﻿using SAMStock.DAL.Base;
+﻿using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Config.UpdateConfig
 {
-	public class UpdateConfigHandler: CommandHandler<UpdateConfigCommand>
+	public class UpdateConfigHandler: CommandHandler<UpdateConfigRequest>
 	{
-		public UpdateConfigHandler(ICommandExecutor<UpdateConfigCommand> executor) : base(executor)
+		public UpdateConfigHandler(ICommandExecutor<UpdateConfigRequest> executor) : base(executor)
 		{
 		}
 	}

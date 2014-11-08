@@ -1,36 +1,29 @@
 ﻿using System.Linq;
 using Castle.Core.Internal;
-using SAMStock.DAL.Base;
+using SAMStock.Castle;
+using SAMStock.DAL.Foundation;
 using SAMStock.Database;
-using SAMStock.Exceptions;
 
 namespace SAMStock.DAL.Components.Delete
 {
-	public class DeleteComponentExecutor: CommandExecutor<DeleteComponentCommand>
+	public class DeleteComponentExecutor: RequestExecutor<DeleteComponentRequest, DeleteComponentResponse>
 	{
 		public DeleteComponentExecutor(IContext context) : base(context)
 		{
 		}
 
-		public override int Execute(DeleteComponentCommand cmd)
+		public override DeleteComponentResponse Execute(DeleteComponentRequest cmd)
 		{
 			var component = Context.Components.Single(x => x.Id == cmd.Id);
-			if (component.ComponentsOfPedals.Any())
+			if (component.ComponentsOfPedals.Any() && cmd.Cascade)
 			{
-				if (cmd.Cascade)
-				{
-					component.ComponentsOfPedals.ForEach(x => Context.ComponentsOfPedals.Remove(x));
-				}
-				else
-				{
-					throw new ForeignKeyException(component.Id, component.ComponentsOfPedals.Select(x => x.Id), "ComponentsOfPedals");
-				}
+				component.ComponentsOfPedals.ForEach(x => Context.ComponentsOfPedals.Remove(x));
+				Context.SaveChanges();
 			}
-			Context.SaveChanges();
 			Context.Components.Remove(component);
 			Context.SaveChanges();
-			BO.Components.Manager.TriggerDeleted(component.Id);
-			return component.Id;
+			IoC.Instance.Resolve<BO.Components>().Delete(cmd.Id);
+			return new DeleteComponentResponse(cmd.Id);
 		}
 	}
 }

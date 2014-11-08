@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Castle.Core.Internal;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using SAMStock.Exceptions;
 

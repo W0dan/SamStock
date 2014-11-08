@@ -1,18 +1,20 @@
 ﻿using System.Linq;
-using SAMStock.DAL.Base;
+using SAMStock.Castle;
+using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using SAMStock.Utilities;
+using Util;
 using Component = SAMStock.BO.Component;
 
 namespace SAMStock.DAL.Components.Update
 {
-	public class UpdateComponentExecutor: BOCommandExecutor<UpdateComponentCommand, Component>
+	public class UpdateComponentExecutor: RequestExecutor<UpdateComponentRequest, UpdateComponentResponse>
 	{
 		public UpdateComponentExecutor(IContext context) : base(context)
 		{
 		}
 
-		public override Component Execute(UpdateComponentCommand cmd)
+		public override UpdateComponentResponse Execute(UpdateComponentRequest cmd)
 		{
 			var component = Context.Components.Single(x => x.Id == cmd.Id);
 			cmd.ItemCode.IfMeaningful(x => component.ItemCode = x);
@@ -24,8 +26,9 @@ namespace SAMStock.DAL.Components.Update
 			cmd.StockNumber.IfMeaningful(x => component.StockNumber = x);
 			cmd.SupplierId.IfNotNull(x => component.SupplierId = x);
 			Context.SaveChanges();
-			BO.Components.Manager.TriggerUpdated(new Component(component));
-			return new Component(component);
+			var c = new Component(component);
+			IoC.Instance.Resolve<BO.Components>().Update(c);
+			return new UpdateComponentResponse(c);
 		}
 	}
 }

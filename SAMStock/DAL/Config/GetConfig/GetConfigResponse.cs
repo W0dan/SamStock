@@ -1,8 +1,8 @@
-﻿using SAMStock.DAL.Base;
+﻿using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Config.GetConfig
 {
-	public class GetConfigResponse: IResponse
+	public class GetConfigResponse: Response
 	{
 		public decimal VAT { get; private set; }
 		public decimal DefaultPedalProfitMargin { get; private set; }

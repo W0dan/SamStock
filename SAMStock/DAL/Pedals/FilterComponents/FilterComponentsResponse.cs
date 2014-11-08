@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Castle.MicroKernel.Registration;
 using SAMStock.BO;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 
 namespace SAMStock.DAL.Pedals.FilterComponents

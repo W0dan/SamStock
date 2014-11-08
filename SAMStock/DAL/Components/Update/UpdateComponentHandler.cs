@@ -1,11 +1,11 @@
 ﻿using SAMStock.BO;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Components.Update
 {
-	public class UpdateComponentHandler: BOCommandHandler<UpdateComponentCommand, Component>
+	public class UpdateComponentHandler: BOCommandHandler<UpdateComponentRequest, Component>
 	{
-		public UpdateComponentHandler(IBOCommandExecutor<UpdateComponentCommand, Component> executor) : base(executor)
+		public UpdateComponentHandler(IBOCommandExecutor<UpdateComponentRequest, Component> executor) : base(executor)
 		{
 		}
 	}

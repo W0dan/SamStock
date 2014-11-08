@@ -64,7 +64,7 @@ namespace WPF.UserControls.Components
 				var component = (Component) ComponentsDataGrid.SelectedItem;
 				if (MessageBox.Show(Application.Current.MainWindow, String.Format("Are you sure you want to delete {0}?", component.Name), "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes)
 				{
-					SAMStock.Dispatcher.Command<DeleteComponentCommand, Component>(new DeleteComponentCommand(component.Id));
+					SAMStock.Dispatcher.Command<DeleteComponentRequest, Component>(new DeleteComponentRequest(component.Id));
 				}
 			}
 			else

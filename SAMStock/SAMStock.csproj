@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SAMStock</RootNamespace>
     <AssemblyName>SAMStock</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -37,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -61,65 +63,54 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BO\Base\BOBase.cs" />
-    <Compile Include="BO\Base\BOManager.cs" />
-    <Compile Include="BO\Base\IBOManager.cs" />
+    <Compile Include="BO\Foundation\BusinessObject.cs" />
+    <Compile Include="BO\Foundation\Created.cs" />
+    <Compile Include="BO\Foundation\Deleted.cs" />
+    <Compile Include="BO\Foundation\BOManager.cs" />
+    <Compile Include="BO\Foundation\IBOManager.cs" />
     <Compile Include="BO\Components.cs" />
-    <Compile Include="BO\Base\IBO.cs" />
-    <Compile Include="BO\ComponentOrder.cs" />
-    <Compile Include="BO\ComponentOrderDelivery.cs" />
+    <Compile Include="BO\Foundation\IBusinessObject.cs" />
     <Compile Include="BO\Component.cs" />
-    <Compile Include="BO\Config.cs" />
+    <Compile Include="BO\Foundation\Updated.cs" />
     <Compile Include="BO\Pedal.cs" />
     <Compile Include="BO\Pedals.cs" />
     <Compile Include="BO\Supplier.cs" />
     <Compile Include="BO\Suppliers.cs" />
     <Compile Include="Castle\ComponentInstaller.cs" />
-    <Compile Include="Castle\WindsorContainerStore.cs" />
-    <Compile Include="DAL\Base\BOCommandExecutor.cs" />
-    <Compile Include="DAL\Base\BOCommandHandler.cs" />
-    <Compile Include="DAL\Base\CommandExecutor.cs" />
-    <Compile Include="DAL\Base\CommandHandler.cs" />
-    <Compile Include="DAL\Base\IBOCommandExecutor.cs" />
-    <Compile Include="DAL\Base\IBOCommandHandler.cs" />
-    <Compile Include="DAL\Base\ICommand.cs" />
-    <Compile Include="DAL\Base\ICommandExecutor.cs" />
-    <Compile Include="DAL\Base\ICommandHandler.cs" />
-    <Compile Include="DAL\Base\ICreateCommand.cs" />
-    <Compile Include="DAL\Base\IDeleteCommand.cs" />
-    <Compile Include="DAL\Base\IFilterRequest.cs" />
-    <Compile Include="DAL\Base\IFilterResponse.cs" />
-    <Compile Include="DAL\Base\IRequest.cs" />
-    <Compile Include="DAL\Base\IRequestExecutor.cs" />
-    <Compile Include="DAL\Base\IRequestHandler.cs" />
-    <Compile Include="DAL\Base\IResponse.cs" />
-    <Compile Include="DAL\Base\IBOCommand.cs" />
-    <Compile Include="DAL\Base\IUpdateCommand.cs" />
-    <Compile Include="DAL\Base\RequestExecutor.cs" />
-    <Compile Include="DAL\Base\RequestHandler.cs" />
-    <Compile Include="DAL\Components\Create\CreateComponentCommand.cs" />
+    <Compile Include="Castle\IoC.cs" />
+    <Compile Include="Castle\IResolvable.cs" />
+    <Compile Include="DAL\Components\Create\CreateComponentResponse.cs" />
+    <Compile Include="DAL\Components\Delete\DeleteComponentResponse.cs" />
+    <Compile Include="DAL\Components\Update\UpdateComponentResponse.cs" />
+    <Compile Include="DAL\Config\UpdateConfig\UpdateConfigResponse.cs" />
+    <Compile Include="DAL\Foundation\IRequest.cs" />
+    <Compile Include="DAL\Foundation\IRequestExecutor.cs" />
+    <Compile Include="DAL\Foundation\IRequestHandler.cs" />
+    <Compile Include="DAL\Foundation\IResponse.cs" />
+    <Compile Include="DAL\Foundation\Request.cs" />
+    <Compile Include="DAL\Foundation\RequestExecutor.cs" />
+    <Compile Include="DAL\Foundation\RequestHandler.cs" />
+    <Compile Include="DAL\Components\Create\CreateComponentRequest.cs" />
     <Compile Include="DAL\Components\Create\CreateComponentExecutor.cs" />
     <Compile Include="DAL\Components\Create\CreateComponentHandler.cs" />
-    <Compile Include="DAL\Components\Delete\DeleteComponentCommand.cs" />
+    <Compile Include="DAL\Components\Delete\DeleteComponentRequest.cs" />
     <Compile Include="DAL\Components\Delete\DeleteComponentExecutor.cs" />
     <Compile Include="DAL\Components\Delete\DeleteComponentHandler.cs" />
     <Compile Include="DAL\Components\Filter\FilterComponentsExecutor.cs" />
     <Compile Include="DAL\Components\Filter\FilterComponentsHandler.cs" />
     <Compile Include="DAL\Components\Filter\FilterComponentsRequest.cs" />
     <Compile Include="DAL\Components\Filter\FilterComponentsResponse.cs" />
-    <Compile Include="DAL\Components\Update\UpdateComponentCommand.cs" />
+    <Compile Include="DAL\Components\Update\UpdateComponentRequest.cs" />
     <Compile Include="DAL\Components\Update\UpdateComponentExecutor.cs" />
     <Compile Include="DAL\Components\Update\UpdateComponentHandler.cs" />
-    <Compile Include="DAL\Config\CreateConfig\CreateConfigCommand.cs" />
-    <Compile Include="DAL\Config\CreateConfig\CreateConfigExecutor.cs" />
-    <Compile Include="DAL\Config\CreateConfig\CreateConfigHandler.cs" />
     <Compile Include="DAL\Config\GetConfig\GetConfigExecutor.cs" />
     <Compile Include="DAL\Config\GetConfig\GetConfigHandler.cs" />
     <Compile Include="DAL\Config\GetConfig\GetConfigRequest.cs" />
     <Compile Include="DAL\Config\GetConfig\GetConfigResponse.cs" />
-    <Compile Include="DAL\Config\UpdateConfig\UpdateConfigCommand.cs" />
+    <Compile Include="DAL\Config\UpdateConfig\UpdateConfigRequest.cs" />
     <Compile Include="DAL\Config\UpdateConfig\UpdateConfigExecutor.cs" />
     <Compile Include="DAL\Config\UpdateConfig\UpdateConfigHandler.cs" />
+    <Compile Include="DAL\Foundation\Response.cs" />
     <Compile Include="DAL\Pedals\AddComponent\AddComponentCommand.cs" />
     <Compile Include="DAL\Pedals\AddComponent\AddComponentExecutor.cs" />
     <Compile Include="DAL\Pedals\AddComponent\AddComponentHandler.cs" />
@@ -204,9 +195,8 @@
       <DependentUpon>SAMStockEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Dispatcher.cs" />
-    <Compile Include="Exceptions\ForeignKeyException.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\MiscExtensions.cs" />
     <Compile Include="Utilities\TransactionScopeFactory.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -269,6 +259,12 @@
     <Folder Include="DAL\ComponentOrders\RemoveComponent\" />
     <Folder Include="DAL\ComponentOrders\UpdateComponent\" />
     <Folder Include="DAL\ComponentOrders\Update\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Util\Util\Util.csproj">
+      <Project>{1e79fba9-69ec-4698-815f-9375c0a7e3d5}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,44 +1,35 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using System;
+using System.Linq;
+using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using SAMStock.BO.Base;
-using SAMStock.DAL.Base;
+using SAMStock.BO.Foundation;
+using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using Cmp = Castle.MicroKernel.Registration.Component;
 
 namespace SAMStock.Castle
 {
-    internal class ComponentInstaller : IWindsorInstaller
+	internal class ComponentInstaller : IWindsorInstaller
     {
-        public void Install(IWindsorContainer container, IConfigurationStore store)
+	    public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
                 Cmp.For<IContext>()
-                        .UsingFactoryMethod(fm => new SAMStockEntities()),
+					.UsingFactoryMethod(x => new SAMStockEntities())
+					.LifestyleTransient(),
                 Classes.FromThisAssembly()
-                        .BasedOn(typeof(IRequestHandler<,>))
-                        .WithServiceAllInterfaces()
-						.LifestyleSingleton(),
+					.BasedOn(typeof(IRequestHandler<,>))
+					.LifestyleTransient()
+					.WithServiceAllInterfaces(),
 				Classes.FromThisAssembly()
-						.BasedOn(typeof(IRequestExecutor<,>))
-						.WithServiceAllInterfaces()
-						.LifestyleSingleton(),
+					.BasedOn(typeof(IRequestExecutor<,>))
+					.LifestyleTransient()
+					.WithServiceAllInterfaces(),
 				Classes.FromThisAssembly()
-                        .BasedOn(typeof(ICommandHandler<>))
-                        .WithServiceAllInterfaces()
-						.LifestyleSingleton(),
-				Classes.FromThisAssembly()
-                        .BasedOn(typeof(ICommandExecutor<>))
-						.WithServiceAllInterfaces()
-						.LifestyleSingleton(),
-				Classes.FromThisAssembly()
-						.BasedOn(typeof(IBOCommandHandler<,>))
-						.WithServiceAllInterfaces()
-						.LifestyleSingleton(),
-				Classes.FromThisAssembly()
-						.BasedOn(typeof(IBOCommandExecutor<,>))
-						.WithServiceAllInterfaces()
-						.LifestyleSingleton()
+					.BasedOn(typeof(IBOManager<>))
+					.LifestyleSingleton()
+					.WithServiceAllInterfaces()
             );
         }
     }

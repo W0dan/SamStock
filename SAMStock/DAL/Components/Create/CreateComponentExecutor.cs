@@ -1,16 +1,17 @@
-﻿using SAMStock.DAL.Base;
+﻿using SAMStock.Castle;
+using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using Component = SAMStock.BO.Component;
 
 namespace SAMStock.DAL.Components.Create
 {
-	public class CreateComponentExecutor: BOCommandExecutor<CreateComponentCommand, Component>
+	public class CreateComponentExecutor: RequestExecutor<CreateComponentRequest, CreateComponentResponse>
 	{
 		public CreateComponentExecutor(IContext context) : base(context)
 		{
 		}
 
-		public override Component Execute(CreateComponentCommand cmd)
+		public override CreateComponentResponse Execute(CreateComponentRequest cmd)
 		{
 			var component = new Database.Component
 			{
@@ -26,8 +27,9 @@ namespace SAMStock.DAL.Components.Create
 			Context.Components.Add(component);
 			Context.SaveChanges();
 			var c = new Component(component);
-			BO.Components.Manager.TriggerCreated(c);
-			return c;
+			var r = new CreateComponentResponse(c);
+			IoC.Instance.Resolve<BO.Components>().Create(c);
+			return r;
 		}
 	}
 }

@@ -84,7 +84,7 @@ namespace WPF.UserControls.Components
 			}
 			if (_editMode)
 			{
-				SAMStock.Dispatcher.Command<UpdateComponentCommand, Component>(new UpdateComponentCommand(_comp.Id)
+				SAMStock.Dispatcher.Command<UpdateComponentRequest, Component>(new UpdateComponentRequest(_comp.Id)
 				{
 					StockNumber = StocknrTextBox.Text,
 					Name = NameTextBox.Text,
@@ -98,7 +98,7 @@ namespace WPF.UserControls.Components
 			}
 			else
 			{
-				SAMStock.Dispatcher.Command<CreateComponentCommand, Component>(new CreateComponentCommand(
+				SAMStock.Dispatcher.Command<CreateComponentRequest, Component>(new CreateComponentRequest(
 					stocknumber: StocknrTextBox.Text,
 					name: NameTextBox.Text,
 					price: price,

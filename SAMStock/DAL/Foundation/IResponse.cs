@@ -1,4 +1,4 @@
-﻿namespace SAMStock.DAL.Base
+﻿namespace SAMStock.DAL.Foundation
 {
 	public interface IResponse
 	{

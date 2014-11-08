@@ -1,4 +1,4 @@
-﻿using SAMStock.DAL.Base;
+﻿using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using Supplier = SAMStock.BO.Supplier;
 

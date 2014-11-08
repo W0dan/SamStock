@@ -1,9 +1,10 @@
-﻿using SAMStock.BO;
-using SAMStock.DAL.Base;
+﻿using System;
+using SAMStock.BO;
+using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Components.Update
 {
-	public class UpdateComponentCommand: IUpdateCommand<Component>
+	public class UpdateComponentRequest: Request<UpdateComponentResponse>
 	{
 		public int Id { get; private set; }
 		public string Name { get; set; }
@@ -15,7 +16,7 @@ namespace SAMStock.DAL.Components.Update
 		public string Remarks { get; set; }
 		public string ItemCode { get; set; }
 
-		public UpdateComponentCommand(int id)
+		public UpdateComponentRequest(Object sender, int id): base(sender)
 		{
 			Id = id;
 		}

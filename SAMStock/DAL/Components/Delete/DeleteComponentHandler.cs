@@ -1,10 +1,10 @@
-﻿using SAMStock.DAL.Base;
+﻿using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Components.Delete
 {
-	public class DeleteComponentHandler: CommandHandler<DeleteComponentCommand>
+	public class DeleteComponentHandler: CommandHandler<DeleteComponentRequest>
 	{
-		public DeleteComponentHandler(ICommandExecutor<DeleteComponentCommand> executor) : base(executor)
+		public DeleteComponentHandler(ICommandExecutor<DeleteComponentRequest> executor) : base(executor)
 		{
 		}
 	}

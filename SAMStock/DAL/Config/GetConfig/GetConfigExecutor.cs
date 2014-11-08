@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 
 namespace SAMStock.DAL.Config.GetConfig
@@ -17,9 +17,9 @@ namespace SAMStock.DAL.Config.GetConfig
 			{
 				return new GetConfigResponse(Context.Config.Single());
 			}
-			catch (InvalidOperationException)
+			catch (InvalidOperationException ex)
 			{
-				throw new InvalidOperationException("Configuration has not been set yet.");
+				throw new InvalidOperationException("Configuration has not been set yet.", ex);
 			}
 		}
 	}

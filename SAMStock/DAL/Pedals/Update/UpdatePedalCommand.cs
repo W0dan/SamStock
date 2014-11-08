@@ -1,5 +1,5 @@
 ﻿using SAMStock.BO;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Pedals.Update
 {

@@ -1,9 +1,9 @@
 ﻿using SAMStock.BO;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Components.Create
 {
-	public class CreateComponentCommand: ICreateCommand<Component>
+	public class CreateComponentRequest: Request<CreateComponentResponse>
 	{
 		public string Name { get; private set; }
 		public int MinimumStock { get; private set; }
@@ -14,7 +14,7 @@ namespace SAMStock.DAL.Components.Create
 		public string Remarks { get; set; }
 		public string ItemCode { get; private set; }
 
-		public CreateComponentCommand(string name, int minimumstock, string stocknumber, decimal price, int supplierid, string itemcode)
+		public CreateComponentRequest(object sender, string name, int minimumstock, string stocknumber, decimal price, int supplierid, string itemcode): base(sender)
 		{
 			Stock = 0;
 			Name = name;

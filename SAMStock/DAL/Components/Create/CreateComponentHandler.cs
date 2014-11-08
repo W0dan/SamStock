@@ -1,11 +1,11 @@
 ﻿using SAMStock.BO;
-using SAMStock.DAL.Base;
+using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Components.Create
 {
-	public class CreateComponentHandler: BOCommandHandler<CreateComponentCommand, Component>
+	public class CreateComponentHandler: BOCommandHandler<CreateComponentRequest, Component>
 	{
-		public CreateComponentHandler(IBOCommandExecutor<CreateComponentCommand, Component> executor) : base(executor)
+		public CreateComponentHandler(IBOCommandExecutor<CreateComponentRequest, Component> executor) : base(executor)
 		{
 		}
 	}
