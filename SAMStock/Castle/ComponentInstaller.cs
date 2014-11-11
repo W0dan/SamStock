@@ -28,7 +28,11 @@ namespace SAMStock.Castle
 					.WithServiceAllInterfaces(),
 				Classes.FromThisAssembly()
 					.BasedOn(typeof(IBOManager<>))
-					.LifestyleSingleton()
+					.LifestyleTransient()
+					.WithServiceAllInterfaces(),
+				Classes.FromThisAssembly()
+					.BasedOn(typeof(BOManager<>))
+					.LifestyleTransient()
 					.WithServiceAllInterfaces()
             );
         }

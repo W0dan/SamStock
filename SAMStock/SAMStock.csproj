@@ -63,14 +63,19 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BO\Foundation\BOEvent.cs" />
     <Compile Include="BO\Foundation\BusinessObject.cs" />
     <Compile Include="BO\Foundation\Created.cs" />
     <Compile Include="BO\Foundation\Deleted.cs" />
     <Compile Include="BO\Foundation\BOManager.cs" />
+    <Compile Include="BO\Foundation\IBOEvent.cs" />
     <Compile Include="BO\Foundation\IBOManager.cs" />
     <Compile Include="BO\Components.cs" />
     <Compile Include="BO\Foundation\IBusinessObject.cs" />
     <Compile Include="BO\Component.cs" />
+    <Compile Include="BO\Foundation\ICreateListener.cs" />
+    <Compile Include="BO\Foundation\IDeleteListener.cs" />
+    <Compile Include="BO\Foundation\IUpdateListener.cs" />
     <Compile Include="BO\Foundation\Updated.cs" />
     <Compile Include="BO\Pedal.cs" />
     <Compile Include="BO\Pedals.cs" />
