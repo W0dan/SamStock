@@ -1,11 +1,11 @@
 ﻿using SAMStock.Castle;
 using SAMStock.DAL.Foundation;
 using SAMStock.Database;
-using Component = SAMStock.BO.Component;
+using Component = SAMStock.Business.Objects.Component;
 
 namespace SAMStock.DAL.Components.Create
 {
-	public class CreateComponentExecutor: RequestExecutor<CreateComponentRequest, CreateComponentResponse>
+	public class CreateComponentExecutor: Executor<CreateComponentRequest, CreateComponentResponse>
 	{
 		public CreateComponentExecutor(IContext context) : base(context)
 		{
@@ -28,7 +28,7 @@ namespace SAMStock.DAL.Components.Create
 			Context.SaveChanges();
 			var c = new Component(component);
 			var r = new CreateComponentResponse(c);
-			IoC.Instance.Resolve<BO.Components>().Create(c);
+			IoC.Instance.Resolve<Business.Managers.Components>().Create(cmd.Sender, c);
 			return r;
 		}
 	}

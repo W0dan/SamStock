@@ -2,9 +2,9 @@
 
 namespace SAMStock.DAL.Suppliers.Filter
 {
-	public class FilterSuppliersHandler : RequestHandler<FilterSuppliersRequest, FilterSuppliersResponse>
+	public class FilterSuppliersHandler : Handler<FilterSuppliersRequest, FilterSuppliersResponse>
 	{
-		public FilterSuppliersHandler(IRequestExecutor<FilterSuppliersRequest, FilterSuppliersResponse> executor) : base(executor)
+		public FilterSuppliersHandler(IExecutor<FilterSuppliersRequest, FilterSuppliersResponse> executor) : base(executor)
 		{
 		}
 	}

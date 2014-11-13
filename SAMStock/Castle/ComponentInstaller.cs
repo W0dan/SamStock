@@ -3,7 +3,7 @@ using System.Linq;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using SAMStock.BO.Foundation;
+using SAMStock.Business.Foundation;
 using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using Cmp = Castle.MicroKernel.Registration.Component;
@@ -19,19 +19,19 @@ namespace SAMStock.Castle
 					.UsingFactoryMethod(x => new SAMStockEntities())
 					.LifestyleTransient(),
                 Classes.FromThisAssembly()
-					.BasedOn(typeof(IRequestHandler<,>))
+					.BasedOn(typeof(IHandler<,>))
 					.LifestyleTransient()
 					.WithServiceAllInterfaces(),
 				Classes.FromThisAssembly()
-					.BasedOn(typeof(IRequestExecutor<,>))
+					.BasedOn(typeof(IExecutor<,>))
 					.LifestyleTransient()
 					.WithServiceAllInterfaces(),
 				Classes.FromThisAssembly()
-					.BasedOn(typeof(IBOManager<>))
+					.BasedOn(typeof(IManager<>))
 					.LifestyleTransient()
 					.WithServiceAllInterfaces(),
 				Classes.FromThisAssembly()
-					.BasedOn(typeof(BOManager<>))
+					.BasedOn(typeof(Manager<>))
 					.LifestyleTransient()
 					.WithServiceAllInterfaces()
             );

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using SAMStock.BO;
+using SAMStock.Business.Objects;
 using SAMStock.DAL.Suppliers.Delete;
 using SAMStock.DAL.Suppliers.Filter;
 using WPF.UserControls.Base;
@@ -21,9 +22,9 @@ namespace WPF.UserControls.Suppliers
             {
                 Refresh();
             }
-			SAMStock.BO.Suppliers.Instance.Created += (sender, component) => Refresh();
-			SAMStock.BO.Suppliers.Instance.Deleted += (sender, id) => Refresh();
-			SAMStock.BO.Suppliers.Instance.Updated += (sender, component) => Refresh();
+			SAMStock.Business.Managers.Suppliers.Instance.Created += (sender, component) => Refresh();
+			SAMStock.Business.Managers.Suppliers.Instance.Deleted += (sender, id) => Refresh();
+			SAMStock.Business.Managers.Suppliers.Instance.Updated += (sender, component) => Refresh();
         }
 
         private void SuppliersNewButton_OnClick(object sender, RoutedEventArgs e)
@@ -70,7 +71,7 @@ namespace WPF.UserControls.Suppliers
         public void Refresh()
         {
             _model.Suppliers.Clear();
-            SAMStock.Dispatcher.Request<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest()).Items.ToList().ForEach(x => _model.Suppliers.Add(x));
+            SAMStock.Dispatcher.Request<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest()).Suppliers.ToList().ForEach(x => _model.Suppliers.Add(x));
             SuppliersDataGrid.SelectedIndex = -1;
         }
     }

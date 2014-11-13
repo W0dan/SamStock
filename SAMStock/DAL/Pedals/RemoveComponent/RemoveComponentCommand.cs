@@ -1,4 +1,6 @@
 ﻿using SAMStock.BO;
+using SAMStock.Business;
+using SAMStock.Business.Objects;
 using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Pedals.RemoveComponent

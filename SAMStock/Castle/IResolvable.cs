@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAMStock.BO.Foundation
+namespace SAMStock.Castle
 {
-	public interface IBOEvent
+	public interface IResolvable
 	{
-		int Id { get; }
 	}
 }

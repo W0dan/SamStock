@@ -1,4 +1,5 @@
 ﻿using SAMStock.BO;
+using SAMStock.Business.Objects;
 using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Suppliers.Update

@@ -1,9 +1,10 @@
-﻿<base:BOViewerBase x:TypeArguments="bo:Component" x:Class="WPF.UserControls.Components.ComponentViewDialog"
+﻿<base:BOViewerBase x:TypeArguments="objects:Component" x:Class="WPF.UserControls.Components.ComponentViewDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:base="clr-namespace:WPF.UserControls.Base"
         xmlns:bo="clr-namespace:SAMStock.BO;assembly=SAMStock"
-        xmlns:components="clr-namespace:WPF.UserControls.Components">
+        xmlns:components="clr-namespace:WPF.UserControls.Components"
+        xmlns:objects="clr-namespace:SAMStock.Business.Objects;assembly=SAMStock">
 	<!-- <base:BOViewerBase.DataContext>
 		<components:ComponentViewModel/>
 	</base:BOViewerBase.DataContext> -->

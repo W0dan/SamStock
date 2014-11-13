@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Windows;
 using SAMStock.BO;
+using SAMStock.Business;
+using SAMStock.Business.Objects;
 using SAMStock.DAL.Components.Filter;
 using SAMStock.DAL.Pedals.AddComponent;
 using WPF.Utilities;

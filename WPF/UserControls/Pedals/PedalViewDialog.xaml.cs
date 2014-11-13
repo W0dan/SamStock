@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using SAMStock.BO;
+using SAMStock.Business;
+using SAMStock.Business.Objects;
 using SAMStock.DAL.Pedals.Create;
 using SAMStock.DAL.Pedals.Update;
 using WPF.Utilities;

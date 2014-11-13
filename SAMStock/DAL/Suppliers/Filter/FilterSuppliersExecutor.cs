@@ -5,7 +5,7 @@ using SAMStock.Utilities;
 
 namespace SAMStock.DAL.Suppliers.Filter
 {
-	public class FilterSuppliersExecutor : RequestExecutor<FilterSuppliersRequest, FilterSuppliersResponse>
+	public class FilterSuppliersExecutor : Executor<FilterSuppliersRequest, FilterSuppliersResponse>
 	{
 		public FilterSuppliersExecutor(IContext context) : base(context)
 		{

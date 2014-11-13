@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using SAMStock.DAL.Foundation;
 using SAMStock.Database;
-using Pedal = SAMStock.BO.Pedal;
+using Pedal = SAMStock.Business.Objects.Pedal;
 
 namespace SAMStock.DAL.Pedals.Delete
 {
@@ -16,7 +16,7 @@ namespace SAMStock.DAL.Pedals.Delete
 			var pedal = Context.Pedals.Single(x => x.Id == cmd.Id);
 			Context.Pedals.Remove(pedal);
 			Context.SaveChanges();
-			BO.Pedals.Manager.TriggerDeleted(pedal.Id);
+			Business.Managers.Pedals.Manager.TriggerDeleted(pedal.Id);
 			return pedal.Id;
 		}
 	}

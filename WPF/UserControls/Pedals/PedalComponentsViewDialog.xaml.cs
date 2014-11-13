@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using SAMStock.BO;
+using SAMStock.Business;
+using SAMStock.Business.Objects;
 using SAMStock.DAL.Pedals.RemoveComponent;
 using WPF.Utilities;
 

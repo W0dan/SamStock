@@ -3,9 +3,9 @@ using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Components.Create
 {
-	public class CreateComponentHandler: BOCommandHandler<CreateComponentRequest, Component>
+	class CreateComponentHandler: Handler<CreateComponentRequest, CreateComponentResponse>
 	{
-		public CreateComponentHandler(IBOCommandExecutor<CreateComponentRequest, Component> executor) : base(executor)
+		public CreateComponentHandler(IExecutor<CreateComponentRequest, CreateComponentResponse> executor) : base(executor)
 		{
 		}
 	}

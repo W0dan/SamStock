@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using SAMStock.BO;
+using SAMStock.Business.Objects;
 using SAMStock.DAL.Components.Create;
 using SAMStock.DAL.Components.Update;
 using SAMStock.DAL.Suppliers.Filter;
@@ -20,7 +21,7 @@ namespace WPF.UserControls.Components
 		{
 			InitializeComponent();
 			_model = DataContext as ComponentViewModel;
-			SAMStock.Dispatcher.Request<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest()).Items.ToList().ForEach(x => _model.Suppliers.Add(x));
+			SAMStock.Dispatcher.Request<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest()).Suppliers.ToList().ForEach(x => _model.Suppliers.Add(x));
 		}
 
 		public ComponentViewDialog(Component comp): this()

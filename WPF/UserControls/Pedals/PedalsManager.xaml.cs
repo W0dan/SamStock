@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Windows;
 using SAMStock.BO;
+using SAMStock.Business;
+using SAMStock.Business.Objects;
 using SAMStock.DAL.Pedals.Delete;
 using SAMStock.DAL.Pedals.Filter;
 using WPF.UserControls.Base;
@@ -21,15 +23,15 @@ namespace WPF.UserControls.Pedals
 			{
 				Refresh();
 			}
-			SAMStock.BO.Pedals.Instance.Created += (sender, component) => Refresh();
-			SAMStock.BO.Pedals.Instance.Deleted += (sender, id) => Refresh();
-			SAMStock.BO.Pedals.Instance.Updated += (sender, component) => Refresh();
+			SAMStock.Business.Managers.Pedals.Instance.Created += (sender, component) => Refresh();
+			SAMStock.Business.Managers.Pedals.Instance.Deleted += (sender, id) => Refresh();
+			SAMStock.Business.Managers.Pedals.Instance.Updated += (sender, component) => Refresh();
 		}
 
 		public void Refresh()
 		{
 			_model.Pedals.Clear();
-			SAMStock.Dispatcher.Request<FilterPedalsRequest, FilterPedalsResponse>(new FilterPedalsRequest()).Items.ToList().ForEach(x => _model.Pedals.Add(x));
+			SAMStock.Dispatcher.Request<FilterPedalsRequest, FilterPedalsResponse>(new FilterPedalsRequest()).Pedals.ToList().ForEach(x => _model.Pedals.Add(x));
 			PedalsDataGrid.SelectedIndex = -1;
 		}
 

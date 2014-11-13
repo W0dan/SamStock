@@ -11,21 +11,21 @@ namespace WPF.UserControls.Config
 			InitializeComponent();
 			if (!Enviromment.IsInDesignTime)
 			{
-				SAMStock.BO.Config.Modified += (x, y) => Refresh();
+				SAMStock.Business.Objects.Config.Modified += (x, y) => Refresh();
 				Refresh();
 			}
 		}
 
 		public void Refresh()
 		{
-			VatPercentageTextBox.Text = SAMStock.BO.Config.VAT.ToString();
-			DefaultPedalPriceMarginTextBox.Text = SAMStock.BO.Config.DefaultPedalProfitMargin.ToString();
+			VatPercentageTextBox.Text = SAMStock.Business.Objects.Config.VAT.ToString();
+			DefaultPedalPriceMarginTextBox.Text = SAMStock.Business.Objects.Config.DefaultPedalProfitMargin.ToString();
 		}
 
 		private void SaveButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			SAMStock.BO.Config.VAT = VatPercentageTextBox.GetDecimal();
-			SAMStock.BO.Config.DefaultPedalProfitMargin = DefaultPedalPriceMarginTextBox.GetDecimal();
+			SAMStock.Business.Objects.Config.VAT = VatPercentageTextBox.GetDecimal();
+			SAMStock.Business.Objects.Config.DefaultPedalProfitMargin = DefaultPedalPriceMarginTextBox.GetDecimal();
 		}
 	}
 }

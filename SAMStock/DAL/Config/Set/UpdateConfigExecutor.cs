@@ -1,24 +1,25 @@
 ﻿using System.Linq;
+using SAMStock.Castle;
+using SAMStock.DAL.Config.UpdateConfig;
 using SAMStock.DAL.Foundation;
 using SAMStock.Database;
-using SAMStock.Utilities;
+using Util;
 
-namespace SAMStock.DAL.Config.UpdateConfig
+namespace SAMStock.DAL.Config.Set
 {
-	public class UpdateConfigExecutor: CommandExecutor<UpdateConfigRequest>
+	class UpdateConfigExecutor: Executor<UpdateConfigRequest, UpdateConfigResponse>
 	{
 		public UpdateConfigExecutor(IContext context) : base(context)
 		{
 		}
 
-		public override int Execute(UpdateConfigRequest cmd)
+		public override void Execute(UpdateConfigRequest cmd)
 		{
 			var config = Context.Config.Single();
 			cmd.DefaultPedalProfitMargin.IfNotNull(x => config.DefaultPedalProfitMargin = x);
 			cmd.VAT.IfNotNull(x => config.VAT = x);
 			Context.SaveChanges();
-			BO.Config.TriggerModified();
-			return config.Id;
+			IoC.Instance.Resolve<Config>().TriggerModified();
 		}
 	}
 }

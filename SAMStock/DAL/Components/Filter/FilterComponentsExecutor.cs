@@ -6,7 +6,7 @@ using Util;
 
 namespace SAMStock.DAL.Components.Filter
 {
-	public class FilterComponentsExecutor : RequestExecutor<FilterComponentsRequest, FilterComponentsResponse>
+	class FilterComponentsExecutor : Executor<FilterComponentsRequest, FilterComponentsResponse>
 	{
 		public FilterComponentsExecutor(IContext context) : base(context)
 		{

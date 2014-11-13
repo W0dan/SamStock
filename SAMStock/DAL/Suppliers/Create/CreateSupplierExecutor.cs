@@ -1,6 +1,6 @@
 ﻿using SAMStock.DAL.Foundation;
 using SAMStock.Database;
-using Supplier = SAMStock.BO.Supplier;
+using Supplier = SAMStock.Business.Objects.Supplier;
 
 namespace SAMStock.DAL.Suppliers.Create
 {
@@ -21,7 +21,7 @@ namespace SAMStock.DAL.Suppliers.Create
 			Context.Suppliers.Add(supplier);
 			Context.SaveChanges();
 			var s = new Supplier(supplier);
-			BO.Suppliers.Manager.TriggerCreated(s);
+			Business.Managers.Suppliers.Manager.TriggerCreated(s);
 			return s;
 		}
 	}

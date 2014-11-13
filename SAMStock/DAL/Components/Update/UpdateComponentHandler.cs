@@ -3,9 +3,9 @@ using SAMStock.DAL.Foundation;
 
 namespace SAMStock.DAL.Components.Update
 {
-	public class UpdateComponentHandler: BOCommandHandler<UpdateComponentRequest, Component>
+	class UpdateComponentHandler: Handler<UpdateComponentRequest, UpdateComponentResponse>
 	{
-		public UpdateComponentHandler(IBOCommandExecutor<UpdateComponentRequest, Component> executor) : base(executor)
+		public UpdateComponentHandler(IExecutor<UpdateComponentRequest, UpdateComponentResponse> executor) : base(executor)
 		{
 		}
 	}

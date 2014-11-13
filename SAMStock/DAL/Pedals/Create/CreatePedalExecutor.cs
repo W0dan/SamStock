@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using SAMStock.DAL.Foundation;
 using SAMStock.Database;
-using Pedal = SAMStock.BO.Pedal;
+using Pedal = SAMStock.Business.Objects.Pedal;
 
 namespace SAMStock.DAL.Pedals.Create
 {
@@ -22,7 +22,7 @@ namespace SAMStock.DAL.Pedals.Create
 			Context.Pedals.Add(pedal);
 			Context.SaveChanges();
 			var p = new Pedal(pedal, Context.Config.Single().DefaultPedalProfitMargin);
-			BO.Pedals.Manager.TriggerCreated(p);
+			Business.Managers.Pedals.Manager.TriggerCreated(p);
 			return p;
 		}
 	}

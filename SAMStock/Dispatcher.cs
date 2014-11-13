@@ -2,7 +2,6 @@
 using System.Transactions;
 using Castle.MicroKernel;
 using Castle.Windsor;
-using SAMStock.BO.Foundation;
 using SAMStock.Castle;
 using SAMStock.DAL.Foundation;
 using SAMStock.Database;
@@ -28,7 +27,7 @@ namespace SAMStock
 		{
 			try
 			{
-				var handler = IoC.Instance.Resolve<IRequestHandler<TRequest, TResponse>>();
+				var handler = IoC.Instance.Resolve<IHandler<TRequest, TResponse>>();
 				TResponse r;
 				try
 				{

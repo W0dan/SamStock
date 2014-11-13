@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SAMStock.BO.Foundation;
+using SAMStock.Business.Foundation;
+using SAMStock.Business.Managers;
 using SAMStock.DAL.Components.Filter;
-using Util.Collections;
 
-namespace SAMStock.BO
+namespace SAMStock.Business.Objects
 {
-	public class Supplier : BusinessObject
+	public class Supplier : IBusinessObject
 	{
+		public int Id { get; private set; }
 		public string Name { get; private set; }
 		public Uri Website { get; private set; }
 		public string Address { get; private set; }
@@ -22,21 +23,21 @@ namespace SAMStock.BO
 			Website = new Uri(supplier.Website);
 			Address = supplier.Address;
 
-			Suppliers s = new Singleton<Suppliers>();
-			s.Deleted += (sender, deleted) =>
+			var mgr = Suppliers.Events;
+			mgr.RegisterDelete((x, y) =>
 			{
-				if (deleted.Id.Equals(Id))
+				if (y.BOId.Equals(Id))
 				{
-					Delete();
+					Deleted(x, null);
 				}
-			};
-			s.Updated += (sender, updated) =>
+			});
+			mgr.RegisterUpdate((x, y) =>
 			{
-				if (updated.BO.Id.Equals(Id))
+				if (y.BO.Id.Equals(Id))
 				{
-					Update(updated.BO);
+					Updated(x, y.BO);
 				}
-			};
+			});
 		}
 
 		public List<Component> Components
@@ -46,25 +47,7 @@ namespace SAMStock.BO
 				return Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest(this)
 				{
 					SupplierId = Id
-				}).Items.ToList();
-			}
-		}
-
-		private void Delete()
-		{
-			var handler = Deleted;
-			if (handler != null)
-			{
-				handler(null, this);
-			}
-		}
-
-		private void Update(Supplier s)
-		{
-			var handler = Updated;
-			if (handler != null)
-			{
-				handler(null, this);
+				}).Components.ToList();
 			}
 		}
 	}

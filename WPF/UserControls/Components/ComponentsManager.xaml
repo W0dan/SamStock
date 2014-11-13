@@ -1,4 +1,4 @@
-﻿<base:BOManagerBase x:TypeArguments="bo:Component" x:Class="WPF.UserControls.Components.ComponentsManager"
+﻿<base:BOManagerBase x:TypeArguments="objects:Component" x:Class="WPF.UserControls.Components.ComponentsManager"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,6 +6,7 @@
              xmlns:components="clr-namespace:WPF.UserControls.Components"
              xmlns:base="clr-namespace:WPF.UserControls.Base"
              xmlns:bo="clr-namespace:SAMStock.BO;assembly=SAMStock"
+             xmlns:objects="clr-namespace:SAMStock.Business.Objects;assembly=SAMStock"
              mc:Ignorable="d">
 	<UserControl.DataContext>
 		<components:ComponentsManagerModel/>

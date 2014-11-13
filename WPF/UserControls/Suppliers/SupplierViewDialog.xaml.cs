@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using SAMStock.BO;
+using SAMStock.Business.Objects;
 using SAMStock.DAL.Suppliers.Create;
 using SAMStock.DAL.Suppliers.Update;
 

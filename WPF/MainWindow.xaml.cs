@@ -1,7 +1,9 @@
 ﻿using System.Drawing;
 using System.Windows.Media;
 using SAMStock.BO;
-using SAMStock.BO.Foundation;
+using SAMStock.Business;
+using SAMStock.Business.Foundation;
+using SAMStock.Business.Objects;
 using Util.Collections;
 
 namespace WPF
@@ -11,9 +13,9 @@ namespace WPF
 		public MainWindow()
 		{
 			InitializeComponent();
-			new Singleton<IBOManager<Component>>(SAMStock.Dispatcher.Resolve<IBOManager<Component>>());
-			new Singleton<IBOManager<Pedal>>(SAMStock.Dispatcher.Resolve<IBOManager<Pedal>>());
-			new Singleton<IBOManager<Supplier>>(SAMStock.Dispatcher.Resolve<IBOManager<Supplier>>());
+			new Singleton<IManager<Component>>(SAMStock.Dispatcher.Resolve<IManager<Component>>());
+			new Singleton<IManager<Pedal>>(SAMStock.Dispatcher.Resolve<IManager<Pedal>>());
+			new Singleton<IManager<Supplier>>(SAMStock.Dispatcher.Resolve<IManager<Supplier>>());
 			new Singleton<Config>(SAMStock.Dispatcher.Resolve<Config>());
 		}
 	}

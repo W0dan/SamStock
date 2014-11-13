@@ -2,9 +2,9 @@
 
 namespace SAMStock.DAL.Components.Filter
 {
-	public class FilterComponentsHandler : RequestHandler<FilterComponentsRequest, FilterComponentsResponse>
+	class FilterComponentsHandler : Handler<FilterComponentsRequest, FilterComponentsResponse>
 	{
-		public FilterComponentsHandler(IRequestExecutor<FilterComponentsRequest, FilterComponentsResponse> executor) : base(executor)
+		public FilterComponentsHandler(IExecutor<FilterComponentsRequest, FilterComponentsResponse> executor) : base(executor)
 		{
 		}
 	}

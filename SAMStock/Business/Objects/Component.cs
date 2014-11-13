@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SAMStock.BO.Foundation;
+using SAMStock.Business.Foundation;
+using SAMStock.Business.Managers;
+using SAMStock.Castle;
 using SAMStock.DAL.Pedals.Filter;
 using SAMStock.DAL.Suppliers.Filter;
 using Util.Collections;
 
-namespace SAMStock.BO
+namespace SAMStock.Business.Objects
 {
-	public class Component: BusinessObject
+	public class Component: IBusinessObject
 	{
+		public int Id { get; private set; }
 		public string Name { get; private set; }
 		public int MinimumStock { get; private set; }
 		public int Stock { get; private set; }
@@ -18,8 +21,8 @@ namespace SAMStock.BO
 		private readonly int _supplierId;
 		public string Remarks { get; private set; }
 		public string ItemCode { get; private set; }
-		public event EventHandler<Component> Deleted;
-		public event EventHandler<Component> Updated;
+		public event EventHandler Deleted = delegate { };
+		public event EventHandler<Component> Updated = delegate { };
 
 		internal Component(Database.Component component)
 		{
@@ -33,21 +36,21 @@ namespace SAMStock.BO
 			Remarks = component.Remarks;
 			ItemCode = component.ItemCode;
 
-			Components s = new Singleton<Components>();
-			s.Updated += (sender, updated) =>
+			var mgr = Components.Events;
+			mgr.RegisterDelete((x, y) =>
 			{
-				if (updated.BO.Id.Equals(Id))
+				if (y.BOId.Equals(Id))
 				{
-					Update(updated.BO);
+					Deleted(x, null);
 				}
-			};
-			s.Deleted += (sender, deleted) =>
+			});
+			mgr.RegisterUpdate((x, y) =>
 			{
-				if (deleted.Id.Equals(Id))
+				if (y.BO.Id.Equals(Id))
 				{
-					Delete();
+					Updated(x, y.BO);
 				}
-			};
+			});
 		}
 
 		public List<Pedal> Pedals
@@ -55,7 +58,7 @@ namespace SAMStock.BO
 			get { return Dispatcher.Request<FilterPedalsRequest, FilterPedalsResponse>(new FilterPedalsRequest(this)
 			{
 				ComponentId = Id
-			}).Items.ToList(); }
+			}).Pedals.ToList(); }
 		}
 
 		public Supplier Supplier
@@ -65,25 +68,7 @@ namespace SAMStock.BO
 				return Dispatcher.Request<FilterSuppliersRequest, FilterSuppliersResponse>(new FilterSuppliersRequest(this)
 				{
 					Id = _supplierId
-				}).Items.Single();
-			}
-		}
-
-		private void Delete()
-		{
-			var handler = Deleted;
-			if (handler != null)
-			{
-				handler(null, this);
-			}
-		}
-
-		private void Update(Component c)
-		{
-			var handler = Updated;
-			if (handler != null)
-			{
-				handler(null, this);
+				}).Suppliers.Single();
 			}
 		}
 	}

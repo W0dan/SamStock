@@ -5,7 +5,7 @@ using SAMStock.Database;
 
 namespace SAMStock.DAL.Config.GetConfig
 {
-	public class GetConfigExecutor : RequestExecutor<GetConfigRequest, GetConfigResponse>
+	public class GetConfigExecutor : Executor<GetConfigRequest, GetConfigResponse>
 	{
 		public GetConfigExecutor(IContext context) : base(context)
 		{

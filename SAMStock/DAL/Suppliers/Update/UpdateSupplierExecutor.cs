@@ -2,7 +2,7 @@
 using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using SAMStock.Utilities;
-using Supplier = SAMStock.BO.Supplier;
+using Supplier = SAMStock.Business.Objects.Supplier;
 
 namespace SAMStock.DAL.Suppliers.Update
 {
@@ -20,7 +20,7 @@ namespace SAMStock.DAL.Suppliers.Update
 			cmd.Address.IfMeaningful(x => supplier.Address = x);
 			Context.SaveChanges();
 			var s = new Supplier(supplier);
-			BO.Suppliers.Manager.TriggerUpdated(s);
+			Business.Managers.Suppliers.Manager.TriggerUpdated(s);
 			return s;
 		}
 	}

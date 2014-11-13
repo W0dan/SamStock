@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using SAMStock.BO.Foundation;
+using SAMStock.Business.Events;
+using SAMStock.Business.Foundation;
+using SAMStock.Business.Managers;
+using SAMStock.Castle;
 using SAMStock.DAL.Pedals.FilterComponents;
-using Util.Collections;
 
-namespace SAMStock.BO
+namespace SAMStock.Business.Objects
 {
-	public class Pedal : BusinessObject
+	public class Pedal: IBusinessObject
 	{
+		public int Id { get; private set; }
 		public string Name { get; private set; }
 		public decimal Price { get; private set; }
 		public decimal ProfitMargin { get; private set; }
-		public event EventHandler<Pedal> Deleted;
-		public event EventHandler<Pedal> Updated;
+		public event EventHandler Deleted = delegate { };
+		public event EventHandler<Pedal> Updated = delegate { };
 
 		internal Pedal(Database.Pedal pedal, decimal defaultprofitmargin)
 		{
@@ -23,28 +25,28 @@ namespace SAMStock.BO
 			Price = pedal.Price;
 			ProfitMargin = pedal.ProfitMargin?? defaultprofitmargin;
 
-			Pedals s = new Singleton<Pedals>();
-			s.Deleted += (sender, deleted) =>
+			var mgr = Pedals.Events;
+			mgr.RegisterDelete((x, y) =>
 			{
-				if (deleted.Id.Equals(Id))
+				if (y.BOId.Equals(Id))
 				{
-					Delete();
+					Deleted(x, null);
 				}
-			};
-			s.Updated += (sender, updated) =>
+			});
+			mgr.RegisterUpdate((x, y) =>
 			{
-				if (updated.BO.Id.Equals(Id))
+				if (y.BO.Id.Equals(Id))
 				{
-					Update(updated.BO);
+					Updated(x, y.BO);
 				}
-			};
+			});
 		}
 
 		public Dictionary<Component, int> Components
 		{
 			get
 			{
-				return Dispatcher.Request<FilterComponentsRequest, FilterComponentsResponse>(new FilterComponentsRequest(this)
+				return Dispatcher.Request<DAL.Components.Filter.FilterComponentsRequest, DAL.Components.Filter.FilterComponentsResponse>(new FilterComponentsRequest(this)
 				{
 					PedalId = Id
 				}).Components;
@@ -61,7 +63,7 @@ namespace SAMStock.BO
 			var allcomponents = Dispatcher.Request<DAL.Components.Filter.FilterComponentsRequest, DAL.Components.Filter.FilterComponentsResponse>(new DAL.Components.Filter.FilterComponentsRequest(this)
 			{
 				PedalId = Id
-			}).Items;
+			}).Components;
 			var max = (int?)null;
 			foreach (var component in Components)
 			{
@@ -69,24 +71,6 @@ namespace SAMStock.BO
 				max = max.HasValue ? Math.Min(max.Value, count) : count;
 			}
 			return max ?? 0;
-		}
-
-		private void Delete()
-		{
-			var handler = Deleted;
-			if (handler != null)
-			{
-				handler(null, this);
-			}
-		}
-
-		private void Update(Pedal p)
-		{
-			var handler = Updated;
-			if (handler != null)
-			{
-				handler(null, this);
-			}
 		}
 	}
 }

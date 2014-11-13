@@ -2,9 +2,9 @@
 
 namespace SAMStock.DAL.Components.Delete
 {
-	public class DeleteComponentHandler: CommandHandler<DeleteComponentRequest>
+	class DeleteComponentHandler: Handler<DeleteComponentRequest, DeleteComponentResponse>
 	{
-		public DeleteComponentHandler(ICommandExecutor<DeleteComponentRequest> executor) : base(executor)
+		public DeleteComponentHandler(IExecutor<DeleteComponentRequest, DeleteComponentResponse> executor) : base(executor)
 		{
 		}
 	}

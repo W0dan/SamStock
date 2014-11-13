@@ -5,7 +5,7 @@ using SAMStock.Utilities;
 
 namespace SAMStock.DAL.Pedals.Filter
 {
-	public class FilterPedalsExecutor : RequestExecutor<FilterPedalsRequest, FilterPedalsResponse>
+	public class FilterPedalsExecutor : Executor<FilterPedalsRequest, FilterPedalsResponse>
 	{
 		public FilterPedalsExecutor(IContext context) : base(context)
 		{

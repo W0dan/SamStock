@@ -4,11 +4,11 @@ using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using SAMStock.Utilities;
 using Util;
-using Component = SAMStock.BO.Component;
+using Component = SAMStock.Business.Objects.Component;
 
 namespace SAMStock.DAL.Components.Update
 {
-	public class UpdateComponentExecutor: RequestExecutor<UpdateComponentRequest, UpdateComponentResponse>
+	class UpdateComponentExecutor: Executor<UpdateComponentRequest, UpdateComponentResponse>
 	{
 		public UpdateComponentExecutor(IContext context) : base(context)
 		{
@@ -27,7 +27,7 @@ namespace SAMStock.DAL.Components.Update
 			cmd.SupplierId.IfNotNull(x => component.SupplierId = x);
 			Context.SaveChanges();
 			var c = new Component(component);
-			IoC.Instance.Resolve<BO.Components>().Update(c);
+			IoC.Instance.Resolve<Business.Managers.Components>().Update(c);
 			return new UpdateComponentResponse(c);
 		}
 	}

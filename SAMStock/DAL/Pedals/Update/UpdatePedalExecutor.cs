@@ -2,7 +2,7 @@
 using SAMStock.DAL.Foundation;
 using SAMStock.Database;
 using SAMStock.Utilities;
-using Pedal = SAMStock.BO.Pedal;
+using Pedal = SAMStock.Business.Objects.Pedal;
 
 namespace SAMStock.DAL.Pedals.Update
 {
@@ -20,7 +20,7 @@ namespace SAMStock.DAL.Pedals.Update
 			cmd.ProfitMargin.IfNotNull(x => pedal.ProfitMargin = x);
 			Context.SaveChanges();
 			var p = new Pedal(pedal, Context.Config.Single().DefaultPedalProfitMargin);
-			BO.Pedals.Manager.TriggerUpdated(p);
+			Business.Managers.Pedals.Manager.TriggerUpdated(p);
 			return p;
 		}
 	}

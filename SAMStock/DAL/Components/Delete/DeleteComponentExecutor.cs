@@ -6,7 +6,7 @@ using SAMStock.Database;
 
 namespace SAMStock.DAL.Components.Delete
 {
-	public class DeleteComponentExecutor: RequestExecutor<DeleteComponentRequest, DeleteComponentResponse>
+	class DeleteComponentExecutor: Executor<DeleteComponentRequest, DeleteComponentResponse>
 	{
 		public DeleteComponentExecutor(IContext context) : base(context)
 		{
@@ -22,7 +22,7 @@ namespace SAMStock.DAL.Components.Delete
 			}
 			Context.Components.Remove(component);
 			Context.SaveChanges();
-			IoC.Instance.Resolve<BO.Components>().Delete(cmd.Id);
+			IoC.Instance.Resolve<Business.Managers.Components>().Delete(cmd.Id);
 			return new DeleteComponentResponse(cmd.Id);
 		}
 	}
